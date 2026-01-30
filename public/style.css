@@ -113,19 +113,85 @@ main {
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 2rem 1.5rem;
-    max-width: 1000px; /* Increased max-width for better desktop view */
+    align-items: stretch; /* Stretch to fill width */
+    padding: 3rem 1.5rem;
+    max-width: 1000px;
     margin: 0 auto;
     width: 100%;
-    text-align: center;
+    text-align: left; /* Default to left align */
 }
 
+/* Page Content Generic */
+.page-content {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 3rem auto; /* Center the container itself */
+}
+
+.page-content h1 {
+    text-align: center; /* Headings can still be centered if desired, or left */
+    margin-bottom: 2rem;
+}
+
+.page-content p {
+    font-size: 1.15rem;
+    color: var(--gray);
+    margin-bottom: 1.5rem;
+}
+
+/* Section Card - New for better sectioning */
+.section-card {
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+    border: 1px solid rgba(0,0,0,0.03);
+}
+
+.section-card h2 {
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    border-bottom: 2px solid rgba(0,0,0,0.05);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.section-list {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.section-list li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: var(--dark);
+}
+
+.section-list li::before {
+    content: '•';
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 1.5rem;
+    position: absolute;
+    left: 0;
+    top: -0.2rem;
+}
+
+.center-text {
+    text-align: center;
+}
 /* Hero Section */
 .hero {
     margin-bottom: 4rem;
     margin-top: 3rem;
     max-width: 800px;
+    text-align: center; /* Ensure hero is always centered */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .hero p {
@@ -186,22 +252,6 @@ main {
     color: var(--primary);
     font-size: 1.5rem;
     margin-bottom: 1rem;
-}
-
-/* Page Content Generic */
-.page-content {
-    text-align: left;
-    width: 100%;
-    max-width: 800px;
-}
-
-.page-content p {
-    font-size: 1.1rem;
-    color: var(--gray);
-}
-
-.center-text {
-    text-align: center;
 }
 
 /* Blog List */
