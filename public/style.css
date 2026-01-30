@@ -356,7 +356,8 @@ footer p {
     .btn {
         padding: 0.8rem 1.5rem;
         width: 100%; /* Full width button on mobile */
-    max-width: 300px;
+        max-width: 300px;
+    }
 }
 
 /* FAQ Section */
@@ -364,7 +365,7 @@ footer p {
     width: 100%;
     max-width: 800px;
     margin: 4rem auto;
-    text-align: left;
+    text-align: left; /* Explicitly left align */
 }
 
 .faq-section h2 {
@@ -375,20 +376,21 @@ footer p {
 }
 
 .faq-category {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem; /* Increased spacing between categories */
 }
 
 .faq-category h3 {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     color: var(--primary);
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     padding-bottom: 0.5rem;
     border-bottom: 2px solid rgba(0,0,0,0.05);
+    text-align: left; /* Ensure category titles are left aligned */
 }
 
 details {
     background: var(--white);
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
     border-radius: 12px;
     box-shadow: var(--shadow);
     overflow: hidden;
@@ -398,17 +400,19 @@ details {
 
 details:hover {
     box-shadow: var(--shadow-hover);
+    transform: translateY(-2px); /* Subtle lift on hover */
 }
 
 summary {
-    padding: 1.2rem;
+    padding: 1.5rem; /* More breathing room */
     font-weight: 600;
     cursor: pointer;
     list-style: none;
     position: relative;
-    padding-right: 3rem;
+    padding-right: 3.5rem;
     color: var(--dark);
-    font-size: 1.1rem;
+    font-size: 1.15rem;
+    text-align: left; /* Ensure questions are left aligned */
 }
 
 summary::-webkit-details-marker {
@@ -418,10 +422,10 @@ summary::-webkit-details-marker {
 summary::after {
     content: '+';
     position: absolute;
-    right: 1.2rem;
+    right: 1.5rem;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: var(--primary);
     font-weight: 400;
     transition: transform 0.3s ease;
@@ -433,13 +437,16 @@ details[open] summary::after {
 
 details[open] summary {
     border-bottom: 1px solid rgba(0,0,0,0.05);
-    background-color: rgba(67, 97, 238, 0.02);
+    background-color: rgba(67, 97, 238, 0.04); /* Slightly stronger active background */
+    color: var(--primary); /* Highlight active question */
 }
 
 .faq-answer {
-    padding: 1.2rem;
+    padding: 1.5rem;
     color: var(--gray);
-    line-height: 1.6;
+    line-height: 1.7;
+    text-align: left; /* Ensure answer text is left aligned */
+    font-size: 1.05rem;
 }
 
 .faq-answer p {
@@ -459,6 +466,11 @@ details[open] summary {
 .faq-answer li {
     margin-bottom: 0.5rem;
 }
+
+/* Helper for bolding text in answers */
+.faq-answer strong {
+    color: var(--dark);
+    font-weight: 600;
 }
 
 @media (max-width: 480px) {
