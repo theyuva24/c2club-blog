@@ -139,6 +139,12 @@ main {
     margin-bottom: 1.5rem;
 }
 
+.identity-paragraph {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3rem auto;
+}
+
 /* Section Card - New for better sectioning */
 .section-card {
     background: var(--white);
@@ -358,15 +364,33 @@ main {
 /* Footer */
 footer {
     text-align: center;
-    padding: 2rem;
+    padding: 3rem 1.5rem;
     background-color: var(--white);
     border-top: 1px solid #eee;
     margin-top: auto;
 }
 
-footer p {
+.footer-identity {
+    margin-bottom: 1.5rem;
+}
+
+.footer-identity p {
+    margin-bottom: 0.5rem;
     font-size: 1rem;
     color: var(--gray);
+}
+
+.footer-identity strong {
+    color: var(--dark);
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+footer .copyright {
+    font-size: 0.9rem;
+    color: var(--gray);
+    opacity: 0.8;
 }
 
 /* Mobile Responsiveness */
