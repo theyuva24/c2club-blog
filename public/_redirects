@@ -1,1 +1,4 @@
 /app https://play.google.com/store/apps/details?id=com.c2club.uniqueapp 301
+/blog.html /blog/ 301
+/post1.html /blog/sample-post.html 301
+/blog/sample-post /blog/sample-post.html 200
