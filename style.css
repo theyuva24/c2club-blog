@@ -927,7 +927,8 @@ pre {
 
     /* Navbar Slide-down */
     .nav-container {
-        padding: 15px 0;
+        padding: 15px 16px;
+        /* Added side padding for logo and hamburger */
         position: relative;
     }
 
@@ -1019,39 +1020,59 @@ pre {
         width: 100%;
     }
 
-    /* Screenshot Section CSS Carousel */
+    /* Screenshot Section Scaled-down Overlapping Fan */
     .product-visual {
         display: flex;
+        justify-content: center;
+        align-items: center;
         flex-direction: row;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        gap: 20px;
-        padding: 0 16px 30px;
-        margin: 40px -16px;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-    }
-
-    .product-visual::-webkit-scrollbar {
-        display: none;
+        overflow: visible;
+        margin: 30px auto 50px;
+        padding: 0;
+        gap: 0;
     }
 
     .product-left,
     .product-right,
     .product-main {
-        position: static;
-        flex: 0 0 80%;
-        scroll-snap-align: center;
-        max-width: none;
-        width: auto;
+        flex: none;
+        scroll-snap-align: none;
         margin: 0;
-        transform: none !important;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-        border-radius: 16px;
+        width: 100%;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 14px;
+        transform: none;
+        /* Reset mobile carousel override */
     }
 
-    /* Include spacer block for carousel centering trick if needed, but 80% flex usually works */
+    .product-main {
+        position: relative;
+        z-index: 3;
+        max-width: 180px;
+    }
+
+    .product-main:hover,
+    .product-main:active {
+        transform: translateY(-4px);
+    }
+
+    .product-left,
+    .product-right {
+        position: absolute;
+        z-index: 1;
+        opacity: 0.95;
+        max-width: 145px;
+    }
+
+    .product-left {
+        left: -55px;
+        top: 25px;
+    }
+
+    .product-right {
+        right: -55px;
+        top: 25px;
+    }
 
     /* Blog Index */
     .blog-grid {
@@ -1076,7 +1097,8 @@ pre {
 
     /* Blog Page Mobile Typography Upgrade */
     .article-container {
-        padding: 60px 16px 40px;
+        padding: 60px 24px 40px;
+        /* Increased safe side padding */
         max-width: 100%;
     }
 
@@ -1090,6 +1112,22 @@ pre {
         text-align: left;
     }
 
+    .article-container p {
+        margin-bottom: 32px;
+        /* Increased bottom margin for breathing space */
+    }
+
+    .article-container ul,
+    .article-container ol {
+        margin: 32px 0 32px 24px;
+        /* Increased margin around lists */
+    }
+
+    .article-container li {
+        margin-bottom: 16px;
+        /* Added spacing between list items */
+    }
+
     .article-title {
         font-size: clamp(1.75rem, 6vw, 2.25rem);
         line-height: 1.3;
@@ -1097,11 +1135,22 @@ pre {
 
     .article-container h2 {
         font-size: 1.5rem;
-        margin-top: 60px;
+        margin-top: 64px;
+        /* Increased space before section */
+        margin-bottom: 24px;
+        /* Increased space after section */
     }
 
     .article-container h3 {
         font-size: 1.25rem;
+        margin-top: 48px;
+        /* Breathing room */
+        margin-bottom: 16px;
+    }
+
+    .table-wrapper {
+        margin: 40px 0;
+        /* Ensuring proper spacing above and below tables */
     }
 
     .faq-item {
@@ -1423,9 +1472,16 @@ pre {
     }
 
     /* Button Adjustments */
+    .btn-primary {
+        color: #111111;
+        /* Force dark text on neon background in dark mode */
+    }
+
     .btn-primary:hover {
         background-color: #2cc010;
         border-color: #2cc010;
+        color: #111111;
+        /* Keep dark text on hover in dark mode */
         box-shadow: 0 0 0 3px rgba(48, 216, 18, 0.25), 0 6px 20px rgba(48, 216, 18, 0.2);
     }
 
