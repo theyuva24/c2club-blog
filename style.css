@@ -144,7 +144,7 @@ p {
 
 .btn-primary {
     background-color: var(--accent-neon);
-    color: var(--text-primary);
+    color: #111111;
     border-color: var(--accent-neon);
 }
 
@@ -737,7 +737,7 @@ pre {
 
 .cta-block-minimal {
     text-align: center;
-    background-color: #fafafa;
+    background-color: var(--bg-light);
     padding: 40px;
     border-radius: 12px;
 }
@@ -751,7 +751,7 @@ pre {
 
 .cta-text-subtle {
     font-size: 1.1rem;
-    color: #555555;
+    color: var(--text-primary);
     margin-bottom: 24px;
 }
 
@@ -926,9 +926,13 @@ pre {
     }
 
     /* Navbar Slide-down */
-    .nav-container {
+    .navbar {
         padding: 15px 16px;
-        /* Added side padding for logo and hamburger */
+        /* Added strict side padding to the header wrapper itself */
+    }
+
+    .nav-container {
+        padding: 0;
         position: relative;
     }
 
@@ -1075,17 +1079,49 @@ pre {
     }
 
     /* Blog Index */
+    .blog-hero {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .blog-grid-section {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
     .blog-grid {
         grid-template-columns: 1fr;
-        gap: 24px;
+        gap: 32px;
     }
 
     .blog-card {
         width: 100%;
+        position: relative;
     }
 
     .blog-card-title {
         word-wrap: break-word;
+    }
+
+    .blog-card-title a::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+    }
+
+    .blog-card-excerpt {
+        font-size: 1.1rem;
+        color: #333333;
+    }
+
+    .blog-read-more {
+        position: relative;
+        z-index: 2;
+        display: inline-block;
+        min-height: 44px;
+        padding-top: 10px;
+        pointer-events: none;
     }
 
     .blog-card-meta {
@@ -1093,6 +1129,8 @@ pre {
         flex-wrap: wrap;
         gap: 8px;
         align-items: center;
+        color: #555555;
+        font-size: 0.95rem;
     }
 
     /* Blog Page Mobile Typography Upgrade */
@@ -1107,9 +1145,17 @@ pre {
     .article-container blockquote {
         font-size: 18px;
         line-height: 1.85;
-        padding-left: 0;
         padding-right: 0;
         text-align: left;
+    }
+
+    .article-container p,
+    .article-container li {
+        padding-left: 0;
+    }
+
+    .article-container blockquote {
+        padding-left: 18px;
     }
 
     .article-container p {
@@ -1129,7 +1175,8 @@ pre {
     }
 
     .article-title {
-        font-size: clamp(1.75rem, 6vw, 2.25rem);
+        font-size: clamp(1.5rem, 5vw, 2rem);
+        margin-bottom: 24px;
         line-height: 1.3;
     }
 
