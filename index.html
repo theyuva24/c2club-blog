@@ -1,22 +1,154 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>C2Club Blog - Development Notice</title>
-    <meta charset="utf-8">
-    <style>
-        body { font-family: Arial, sans-serif; margin: 40px auto; max-width: 800px; line-height: 1.6; }
-        .notice { background: #f0f8ff; padding: 20px; border-radius: 8px; border-left: 4px solid #007acc; }
-        code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="C2 Club: A platform connecting students across campuses to solve real problems and build collaborative communities.">
+    <title>C2 Club | Foundation for Student Collaboration</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="canonical" href="https://c2club.in/" />
+
+    <meta property="og:title" content="C2 Club | Foundation for Student Collaboration">
+    <meta property="og:description"
+        content="A modern student platform connecting campuses, sharing real insights, and building collaborative communities.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://c2club.in/">
+    <meta property="og:image" content="https://c2club.in/preview.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "C2 Club",
+      "url": "https://c2club.in/",
+      "logo": "https://c2club.in/preview.jpg"
+    }
+    </script>
 </head>
+
 <body>
-    <div class="notice">
-        <h2>Development Server Configuration Notice</h2>
-        <p><strong>Please run the development server from the <code>public</code> directory:</strong></p>
-        <pre><code>cd public
-npx serve .</code></pre>
-        <p>This website is structured for deployment to Netlify, where the <code>public</code> directory is the root. For local development, the server should be started from the <code>public</code> directory.</p>
-        <p><a href="./public/">Continue to website (click here)</a></p>
-    </div>
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="/">C2 Club</a>
+            </div>
+            <nav class="nav-links">
+                <a href="/blog/index.html" class="nav-link">Blog</a>
+                <a href="/contact.html" class="nav-link">Contact</a>
+                <a href="/download.html" class="btn btn-primary nav-btn">Download</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero section fade-in">
+            <div class="container hero-container">
+                <h1>College shouldn’t feel this disconnected.</h1>
+                <p class="hero-subtitle">Notes are scattered. Opportunities stay hidden. Seniors feel unreachable. C2
+                    Club is a structured, cross-campus student platform built to help you share resources, find
+                    teammates, and ask real questions — without the chaos.</p>
+                <div class="hero-actions">
+                    <a href="/download.html" class="btn btn-primary btn-large">Download C2 Club</a>
+                    <a href="/blog/index.html" class="btn btn-outline btn-large">Explore Blog</a>
+                </div>
+                <p style="margin-top: 15px; font-size: 0.9rem; color: var(--text-secondary);">Free. Built for Indian
+                    college students.</p>
+            </div>
+        </section>
+
+        <!-- Problem Section -->
+        <section class="problems section">
+            <div class="container">
+                <div class="grid problem-grid">
+                    <div class="problem-card">
+                        <div class="accent-line"></div>
+                        <h3>Lost Resources</h3>
+                        <p>Notes are scattered across dead WhatsApp groups. Previous year questions get buried in random
+                            Drives right before exams.</p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="accent-line"></div>
+                        <h3>The Campus Bubble</h3>
+                        <p>Hackathons and internships pass by because no one in your college even knew.</p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="accent-line"></div>
+                        <h3>Unanswered Questions</h3>
+                        <p>You have real doubts about courses or placements — but you don't know who to ask.</p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="accent-line"></div>
+                        <h3>Echo Chambers</h3>
+                        <p>You have a great project idea, but you can't find teammates with the right skills who
+                            actually want to build it.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Existing Solutions Don't Work -->
+        <section class="why-fails section bg-light">
+            <div class="container container-sm">
+                <h2 class="section-title">Why existing tools fail students</h2>
+                <ul class="comparison-list">
+                    <li><strong>WhatsApp:</strong> Chaotic threads. Resources disappear.</li>
+                    <li><strong>Telegram:</strong> Anonymous dumps. No verification.</li>
+                    <li><strong>LinkedIn:</strong> Too formal. Built for people who already have jobs.</li>
+                    <li><strong>Reddit:</strong> Too broad. Not connected to your campus.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- What C2 Club Does -->
+        <section class="solution section">
+            <div class="container container-sm text-center">
+                <h2 class="section-title">What C2 Club Does</h2>
+                <p class="solution-text" style="font-weight: 600; margin-bottom: 20px;">C2 Club is a structured,
+                    cross-campus collaboration platform built exclusively for students.</p>
+                <p style="font-size: 1.125rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 60px;">We
+                    don't add another noisy feed.<br>We structure collaboration. Verified notes. Real teammates. Honest
+                    discussions — across campuses.</p>
+
+                <section class="product-visual">
+                    <img src="discover.jpg" loading="lazy" alt="C2 Club Discover Screen" class="product-left">
+                    <img src="feed.jpg" loading="lazy" alt="C2 Club Feed Screen" class="product-main">
+                    <img src="hub.jpg" loading="lazy" alt="C2 Club Hub Screen" class="product-right">
+                </section>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="cta section">
+            <div class="container text-center">
+                <h2>Stop navigating college on your own.</h2>
+                <div class="cta-actions" style="margin-bottom: 12px;">
+                    <a href="/download.html" class="btn btn-primary btn-large">Download C2 Club</a>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-secondary);">100% Free. Built for students. No spam.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-logo">C2 Club</div>
+            <p class="footer-tagline">Building the collaboration layer students always needed.</p>
+            <div class="footer-links">
+                <a href="/blog/index.html">Blog</a>
+                <a href="/contact.html">Contact</a>
+            </div>
+            <p class="copyright">&copy; 2026 C2 Club. All rights reserved.</p>
+        </div>
+    </footer>
+
 </body>
+
 </html>

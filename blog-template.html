@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <title>REPLACE_WITH_META_TITLE</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <meta name="description" content="REPLACE_WITH_META_DESCRIPTION">
+
+  <meta property="og:title" content="REPLACE_WITH_META_TITLE">
+  <meta property="og:description" content="REPLACE_WITH_META_DESCRIPTION">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://c2club.in/blog/REPLACE_WITH_SLUG">
+  <meta property="og:image" content="https://c2club.in/REPLACE_IMAGE_PATH">
+
+  <link rel="canonical" href="https://c2club.in/blog/REPLACE_WITH_SLUG">
+
+  <meta name="robots" content="index, follow">
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+  <!-- Reading Progress Bar -->
+  <div class="progress-container">
+    <div class="progress-bar" id="reading-progress"></div>
+  </div>
+  <script>
+    window.addEventListener('scroll', () => {
+      let scrollTop = window.scrollY || document.documentElement.scrollTop;
+      let docHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+      let winHeight = window.innerHeight || document.documentElement.clientHeight;
+      let percent = (scrollTop / (docHeight - winHeight)) * 100;
+      let bar = document.getElementById('reading-progress');
+      if (bar) bar.style.width = percent + '%';
+    });
+  </script>
+
+  <header class="navbar">
+    <div class="container nav-container">
+      <div class="logo">
+        <a href="/">C2 Club</a>
+      </div>
+      <nav class="nav-links">
+        <a href="/blog/index.html" class="nav-link">Blog</a>
+        <a href="/contact.html" class="nav-link">Contact</a>
+        <a href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp"
+          class="btn btn-primary nav-btn">Download C2 Club</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="article-main">
+    <div class="article-container">
+      <a href="/blog/index.html" class="back-link">&larr; Back to blog</a>
+      <article class="blog-article">
+        <header class="article-header">
+          <h1 class="article-title">REPLACE_WITH_BLOG_TITLE</h1>
+          <div class="article-meta">
+            <span>REPLACE_DATE</span>
+            <span class="meta-dot">&middot;</span>
+            <span class="read-time">REPLACE_READ_TIME</span>
+          </div>
+          <hr class="article-meta-divider">
+        </header>
+
+        <img src="REPLACE_IMAGE_PATH" alt="Descriptive alt text"
+          style="width:100%;max-width:800px;display:block;margin:20px auto;border-radius:12px;">
+
+        <div class="article-body">
+
+          <!-- Blog content goes here -->
+          <!-- Use proper H2, H3 structure -->
+          <!-- No multiple H1 tags -->
+          <!-- Use semantic headings -->
+
+          <h2>Introduction</h2>
+          <p>Start your blog post with a compelling introduction that hooks the reader and explains what they will
+            learn.</p>
+
+          <h2>Main Section Heading</h2>
+          <p>Your main content goes here. Break it into logical sections with H2 and H3 headings.</p>
+
+          <h3>Subsection Example</h3>
+          <p>Use H3 for subsections within your main sections.</p>
+
+          <h2>Conclusion</h2>
+          <p>Summarize key takeaways and provide a clear closing thought.</p>
+
+        </div>
+
+        <section class="faq-section">
+
+          <h2>Frequently Asked Questions</h2>
+
+          <div class="faq-item">
+            <h3>Question 1?</h3>
+            <p>Answer to question 1...</p>
+          </div>
+
+          <div class="faq-item">
+            <h3>Question 2?</h3>
+            <p>Answer to question 2...</p>
+          </div>
+
+          <div class="faq-item">
+            <h3>Question 3?</h3>
+            <p>Answer to question 3...</p>
+          </div>
+
+        </section>
+
+      </article>
+
+      <div class="article-footer-cta">
+        <hr class="article-divider">
+        <div class="cta-block-minimal">
+          <h3 class="cta-heading-subtle">Continue the conversation.</h3>
+          <p class="cta-text-subtle">Join students across campuses building structured collaboration.</p>
+          <a href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp" class="btn btn-primary">Download
+            C2 Club</a>
+        </div>
+      </div>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const articleBody = document.querySelector(".article-body");
+          const readTimeEl = document.querySelector(".read-time");
+          if (articleBody && readTimeEl) {
+            const text = articleBody.innerText || articleBody.textContent;
+            const wordCount = text.trim().split(/\s+/).length;
+            const readTime = Math.ceil(wordCount / 200);
+            readTimeEl.textContent = readTime + " min read";
+          }
+        });
+      </script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-logo">C2 Club</div>
+      <p class="footer-tagline">Building the collaboration layer students always needed.</p>
+      <div class="footer-links">
+        <a href="/blog/index.html">Blog</a>
+        <a href="/contact.html">Contact</a>
+      </div>
+      <p class="copyright">&copy; 2026 C2 Club. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Question 1?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Answer to question 1..."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Question 2?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Answer to question 2..."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Question 3?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Answer to question 3..."
+      }
+    }
+  ]
+}
+</script>
+
+</body>
+
+</html>

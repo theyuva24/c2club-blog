@@ -1,0 +1,7 @@
+/app https://play.google.com/store/apps/details?id=com.c2club.uniqueapp 301
+
+# Legacy blog URLs redirect to root equivalents
+/blog/alumni-networks-india-career-outcomes /alumni-networks-india-career-outcomes.html 301
+/blog/alumni-networks-india-career-outcomes.html /alumni-networks-india-career-outcomes.html 301
+/blog / 301
+/blog/ / 301
