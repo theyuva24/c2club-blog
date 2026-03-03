@@ -862,6 +862,43 @@ pre {
 }
 
 /* =========================================
+   HAMBURGER MENU TOGGLE
+   ========================================= */
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 0;
+}
+
+.menu-toggle span {
+    width: 100%;
+    height: 2px;
+    background: var(--text-primary);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(11px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+}
+
+/* =========================================
    MEDIA QUERIES (RESPONSIVE SYSTEM)
    ========================================= */
 
@@ -883,24 +920,44 @@ pre {
 /* Mobile < 768px */
 @media (max-width: 767px) {
 
-    /* Navbar vertically stacked */
+    /* Hamburger Menu Trigger */
+    .menu-toggle {
+        display: flex;
+    }
+
+    /* Navbar Slide-down */
     .nav-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 16px;
-        padding: 10px 0;
+        padding: 15px 0;
+        position: relative;
     }
 
     .nav-links {
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        top: 100%;
+        left: 0;
         width: 100%;
+        background-color: var(--bg-color);
         flex-direction: column;
         align-items: center;
+        padding: 20px 0;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transform: translateY(-20px);
+        transition: all 0.3s ease;
+        border-top: 1px solid var(--border-color);
         gap: 12px;
+    }
+
+    .nav-links.nav-active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
     }
 
     .nav-link {
         font-size: 16px;
-        min-height: 44px;
+        min-height: 48px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -910,18 +967,23 @@ pre {
 
     .nav-links .btn-primary {
         width: 90%;
-        max-width: 320px;
-        margin-top: 8px;
+        max-width: 350px;
+        margin-top: 10px;
+        min-height: 48px;
     }
 
-    /* Hero */
+    /* Hero Redesign */
     .hero {
-        padding: 60px 16px 40px;
+        padding: 40px 16px 60px;
     }
 
     .hero h1 {
-        font-size: clamp(2rem, 8vw, 2.5rem);
-        line-height: 1.2;
+        font-size: clamp(1.75rem, 8vw, 2.25rem);
+        line-height: 1.25;
+    }
+
+    .hero-subtitle {
+        margin-bottom: 40px;
     }
 
     .hero-actions {
@@ -932,10 +994,21 @@ pre {
 
     .hero-actions .btn {
         width: 100%;
-        max-width: 320px;
+        max-width: 350px;
     }
 
-    /* Problem Grid */
+    .hero-actions .btn-outline {
+        padding: 12px 24px;
+        font-size: 1rem;
+        border: 1px solid var(--border-color);
+        color: var(--text-secondary);
+    }
+
+    /* Vertical Rhythm Framework */
+    .section {
+        padding: 60px 16px;
+    }
+
     .problem-grid {
         grid-template-columns: 1fr;
         gap: 24px;
@@ -946,22 +1019,39 @@ pre {
         width: 100%;
     }
 
-    /* Screenshot Section */
+    /* Screenshot Section CSS Carousel */
     .product-visual {
-        flex-direction: column;
-        margin: 40px 0;
-        gap: 40px;
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 20px;
+        padding: 0 16px 30px;
+        margin: 40px -16px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .product-visual::-webkit-scrollbar {
+        display: none;
     }
 
     .product-left,
     .product-right,
     .product-main {
         position: static;
-        width: 90%;
-        max-width: 400px;
-        margin: 0 auto;
+        flex: 0 0 80%;
+        scroll-snap-align: center;
+        max-width: none;
+        width: auto;
+        margin: 0;
         transform: none !important;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        border-radius: 16px;
     }
+
+    /* Include spacer block for carousel centering trick if needed, but 80% flex usually works */
 
     /* Blog Index */
     .blog-grid {
@@ -984,16 +1074,17 @@ pre {
         align-items: center;
     }
 
-    /* Individual Blog Page */
+    /* Blog Page Mobile Typography Upgrade */
     .article-container {
         padding: 60px 16px 40px;
+        max-width: 100%;
     }
 
     .article-container p,
     .article-container li,
     .article-container blockquote {
-        font-size: 17px;
-        line-height: 1.8;
+        font-size: 18px;
+        line-height: 1.85;
         padding-left: 0;
         padding-right: 0;
         text-align: left;
@@ -1004,8 +1095,17 @@ pre {
         line-height: 1.3;
     }
 
+    .article-container h2 {
+        font-size: 1.5rem;
+        margin-top: 60px;
+    }
+
+    .article-container h3 {
+        font-size: 1.25rem;
+    }
+
     .faq-item {
-        padding: 16px;
+        padding: 24px 16px;
     }
 
     .faq-item summary {
@@ -1015,23 +1115,27 @@ pre {
     }
 
     /* Footer */
+    .footer {
+        margin-top: 60px;
+    }
+
     .footer-container {
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
-        gap: 20px;
+        gap: 24px;
     }
 
     .footer-links {
         display: flex;
         flex-direction: column;
-        gap: 16px;
-        margin-bottom: 20px;
+        gap: 24px;
+        margin-bottom: 24px;
     }
 
     .footer-links a {
-        min-height: 44px;
+        min-height: 48px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1043,7 +1147,7 @@ pre {
         min-height: 48px;
     }
 
-    /* Contact Page hero spacing */
+    /* Contact and Download Page hero spacing */
     .contact-hero,
     .download-hero {
         padding-top: 60px;

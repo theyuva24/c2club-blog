@@ -20,6 +20,11 @@
             <div class="logo">
                 <a href="/">C2 Club</a>
             </div>
+            <button class="menu-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <nav class="nav-links">
                 <a href="/blog/index.html" class="nav-link">Blog</a>
                 <a href="/contact.html" class="nav-link">Contact</a>
@@ -76,6 +81,18 @@
             <p class="copyright">&copy; 2026 C2 Club. All rights reserved.</p>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', () => {
+                    menuToggle.classList.toggle('active');
+                    navLinks.classList.toggle('nav-active');
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
