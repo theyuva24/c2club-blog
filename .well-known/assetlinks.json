@@ -4,7 +4,15 @@
     "target": {
       "namespace": "android_app",
       "package_name": "com.c2club.uniqueapp",
-      "sha256_cert_fingerprints": ["52:C8:D8:29:7C:93:CE:E1:8C:91:F5:54:D6:DD:16:99:14:83:FB:D8:05:1A:37:18:77:7F:63:38:47:8D:C9:35"]
+      "sha256_cert_fingerprints": ["52:C8:D8:29:7C:93:CE:E1:8C:91:F5:54:D6:DD:16:99:14:83:FB:D8:05:1A:37:18:77:7F:63:38:47:8D:C9:35", "E3:C4:9F:FC:A6:72:AE:B6:E9:06:08:74:41:54:E9:87:2F:99:4C:BA:69:61:5F:9D:3A:0C:BF:F0:F8:2B:19:EA"]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.c2club.uniqueapp.dev",
+      "sha256_cert_fingerprints": ["52:C8:D8:29:7C:93:CE:E1:8C:91:F5:54:D6:DD:16:99:14:83:FB:D8:05:1A:37:18:77:7F:63:38:47:8D:C9:35", "E3:C4:9F:FC:A6:72:AE:B6:E9:06:08:74:41:54:E9:87:2F:99:4C:BA:69:61:5F:9D:3A:0C:BF:F0:F8:2B:19:EA"]
     }
   }
 ]
