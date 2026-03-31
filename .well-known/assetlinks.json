@@ -1,0 +1,10 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.c2club.uniqueapp",
+      "sha256_cert_fingerprints": ["52:C8:D8:29:7C:93:CE:E1:8C:91:F5:54:D6:DD:16:99:14:83:FB:D8:05:1A:37:18:77:7F:63:38:47:8D:C9:35"]
+    }
+  }
+]
