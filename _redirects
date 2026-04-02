@@ -5,3 +5,7 @@
 /blog/alumni-networks-india-career-outcomes.html /alumni-networks-india-career-outcomes.html 301
 /blog / 301
 /blog/ / 301
+
+# SPA Redirects for Android App Links
+/.well-known/*  /.well-known/:splat  200
+/*              /index.html          200
