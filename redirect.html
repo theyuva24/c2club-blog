@@ -65,8 +65,20 @@
                 playStoreUrl += "&referrer=ref%3D" + encodeURIComponent(refCode);
             }
 
-            // Path tracking to rebuild intent
+            // --- CHALLENGE FALLBACK LOGIC ---
+            var fallbackUrl = playStoreUrl;
             var path = window.location.pathname; 
+            var isChallenge = path.indexOf('/challenge/') > -1;
+            
+            if (isChallenge) {
+                // For challenges, fallback to the website display page instead of Play Store
+                // We add no_redirect=true to prevent loop if challenge.html uses deeplink-fallback.js
+                fallbackUrl = window.location.origin + "/challenge-view.html?id=" + path.split('/challenge/')[1] + "&no_redirect=true";
+                if (refCode) fallbackUrl += "&ref=" + encodeURIComponent(refCode);
+            }
+            // ---------------------------------
+
+            // Path tracking to rebuild intent
             var search = window.location.search; 
             var fullPath = path + search; 
 
@@ -74,13 +86,13 @@
                 var intentUrl = "intent://c2club.in" + fullPath + "#Intent;" +
                                 "scheme=https;" +
                                 "package=com.c2club.uniqueapp;" +
-                                "S.browser_fallback_url=" + encodeURIComponent(playStoreUrl) + ";" +
+                                "S.browser_fallback_url=" + encodeURIComponent(fallbackUrl) + ";" +
                                 "end;";
 
                 window.location.replace(intentUrl);
                 
                 setTimeout(function() {
-                    document.getElementById('fallbackBtn').href = playStoreUrl;
+                    document.getElementById('fallbackBtn').href = fallbackUrl;
                     document.getElementById('fallbackBtn').style.display = 'block';
                     document.querySelector('.text').innerText = "If nothing happens, tap below.";
                 }, 3000);

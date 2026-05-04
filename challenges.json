@@ -1,0 +1,18 @@
+[
+  {
+    "id": "example-challenge-1",
+    "title": "The 100-Day Code Sprint",
+    "tagline": "Build a habit of consistency and win exclusive dev swags.",
+    "bannerUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
+    "category": "Coding",
+    "overview": "Join hundreds of students in the ultimate coding challenge. Commit to 100 days of building and sharing your progress.",
+    "rules": "1. Post your progress daily.\n2. Use the hashtag #C2CodeSprint.\n3. Build in public.",
+    "prizes": [
+      {"placement": "Winner", "reward": "Mechanical Keyboard"},
+      {"placement": "Runner Up", "reward": "C2 Club Hoodie"}
+    ],
+    "startTime": "2026-05-01T00:00:00Z",
+    "submissionEndTime": "2026-08-10T00:00:00Z",
+    "resultTime": "2026-08-15T00:00:00Z"
+  }
+]
