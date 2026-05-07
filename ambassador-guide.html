@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
 <title>C2 Club Ambassador Guide</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --green: #22C55E;
@@ -22,8 +22,11 @@
   body {
     background: var(--dark);
     color: var(--white);
-    font-family: 'Syne', sans-serif;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
     min-height: 100vh;
+    overflow-x: hidden;
+    font-size: 15px;
   }
 
   /* HEADER */
@@ -35,25 +38,28 @@
   }
 
   .tag {
-    font-family: 'Space Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 2px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
     color: var(--green);
     text-transform: uppercase;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
 
   .header h1 {
-    font-size: 26px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 32px;
     font-weight: 800;
-    line-height: 1.2;
-    margin-bottom: 6px;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
   }
 
   .header p {
-    font-size: 13px;
+    font-size: 15px;
     color: var(--muted);
-    font-family: 'Space Mono', monospace;
+    font-weight: 400;
   }
 
   /* MAIN WRAPPER */
@@ -65,13 +71,14 @@
 
   /* SECTION LABEL */
   .section-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 3px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
     color: var(--muted);
     text-transform: uppercase;
-    margin: 36px 0 16px;
-    padding-bottom: 8px;
+    margin: 48px 0 20px;
+    padding-bottom: 10px;
     border-bottom: 1px solid var(--border);
   }
 
@@ -97,14 +104,14 @@
   }
 
   .step-dot {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     background: var(--green);
     color: #000;
-    font-family: 'Space Mono', monospace;
-    font-size: 12px;
-    font-weight: 700;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -126,14 +133,16 @@
   }
 
   .step-title {
-    font-size: 14px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
     font-weight: 700;
-    margin-bottom: 4px;
-    line-height: 1.3;
+    margin-bottom: 6px;
+    line-height: 1.2;
+    color: var(--white);
   }
 
   .step-desc {
-    font-size: 12px;
+    font-size: 15px;
     color: var(--muted);
     line-height: 1.6;
   }
@@ -172,8 +181,9 @@
   }
 
   .screenshot-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 9px;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
     color: var(--muted);
     text-align: center;
     padding: 0 8px;
@@ -194,13 +204,13 @@
 
   .tab-btn {
     flex: 1;
-    padding: 12px 8px;
+    padding: 16px 8px;
     background: none;
     border: none;
     border-bottom: 2px solid transparent;
     color: var(--muted);
-    font-family: 'Syne', sans-serif;
-    font-size: 13px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
     font-weight: 700;
     cursor: pointer;
     transition: all 0.2s;
@@ -210,7 +220,7 @@
 
   .tab-btn.active {
     color: var(--green);
-    border-bottom: 2px solid var(--green);
+    border-bottom: 3px solid var(--green);
   }
 
   .tab-content { display: none; }
@@ -224,20 +234,22 @@
   }
 
   .payout-title {
-    font-family: 'Space Mono', monospace;
-    font-size: 9px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
     letter-spacing: 2px;
     color: var(--green);
-    margin-bottom: 14px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
   }
 
   .payout-row {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 10px 0;
+    padding: 12px 0;
     border-bottom: 1px solid var(--border);
-    font-size: 13px;
+    font-size: 15px;
     gap: 16px;
     line-height: 1.5;
   }
@@ -245,17 +257,17 @@
   .payout-row:last-of-type { border-bottom: none; }
 
   .payout-amount {
-    font-family: 'Space Mono', monospace;
+    font-family: 'Outfit', sans-serif;
     font-weight: 700;
     color: var(--green);
     white-space: nowrap;
     padding-left: 12px;
+    font-size: 16px;
   }
 
   .payout-note {
-    margin-top: 12px;
-    font-family: 'Space Mono', monospace;
-    font-size: 10px;
+    margin-top: 14px;
+    font-size: 12px;
     color: var(--muted);
     line-height: 1.6;
   }
@@ -270,9 +282,9 @@
 
   .rule {
     display: flex;
-    gap: 12px;
-    margin-bottom: 10px;
-    font-size: 13px;
+    gap: 14px;
+    margin-bottom: 12px;
+    font-size: 15px;
     line-height: 1.6;
   }
 
@@ -280,8 +292,7 @@
 
   .rule-dot {
     color: var(--green);
-    font-family: 'Space Mono', monospace;
-    font-size: 12px;
+    font-weight: 800;
     flex-shrink: 0;
   }
 
@@ -297,10 +308,10 @@
     background: var(--card);
     border: 1px solid var(--border);
     color: var(--green);
-    padding: 16px;
-    border-radius: 12px;
-    font-family: 'Space Mono', monospace;
-    font-size: 12px;
+    padding: 18px;
+    border-radius: 14px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
     font-weight: 700;
     cursor: pointer;
     width: 100%;
@@ -319,12 +330,44 @@
     flex-shrink: 0;
   }
 
+  body {
+    background: var(--dark);
+    color: var(--white);
+    font-family: 'Syne', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
   video {
     width: 100%;
+    height: auto;
+    max-height: 80vh; /* Ensure video doesn't overflow vertically on mobile */
+    object-fit: contain;
     border-radius: 12px;
     border: 1px solid var(--border);
     display: none;
     margin-top: 12px;
+    background: #000;
+  }
+
+  .video-links {
+    display: none;
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--muted);
+    gap: 18px;
+  }
+
+  .video-links a {
+    color: var(--green);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .video-links a:hover {
+    text-decoration: underline;
   }
 
   /* DAY BLOCKS */
@@ -340,11 +383,14 @@
   .day-pill {
     background: var(--green);
     color: #000;
-    font-family: 'Space Mono', monospace;
-    font-size: 10px;
-    font-weight: 700;
-    padding: 4px 12px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 6px 16px;
     white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 4px;
   }
 
   .day-line {
@@ -368,15 +414,15 @@
 
   .post-num {
     background: var(--card2);
-    font-family: 'Space Mono', monospace;
-    font-size: 18px;
-    font-weight: 700;
+    font-family: 'Outfit', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
     color: var(--green);
-    padding: 0 14px;
+    padding: 0 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 52px;
+    min-width: 60px;
     border-right: 1px solid var(--border);
   }
 
@@ -386,18 +432,21 @@
   }
 
   .post-type {
-    font-family: 'Space Mono', monospace;
-    font-size: 9px;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
     letter-spacing: 1.5px;
     color: var(--green);
     text-transform: uppercase;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
   }
 
   .post-title {
-    font-size: 14px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 17px;
     font-weight: 700;
     line-height: 1.3;
+    color: var(--white);
   }
 
   .post-body {
@@ -406,30 +455,31 @@
   }
 
   .post-what {
-    font-size: 13px;
+    font-size: 15px;
     color: #bbb;
-    line-height: 1.7;
-    margin-bottom: 10px;
+    line-height: 1.6;
+    margin-bottom: 12px;
   }
 
   .examples-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 9px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
     letter-spacing: 1.5px;
     color: var(--muted);
     text-transform: uppercase;
-    margin-bottom: 7px;
+    margin-bottom: 10px;
   }
 
   .example-item {
     background: #080808;
-    border-left: 2px solid var(--border);
-    padding: 8px 10px;
-    font-size: 12px;
-    color: #888;
+    border-left: 3px solid var(--border);
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #999;
     line-height: 1.6;
-    margin-bottom: 6px;
-    font-family: 'Space Mono', monospace;
+    margin-bottom: 8px;
+    font-family: 'Inter', sans-serif;
   }
 
   .example-item:last-child { margin-bottom: 0; }
@@ -439,20 +489,22 @@
     background: #0d1f0d;
     border: 1px solid #1a3a1a;
     color: #4ade80;
-    font-family: 'Space Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 1px;
-    padding: 3px 8px;
-    margin-top: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 4px 10px;
+    margin-top: 12px;
+    border-radius: 4px;
   }
 
   /* REFER TAB */
   .refer-intro {
     background: var(--card);
     border: 1px solid var(--border);
-    padding: 20px;
-    margin-bottom: 24px;
-    font-size: 13px;
+    padding: 24px;
+    margin-bottom: 32px;
+    font-size: 15px;
     line-height: 1.7;
     color: #bbb;
   }
@@ -469,11 +521,11 @@
   .refer-num {
     background: var(--green);
     color: #000;
-    font-family: 'Space Mono', monospace;
-    font-size: 12px;
-    font-weight: 700;
-    width: 28px;
-    height: 28px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -486,26 +538,29 @@
 
   .refer-text strong {
     display: block;
-    font-size: 14px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 17px;
     font-weight: 700;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
+    color: var(--white);
   }
 
   .refer-text p {
-    font-size: 12px;
+    font-size: 14px;
     color: var(--muted);
     line-height: 1.6;
   }
 
   /* QUESTIONS */
   .questions-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 9px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
     letter-spacing: 2px;
     color: var(--muted);
     text-transform: uppercase;
-    margin: 28px 0 14px;
-    padding-bottom: 8px;
+    margin: 48px 0 20px;
+    padding-bottom: 10px;
     border-bottom: 1px solid var(--border);
   }
 
@@ -519,27 +574,35 @@
     align-items: flex-start;
   }
 
+  .highlight-card {
+    background: #0d1f0d !important;
+    border: 1px solid #22c55e !important;
+  }
+
   .q-num {
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
     color: var(--green);
     flex-shrink: 0;
-    margin-top: 2px;
-    min-width: 20px;
+    margin-top: 4px;
+    min-width: 24px;
   }
 
   .q-text {
-    font-size: 13px;
-    line-height: 1.6;
-    font-weight: 600;
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    line-height: 1.4;
+    font-weight: 700;
+    color: var(--white);
   }
 
   .q-why {
-    font-size: 11px;
+    font-size: 13px;
     color: var(--muted);
-    margin-top: 4px;
-    font-family: 'Space Mono', monospace;
-    line-height: 1.5;
+    margin-top: 6px;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
   }
 
   .anon-tag {
@@ -593,37 +656,97 @@
     padding-top: 24px;
     border-top: 1px solid var(--border);
   }
+  /* WHATSAPP FOOTER */
+  .whatsapp-card {
+    background: #0d1f0d;
+    border: 1px solid #1a3a1a;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .whatsapp-text {
+    flex: 1;
+    font-size: 15px;
+    color: #bbb;
+    line-height: 1.6;
+  }
+
+  .whatsapp-btn {
+    display: inline-block;
+    background: #25D366;
+    color: #000;
+    text-decoration: none;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 10px 16px;
+    border-radius: 8px;
+    margin-top: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+  }
+
+  .whatsapp-btn:hover {
+    background: #1ebc59;
+  }
+
+  .whatsapp-qr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--white);
+    padding: 8px;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+
+  .whatsapp-qr img {
+    border-radius: 4px;
+    display: block;
+  }
+
+  .qr-label {
+    color: #000;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    margin-top: 6px;
+    text-transform: uppercase;
+  }
+  
+  @media (max-width: 480px) {
+    .whatsapp-card {
+      flex-direction: column;
+      text-align: center;
+    }
+    .whatsapp-qr {
+      margin-top: 8px;
+    }
+  }
+
 </style>
 </head>
 <body>
 
 <div class="header">
   <div class="tag">C2 Club — Ambassador Guide</div>
-  <h1>Your 10-Day Playbook</h1>
-  <p>Read this once. Then just follow it day by day.</p>
+  <h1>Welcome to the C2 Club Mission</h1>
+  <p>You're joining a core group of ambassadors building real communities across campuses. Follow this guide to establish your hub.</p>
 </div>
 
 <div class="main">
 
-  <!-- STEP 1: INSTALL -->
-  <div class="section-label">Step 1 — Get Started</div>
+  <div class="section-label">Your Mission Steps</div>
   <div class="step-flow">
+    <!-- STEP 1: CREATE HUB -->
     <div class="step-item">
       <div class="step-left">
         <div class="step-dot">1</div>
         <div class="step-line"></div>
-      </div>
-      <div class="step-content">
-        <div class="step-title">Download C2 Club and explore for 10 minutes</div>
-        <div class="step-desc">Go through the feed, check the Arena, look at existing hubs. Get a feel for how it works before you start posting.</div>
-      </div>
-    </div>
-
-    <!-- STEP 2: CREATE HUB -->
-    <div class="step-item">
-      <div class="step-left">
-        <div class="step-dot">2</div>
-        <div class="step-line" style="min-height:0"></div>
       </div>
       <div class="step-content">
         <div class="step-title">Create your college hub</div>
@@ -634,11 +757,42 @@
             <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
             Play Video Tutorial
           </button>
-          <video id="hubVideo" controls>
-            <source src="hub_creation_tutorial.mp4" type="video/mp4">
+          <video id="hubVideo" controls playsinline>
+            <source src="https://storage.googleapis.com/c2club-fd6722.firebasestorage.app/tutorials/hub_creation_tutorial.mp4?GoogleAccessId=firebase-adminsdk-fbsvc%40c2club-fd6722.iam.gserviceaccount.com&Expires=16730303400&Signature=EsewDF3sLUhmtB0tZUpFuJxnsfKBIi0iVKf5%2FmMXA%2BZ50OZwL4KdLGV37ut%2BIu0hXpe1eFQbKmC%2BqmFav4aDJOnA2MwCIxCT%2B32BqHep7nyzn%2B7WEY2m%2FrxSMPQ1piixwIoTKflLyFwLE9f7ZT2zJlSb3ylF1niY5bf9yUPqARkjTXAv%2FQlXU17XYQqZHFdn%2Fiae1ZgfUlKkOykUJ58Iu1OVeoAGOExBkj8wKkmYy9FJR6nnkapcQsPrJJjBV6ZzKDeOjhUSMNzolQgT%2BlDfQfKlrz2AGyEezIIYRQn%2FFm8i4Zey8hDvCsV0F0w7oMzcSO16vHN7%2Bad8x8MkGYI9rw%3D%3D" type="video/mp4">
             Your browser does not support the video tag.
           </video>
+          <div id="videoLinks" class="video-links">
+            <a href="https://storage.googleapis.com/c2club-fd6722.firebasestorage.app/tutorials/hub_creation_tutorial.mp4?GoogleAccessId=firebase-adminsdk-fbsvc%40c2club-fd6722.iam.gserviceaccount.com&Expires=16730303400&Signature=EsewDF3sLUhmtB0tZUpFuJxnsfKBIi0iVKf5%2FmMXA%2BZ50OZwL4KdLGV37ut%2BIu0hXpe1eFQbKmC%2BqmFav4aDJOnA2MwCIxCT%2B32BqHep7nyzn%2B7WEY2m%2FrxSMPQ1piixwIoTKflLyFwLE9f7ZT2zJlSb3ylF1niY5bf9yUPqARkjTXAv%2FQlXU17XYQqZHFdn%2Fiae1ZgfUlKkOykUJ58Iu1OVeoAGOExBkj8wKkmYy9FJR6nnkapcQsPrJJjBV6ZzKDeOjhUSMNzolQgT%2BlDfQfKlrz2AGyEezIIYRQn%2FFm8i4Zey8hDvCsV0F0w7oMzcSO16vHN7%2Bad8x8MkGYI9rw%3D%3D" target="_blank" style="font-weight: 700; border-bottom: 1px solid var(--green);">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" style="margin-right:2px"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+              Watch in Full Screen / New Tab
+            </a>
+            <a href="javascript:void(0)" onclick="closeVideo()" style="color: var(--muted); border-bottom: 1px solid #333;">Collapse Video</a>
+          </div>
         </div>
+      </div>
+    </div>
+
+    <!-- STEP 2: POST & REFER -->
+    <div class="step-item">
+      <div class="step-left">
+        <div class="step-dot">2</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-title">The 10-Day Sprint</div>
+        <div class="step-desc">Make 20 posts in your hub (use the templates below) and invite 20 friends to join and post (refer to the guide below for help).</div>
+      </div>
+    </div>
+
+    <!-- STEP 3: REWARDS -->
+    <div class="step-item">
+      <div class="step-left">
+        <div class="step-dot">3</div>
+        <div class="step-line" style="min-height:0"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-title">Get your rewards</div>
+        <div class="step-desc">Once you complete the sprint, send your summary to Vijay. Your payouts will be processed as per the schedule mentioned below.</div>
       </div>
     </div>
   </div>
@@ -1037,21 +1191,17 @@
             <div class="example-item">Guy pointing at TV — guy is professor, TV shows a 2014 PowerPoint slide. Caption: "innovation in teaching methods".</div>
           </div>
         </div>
+        </div>
       </div>
 
-      <!-- PAYOUT -->
-      <div class="section-label">Payout</div>
-      <div class="payout-box">
-        <div class="payout-title">WHAT YOU EARN</div>
-        <div class="payout-row">
-          <span>Create college hub + 20 posts in 10 days + 20 referred users who each post at least 1 thing</span>
-          <span class="payout-amount">₹1,000</span>
+      <!-- BONUS / OWN IDEA -->
+      <div class="post-card highlight-card" style="margin-top: 24px;">
+        <div class="post-body" style="padding-top: 6px; width: 100%;">
+          <div class="post-meta" style="margin-bottom: 8px;">
+            <div class="post-title" style="color: var(--green); font-size: 17px;">Use Your Own Idea</div>
+          </div>
+          <div class="post-what" style="color: #ddd;">The 20 posts above are templates. If you have a better idea that will make your friends engage, post it instead! You know exactly what topics will get your batch talking.</div>
         </div>
-        <div class="payout-row">
-          <span>Bonus for quality posts, strong hub engagement, or more than 20 active users</span>
-          <span class="payout-amount">+₹500</span>
-        </div>
-        <div class="payout-note">A referred user counts only when they post at least 1 thing. Installs alone do not count.</div>
       </div>
 
     </div>
@@ -1189,6 +1339,15 @@
         </div>
       </div>
 
+
+
+      <div class="question-card highlight-card" style="margin-top: 16px; padding: 16px;">
+        <div>
+          <div class="q-text" style="color: var(--green);">Use Your Own Question</div>
+          <div class="q-why" style="color: #ddd; margin-top: 8px;">You know your friends and your college best. If you have a question that is guaranteed to make them reply, use that instead of the 10 above!</div>
+        </div>
+      </div>
+
       <div style="margin-top:28px; background:var(--card); border:1px solid var(--border); padding:18px;">
         <div class="section-label" style="margin-top:0">Other options for their first post</div>
         <div class="rule" style="margin-bottom:10px"><span class="rule-dot">—</span><span style="font-size:13px; line-height:1.6">If there is an active challenge in the Arena with a cash prize, share it — some friends will want to participate on their own.</span></div>
@@ -1196,6 +1355,40 @@
         <div class="rule"><span class="rule-dot">—</span><span style="font-size:13px; line-height:1.6">If they have notes or PYQs sitting on their phone, that counts as a post too. Easiest possible entry.</span></div>
       </div>
 
+    </div>
+  </div>
+
+  <!-- PAYOUT (GLOBAL FOOTER) -->
+  <div class="section-label">Your Payout</div>
+  <div class="payout-box">
+    <div class="payout-title">WHAT YOU EARN</div>
+    <div class="payout-row">
+      <span>Create college hub + 20 posts in 10 days + 20 referred users who each post at least 1 thing</span>
+      <span class="payout-amount">₹1,000</span>
+    </div>
+    <div class="payout-row">
+      <span>Bonus for quality posts, strong hub engagement, or more than 20 active users</span>
+      <span class="payout-amount">+₹500</span>
+    </div>
+    <div class="payout-note">A referred user counts only when they post at least 1 thing. Installs alone do not count.</div>
+  </div>
+
+  <!-- WHATSAPP GROUP -->
+  <div class="section-label">Stay Connected</div>
+  <div class="whatsapp-card">
+    <div class="whatsapp-text">
+      Join our exclusive WhatsApp group for ambassadors. This is where we share updates, answer questions, and communicate directly with the team.
+      <br>
+      <a href="https://chat.whatsapp.com/I1ADMwzi71CIzyzHIgkSSr" target="_blank" class="whatsapp-btn">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="vertical-align: -3px; margin-right: 4px;">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51h-.571c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+        Join WhatsApp Group
+      </a>
+    </div>
+    <div class="whatsapp-qr">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://chat.whatsapp.com/I1ADMwzi71CIzyzHIgkSSr" alt="WhatsApp Group QR Code" width="100" height="100">
+      <div class="qr-label">Scan to join</div>
     </div>
   </div>
 
@@ -1215,9 +1408,21 @@
   function startVideo() {
     const v = document.getElementById('hubVideo');
     const b = document.getElementById('videoBtn');
+    const l = document.getElementById('videoLinks');
     v.style.display = 'block';
+    l.style.display = 'flex';
     b.style.display = 'none';
     v.play();
+  }
+
+  function closeVideo() {
+    const v = document.getElementById('hubVideo');
+    const b = document.getElementById('videoBtn');
+    const l = document.getElementById('videoLinks');
+    v.pause();
+    v.style.display = 'none';
+    l.style.display = 'none';
+    b.style.display = 'flex';
   }
 </script>
 
