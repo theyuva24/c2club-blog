@@ -488,8 +488,8 @@ p {
 }
 
 .blog-card {
-    background-color: #fafafa;
-    border: 1px solid #eaeaea;
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-color);
     border-radius: 18px;
     padding: 28px;
     transition: all 0.25s ease;
@@ -621,7 +621,7 @@ p {
 .article-container p {
     font-size: 18px;
     line-height: 1.8;
-    color: #333333;
+    color: var(--text-secondary);
     margin-bottom: 28px;
     text-align: justify;
 }
