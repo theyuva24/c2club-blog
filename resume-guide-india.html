@@ -41,12 +41,10 @@
   </script>
 </head>
 
-<body>
+<body class="article-page">
 
   <!-- Reading Progress Bar -->
-  <div class="progress-container">
-    <div class="progress-bar" id="reading-progress"></div>
-  </div>
+  <div class="progress-bar" id="reading-progress"></div>
   <script>
     window.addEventListener('scroll', () => {
       let scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -60,104 +58,67 @@
 
   <header class="navbar">
     <div class="container nav-container">
-      <div class="logo"><a href="/">C2 Club</a></div>
+      <div class="logo"><a href="/">C2 <span>Club</span></a></div>
       <button class="menu-toggle" aria-label="Toggle navigation">
         <span></span><span></span><span></span>
       </button>
       <nav class="nav-links">
         <a href="/blog/index.html" class="nav-link">Blog</a>
+        <a href="/challenges.html" class="nav-link">Challenges</a>
         <a href="/contact.html" class="nav-link">Contact</a>
-        <a href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp" class="btn btn-primary nav-btn">Download C2 Club</a>
+        <a href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp" class="btn btn-primary nav-btn">Download App</a>
       </nav>
     </div>
   </header>
 
-  <main class="article-main">
-    <div class="article-container">
-      <a href="/blog/index.html" class="back-link">&larr; Back to blog</a>
+  <main class="article-outer">
+    
+    <!-- Hero Section -->
+    <header class="hero">
+      <div class="hero-tag">Career Guide · 2025</div>
+      <h1 class="article-title">The Complete Resume Guide for Indian Engineering Students</h1>
+      <p class="hero-lead">Everything an Indian engineering student needs to know about resumes, ATS, referrals, and getting hired — with real data and branch-specific advice.</p>
+      <div class="hero-meta">
+        <span>📅 March 18, 2026</span>
+        <div class="dot"></div>
+        <span>🕒 45 min read</span>
+      </div>
+    </header>
 
-      <article class="blog-article">
-        <header class="article-header">
-          <h1 class="article-title">The Complete Resume Guide for Indian Engineering Students</h1>
-          <div class="article-meta">
-            <span>March 18, 2026</span>
-            <span class="meta-dot">&middot;</span>
-            <span class="read-time">45 min read</span>
-          </div>
-          <hr class="article-meta-divider">
-        </header>
+    <div class="article-body">
+      <p>India produces 1.5 million engineering graduates every year. The economy generates roughly 150,000 engineering jobs in the same period. That's a 10:1 ratio — before counting graduates from previous years still searching.</p>
 
-        <!-- Hero illustration: funnel SVG -->
-        <div class="illustration">
-          <svg viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg" aria-label="Hiring funnel showing 300 applications narrowing to 1 offer">
-            <defs>
-              <linearGradient id="funnelGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" style="stop-color:#39FF14;stop-opacity:0.15"/>
-                <stop offset="100%" style="stop-color:#39FF14;stop-opacity:0.05"/>
-              </linearGradient>
-            </defs>
-            <!-- Funnel shape -->
-            <polygon points="40,30 640,30 560,170 120,170" fill="url(#funnelGrad)" stroke="#39FF14" stroke-width="1.5" stroke-opacity="0.4"/>
-            <!-- Stage lines -->
-            <line x1="540" y1="30" x2="480" y2="80" stroke="#e0e0e0" stroke-width="1"/>
-            <line x1="420" y1="30" x2="360" y2="110" stroke="#e0e0e0" stroke-width="1"/>
-            <line x1="300" y1="30" x2="260" y2="140" stroke="#e0e0e0" stroke-width="1"/>
-            <!-- Labels -->
-            <text x="80" y="22" font-family="system-ui" font-size="12" fill="#888">300 Applications</text>
-            <text x="420" y="22" font-family="system-ui" font-size="12" fill="#888">20 Shortlisted</text>
-            <text x="230" y="22" font-family="system-ui" font-size="12" fill="#888">8 Interviews</text>
-            <text x="290" y="185" font-family="system-ui" font-size="13" fill="#39FF14" font-weight="700">1 Offer (~1%)</text>
-            <!-- Arrow -->
-            <text x="640" y="105" font-family="system-ui" font-size="22" fill="#ccc">→</text>
-          </svg>
-          <figcaption>The typical hiring funnel at a competitive job posting in India. Your resume determines whether you're in the 20 — not the 300.</figcaption>
+      <p>This guide exists in that gap. Not to tell you that "a good resume will get you a job" — it won't, and that framing is wrong. But to show you exactly how hiring works in India, what your resume actually does in that process, and how to write one that gives you a real advantage.</p>
+
+      <div class="callout">
+        <div class="callout-label">Who this is for</div>
+        <p>Engineering students at every level — first year to final year, with zero experience or some internships, CS to Civil, metro to Tier-3 city. This guide has branch-specific sections for CS/IT, ECE, Mechanical, Civil, and Electrical engineering.</p>
+      </div>
+
+      <!-- Chapter 1 -->
+      <h2 id="landscape">The Landscape of Engineering Employment</h2>
+      <p>Before you write a single word on your resume, you need to understand what happens on the other side. Most students don't. They treat job applications like submitting assignments — write it, submit it, wait. That's the wrong mental model entirely.</p>
+
+      <!-- Stats Strip -->
+      <div class="stats-strip">
+        <div class="stat-cell">
+          <div class="stat-num">1.5M</div>
+          <div class="stat-label">Graduates Per Year</div>
         </div>
+        <div class="stat-cell">
+          <div class="stat-num">10%</div>
+          <div class="stat-label">Direct Hires</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num">83%</div>
+          <div class="stat-label">Unplaced (2024)</div>
+        </div>
+      </div>
 
-        <div class="article-body">
+      <p>There's an important distinction that most reports blur: employability among Indian engineering graduates was about 64% in 2024. Employability — meaning you have baseline skills to be hired — is not the same as being employed. Only about 10% of the 1.5 million engineers graduating this year are expected to secure jobs.</p>
 
-          <p>India produces 1.5 million engineering graduates every year. The economy generates roughly 150,000 engineering jobs in the same period. That's a 10:1 ratio — before counting graduates from previous years still searching.</p>
-
-          <p>This guide exists in that gap. Not to tell you that "a good resume will get you a job" — it won't, and that framing is wrong. But to show you exactly how hiring works in India, what your resume actually does in that process, how to write one that gives you a real advantage, and what else you need to be doing alongside it.</p>
-
-          <p>Everything here is sourced from Indian recruiters, Indian hiring data, NASSCOM reports, Naukri and LinkedIn hiring intelligence, company-specific processes, and the ground-level reality of engineering hiring in Karnataka and across India. No generic blog advice. No US-centric frameworks pasted over Indian realities.</p>
-
-          <div class="callout">
-            <strong>Who this is for</strong>
-            Engineering students at every level — first year to final year, with zero experience or some internships, CS to Civil, metro to Tier-3 city. The guide has branch-specific sections for CS/IT, ECE, Mechanical, Civil, Electrical, and Chemical engineering. Start with the core parts, then go to your branch.
-          </div>
-
-          <!-- ============================================================
-               CHAPTER 1: THE LANDSCAPE
-               ============================================================ -->
-          <hr class="chapter-break" data-chapter="Chapter 1 — The Landscape">
-
-          <span class="part-label">Part 1</span>
-          <h2>What Does the Engineering Job Market in India Actually Look Like?</h2>
-
-          <p>Before you write a single word on your resume, you need to understand what happens on the other side. Most students don't. They treat job applications like submitting assignments — write it, submit it, wait. That's the wrong mental model entirely.</p>
-
-          <h3>The Numbers Nobody Puts on a Poster</h3>
-
-          <div class="stat-row">
-            <div class="stat-card">
-              <div class="stat-number">1.5<span>M</span></div>
-              <div class="stat-label">Engineering graduates per year in India</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-number">~<span>10%</span></div>
-              <div class="stat-label">Expected to secure jobs this graduating year</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-number">83<span>%</span></div>
-              <div class="stat-label">Class of 2024 finished without any job or internship offer (Unstop Talent Report 2025)</div>
-            </div>
-          </div>
-
-          <p>There's an important distinction that most reports blur: employability among Indian engineering graduates was about 64% in 2024, up from 57% in 2023. Employability — meaning you have baseline skills to be hired — is not the same as being employed. Only about 10% of the 1.5 million engineers graduating this year are expected to secure jobs, despite the majority being technically capable on paper.</p>
-
-          <p>Being capable and being hired are two different things. That gap is exactly what this guide is about.</p>
-
-          <h3>The Four Worlds of Engineering Employment</h3>
+      <h3>The Four Worlds of Employment</h3>
+      <p>The job market isn't one thing. It's four distinct worlds, each with different rules, different volumes, and a completely different role for your resume.</p>
 
           <p>The job market isn't one thing. It's four distinct worlds, each with different rules, different volumes, and a completely different role for your resume. Most advice — from seniors, online, from placement cells — talks almost entirely about World 1. The data shows most students end up in World 2.</p>
 
@@ -243,18 +204,17 @@
 
           <p>This isn't meant to discourage. It's meant to explain why generic applications disappear into silence. Every stage has a specific filter. Every filter is looking for something different.</p>
 
-          <h3>Timeline by Company Type</h3>
-          <div class="table-wrapper">
-            <table>
-              <thead><tr><th>Company Type</th><th>Typical Time to Offer</th><th>Follow Up After</th></tr></thead>
-              <tbody>
-                <tr><td>Large IT Services</td><td>6–12 weeks (off-campus)</td><td>2–3 weeks</td></tr>
-                <tr><td>Large Product Companies</td><td>3–8 weeks</td><td>2 weeks</td></tr>
-                <tr><td>Medium Companies</td><td>2–4 weeks</td><td>1 week</td></tr>
-                <tr><td>Small Companies / Startups</td><td>1–2 weeks</td><td>5–7 days</td></tr>
-              </tbody>
-            </table>
-          </div>
+<div class="table-wrap">
+  <table>
+    <thead><tr><th>Company Type</th><th>Typical Time to Offer</th><th>Follow Up After</th></tr></thead>
+    <tbody>
+      <tr><td>Large IT Services</td><td>6–12 weeks (off-campus)</td><td>2–3 weeks</td></tr>
+      <tr><td>Large Product Companies</td><td>3–8 weeks</td><td>2 weeks</td></tr>
+      <tr><td>Medium Companies</td><td>2–4 weeks</td><td>1 week</td></tr>
+      <tr><td>Small Companies / Startups</td><td>1–2 weeks</td><td>5–7 days</td></tr>
+    </tbody>
+  </table>
+</div>
 
           <!-- ============================================================
                PART 3
@@ -346,18 +306,18 @@
 
           <h3>CGPA — The Honest Answer by Company Type</h3>
 
-          <div class="table-wrapper">
-            <table>
-              <thead><tr><th>Company Type</th><th>CGPA Rule</th><th>What Matters After the Cutoff</th></tr></thead>
-              <tbody>
-                <tr><td>Large IT Services (TCS, Infosys, Wipro)</td><td>Hard binary cutoff: 60–65% or 6.0–6.5 CGPA. No active backlogs.</td><td>NQT/aptitude test score determines everything</td></tr>
-                <tr><td>Product Companies (Zoho, Razorpay, Adobe)</td><td>Typically 6.5–7.5 CGPA minimum; Goldman Sachs: 5.0; Nvidia: 7.5; SAP Labs: 7.0</td><td>DSA, projects, communication</td></tr>
-                <tr><td>Small Companies / Startups</td><td>Rarely enforced — skill evidence matters more</td><td>Portfolio, GitHub, real projects</td></tr>
-                <tr><td>Core Engineering (Mech, Civil, EE)</td><td>Higher signal than in IT. 8.5+ is the safer range for core company campus applications.</td><td>Domain software, internship, standards knowledge</td></tr>
-                <tr><td>PSUs via GATE</td><td>Minimum 60% for eligibility; GATE rank is what matters</td><td>GATE score, GD/interview</td></tr>
-              </tbody>
-            </table>
-          </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Company Type</th><th>CGPA Rule</th><th>What Matters After the Cutoff</th></tr></thead>
+          <tbody>
+            <tr><td>Large IT Services (TCS, Infosys, Wipro)</td><td>Hard binary cutoff: 60–65% or 6.0–6.5 CGPA. No active backlogs.</td><td>NQT/aptitude test score determines everything</td></tr>
+            <tr><td>Product Companies (Zoho, Razorpay, Adobe)</td><td>Typically 6.5–7.5 CGPA minimum; Goldman Sachs: 5.0; Nvidia: 7.5; SAP Labs: 7.0</td><td>DSA, projects, communication</td></tr>
+            <tr><td>Small Companies / Startups</td><td>Rarely enforced — skill evidence matters more</td><td>Portfolio, GitHub, real projects</td></tr>
+            <tr><td>Core Engineering (Mech, Civil, EE)</td><td>Higher signal than in IT. 8.5+ is the safer range for core company campus applications.</td><td>Domain software, internship, standards knowledge</td></tr>
+            <tr><td>PSUs via GATE</td><td>Minimum 60% for eligibility; GATE rank is what matters</td><td>GATE score, GD/interview</td></tr>
+          </tbody>
+        </table>
+      </div>
 
           <h3>The Low CGPA Reality — Options Still Exist</h3>
           <p>If your CGPA is already low — below 6.5 — you cannot change it significantly now. Accept the number and build around it. Target companies without hard cutoffs: small companies, startups, and many mid-size product companies. Build signals that compensate: a strong GitHub, a deployed project with real users, a hackathon win, or a referral can override a low CGPA in the mind of a technical hiring manager. Be ready with an honest answer for when it comes up in interviews — not defensive, just self-aware.</p>
@@ -480,10 +440,10 @@
 
           <p>For each project include: project name (not "Project 1"), one-line description of what it does (not what technology it uses), tech stack, your specific contribution, outcome or result, and a GitHub/live URL if available.</p>
 
-          <div class="callout callout-warn">
-            <strong>The interview test</strong>
-            Every project on your resume must be something you genuinely understand and can defend. "Can you walk me through the hardest problem you faced building this?" If someone else built it and you just put your name on it — it will collapse in the interview.
-          </div>
+      <div class="callout">
+        <div class="callout-label">The interview test</div>
+        <p>Every project on your resume must be something you genuinely understand and can defend. "Can you walk me through the hardest problem you faced building this?" If someone else built it and you just put your name on it — it will collapse in the interview.</p>
+      </div>
 
           <h3>Section 7 — Technical Skills</h3>
           <p>Organise by category, not as a single line dump:</p>

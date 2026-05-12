@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
-Disallow: /ambassador-guide-v3.html
-Disallow: /ambassador
+Disallow: /campus-leader-guide-v3.html
+Disallow: /campus-leader
 
 Sitemap: https://c2club.in/sitemap.xml

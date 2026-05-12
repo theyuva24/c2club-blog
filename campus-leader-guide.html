@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light">
+    <title>C2 Club — Campus Leader Guide</title>
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-hover: #3a56d4;
+            --secondary: #7209b7;
+            --bg: #ffffff;
+            --bg-alt: #f8f9fa;
+            --bg-card: #ffffff;
+            --text: #1a1a1a;
+            --text-muted: #666666;
+            --border: #e0e0e0;
+            --success: #06d6a0;
+            --warning: #ffd166;
+            --danger: #ef476f;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+            --radius: 12px;
+            --radius-lg: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        @media (prefers-color-scheme: dark) {
+
+            html,
+            body {
+                background: #fff !important;
+                color: #1a1a1a !important;
+            }
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 24px 20px 60px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 20px 0 32px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 28px;
+        }
+
+        header h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header .subtitle {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* Hero / Challenge Card */
+        .hero {
+            margin-bottom: 32px;
+        }
+
+        .challenge-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .challenge-card .badge {
+            display: inline-block;
+            background: var(--warning);
+            color: #1a1a1a;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .challenge-card h3 {
+            font-size: 1.4rem;
+            margin: 8px 0 12px;
+            font-weight: 700;
+        }
+
+        .challenge-card p {
+            margin-bottom: 16px;
+            opacity: 0.95;
+        }
+
+        .challenge-card .small {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: white;
+            color: #764ba2;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 36px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        h3 {
+            font-size: 1.15rem;
+            margin: 20px 0 12px;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+
+        p.small {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .note {
+            background: var(--bg-alt);
+            border-left: 4px solid var(--primary);
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+            font-size: 0.95rem;
+        }
+
+        /* Role Grid */
+        .role-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin-top: 8px;
+        }
+
+        @media (min-width: 600px) {
+            .role-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .role-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .role-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .role-card p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        /* Steps */
+        .steps {
+            margin: 20px 0;
+        }
+
+        .step {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            align-items: flex-start;
+        }
+
+        .step-num {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            font-weight: 600;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .step p {
+            margin-bottom: 0;
+            flex: 1;
+        }
+
+        .message-box {
+            background: var(--bg-alt);
+            border: 1px dashed var(--border);
+            border-radius: 8px;
+            padding: 14px 16px;
+            margin: 10px 0 0;
+            font-family: 'SF Mono', 'Monaco', monospace;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+        }
+
+        /* Video */
+        .video-wrapper {
+            background: var(--bg-alt);
+            border-radius: var(--radius);
+            padding: 20px;
+            text-align: center;
+            margin: 16px 0;
+            border: 1px solid var(--border);
+        }
+
+        .play-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+
+        .play-btn:hover {
+            background: var(--primary-hover);
+        }
+
+        .video-link {
+            display: block;
+            margin-top: 12px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .video-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Templates */
+        .template-toggle {
+            display: flex;
+            gap: 8px;
+            margin: 16px 0;
+            flex-wrap: wrap;
+        }
+
+        .toggle-btn {
+            padding: 8px 16px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .toggle-btn.active,
+        .toggle-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .template-list {
+            display: none;
+        }
+
+        .template-list.active {
+            display: block;
+        }
+
+        .template-card {
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px;
+            margin: 12px 0;
+            background: var(--bg-card);
+            box-shadow: var(--shadow);
+        }
+
+        .template-card h4 {
+            font-size: 1rem;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .template-card p {
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+        }
+
+        .tag {
+            display: inline-block;
+            background: var(--success);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        .center-note {
+            text-align: center;
+            font-style: italic;
+            color: var(--text-muted);
+            margin: 20px 0 0;
+            padding: 12px;
+            background: var(--bg-alt);
+            border-radius: 8px;
+        }
+
+        /* Rewards */
+        .reward-card {
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 18px;
+            margin: 14px 0;
+            background: var(--bg-card);
+            box-shadow: var(--shadow);
+        }
+
+        .reward-card.highlight {
+            border: 2px solid var(--primary);
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.05), rgba(114, 9, 183, 0.05));
+        }
+
+        .reward-card h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        .reward-card ul {
+            margin: 10px 0 12px 20px;
+        }
+
+        .reward-card li {
+            margin-bottom: 4px;
+            font-size: 0.95rem;
+        }
+
+        /* FAQ */
+        details {
+            margin: 14px 0;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 14px 16px;
+            background: var(--bg-card);
+        }
+
+        summary {
+            font-weight: 600;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::before {
+            content: "▸";
+            font-size: 1.1rem;
+            color: var(--primary);
+            transition: transform 0.15s ease;
+        }
+
+        details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        details p {
+            margin-top: 12px;
+            margin-bottom: 0;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            text-align: center;
+            padding: 24px 20px;
+            background: var(--bg-alt);
+            border-radius: var(--radius-lg);
+            margin-top: 20px;
+        }
+
+        .final-cta h2 {
+            margin-bottom: 12px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        @media (min-width: 500px) {
+            .cta-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+
+        .btn-large {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: var(--shadow);
+            transition: background 0.15s ease, transform 0.15s ease;
+        }
+
+        .btn-large:hover {
+            background: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 14px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border: 2px solid var(--primary);
+            transition: all 0.15s ease;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .final-cta .small {
+            margin-top: 16px;
+            display: block;
+        }
+
+        .final-cta a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .final-cta a:hover {
+            text-decoration: underline;
+        }
+
+        /* Utility */
+        .center {
+            text-align: center;
+        }
+
+        .mb-0 {
+            margin-bottom: 0;
+        }
+
+        .mt-20 {
+            margin-top: 20px;
+        }
+
+        /* Footer note */
+        .footer-note {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- Header -->
+        <header>
+            <h1>🚀 C2 Club Campus Leader Guide</h1>
+            <p class="subtitle">You're not just a campus leader — you're the first person to put your college on the map.
+            </p>
+        </header>
+
+        <!-- Hero / Challenge Hook -->
+        <section class="hero">
+            <div class="challenge-card">
+                <span class="badge">🔥 LIVE NOW</span>
+                <h3>Hoge vs Habba Challenge</h3>
+                <p>Your college can win <strong>₹4,000</strong> by being the most active hub this month.</p>
+                <p class="small">No pressure. No scripts. Just share the challenge — if your friends want to join, they
+                    will.</p>
+                <a href="#challenge" class="btn-primary">See How It Works →</a>
+            </div>
+        </section>
+
+        <!-- Your Role -->
+        <section id="role">
+            <h2>What You're Actually Doing</h2>
+            <div class="role-grid">
+                <div class="role-card">
+                    <h4>🎯 You're the Campus Lead</h4>
+                    <p>Not a "referrer". You're the person who brings the Hoge vs Habba challenge to your college.
+                        That's it.</p>
+                </div>
+                <div class="role-card">
+                    <h4>🗣️ You Share, They Decide</h4>
+                    <p>You don't convince. You don't follow up. You drop the challenge link in your group. Whoever's
+                        curious, joins.</p>
+                </div>
+                <div class="role-card">
+                    <h4>🏆 You Build Your College's Hub</h4>
+                    <p>Once people are in, you help start the conversation. Your posts become the spark — not a chore.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 1: Challenge -->
+        <section id="challenge">
+            <h2>Step 1: Share the Challenge (2 minutes)</h2>
+            <p><strong>Hoge vs Habba</strong> is a college-vs-college activity challenge. Most active hub wins ₹4,000.
+            </p>
+
+            <div class="steps">
+                <div class="step">
+                    <span class="step-num">1</span>
+                    <p>Open C2 Club app → Go to <strong>Arena</strong> → Find "Hoge vs Habba"</p>
+                </div>
+                <div class="step">
+                    <span class="step-num">2</span>
+                    <p>Tap "Share Challenge" → Copy your referral link</p>
+                </div>
+                <div class="step">
+                    <span class="step-num">3</span>
+                    <p>Send this message to your college WhatsApp group:</p>
+                    <div class="message-box">Hey — our college just entered the Hoge vs Habba challenge on C2 Club.
+                        If we're the most active hub this month, we win ₹4,000.
+                        Takes 2 mins to join: [your link]
+                        Post anything — notes, memes, questions. Anonymous option available.</div>
+                </div>
+            </div>
+
+            <p class="note">✅ That's your only "ask". No pressure on friends. No follow-ups. If 3 people join, you've
+                already helped.</p>
+        </section>
+
+        <!-- Step 2: Create Hub -->
+        <section id="hub">
+            <h2>Step 2: Create Your College Hub (90 seconds)</h2>
+            <p>Now that the challenge is live, your hub is where your college's activity lives.</p>
+
+            <div class="video-wrapper">
+                <button class="play-btn"
+                    onclick="window.open('https://storage.googleapis.com/c2club-fd6722.firebasestorage.app/tutorials/hub_creation_tutorial.mp4?GoogleAccessId=firebase-adminsdk-fbsvc%40c2club-fd6722.iam.gserviceaccount.com&Expires=16730303400&Signature=EsewDF3sLUhmtB0tZUpFuJxnsfKBIi0iVKf5%2FmMXA%2BZ50OZwL4KdLGV37ut%2BIu0hXpe1eFQbKmC%2BqmFav4aDJOnA2MwCIxCT%2B32BqHep7nyzn%2B7WEY2m%2FrxSMPQ1piixwIoTKflLyFwLE9f7ZT2zJlSb3ylF1niY5bf9yUPqARkjTXAv%2FQlXU17XYQqZHFdn%2Fiae1ZgfUlKkOykUJ58Iu1OVeoAGOExBkj8wKkmYy9FJR6nnkapcQsPrJJjBV6ZzKDeOjhUSMNzolQgT%2BlDfQfKlrz2AGyEezIIYRQn%2FFm8i4Zey8hDvCsV0F0w7oMzcSO16vHN7%2Bad8x8MkGYI9rw%3D%3D', '_blank')">▶
+                    Watch 90-sec Setup Tutorial</button>
+                <a href="https://storage.googleapis.com/c2club-fd6722.firebasestorage.app/tutorials/hub_creation_tutorial.mp4?GoogleAccessId=firebase-adminsdk-fbsvc%40c2club-fd6722.iam.gserviceaccount.com&Expires=16730303400&Signature=EsewDF3sLUhmtB0tZUpFuJxnsfKBIi0iVKf5%2FmMXA%2BZ50OZwL4KdLGV37ut%2BIu0hXpe1eFQbKmC%2BqmFav4aDJOnA2MwCIxCT%2B32BqHep7nyzn%2B7WEY2m%2FrxSMPQ1piixwIoTKflLyFwLE9f7ZT2zJlSb3ylF1niY5bf9yUPqARkjTXAv%2FQlXU17XYQqZHFdn%2Fiae1ZgfUlKkOykUJ58Iu1OVeoAGOExBkj8wKkmYy9FJR6nnkapcQsPrJJjBV6ZzKDeOjhUSMNzolQgT%2BlDfQfKlrz2AGyEezIIYRQn%2FFm8i4Zey8hDvCsV0F0w7oMzcSO16vHN7%2Bad8x8MkGYI9rw%3D%3D"
+                    class="video-link" target="_blank">Open in Full Screen / New Tab</a>
+            </div>
+
+            <p class="small">Pro tip: Add one post while you're at it — even just "Hub is live! Drop your first PYQ or
+                meme below 👇"</p>
+        </section>
+
+        <!-- Step 3: Keep Momentum -->
+        <section id="posts">
+            <h2>Step 3: Keep the Momentum (Only If You Want)</h2>
+            <p>You don't need to post 20 times. But if you want your hub to feel alive, here are easy templates.</p>
+
+            <div class="template-toggle">
+                <button class="toggle-btn active" onclick="showTemplates('quick')">⚡ Quick Posts (1-min each)</button>
+                <button class="toggle-btn" onclick="showTemplates('deep')">🧠 Deeper Posts (When You Have Time)</button>
+            </div>
+
+            <div id="quick" class="template-list active">
+                <div class="template-card">
+                    <h4>📄 PYQ Drop</h4>
+                    <p>"3rd sem Business Law PYQ from 2023. Unit 3 repeated exactly. Sharing so someone else doesn't
+                        hunt."</p>
+                    <span class="tag">Takes: 45 seconds</span>
+                </div>
+                <div class="template-card">
+                    <h4>🤔 One Question</h4>
+                    <p>"To final years: Did placements actually help or was it all on you?"</p>
+                    <span class="tag">Takes: 30 seconds</span>
+                </div>
+                <div class="template-card">
+                    <h4>😂 AI Meme</h4>
+                    <p>Use Canva AI: "Me checking WhatsApp for syllabus vs actually studying"</p>
+                    <span class="tag">Takes: 2 minutes</span>
+                </div>
+                <div class="template-card">
+                    <h4>📝 Notes Share</h4>
+                    <p>"My 2nd sem Accounts notes. Not pretty but covered everything. Take it."</p>
+                    <span class="tag">Takes: 1 minute</span>
+                </div>
+                <div class="template-card">
+                    <h4>🎓 College Reality</h4>
+                    <p>"Attendance marked present if you enter in first 5 mins. Half the class mastered this art."</p>
+                    <span class="tag">Takes: 40 seconds</span>
+                </div>
+            </div>
+
+            <div id="deep" class="template-list">
+                <div class="template-card">
+                    <h4>🎯 Honest Opinion</h4>
+                    <p>"Placements at our college are decent for CS/ECE. For other branches you're mostly on your own."
+                    </p>
+                    <span class="tag">Can be anonymous</span>
+                </div>
+                <div class="template-card">
+                    <h4>💭 Future Plans</h4>
+                    <p>"Genuinely no idea what comes next. Final year and still figuring it out."</p>
+                    <span class="tag">Can be anonymous</span>
+                </div>
+                <div class="template-card">
+                    <h4>🏠 Hostel/PG Life</h4>
+                    <p>"First month in PG I ate maggi 14 days straight. Not by choice — just learning to manage."</p>
+                    <span class="tag">Can be anonymous</span>
+                </div>
+                <div class="template-card">
+                    <h4>❓ Ask Your Peers</h4>
+                    <p>"How do internships work at your college? Do they help or is it entirely on you?"</p>
+                    <span class="tag">Drives engagement</span>
+                </div>
+                <div class="template-card">
+                    <h4>🎪 Event Recap/Wishlist</h4>
+                    <p>"We had zero technical events this sem. Not one workshop. Other colleges seem to have something
+                        every month."</p>
+                    <span class="tag">Spark conversation</span>
+                </div>
+            </div>
+
+            <p class="center-note">🎯 Goal: Post when you have something real to share. Not to hit a number.</p>
+        </section>
+
+        <!-- Rewards -->
+        <section id="rewards">
+            <h2>What You Get</h2>
+
+            <div class="reward-card highlight">
+                <h3>🎁 Base Reward: ₹1,000</h3>
+                <ul>
+                    <li>✅ You created your college hub</li>
+                    <li>✅ You shared the Hoge vs Habba challenge</li>
+                    <li>✅ 20+ people from your college joined via your link</li>
+                </ul>
+                <p class="small">No need to "make them post". If they join through your link and post <em>anything</em>
+                    (even once), they count.</p>
+            </div>
+
+            <div class="reward-card">
+                <h3>🚀 Bonus: +₹500</h3>
+                <p>If your hub becomes one of the top 3 most active in the challenge — or if you bring 30+ active users.
+                </p>
+            </div>
+
+            <div class="reward-card">
+                <h3>🌟 Long-Term</h3>
+                <p>First 50 Campus Leads get early access to C2 Club's internship/referral network when we launch. Your
+                    name stays attached to your college's hub forever.</p>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq">
+            <h2>Quick Answers</h2>
+
+            <details>
+                <summary>❓ What if my friends don't want to post?</summary>
+                <p>Totally fine. Your job is to share the challenge — not to convince. If 3 people join and post once,
+                    you've already qualified for the base reward.</p>
+            </details>
+
+            <details>
+                <summary>❓ Is this like those referral programs where I have to spam?</summary>
+                <p>No. You send one message with the challenge link. That's it. No follow-ups. No pressure. If people
+                    are curious, they'll join. If not, no worries.</p>
+            </details>
+
+            <details>
+                <summary>❓ What if I don't have time to post 20 times?</summary>
+                <p>You don't need to. The 20-post template is a menu — pick 3-4 that feel easy. Your hub can thrive with
+                    just 5 good posts if the challenge is live.</p>
+            </details>
+
+            <details>
+                <summary>❓ Can I post anonymously?</summary>
+                <p>Yes. Every post in C2 Club has an "Anonymous" toggle. Use it for honest opinions, frustrations, or
+                    sensitive questions.</p>
+            </details>
+
+            <details>
+                <summary>❓ What if there's no active challenge?</summary>
+                <p>No problem! Just share your college hub with friends using the "10 Questions" below. The goal is
+                    connection — the challenge is just a fun accelerator.</p>
+            </details>
+        </section>
+
+        <!-- Bonus: 10 Questions for Friends -->
+        <section id="questions">
+            <h2>🎁 Bonus: 10 Easy Questions to Send Friends</h2>
+            <p class="small">Pick any one. Send via WhatsApp. Tell them: "Answer this in C2 Club — takes 2 mins, can be
+                anonymous."</p>
+
+            <div class="template-card">
+                <h4>Q1: Unwritten Rule</h4>
+                <p>"What is that one unwritten rule in your college that nobody told you but everyone somehow knows?"
+                </p>
+                <span class="tag">Easy • Funny • Anonymous OK</span>
+            </div>
+            <div class="template-card">
+                <h4>Q2: Exam Week</h4>
+                <p>"Describe your typical exam week — from the night before to walking out of the hall."</p>
+                <span class="tag">Relatable • Story format</span>
+            </div>
+            <div class="template-card">
+                <h4>Q3: Reality TV Professor</h4>
+                <p>"Which professor would survive best on a reality TV show, and why?"</p>
+                <span class="tag">Fun • Anonymous OK</span>
+            </div>
+            <div class="template-card">
+                <h4>Q4: Useless College Thing</h4>
+                <p>"What is the most useless thing your college made you do that had zero connection to real life?"</p>
+                <span class="tag">High relatability • Anonymous OK</span>
+            </div>
+            <div class="template-card">
+                <h4>Q5: WhatsApp Group Personified</h4>
+                <p>"If your college WhatsApp group was a person, what kind of person would it be?"</p>
+                <span class="tag">Creative • Shareable</span>
+            </div>
+            <div class="template-card">
+                <h4>Q6: Proud Moment</h4>
+                <p>"What is the one moment in college where you genuinely felt proud of yourself — big or small?"</p>
+                <span class="tag">Personal • Positive</span>
+            </div>
+            <div class="template-card">
+                <h4>Q7: Chaotic Day</h4>
+                <p>"Describe the most chaotic day you have had in college so far."</p>
+                <span class="tag">Storytelling • Fun to read</span>
+            </div>
+            <div class="template-card">
+                <h4>Q8: Monday Morning Smell</h4>
+                <p>"What does your college smell like at 8am on a Monday?"</p>
+                <span class="tag">Unexpected • Low effort</span>
+            </div>
+            <div class="template-card">
+                <h4>Q9: Swap One Thing</h4>
+                <p>"If you could swap one thing about your college with another college you know, what would it be and
+                    why?"</p>
+                <span class="tag">Cross-college • Engaging</span>
+            </div>
+            <div class="template-card">
+                <h4>Q10: Batch Inside Joke</h4>
+                <p>"What is something your batch does that would completely confuse an outsider?"</p>
+                <span class="tag">Inside joke • High shareability</span>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="final-cta">
+            <h2>Ready to Launch at Your College?</h2>
+            <p>Download C2 Club → Explore the Arena → Share the challenge. That's the whole start.</p>
+
+            <div class="cta-buttons">
+                <a href="https://play.google.com/store/apps/details?id=com.c2club" class="btn-large" target="_blank">📲
+                    Download on Play Store</a>
+                <a href="https://chat.whatsapp.com/I1ADMwzi71CIzyzHIgkSSr" class="btn-outline" target="_blank">💬 Join
+                    Campus Leader WhatsApp Group</a>
+            </div>
+
+            <p class="small center">Questions? Message Vijay directly: <a href="tel:+917338301263">73383 01263</a></p>
+        </section>
+
+        <!-- Footer -->
+        <div class="footer-note">
+            C2 CLUB · CAMPUS LEADER INTERNAL · NOT FOR PUBLIC SHARING
+        </div>
+
+    </div>
+
+    <script>
+        function showTemplates(type) {
+            // Hide all lists
+            document.querySelectorAll('.template-list').forEach(el => {
+                el.classList.remove('active');
+            });
+            // Deactivate all buttons
+            document.querySelectorAll('.toggle-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            // Show selected
+            document.getElementById(type).classList.add('active');
+            // Activate clicked button
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+
+</html>

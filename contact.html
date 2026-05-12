@@ -10,6 +10,11 @@
 
     <link rel="canonical" href="https://c2club.in/contact.html" />
 
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
     
     <!-- Deep Link Fallback Script (Android -> Play Store) -->
@@ -17,7 +22,7 @@
 </head>
 
 <body>
-    <header class="navbar">
+    <header class="navbar" id="mainNav">
         <div class="container nav-container">
             <div class="logo">
                 <a href="/">C2 Club</a>
@@ -30,8 +35,8 @@
             <nav class="nav-links">
                 <a href="/blog/index.html" class="nav-link">Blog</a>
                 <a href="/challenges.html" class="nav-link">Challenges</a>
-                <a href="/contact.html" class="nav-link">Contact</a>
-                <a href="/download.html" class="btn btn-primary nav-btn">Download C2 Club</a>
+                <a href="/contact.html" class="nav-link active">Contact</a>
+                <a href="/download.html" class="btn btn-primary nav-btn">Download App</a>
             </nav>
         </div>
     </header>
@@ -39,10 +44,10 @@
     <main class="contact-page">
         <section class="contact-hero text-center">
             <div class="container">
-                <span class="contact-label">CONTACT</span>
+                <span class="section-label">Contact</span>
                 <h1 class="contact-heading">Let's talk.</h1>
                 <p class="contact-subtext">We're building C2 Club thoughtfully. If you have questions, feedback,
-                    collaboration ideas, or press inquiries, we're listening.</p>
+                    collaboration ideas, or press inquiries — we're listening.</p>
             </div>
         </section>
 
@@ -51,18 +56,18 @@
                 <div class="contact-methods-container">
 
                     <div class="contact-block">
-                        <span class="contact-block-label">GENERAL INQUIRIES</span>
+                        <span class="contact-block-label">📧 General Inquiries</span>
                         <a href="mailto:hello@c2club.in?subject=C2%20Club%20Inquiry"
                             class="contact-email">hello@c2club.in</a>
-                        <p class="contact-block-desc">For feedback, questions, and student-related conversations.</p>
+                        <p class="contact-block-desc">For feedback, questions, and student-related conversations. We love hearing from students.</p>
                     </div>
 
                     <div class="contact-block">
-                        <span class="contact-block-label">PARTNERSHIPS & COLLABORATION</span>
+                        <span class="contact-block-label">🤝 Partnerships & Collaboration</span>
                         <a href="mailto:contact@c2club.in?subject=Partnership%20Inquiry"
                             class="contact-email">contact@c2club.in</a>
                         <p class="contact-block-desc">For campus partnerships, research collaborations, and structured
-                            discussions.</p>
+                            discussions about working together.</p>
                     </div>
 
                 </div>
@@ -77,16 +82,30 @@
     </main>
 
     <footer class="footer">
-        <div class="container footer-container">
-            <div class="footer-logo">C2 Club</div>
-            <p class="footer-tagline">Building the collaboration layer students always needed.</p>
-            <div class="footer-links">
-                <a href="/blog/index.html">Blog</a>
-                <a href="/contact.html">Contact</a>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-brand">
+                    <div class="footer-logo">C2 Club</div>
+                    <p class="footer-tagline">Building the collaboration layer students always needed.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Explore</h4>
+                    <a href="/blog/index.html">Blog</a>
+                    <a href="/challenges.html">Challenges</a>
+                    <a href="/download.html">Download App</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Connect</h4>
+                    <a href="/contact.html">Contact Us</a>
+                    <a href="mailto:hello@c2club.in">hello@c2club.in</a>
+                </div>
             </div>
-            <p class="copyright">&copy; 2026 C2 Club. All rights reserved.</p>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 C2 Club. All rights reserved.</p>
+            </div>
         </div>
     </footer>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const menuToggle = document.querySelector('.menu-toggle');
@@ -96,6 +115,12 @@
                     menuToggle.classList.toggle('active');
                     navLinks.classList.toggle('nav-active');
                 });
+            }
+            const navbar = document.getElementById('mainNav');
+            if (navbar) {
+                window.addEventListener('scroll', () => {
+                    navbar.classList.toggle('scrolled', window.scrollY > 20);
+                }, { passive: true });
             }
         });
     </script>

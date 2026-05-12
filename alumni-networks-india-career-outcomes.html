@@ -54,12 +54,25 @@
     </script>
 </head>
 
-<body>
+<body class="article-page">
+
+    <!-- PDF Download Button -->
+    <button id="download-pdf-btn" onclick="window.print()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        Download PDF
+    </button>
+
+    <!-- PDF Cover Page (Print Only) -->
+    <div class="print-only print-cover">
+        <div class="print-logo">C2 <span>Club</span></div>
+        <h1 style="font-size: 3.5rem; margin-top: 40px;">Why Alumni Networks in India<br>Struggle to Deliver Career Outcomes</h1>
+        <p style="font-size: 1.2rem; color: #666; margin-top: 20px;">System Design · India Edition · 2026</p>
+        <div style="margin-top: 100px; font-style: italic; color: #22C55E;">Building the collaboration layer students always needed.</div>
+    </div>
+
 
     <!-- Reading Progress Bar -->
-    <div class="progress-container">
-        <div class="progress-bar" id="reading-progress"></div>
-    </div>
+    <div class="progress-bar" id="reading-progress"></div>
     <script>
         window.addEventListener('scroll', () => {
             let scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -74,37 +87,36 @@
     <header class="navbar">
         <div class="container nav-container">
             <div class="logo">
-                <a href="/">C2 Club</a>
+                <a href="/">C2 <span>Club</span></a>
             </div>
             <button class="menu-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </button>
             <nav class="nav-links">
                 <a href="/blog/index.html" class="nav-link">Blog</a>
+                <a href="/challenges.html" class="nav-link">Challenges</a>
                 <a href="/contact.html" class="nav-link">Contact</a>
                 <a href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp"
-                    class="btn btn-primary nav-btn">Download C2 Club</a>
+                    class="btn btn-primary nav-btn">Download App</a>
             </nav>
         </div>
     </header>
 
-    <main class="article-main">
-        <div class="article-container">
-            <a href="/blog/index.html" class="back-link">&larr; Back to blog</a>
-            <article class="blog-article">
-                <header class="article-header">
-                    <h1 class="article-title">Why Alumni Networks in India Struggle to Deliver Career Outcomes (And What
-                        Needs to Change)</h1>
-                    <div class="article-meta">
-                        <span>Mar 1, 2026</span>
-                        <span class="meta-dot">&middot;</span>
-                        <span class="read-time">12 min read</span>
-                    </div>
-                    <hr class="article-meta-divider">
-                </header>
-                <div class="article-body">
+    <main class="article-outer">
+        
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="hero-tag">System Design · India</div>
+            <h1 class="article-title">Why Alumni Networks in India Struggle to Deliver Career Outcomes</h1>
+            <p class="hero-lead">An analysis of structural gaps, incentive imbalances, and the trust signals needed to turn alumni directories into active career engines.</p>
+            <div class="hero-meta">
+                <span>📅 Mar 1, 2026</span>
+                <div class="dot"></div>
+                <span>🕒 12 min read</span>
+            </div>
+        </header>
+
+        <div class="article-body">
 
                     <p>In Indian colleges, especially engineering and MBA institutions, alumni networks are often
                         seen as the fastest bridge between graduation and employment. Students assume that reaching
@@ -133,7 +145,7 @@
 
                     <p>The gap can be summarized as follows:</p>
 
-                    <div class="table-wrapper">
+                    <div class="table-wrap">
                         <table>
                             <thead>
                                 <tr>
@@ -146,9 +158,7 @@
                                 <tr>
                                     <td><strong>Referral</strong></td>
                                     <td>Simple favor ("please refer me")</td>
-                                    <td>Professional risk to credibility <a
-                                            href="https://www.trykondo.com/blog/alumni-referrals-guide"
-                                            target="_blank">[2]</a></td>
+                                    <td>Professional risk to credibility</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Time Required</strong></td>
@@ -202,18 +212,18 @@
                         templates, resume attachments, and broad "please help me" requests.</p>
 
                     <p>Alumni today receive a high volume of similar outreach messages:</p>
-                    <div class="stat-row">
-                        <div class="stat-card">
-                            <div class="stat-number">~<span>80%</span></div>
-                            <div class="stat-label">Messages use identical LinkedIn templates</div>
+                    <div class="stats-strip">
+                        <div class="stat-cell">
+                            <div class="stat-num">80%</div>
+                            <div class="stat-label">Template Messages</div>
                         </div>
-                        <div class="stat-card">
-                            <div class="stat-number">~<span>90%</span></div>
-                            <div class="stat-label">Lack any clear differentiation or project evidence</div>
+                        <div class="stat-cell">
+                            <div class="stat-num">90%</div>
+                            <div class="stat-label">Lack Evidence</div>
                         </div>
-                        <div class="stat-card">
-                            <div class="stat-number">10<span>:1</span></div>
-                            <div class="stat-label">Ratio of cold asks vs genuine engagement</div>
+                        <div class="stat-cell">
+                            <div class="stat-num">10:1</div>
+                            <div class="stat-label">Asks vs Engagement</div>
                         </div>
                     </div>
 
@@ -246,7 +256,7 @@
                         asking alumni to refer them has upside but little downside. For the alumnus, doing so has
                         downside but little material upside.</p>
 
-                    <div class="table-wrapper">
+                    <div class="table-wrap">
                         <table>
                             <thead>
                                 <tr>
@@ -259,12 +269,12 @@
                                 <tr>
                                     <td><strong>Student</strong></td>
                                     <td>Minimal</td>
-                                    <td>Job, internship, advice (Career-changing benefits)</td>
+                                    <td>Job, internship, advice</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Alumni</strong></td>
                                     <td>Reputation, time, credibility</td>
-                                    <td>Emotional satisfaction (Mostly intangible)</td>
+                                    <td>Emotional satisfaction</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -691,6 +701,25 @@
                 </section>
             </article>
 
+            <!-- PDF End Page (Print Only) -->
+            <div class="print-only print-end-page">
+                <h2 style="font-size: 2.5rem;">Be part of something bigger.</h2>
+                <p style="font-size: 1.2rem; color: #444; max-width: 600px; margin: 20px auto;">We are starting a new social networking platform focused entirely on students. This is about building a community where we can all learn, earn, and grow together.</p>
+                
+                <div class="invitation-box">
+                    <p style="margin-bottom: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem; color: #22C55E;">Join the Community</p>
+                    <p>If you have that passion to help your peers and want to be part of the core team shaping this ecosystem, let's talk.</p>
+                    <div class="whatsapp-num">733-830-1263</div>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">Message us on WhatsApp</p>
+                </div>
+
+                <div style="margin-top: 60px;">
+                    <div class="print-logo" style="font-size: 1.5rem;">C2 <span>Club</span></div>
+                    <p style="font-size: 0.9rem; color: #888;">c2club.in · Download the App on Play Store</p>
+                </div>
+            </div>
+
+
             <div class="article-footer-cta">
                 <hr class="article-divider">
                 <div class="cta-block-minimal">
@@ -728,6 +757,12 @@
             <p class="copyright">&copy; 2026 C2 Club. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- PDF Footer (Print Only) -->
+    <div class="print-only print-footer">
+        C2 Club · Building the collaboration layer students always needed. · Download the app at c2club.in
+    </div>
+
 
     <script type="application/ld+json">
 {
@@ -787,6 +822,13 @@
                     menuToggle.classList.toggle('active');
                     navLinks.classList.toggle('nav-active');
                 });
+            }
+
+            // Show PDF button only if ?pdf=1 is in URL
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('pdf') === '1') {
+                const pdfBtn = document.getElementById('download-pdf-btn');
+                if (pdfBtn) pdfBtn.style.display = 'flex';
             }
         });
     </script>

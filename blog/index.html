@@ -11,14 +11,35 @@
 
     <link rel="canonical" href="https://c2club.in/blog/index.html" />
 
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="../style.css">
     
+    <!-- Open Graph -->
+    <meta property="og:title" content="C2 Club Blog | Insights on campus collaboration">
+    <meta property="og:description" content="Insights on alumni networking, student growth, referrals, and career systems in India.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://c2club.in/blog/index.html">
+    <meta property="og:image" content="https://c2club.in/preview.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="C2 Club Blog | Insights on campus collaboration">
+    <meta name="twitter:description" content="Insights on alumni networking, student growth, referrals, and career systems in India.">
+    <meta name="twitter:image" content="https://c2club.in/preview.jpg">
+
+    <meta name="theme-color" content="#22C55E">
+    <link rel="manifest" href="/manifest.json">
+
     <!-- Deep Link Fallback Script (Android -> Play Store) -->
     <script src="/deeplink-fallback.js"></script>
 </head>
 
 <body>
-    <header class="navbar">
+    <header class="navbar" id="mainNav">
         <div class="container nav-container">
             <div class="logo">
                 <a href="/">C2 Club</a>
@@ -30,8 +51,9 @@
             </button>
             <nav class="nav-links">
                 <a href="/blog/index.html" class="nav-link active">Blog</a>
+                <a href="/challenges.html" class="nav-link">Challenges</a>
                 <a href="/contact.html" class="nav-link">Contact</a>
-                <a href="/download.html" class="btn btn-primary nav-btn">Download C2 Club</a>
+                <a href="/download.html" class="btn btn-primary nav-btn">Download App</a>
             </nav>
         </div>
     </header>
@@ -39,10 +61,10 @@
     <main class="blog-index">
         <section class="blog-hero section">
             <div class="container container-sm text-center">
-                <span class="blog-label">C2 CLUB BLOG</span>
-                <h1 class="blog-main-heading">Thoughtful analysis on campus collaboration and student growth.</h1>
+                <span class="section-label">C2 Club Blog</span>
+                <h1 class="blog-main-heading">Insights on campus collaboration and student growth.</h1>
                 <p class="blog-subtext">Research-backed perspectives and grounded insights from Indian student
-                    ecosystems.</p>
+                    ecosystems. Practical guides, career advice, and real talk.</p>
             </div>
         </section>
 
@@ -54,6 +76,8 @@
             <div class="container">
                 <div class="blog-grid">
                     <article class="blog-card">
+                        <div class="blog-card-image" style="background-image: url('../images/engineering-pathways.png'); background-size: cover; background-position: center; height: 200px; border-radius: 12px; margin-bottom: 20px;">
+                        </div>
                         <h2 class="blog-card-title"><a href="/blog/what-after-puc-engineering-pathways-karnataka.html">What After PUC? Engineering Pathway Guide for Karnataka</a>
                         </h2>
                         <p class="blog-card-excerpt">A clear, practical roadmap for Karnataka students to navigate engineering choices after KCET, JEE, or COMED-K. Understand the branches, colleges, and career paths.</p>
@@ -66,6 +90,9 @@
                             &rarr;</a>
                     </article>
                     <article class="blog-card">
+                        <div class="blog-card-image" style="background: linear-gradient(135deg, #dbeafe, var(--bg-light)); height: 180px; border-radius: 12px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center;">
+                            <span style="font-size: 3rem;">📄</span>
+                        </div>
                         <h2 class="blog-card-title"><a href="../resume-guide-india.html">The Complete Resume Guide for Indian Engineering Students (2025)</a>
                         </h2>
                         <p class="blog-card-excerpt">Everything an Indian engineering student needs to know about resumes, ATS, referrals, campus vs off-campus hiring, and getting a job — with data and real examples.</p>
@@ -78,8 +105,11 @@
                             &rarr;</a>
                     </article>
                     <article class="blog-card">
+                        <div class="blog-card-image" style="background: linear-gradient(135deg, #fef3c7, var(--bg-light)); height: 180px; border-radius: 12px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center;">
+                            <span style="font-size: 3rem;">🤝</span>
+                        </div>
                         <h2 class="blog-card-title"><a href="../alumni-networks-india-career-outcomes.html">Why Alumni
-                                Networks in India Struggle to Deliver Career Outcomes (And What Needs to Change)</a>
+                                Networks in India Struggle to Deliver Career Outcomes</a>
                         </h2>
                         <p class="blog-card-excerpt">Explore why alumni networks in India struggle to deliver career
                             outcomes and what structural changes are needed for effective student-alumni engagement.</p>
@@ -101,16 +131,30 @@
     </main>
 
     <footer class="footer">
-        <div class="container footer-container">
-            <div class="footer-logo">C2 Club</div>
-            <p class="footer-tagline">Building the collaboration layer students always needed.</p>
-            <div class="footer-links">
-                <a href="/blog/index.html">Blog</a>
-                <a href="/contact.html">Contact</a>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-brand">
+                    <div class="footer-logo">C2 Club</div>
+                    <p class="footer-tagline">Building the collaboration layer students always needed.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Explore</h4>
+                    <a href="/blog/index.html">Blog</a>
+                    <a href="/challenges.html">Challenges</a>
+                    <a href="/download.html">Download App</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Connect</h4>
+                    <a href="/contact.html">Contact Us</a>
+                    <a href="mailto:hello@c2club.in">hello@c2club.in</a>
+                </div>
             </div>
-            <p class="copyright">&copy; 2026 C2 Club. All rights reserved.</p>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 C2 Club. All rights reserved.</p>
+            </div>
         </div>
     </footer>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const menuToggle = document.querySelector('.menu-toggle');
@@ -120,6 +164,13 @@
                     menuToggle.classList.toggle('active');
                     navLinks.classList.toggle('nav-active');
                 });
+            }
+            // Navbar scroll
+            const navbar = document.getElementById('mainNav');
+            if (navbar) {
+                window.addEventListener('scroll', () => {
+                    navbar.classList.toggle('scrolled', window.scrollY > 20);
+                }, { passive: true });
             }
         });
     </script>

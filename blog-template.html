@@ -14,18 +14,64 @@
   <meta property="og:url" content="https://c2club.in/blog/REPLACE_WITH_SLUG">
   <meta property="og:image" content="https://c2club.in/REPLACE_IMAGE_PATH">
 
-  <link rel="canonical" href="https://c2club.in/blog/REPLACE_WITH_SLUG">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="REPLACE_WITH_META_TITLE">
+  <meta name="twitter:description" content="REPLACE_WITH_META_DESCRIPTION">
+  <meta name="twitter:image" content="https://c2club.in/REPLACE_IMAGE_PATH">
 
+  <link rel="canonical" href="https://c2club.in/blog/REPLACE_WITH_SLUG">
   <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#22C55E">
+  <link rel="manifest" href="/manifest.json">
 
   <link rel="stylesheet" href="style.css">
   
   <!-- Deep Link Fallback Script (Android -> Play Store) -->
   <script src="/deeplink-fallback.js"></script>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "REPLACE_WITH_META_TITLE",
+    "description": "REPLACE_WITH_META_DESCRIPTION",
+    "image": "https://c2club.in/REPLACE_IMAGE_PATH",
+    "author": {
+      "@type": "Organization",
+      "name": "C2 Club"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "C2 Club",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://c2club.in/preview.jpg"
+      }
+    },
+    "datePublished": "REPLACE_DATE_ISO",
+    "url": "https://c2club.in/blog/REPLACE_WITH_SLUG"
+  }
+  </script>
+
 </head>
 
 <body>
+
+  <!-- PDF Download Button -->
+  <button id="download-pdf-btn" onclick="window.print()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+    Download PDF
+  </button>
+
+  <!-- PDF Cover Page (Print Only) -->
+  <div class="print-only print-cover">
+    <div class="print-logo">C2 <span>Club</span></div>
+    <h1 style="font-size: 3.5rem; margin-top: 40px;">REPLACE_WITH_BLOG_TITLE</h1>
+    <p style="font-size: 1.2rem; color: #666; margin-top: 20px;">C2 Club Special Edition · Career Insights</p>
+    <div style="margin-top: 100px; font-style: italic; color: #22C55E;">Building the collaboration layer students always needed.</div>
+  </div>
+
 
   <!-- Reading Progress Bar -->
   <div class="progress-container">
@@ -129,6 +175,25 @@
 
       </article>
 
+      <!-- PDF End Page (Print Only) -->
+      <div class="print-only print-end-page">
+        <h2 style="font-size: 2.5rem;">Be part of something bigger.</h2>
+        <p style="font-size: 1.2rem; color: #444; max-width: 600px; margin: 20px auto;">Join a community where we can all learn, earn, and grow together. We are building the social networking platform students always needed.</p>
+        
+        <div class="invitation-box">
+          <p style="margin-bottom: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem; color: #22C55E;">Join the Community</p>
+          <p>If you want to be part of the core team shaping this ecosystem, let's talk.</p>
+          <div class="whatsapp-num">733-830-1263</div>
+          <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">Message us on WhatsApp</p>
+        </div>
+
+        <div style="margin-top: 60px;">
+          <div class="print-logo" style="font-size: 1.5rem;">C2 <span>Club</span></div>
+          <p style="font-size: 0.9rem; color: #888;">c2club.in · Download the App on Play Store</p>
+        </div>
+      </div>
+
+
       <div class="article-footer-cta">
         <hr class="article-divider">
         <div class="cta-block-minimal">
@@ -164,6 +229,12 @@
       <p class="copyright">&copy; 2026 C2 Club. All rights reserved.</p>
     </div>
   </footer>
+
+  <!-- PDF Footer (Print Only) -->
+  <div class="print-only print-footer">
+    C2 Club · Building the collaboration layer students always needed. · Download the app at c2club.in
+  </div>
+
 
   <script type="application/ld+json">
 {
@@ -207,6 +278,13 @@
           menuToggle.classList.toggle('active');
           navLinks.classList.toggle('nav-active');
         });
+      }
+
+      // Show PDF button only if ?pdf=1 is in URL
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('pdf') === '1') {
+        const pdfBtn = document.getElementById('download-pdf-btn');
+        if (pdfBtn) pdfBtn.style.display = 'flex';
       }
     });
   </script>
