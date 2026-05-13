@@ -10,13 +10,7 @@
 # SPA Redirects for Android App Links
 /.well-known/*  /.well-known/:splat  200
 
-# Deep Link Intent Routing
+# Deep Link Intent Routing (Manual only)
 /app            /redirect.html       200
-/entry/*        /redirect.html       200
-/challenge/*    /redirect.html       200
-/post/*         /redirect.html       200
-/hub/*          /redirect.html       200
-/user/*         /redirect.html       200
-/ref/*          /redirect.html       200
 
 /*              /index.html          200
