@@ -96,6 +96,45 @@
             color: var(--ink);
         }
 
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-download {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--green-dark);
+            background: var(--green-dim);
+            padding: 7px 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-download:hover {
+            background: var(--green);
+            color: var(--ink);
+        }
+
+        .nav-download svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        @media (max-width: 480px) {
+            .nav-download span {
+                display: none;
+            }
+            .nav-download {
+                padding: 7px;
+            }
+        }
+
         /* ── HERO HOME ── */
         .home-hero {
             padding: 64px 24px 56px;
@@ -356,6 +395,33 @@
 
         .earn-card.bonus .earn-card-amount {
             color: var(--green-dark);
+        }
+
+        .payout-rule {
+            background: #fff9eb;
+            border: 1px solid #ffeeba;
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 24px;
+        }
+
+        .payout-rule-title {
+            font-size: 11px;
+            font-weight: 800;
+            color: #856404;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .payout-rule p {
+            font-size: 13px;
+            color: #856404;
+            line-height: 1.6;
+            margin-bottom: 0;
         }
 
         .earn-total {
@@ -949,9 +1015,19 @@
 
         <nav class="nav">
             <div class="nav-logo">C2 <span>Club</span></div>
-            <div
-                style="font-size:11px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:var(--muted);">
-                Campus Lead</div>
+            <div class="nav-right">
+                <a href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp" target="_blank"
+                    class="nav-download">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M17.523 15.3414L20.355 12.5094L17.523 9.67742V11.5094H12V13.5094H17.523V15.3414ZM21.43 3.58942C21.17 3.22942 20.73 2.99942 20.25 2.99942H3.75C3.06 2.99942 2.5 3.55942 2.5 4.24942V19.7494C2.5 20.4394 3.06 20.9994 3.75 20.9994H20.25C20.73 20.9994 21.17 20.7694 21.43 20.4094C21.48 20.3394 21.5 20.2494 21.5 20.1494V3.84942C21.5 3.74942 21.48 3.65942 21.43 3.58942ZM20 18.9994H4V4.99942H20V18.9994Z" />
+                    </svg>
+                    <span>Download App</span>
+                </a>
+                <div
+                    style="font-size:11px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:var(--muted);">
+                    Campus Lead</div>
+            </div>
         </nav>
 
         <div class="home-hero">
@@ -995,8 +1071,7 @@
                     <div class="emoji">🗣️</div>
                     <div>
                         <h3>You share, they decide</h3>
-                        <p>Drop the challenge link in your group. No convincing. No follow-ups. Whoever's curious,
-                            joins. That's it.</p>
+                        <p>Drop your referral link in your group (you'll find it on your profile page in the app). Each user gets a unique referral link — that's what you share. No convincing. No follow-ups. Whoever's curious, joins. That's it.</p>
                     </div>
                 </div>
                 <div class="role-card">
@@ -1013,7 +1088,15 @@
         <!-- EARN AS YOU GO -->
         <div class="earn-section">
             <div class="section-label">How you get paid</div>
-            <p class="earn-intro"><strong>To get paid:</strong> Set up your college hub AND complete at least one other task. Payouts are unlocked only when you've done both (e.g., Hub Setup + Inviting Friends = ₹450). No single big target — just clear tasks that pay as you go.</p>
+            
+            <div class="payout-rule">
+                <div class="payout-rule-title">
+                    <span>⚠️</span> Important Payout Rules
+                </div>
+                <p>Rewards are paid for <strong>fully completed tasks</strong> only (like 20 friend invitations or 10-15 posts). You do not get paid for individual actions (like posting 1-2 times or inviting 1 friend). Payouts are unlocked only when you reach the full target (20 invites or 10-15 posts).</p>
+            </div>
+
+            <p class="earn-intro"><strong>Minimum requirement:</strong> Set up your college hub AND complete at least one other task (full completion required). No standalone payouts for just setup.</p>
 
             <div class="earn-cards">
 
@@ -1031,14 +1114,14 @@
 
                 <div class="earn-card" onclick="goTo('page-refer')" style="cursor: pointer;">
                     <div class="earn-card-left">
-                        <div class="earn-card-step">Your reach</div>
-                        <h3>Invite 20 friends to the challenge</h3>
-                        <p>Share the Hoge vs Habba challenge link with your friends and college groups. 20 people join via your invite link — that's all this step needs.</p>
+                        <div class="earn-card-step">Task 02</div>
+                        <h3>Invite 20 friends via your referral link</h3>
+                        <p>Share the poster + your link. You get paid only when <strong>all 20 people join</strong>. There is no partial payout for inviting 1-2 friends.</p>
                         <div style="margin-top: 12px; font-size: 12px; font-weight: 700; color: var(--green-dark); display: flex; align-items: center; gap: 4px;">
                             View Guide →
                         </div>
                     </div>
-                    <div class="earn-card-amount">₹300</div>
+                    <div class="earn-card-amount">₹250</div>
                 </div>
 
                 <div class="earn-card" onclick="goTo('page-refer')" style="cursor: pointer;">
@@ -1050,14 +1133,14 @@
                             View Guide →
                         </div>
                     </div>
-                    <div class="earn-card-amount">₹350</div>
+                    <div class="earn-card-amount">₹400</div>
                 </div>
 
                 <div class="earn-card" onclick="goTo('page-posts')" style="cursor: pointer;">
                     <div class="earn-card-left">
-                        <div class="earn-card-step">Your posts</div>
+                        <div class="earn-card-step">Task 04</div>
                         <h3>Post 10–15 things yourself</h3>
-                        <p>PYQs, honest takes, memes, questions — real content that makes the hub worth visiting. Quality matters more than quantity. 10 solid posts beats 20 throwaway ones.</p>
+                        <p>Memes, PYQs, questions — real content. Reward is paid once you hit the <strong>10-post target</strong>. Posting just once or twice does not qualify for payout.</p>
                         <div style="margin-top: 12px; font-size: 12px; font-weight: 700; color: var(--green-dark); display: flex; align-items: center; gap: 4px;">
                             View Post Ideas →
                         </div>
@@ -1086,7 +1169,7 @@
             </div>
 
             <div class="earn-note">
-                *Hub creation reward (₹150) is paid along with any of the other 3 tasks. It is not paid standalone. Message Vijay on WhatsApp after each step — <a href="https://wa.me/917338301263" style="color:var(--ink); font-weight:700;">7338301263</a> — tell him what you did, he confirms and pays.
+                *Hub creation reward (₹150) is paid along with any of the other 3 tasks (full completion required). It is not paid standalone. Message Vijay on WhatsApp after each step — <a href="https://wa.me/917338301263" style="color:var(--ink); font-weight:700;">7338301263</a> — tell him what you did, he confirms and pays.
             </div>
         </div>
 
@@ -1120,7 +1203,17 @@
     <div class="page" id="page-hub">
         <nav class="nav">
             <div class="nav-logo">C2 <span>Club</span></div>
-            <button class="nav-back" onclick="goTo('page-home')">← Back</button>
+            <div class="nav-right">
+                <a href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp" target="_blank"
+                    class="nav-download">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M17.523 15.3414L20.355 12.5094L17.523 9.67742V11.5094H12V13.5094H17.523V15.3414ZM21.43 3.58942C21.17 3.22942 20.73 2.99942 20.25 2.99942H3.75C3.06 2.99942 2.5 3.55942 2.5 4.24942V19.7494C2.5 20.4394 3.06 20.9994 3.75 20.9994H20.25C20.73 20.9994 21.17 20.7694 21.43 20.4094C21.48 20.3394 21.5 20.2494 21.5 20.1494V3.84942C21.5 3.74942 21.48 3.65942 21.43 3.58942ZM20 18.9994H4V4.99942H20V18.9994Z" />
+                    </svg>
+                    <span>Download App</span>
+                </a>
+                <button class="nav-back" onclick="goTo('page-home')">← Back</button>
+            </div>
         </nav>
 
         <div class="inner-hero">
@@ -1161,7 +1254,7 @@
             <div class="section-label">Done? Message Vijay</div>
             <div style="background:var(--green-dim); border-radius:12px; padding:18px 20px; border:1px solid #c3f0ca;">
                 <p style="font-size:14px; color:var(--green-dark); line-height:1.7;">Send Vijay a screenshot of your hub
-                    on WhatsApp — <a href="https://wa.me/917338301263" style="color:var(--green-dark); font-weight:700;">7338301263</a> — he'll confirm it and add the ₹150 bonus to your first milestone payout.</p>
+                    on WhatsApp — <a href="https://wa.me/917338301263" style="color:var(--green-dark); font-weight:700;">7338301263</a> — he'll confirm it and add the ₹150 bonus to your first <strong>payout</strong> (paid only after you fully complete the 20 friend invitations or 10-15 posts task).</p>
             </div>
         </div>
     </div>
@@ -1171,7 +1264,17 @@
     <div class="page" id="page-refer">
         <nav class="nav">
             <div class="nav-logo">C2 <span>Club</span></div>
-            <button class="nav-back" onclick="goTo('page-home')">← Back</button>
+            <div class="nav-right">
+                <a href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp" target="_blank"
+                    class="nav-download">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M17.523 15.3414L20.355 12.5094L17.523 9.67742V11.5094H12V13.5094H17.523V15.3414ZM21.43 3.58942C21.17 3.22942 20.73 2.99942 20.25 2.99942H3.75C3.06 2.99942 2.5 3.55942 2.5 4.24942V19.7494C2.5 20.4394 3.06 20.9994 3.75 20.9994H20.25C20.73 20.9994 21.17 20.7694 21.43 20.4094C21.48 20.3394 21.5 20.2494 21.5 20.1494V3.84942C21.5 3.74942 21.48 3.65942 21.43 3.58942ZM20 18.9994H4V4.99942H20V18.9994Z" />
+                    </svg>
+                    <span>Download App</span>
+                </a>
+                <button class="nav-back" onclick="goTo('page-home')">← Back</button>
+            </div>
         </nav>
 
         <div class="inner-hero">
@@ -1179,8 +1282,7 @@
                 style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--green-dark); margin-bottom:12px;">
                 Step 02 + 03 · ₹650</div>
             <h1>Bring your college to C2 Club</h1>
-            <p>You're not selling an app. You're telling your college there's ₹4,000 in prizes — and they can win.
-                That's the hook.</p>
+            <p>You're not just sharing a link. You're showing them a challenge. Use the poster, share your unique referral link from the app, and let the prizes do the talking.</p>
         </div>
 
         <div class="inner-content">
@@ -1189,12 +1291,17 @@
             <div class="challenge-go">
                 <div class="challenge-go-label">🔥 Start here — share this first</div>
                 <h2>Hoge vs Habba</h2>
-                <p>Send this to your college WhatsApp group right now. This alone will get most of your 20 people.</p>
+                <p>Message Vijay to get the <strong>Challenge Poster</strong>, then share it with your referral link to your college group. It works way better than just text.</p>
                 <div class="copy-box">
-                    <div class="copy-box-label">Copy & send to your college group</div>
+                    <div class="copy-box-label">Copy & send with the poster</div>
                     <div class="copy-box-text">"There's a challenge running — roast or toast your college life and win
                         cash. <strong>₹4,000 prize pool.</strong> Download C2 Club and enter — takes 5 min, anyone can
-                        join → [your invite link]"</div>
+                        join → [your referral link]"</div>
+                </div>
+                <div style="margin-top: 16px;">
+                    <a href="https://wa.me/917338301263" target="_blank" style="display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:700; color:var(--ink); background:var(--white); padding:8px 12px; border-radius:6px; text-decoration:none;">
+                        Message Vijay for Poster →
+                    </a>
                 </div>
             </div>
 
@@ -1226,9 +1333,9 @@
                 <div class="refer-step">
                     <div class="refer-step-num">3</div>
                     <div class="refer-step-body">
-                        <h3>Send your invite link right after</h3>
-                        <p>Find your invite link in your C2 Club profile. Always send the message first — link alone
-                            gets ignored.</p>
+                        <h3>Send your referral link right after</h3>
+                        <p>Find your unique referral link on your profile page in the app. Always send the message first — link alone
+                            gets ignored. Mention that they should join the challenge via your link.</p>
                     </div>
                 </div>
 
@@ -1338,7 +1445,17 @@
     <div class="page" id="page-posts">
         <nav class="nav">
             <div class="nav-logo">C2 <span>Club</span></div>
-            <button class="nav-back" onclick="goTo('page-home')">← Back</button>
+            <div class="nav-right">
+                <a href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp" target="_blank"
+                    class="nav-download">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M17.523 15.3414L20.355 12.5094L17.523 9.67742V11.5094H12V13.5094H17.523V15.3414ZM21.43 3.58942C21.17 3.22942 20.73 2.99942 20.25 2.99942H3.75C3.06 2.99942 2.5 3.55942 2.5 4.24942V19.7494C2.5 20.4394 3.06 20.9994 3.75 20.9994H20.25C20.73 20.9994 21.17 20.7694 21.43 20.4094C21.48 20.3394 21.5 20.2494 21.5 20.1494V3.84942C21.5 3.74942 21.48 3.65942 21.43 3.58942ZM20 18.9994H4V4.99942H20V18.9994Z" />
+                    </svg>
+                    <span>Download App</span>
+                </a>
+                <button class="nav-back" onclick="goTo('page-home')">← Back</button>
+            </div>
         </nav>
 
         <div class="inner-hero">
@@ -1346,11 +1463,16 @@
                 style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--green-dark); margin-bottom:12px;">
                 Your content · ₹400</div>
             <h1>Post ideas for your C2 Club hub</h1>
-            <p>10–15 posts is all you need. Use what feels real — skip what doesn't. This is a menu, not a checklist.
-            </p>
+            <p>10–15 posts is all you need. Use what feels real — skip what doesn't. This is a menu, not a checklist.</p>
         </div>
 
         <div class="inner-content">
+            <div class="payout-rule">
+                <div class="payout-rule-title">
+                    <span>💡</span> Don't Spam
+                </div>
+                <p>Do not post 10 low-effort items in a single day just to get paid. Payouts are only approved for <strong>genuine, spaced-out content</strong> that actually adds value to your hub. We verify quality before confirming your task.</p>
+            </div>
 
             <div class="posts-intro">
                 <p>Write in your own words. Don't copy the examples. <strong>Mix it up!</strong> Don't just post 10 of the same thing (like only PYQs). If you post a PYQ today, try a meme tomorrow. A diverse hub is a healthy hub.</p>
