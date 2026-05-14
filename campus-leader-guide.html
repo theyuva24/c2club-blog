@@ -126,12 +126,23 @@
             height: 14px;
         }
 
+        .nav-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
         @media (max-width: 480px) {
-            .nav-download span {
+            .nav-label {
                 display: none;
             }
             .nav-download {
-                padding: 7px;
+                padding: 6px 10px;
+            }
+            .nav-download span {
+                font-size: 10px;
             }
         }
 
@@ -1019,14 +1030,11 @@
                 <a href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp" target="_blank"
                     class="nav-download">
                     <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M17.523 15.3414L20.355 12.5094L17.523 9.67742V11.5094H12V13.5094H17.523V15.3414ZM21.43 3.58942C21.17 3.22942 20.73 2.99942 20.25 2.99942H3.75C3.06 2.99942 2.5 3.55942 2.5 4.24942V19.7494C2.5 20.4394 3.06 20.9994 3.75 20.9994H20.25C20.73 20.9994 21.17 20.7694 21.43 20.4094C21.48 20.3394 21.5 20.2494 21.5 20.1494V3.84942C21.5 3.74942 21.48 3.65942 21.43 3.58942ZM20 18.9994H4V4.99942H20V18.9994Z" />
+                        <path d="M3.609 2.091L14.591 12 3.609 21.909V2.091zM4.917 1.155L15.935 11.23l2.842-2.585L4.917 1.155zM17.135 12.308l-1.2 1.092L4.917 22.845l13.86-7.952-1.642-2.585zM18.825 9.176l-2.035 1.85 1.705 2.684 2.896-1.662-2.566-2.872z"/>
                     </svg>
-                    <span>Download App</span>
+                    <span>Download C2 Club</span>
                 </a>
-                <div
-                    style="font-size:11px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:var(--muted);">
-                    Campus Lead</div>
+                <div class="nav-label">Campus Lead</div>
             </div>
         </nav>
 
@@ -1207,10 +1215,9 @@
                 <a href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp" target="_blank"
                     class="nav-download">
                     <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M17.523 15.3414L20.355 12.5094L17.523 9.67742V11.5094H12V13.5094H17.523V15.3414ZM21.43 3.58942C21.17 3.22942 20.73 2.99942 20.25 2.99942H3.75C3.06 2.99942 2.5 3.55942 2.5 4.24942V19.7494C2.5 20.4394 3.06 20.9994 3.75 20.9994H20.25C20.73 20.9994 21.17 20.7694 21.43 20.4094C21.48 20.3394 21.5 20.2494 21.5 20.1494V3.84942C21.5 3.74942 21.48 3.65942 21.43 3.58942ZM20 18.9994H4V4.99942H20V18.9994Z" />
+                        <path d="M3.609 2.091L14.591 12 3.609 21.909V2.091zM4.917 1.155L15.935 11.23l2.842-2.585L4.917 1.155zM17.135 12.308l-1.2 1.092L4.917 22.845l13.86-7.952-1.642-2.585zM18.825 9.176l-2.035 1.85 1.705 2.684 2.896-1.662-2.566-2.872z"/>
                     </svg>
-                    <span>Download App</span>
+                    <span>Download C2 Club</span>
                 </a>
                 <button class="nav-back" onclick="goTo('page-home')">← Back</button>
             </div>
@@ -1268,10 +1275,9 @@
                 <a href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp" target="_blank"
                     class="nav-download">
                     <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M17.523 15.3414L20.355 12.5094L17.523 9.67742V11.5094H12V13.5094H17.523V15.3414ZM21.43 3.58942C21.17 3.22942 20.73 2.99942 20.25 2.99942H3.75C3.06 2.99942 2.5 3.55942 2.5 4.24942V19.7494C2.5 20.4394 3.06 20.9994 3.75 20.9994H20.25C20.73 20.9994 21.17 20.7694 21.43 20.4094C21.48 20.3394 21.5 20.2494 21.5 20.1494V3.84942C21.5 3.74942 21.48 3.65942 21.43 3.58942ZM20 18.9994H4V4.99942H20V18.9994Z" />
+                        <path d="M3.609 2.091L14.591 12 3.609 21.909V2.091zM4.917 1.155L15.935 11.23l2.842-2.585L4.917 1.155zM17.135 12.308l-1.2 1.092L4.917 22.845l13.86-7.952-1.642-2.585zM18.825 9.176l-2.035 1.85 1.705 2.684 2.896-1.662-2.566-2.872z"/>
                     </svg>
-                    <span>Download App</span>
+                    <span>Download C2 Club</span>
                 </a>
                 <button class="nav-back" onclick="goTo('page-home')">← Back</button>
             </div>
@@ -1449,10 +1455,9 @@
                 <a href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp" target="_blank"
                     class="nav-download">
                     <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M17.523 15.3414L20.355 12.5094L17.523 9.67742V11.5094H12V13.5094H17.523V15.3414ZM21.43 3.58942C21.17 3.22942 20.73 2.99942 20.25 2.99942H3.75C3.06 2.99942 2.5 3.55942 2.5 4.24942V19.7494C2.5 20.4394 3.06 20.9994 3.75 20.9994H20.25C20.73 20.9994 21.17 20.7694 21.43 20.4094C21.48 20.3394 21.5 20.2494 21.5 20.1494V3.84942C21.5 3.74942 21.48 3.65942 21.43 3.58942ZM20 18.9994H4V4.99942H20V18.9994Z" />
+                        <path d="M3.609 2.091L14.591 12 3.609 21.909V2.091zM4.917 1.155L15.935 11.23l2.842-2.585L4.917 1.155zM17.135 12.308l-1.2 1.092L4.917 22.845l13.86-7.952-1.642-2.585zM18.825 9.176l-2.035 1.85 1.705 2.684 2.896-1.662-2.566-2.872z"/>
                     </svg>
-                    <span>Download App</span>
+                    <span>Download C2 Club</span>
                 </a>
                 <button class="nav-back" onclick="goTo('page-home')">← Back</button>
             </div>
