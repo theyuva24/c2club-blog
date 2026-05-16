@@ -13,4 +13,13 @@
 # Deep Link Intent Routing (Manual only)
 /app            /redirect.html       200
 
+# Deep Link Routes - Route to redirect.html for app opening intent
+# These MUST be before the catch-all /* rule
+/challenge/*    /redirect.html       200
+/entry/*        /redirect.html       200
+/post/*         /redirect.html       200
+/user/*         /redirect.html       200
+/hub/*          /redirect.html       200
+/ref/*          /redirect.html       200
+
 /*              /index.html          200
