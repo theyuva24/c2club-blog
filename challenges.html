@@ -164,16 +164,22 @@
 
 <body>
 
-    <header class="navbar" style="background: var(--app-bg); border-bottom-color: rgba(255,255,255,0.05);">
+    <header class="navbar" id="mainNav">
         <div class="container nav-container">
             <div class="logo">
-                <a href="/" style="color: white;">C2 Club</a>
+                <a href="/">C2 <span>Club</span></a>
             </div>
-            <nav class="nav-links">
-                <a href="/blog/index.html" class="nav-link" style="color: white;">Blog</a>
-                <a href="/challenges.html" class="nav-link" style="color: var(--app-accent);">Challenges</a>
-                <a href="/contact.html" class="nav-link" style="color: white;">Contact</a>
-                <a href="/download.html" class="btn btn-primary nav-btn">Download</a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="nav-links" id="navLinks">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/challenges.html" class="nav-link active">Challenges</a>
+                <a href="/blog/index.html" class="nav-link">Blog</a>
+                <a href="/contact.html" class="nav-link">Contact</a>
+                <a href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp" class="btn btn-primary nav-btn">Get App</a>
             </nav>
         </div>
     </header>
@@ -285,6 +291,50 @@
 
         loadChallenges();
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', () => {
+                    menuToggle.classList.toggle('active');
+                    navLinks.classList.toggle('nav-active');
+                });
+            }
+            // Navbar scroll
+            const navbar = document.getElementById('mainNav');
+            if (navbar) {
+                window.addEventListener('scroll', () => {
+                    navbar.classList.toggle('scrolled', window.scrollY > 20);
+                }, { passive: true });
+            }
+        });
+    </script>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-brand">
+                    <div class="footer-logo">C2 <span>Club</span></div>
+                    <p class="footer-tagline">Building the collaboration layer students always needed. Connecting campuses, sharing insights, growing together.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Explore</h4>
+                    <a href="/blog/index.html">Blog</a>
+                    <a href="/challenges.html">Challenges</a>
+                    <a href="/download.html">Download App</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Connect</h4>
+                    <a href="/contact.html">Contact Us</a>
+                    <a href="mailto:hello@c2club.in">hello@c2club.in</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 C2 Club. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
 </body>
 
 </html>

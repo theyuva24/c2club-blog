@@ -61,10 +61,10 @@
 
   <script>
     function toggleMenu() {
-      const nav = document.getElementById('navLinks');
+      const menu = document.getElementById('mobileMenu');
       const toggle = document.getElementById('menuToggle');
-      if (nav && toggle) {
-        nav.classList.toggle('open');
+      if (menu && toggle) {
+        menu.classList.toggle('open');
         toggle.classList.toggle('active');
       }
     }
@@ -181,7 +181,7 @@
       color: var(--text);
     }
 
-    .btn-nav {
+    .nav-btn {
       background: var(--medical);
       color: #000 !important;
       padding: 8px 18px;
@@ -190,10 +190,47 @@
       font-size: 0.8rem !important;
       letter-spacing: 0.02em;
       transition: opacity 0.2s !important;
+      text-decoration: none;
     }
 
-    .btn-nav:hover {
+    .nav-btn:hover {
       opacity: 0.85;
+    }
+
+    /* Breadcrumbs */
+    .breadcrumbs {
+      margin-bottom: 32px;
+      text-align: left;
+    }
+
+    .breadcrumbs ol {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+
+    .breadcrumbs li + li::before {
+      content: "/";
+      margin: 0 12px;
+      color: var(--border);
+    }
+
+    .breadcrumbs a {
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .breadcrumbs a:hover {
+      color: var(--medical);
+    }
+
+    .breadcrumbs li[aria-current="page"] {
+      color: var(--text);
+      font-weight: 600;
     }
 
     .menu-toggle {
@@ -1088,14 +1125,14 @@
   <nav class="navbar">
     <div class="nav-container">
       <div class="logo">
-        <a href="/">C2 Club</a>
+        <a href="/">C2 <span>Club</span></a>
       </div>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="/index.html">Home</a></li>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
         <li><a href="/challenges.html">Challenges</a></li>
         <li><a href="/blog/index.html">Blog</a></li>
         <li><a href="/contact.html">Contact</a></li>
-        <li><a href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp" class="btn-nav">Get App</a>
+        <li><a href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp" class="nav-btn">Get App</a>
         </li>
       </ul>
 
@@ -1109,11 +1146,11 @@
 
   <div class="mobile-menu" id="mobileMenu">
     <button class="close-menu" onclick="toggleMenu()">&times;</button>
-    <a href="/index.html">Home</a>
+    <a href="/">Home</a>
     <a href="/challenges.html">Challenges</a>
     <a href="/blog/index.html">Blog</a>
     <a href="/contact.html">Contact</a>
-    <a href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp" class="btn-nav">Get App</a>
+    <a href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp" class="nav-btn">Get App</a>
   </div>
 
   <main>
@@ -1610,7 +1647,7 @@
   <footer>
     <div class="footer-inner">
       <div class="wordmark">C2 <span>Club</span></div>
-      <p>Building the collaboration layer students always needed.</p>
+      <p>Building the collaboration layer students always needed. Connecting campuses, sharing insights, growing together.</p>
       <nav>
         <a href="/blog/index.html">Blog</a>
         <a href="/contact.html">Contact</a>

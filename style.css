@@ -437,6 +437,41 @@ p {
         0 4px 12px rgba(34, 197, 94, 0.2);
 }
 
+/* Breadcrumbs */
+.breadcrumbs {
+    margin-bottom: 32px;
+}
+
+.breadcrumbs ol {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.breadcrumbs li + li::before {
+    content: "/";
+    margin: 0 12px;
+    color: var(--border-color);
+}
+
+.breadcrumbs a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.breadcrumbs a:hover {
+    color: var(--primary-color);
+}
+
+.breadcrumbs li[aria-current="page"] {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
 /* =========================================
    HERO SECTION
    ========================================= */
