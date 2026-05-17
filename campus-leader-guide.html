@@ -207,7 +207,74 @@
             color: var(--muted);
             line-height: 1.7;
             max-width: 480px;
-            margin-bottom: 40px;
+            margin-bottom: 32px;
+        }
+
+        /* ── HERO SUMMARY ── */
+        .hero-summary {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 48px;
+        }
+
+        .hero-summary-title {
+            grid-column: 1 / -1;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--green-dark);
+            margin-bottom: 4px;
+        }
+
+        .summary-item {
+            background: var(--off);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px 10px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .summary-item strong {
+            display: block;
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--green-dark);
+            margin-bottom: 4px;
+            line-height: 1;
+        }
+
+        .summary-item span {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .summary-item.startup {
+            background: var(--ink);
+            border-color: var(--ink);
+        }
+
+        .summary-item.startup strong {
+            color: var(--green);
+            font-size: 15px;
+            line-height: 1.2;
+        }
+
+        .summary-item.startup span {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        @media (max-width: 480px) {
+            .hero-summary {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         /* ── CHALLENGE STRIP ── */
@@ -1220,6 +1287,27 @@
 
             <p>Share a challenge. Start conversations. Get paid as you go. This is what working with a fast-growing
                 startup like C2 Club actually feels like.</p>
+
+            <!-- THE WHOLE PICTURE SUMMARY -->
+            <div class="hero-summary">
+                <div class="hero-summary-title">The Whole Picture</div>
+                <div class="summary-item">
+                    <strong>15</strong>
+                    <span>Friends</span>
+                </div>
+                <div class="summary-item">
+                    <strong>15</strong>
+                    <span>Posts</span>
+                </div>
+                <div class="summary-item">
+                    <strong>₹1,500</strong>
+                    <span>Earned</span>
+                </div>
+                <div class="summary-item startup">
+                    <strong>Startup Partner</strong>
+                    <span>Opportunity</span>
+                </div>
+            </div>
 
             <!-- CHALLENGE STRIP -->
             <div class="challenge-strip">
