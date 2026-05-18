@@ -20,6 +20,4 @@
 /post/*         /redirect.html       200
 /user/*         /redirect.html       200
 /hub/*          /redirect.html       200
-/ref/*          /redirect.html       200
-
-/*              /                    200
+/ref/*          /redirect.html       200
