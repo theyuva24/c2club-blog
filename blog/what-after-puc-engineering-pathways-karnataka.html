@@ -843,20 +843,21 @@
       .pills {
         display: flex;
         flex-wrap: wrap;
-        gap: 6px;
+        gap: 8px;
         padding-top: 14px;
         border-top: 1px solid var(--border-subtle);
       }
 
       .pill {
         font-size: 0.72rem;
-        font-weight: 500;
-        padding: 4px 10px;
-        border-radius: 4px;
-        background: var(--surface-2);
-        color: var(--text-muted);
-        border: 1px solid var(--border);
-        letter-spacing: 0.02em;
+        font-weight: 600;
+        padding: 6px 14px;
+        border-radius: 50px;
+        background: rgba(34, 197, 94, 0.1);
+        color: var(--green);
+        border: 1px solid rgba(34, 197, 94, 0.3);
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
       }
 
       /* ── Numbered steps (College filters) ── */
@@ -1139,37 +1140,7 @@
         margin: 0;
       }
 
-      #download-pdf-btn {
-        display: none;
-        position: fixed;
-        bottom: 24px;
-        right: 24px;
-        z-index: 1000;
-        background: var(--green);
-        color: #000;
-        border: none;
-        padding: 12px 24px;
-        border-radius: 12px;
-        font-weight: 600;
-        font-size: 0.95rem;
-        align-items: center;
-        gap: 10px;
-        cursor: pointer;
-        box-shadow: 0 8px 24px rgba(34, 197, 94, 0.3);
-        transition:
-          transform 0.2s,
-          background 0.2s;
-      }
 
-      #download-pdf-btn:hover {
-        transform: translateY(-2px);
-        background: #1eb054;
-      }
-
-      #download-pdf-btn svg {
-        width: 20px;
-        height: 20px;
-      }
 
       @media (prefers-color-scheme: light) {
         :root {
@@ -1374,21 +1345,7 @@
       </div>
     </div>
 
-    <button id="download-pdf-btn" onclick="window.print()">
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-        <polyline points="7 10 12 15 17 10"></polyline>
-        <line x1="12" y1="15" x2="12" y2="3"></line>
-      </svg>
-      Download PDF
-    </button>
+
 
     <div class="progress-bar" id="reading-progress"></div>
 
@@ -1475,6 +1432,14 @@
             <div class="dot"></div>
             <span>7 min read</span>
           </div>
+          <button id="download-pdf-btn" onclick="window.print()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Download as Offline PDF
+          </button>
         </header>
 
         <!-- Stats -->
@@ -1556,31 +1521,31 @@
                   <td>KCET</td>
                   <td>Karnataka domicile students</td>
                   <td>Most affordable (Govt Quota)</td>
-                  <td>₹50K – ₹1.2L</td>
+                  <td><strong>₹50K – ₹1.2L</strong></td>
                 </tr>
                 <tr>
                   <td>JEE Main / Adv</td>
                   <td>Targeting NITs/IITs/IIITs</td>
                   <td>National prestige &amp; massive infra</td>
-                  <td>₹1.5L – ₹3L</td>
+                  <td><strong>₹1.5L – ₹3L</strong></td>
                 </tr>
                 <tr>
                   <td>COMED-K</td>
                   <td>Non-KA students &amp; Top PVT colleges</td>
                   <td>Access to RV, MSRIT, BMS for all</td>
-                  <td>₹2.8L – ₹4L</td>
+                  <td><strong>₹2.8L – ₹4L</strong></td>
                 </tr>
                 <tr>
                   <td>Uni-Exams (PESSAT/VIT)</td>
                   <td>Deemed Universities</td>
                   <td>Focused curriculum &amp; separate intake</td>
-                  <td>₹3.5L – ₹5L+</td>
+                  <td><strong>₹3.5L – ₹5L+</strong></td>
                 </tr>
                 <tr>
                   <td>Management Quota</td>
                   <td>Direct entry (Low rank/No exam)</td>
                   <td>Expensive but saves a year</td>
-                  <td>₹5L – ₹15L+</td>
+                  <td><strong>₹5L – ₹15L+</strong></td>
                 </tr>
               </tbody>
             </table>
@@ -1905,19 +1870,19 @@
                 <tr>
                   <td><strong>Product-Based</strong></td>
                   <td>Google, Amazon, Adobe, Startups</td>
-                  <td>₹12L – ₹45L+</td>
+                  <td><strong>₹12L – ₹45L+</strong></td>
                   <td>High-level Coding, DSA, System Design</td>
                 </tr>
                 <tr>
                   <td><strong>Service-Based</strong></td>
                   <td>TCS, Infosys, Wipro, Accenture</td>
-                  <td>₹3.6L – ₹7L</td>
+                  <td><strong>₹3.6L – ₹7L</strong></td>
                   <td>Basic Coding, Aptitude, Communication</td>
                 </tr>
                 <tr>
                   <td><strong>Core Industry</strong></td>
                   <td>L&amp;T, Bosch, Tata Motors, Reliance</td>
-                  <td>₹4L – ₹9L</td>
+                  <td><strong>₹4L – ₹9L</strong></td>
                   <td>Branch Fundamentals, AutoCAD, MATLAB</td>
                 </tr>
               </tbody>
@@ -2213,61 +2178,21 @@
               </p>
             </details>
           </div>
+
+
         </div>
         <!-- /article-body -->
 
         <!-- PDF End Page -->
-        <div class="print-only print-end-page">
-          <h2 style="font-size: 2.5rem">Be part of something bigger.</h2>
-          <p
-            style="
-              font-size: 1.2rem;
-              color: #444;
-              max-width: 600px;
-              margin: 20px auto;
-            "
-          >
-            We are starting a new social networking platform focused entirely on
-            students. This is about building a community where we can all learn,
-            earn, and grow together.
+        <div class="print-only conversion-cta-page">
+          <h2 style="font-size: 2.2rem; color: #00E676;">📌 Data is only Step 1. Don't build your choice list alone.</h2>
+          <p style="font-size: 1.2rem; color: #ffffff; max-width: 650px; margin: 20px auto; line-height: 1.6;">
+            Reading this roadmap gives you the blueprint, but the real stress begins when you have to choose between options on rough paper during option entry.
           </p>
-
-          <div class="invitation-box">
-            <p
-              style="
-                margin-bottom: 10px;
-                font-weight: 600;
-                text-transform: uppercase;
-                letter-spacing: 0.1em;
-                font-size: 0.8rem;
-                color: #22c55e;
-              "
-            >
-              Join the Community
-            </p>
-            <p>
-              If you have that passion to help your peers and want to be part of
-              the core team shaping this ecosystem, let's talk.
-            </p>
-            <a
-              href="https://wa.me/917338301263"
-              class="whatsapp-num"
-              style="text-decoration: none; color: inherit; display: block"
-              >733-830-1263</a
-            >
-            <p style="font-size: 0.9rem; color: #666; margin-top: 10px">
-              Message me on WhatsApp
-            </p>
-          </div>
-
-          <div style="margin-top: 60px">
-            <div class="print-logo" style="font-size: 1.5rem">
-              C2 <span>Club</span>
-            </div>
-            <p style="font-size: 0.9rem; color: #888">
-              c2club.in · Download the App on Play Store
-            </p>
-          </div>
+          <p style="font-size: 1.2rem; color: #cccccc; max-width: 650px; margin: 20px auto; line-height: 1.6;">
+            Stop guessing. Engineering and senior peers from top campuses across Karnataka are active inside the free C2 Club App right now, helping incoming students review campus placement truths, cut-offs, and hostel realities.
+          </p>
+          <a href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp" class="pdf-button-primary">Join the "What After PU?" Hub Instantly</a>
         </div>
 
         <!-- CTA -->
@@ -2331,9 +2256,7 @@
     </footer>
 
     <div class="print-only print-footer">
-      C2 Club · Building the collaboration layer students always needed.
-      Connecting campuses, sharing insights, growing together. · Download the
-      app at c2club.in
+      C2 Club Career Roadmap Series
     </div>
 
     <script>
@@ -2347,12 +2270,7 @@
 
       // Mobile nav removed from here (now in head)
 
-      // Show PDF button only if ?pdf=1 is in URL
-      const urlParams = new URLSearchParams(window.location.search);
-      if (urlParams.get("pdf") === "1") {
-        const pdfBtn = document.getElementById("download-pdf-btn");
-        if (pdfBtn) pdfBtn.style.display = "flex";
-      }
+
     </script>
   </body>
 </html>

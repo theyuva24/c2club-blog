@@ -2813,6 +2813,35 @@ pre {
   color: var(--text-primary);
 }
 
+.article-page .table-wrap table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.article-page .table-wrap th {
+  background: var(--surface-2);
+  color: var(--text);
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 2px solid var(--border);
+}
+.article-page .table-wrap td {
+  padding: 16px;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+}
+.article-page .table-wrap tbody tr:nth-child(even) {
+  background: #111111; /* deep black */
+}
+.article-page .table-wrap tbody tr:nth-child(odd) {
+  background: #1e1e24; /* dark grey */
+}
+.article-page .table-wrap td strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
 .article-page .navbar {
   border-bottom: 1px solid var(--border-color);
 }
@@ -3222,120 +3251,171 @@ pre {
   font-weight: 600;
 }
 
-/* =========================================
-   PDF & PRINT SYSTEM
-   ========================================= */
+/* ==========================================================================
+   C2 CLUB UNIVERSAL PRINT CONVERSION ENGINE (UNIVERSAL-ENGINE.css) - LIGHT MODE
+   ========================================================================== */
 
 @media print {
+  /* Dynamic Variable Mapping for Crisp Universal Light Mode */
+  :root {
+    --black: #ffffff !important;
+    --surface: #f8fafc !important;
+    --surface-2: #f1f5f9 !important;
+    --border: #cbd5e1 !important;
+    --border-subtle: #e2e8f0 !important;
+    --green: #00aa50 !important;
+    --medical: #00aa50 !important;
+    --text: #0f172a !important;
+    --text-muted: #334155 !important;
+    --text-dim: #64748b !important;
+  }
+
+  /* 1. Global Page Dimensions & System Reset */
   @page {
-    margin: 2cm;
-    size: A4;
+    size: A4 portrait;
+    margin: 20mm 15mm 20mm 15mm !important;
   }
-  body {
-    background: white !important;
-    color: #111 !important;
-    font-size: 11pt !important;
-    line-height: 1.5 !important;
-  }
-  .navbar,
-  .progress-bar,
-  .article-cta,
-  .article-footer-cta,
-  footer,
-  .btn-cta,
-  #download-pdf-btn,
-  .menu-toggle,
-  .mobile-menu {
-    display: none !important;
-  }
-  .article-outer,
-  .article-container {
-    max-width: 100% !important;
-    padding: 0 !important;
+
+  html, body {
+    background: #ffffff !important;
+    color: #111111 !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    width: 100% !important;
     margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
-  .hero,
-  .article-header {
-    border: none !important;
-    padding: 20px 0 !important;
+
+  /* Strip browser-injected navigation bar/footer metadata stamps completely. Target classes to preserve article heroes */
+  .navbar, footer, nav, .smart-banner, #app-link-banner, .web-nav-links, .faq-section, .article-cta, .series-box, #download-pdf-btn, .progress-bar, .menu-toggle, .mobile-menu {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+  }
+
+  /* Kill all layout-distorting web artifacts and negative margins */
+  * {
+    margin-top: 0 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* 2. Structural Content Flow Rules */
+  h1, h2, h3 {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    color: #111111 !important; /* Premium Dark/Black text for Light Mode reading */
+    margin-top: 25px !important;
+    margin-bottom: 15px !important;
+  }
+
+  /* Keep informational blocks, data tables, and grids perfectly unified */
+  table, .data-card, .reality-check-box, ul, ol, .pathway-card, .domain-card, .step, .archetype-row, .callout {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
     margin-bottom: 20px !important;
-    page-break-after: avoid;
-    background: none !important;
+    background: #fdfdfd !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 8px !important;
+    padding: 12px !important;
   }
-  .stats-strip {
-    page-break-inside: avoid;
-    border-color: #eee !important;
+
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
   }
-  .table-wrap {
-    page-break-inside: avoid;
-    border-color: #eee !important;
+
+  th, td {
+    padding: 12px 10px !important;
+    border: 1px solid #e2e8f0 !important;
+    font-size: 11pt !important;
+    line-height: 1.4 !important;
+    color: #334155 !important;
   }
-  .pathway-card,
-  .domain-card,
-  .step,
-  .archetype-row {
-    page-break-inside: avoid;
-    border-color: #eee !important;
-    background: #fafafa !important;
+
+  th {
+    background: #f1f5f9 !important;
+    font-weight: 600 !important;
+    color: #0f172a !important;
   }
-  h1,
-  h2,
-  h3 {
-    color: #000 !important;
-    page-break-after: avoid;
+
+  tbody tr:nth-child(even) td {
+    background: #f8fafc !important;
   }
+
+  /* Flatten flex containers so they render block by block */
+  .pathway-grid, .domain-grid, .stats-strip, .pills {
+    display: block !important;
+  }
+  .pill {
+    display: inline-block !important;
+    margin: 4px 6px 4px 0 !important;
+    border: 1px solid #cbd5e1 !important;
+    color: #334155 !important;
+    background: #f1f5f9 !important;
+    padding: 4px 10px !important;
+    border-radius: 50px !important;
+    font-size: 9pt !important;
+  }
+  
   .print-only {
     display: block !important;
   }
-  .print-cover {
+
+  /* 3. Re-Engineering Final Conversion Pages (Pages 13 & 14) */
+  
+  /* Force the final CTA page to act as a standalone, un-broken vertical card */
+  .conversion-cta-page {
+    page-break-before: always !important;
+    break-before: always !important;
+    height: 100% !important;
     display: flex !important;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 90vh;
-    text-align: center;
-    page-break-after: always;
-    padding: 50px 0;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 40px 20px !important;
+    background: #f8fafc !important;
+    border: 2px solid #e2e8f0 !important;
+    border-radius: 12px !important;
+    color: #0f172a !important;
   }
-  .print-logo {
-    font-size: 2.5rem;
-    font-weight: 800;
-    margin-bottom: 20px;
-    color: #000;
+
+  .conversion-cta-page h2 {
+    color: #00aa50 !important; /* Readable emerald green for highlights in light mode */
   }
-  .print-logo span {
-    color: #22c55e;
+
+  .conversion-cta-page p {
+    color: #334155 !important;
   }
-  .print-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    font-size: 8pt;
-    color: #888;
-    text-align: center;
-    padding: 10px 0;
-    border-top: 1px solid #eee;
-    background: white;
-  }
-  .print-end-page {
+
+  /* Transform plain text links into clear, tappable mobile app store buttons */
+  .pdf-button-primary {
     display: block !important;
-    page-break-before: always;
-    padding-top: 100px;
-    text-align: center;
+    width: 85% !important;
+    margin: 25px auto 0 auto !important;
+    padding: 16px 24px !important;
+    background: #00E676 !important; /* High-contrast green actionable area */
+    color: #000000 !important;
+    font-weight: bold !important;
+    font-size: 13pt !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+    border-radius: 8px !important;
+    text-align: center !important;
+    page-break-inside: avoid !important;
   }
-  .invitation-box {
-    max-width: 500px;
-    margin: 40px auto;
-    padding: 30px;
-    border: 2px solid #22c55e;
-    border-radius: 20px;
-  }
-  .whatsapp-num {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #22c55e;
-    margin-top: 15px;
+
+  .pdf-button-secondary {
+    display: inline-block !important;
+    margin-top: 15px !important;
+    color: #64748b !important;
+    font-size: 11pt !important;
+    text-decoration: underline !important;
   }
 }
 
@@ -3343,46 +3423,59 @@ pre {
   display: none;
 }
 
-/* --- PDF Download Button --- */
+/* --- PDF Download Button as Floating Action Button (FAB) --- */
 #download-pdf-btn {
-  display: none; /* Hidden by default */
   position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 4000;
-  background: #ffffff;
-  color: #000000;
-  border: 1px solid #e5e5e5;
-  padding: 12px 24px;
+  bottom: 32px;
+  right: 32px;
+  z-index: 1000;
+  display: inline-flex;
+  background: linear-gradient(135deg, #00e676, #00c853);
+  color: #000000 !important;
+  border: none;
+  padding: 14px 24px;
   border-radius: 50px;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 0.95rem;
+  font-weight: 800;
   cursor: pointer;
-  display: flex;
   align-items: center;
   gap: 10px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px rgba(0, 230, 118, 0.4);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  font-family: var(--font-stack);
+  font-family: var(--font-stack, "DM Sans", sans-serif);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
 #download-pdf-btn:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-  border-color: #22c55e;
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 14px 35px rgba(0, 230, 118, 0.6);
+  background: linear-gradient(135deg, #00ff88, #00e676);
 }
 
 #download-pdf-btn svg {
-  width: 18px;
-  height: 18px;
-  stroke: #22c55e;
+  width: 20px;
+  height: 20px;
+  stroke: #000000 !important;
+  stroke-width: 2.5;
 }
 
 @media (max-width: 680px) {
   #download-pdf-btn {
     bottom: 20px;
     right: 20px;
-    padding: 10px 18px;
-    font-size: 0.8rem;
+    padding: 12px 18px;
+    font-size: 0.85rem;
+    box-shadow: 0 8px 20px rgba(0, 230, 118, 0.35);
   }
+}
+
+/* Suppress Reading Time Indicators Globally (Web & PDF) */
+.read-time,
+.hero-meta span:last-child,
+.hero-meta .dot,
+.hero-meta span.dot,
+.blog-card-meta span:last-child,
+.blog-card-meta .meta-dot {
+  display: none !important;
 }

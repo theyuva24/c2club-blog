@@ -58,11 +58,7 @@
 
 <body>
 
-  <!-- PDF Download Button -->
-  <button id="download-pdf-btn" onclick="window.print()">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-    Download PDF
-  </button>
+
 
   <!-- PDF Cover Page (Print Only) -->
   <div class="print-only print-cover">
@@ -119,6 +115,14 @@
             <span class="meta-dot">&middot;</span>
             <span class="read-time">REPLACE_READ_TIME</span>
           </div>
+          <button id="download-pdf-btn" onclick="window.print()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Download as Offline PDF
+          </button>
           <hr class="article-meta-divider">
         </header>
 
@@ -177,19 +181,19 @@
 
       <!-- PDF End Page (Print Only) -->
       <div class="print-only print-end-page">
-        <h2 style="font-size: 2.5rem;">Be part of something bigger.</h2>
-        <p style="font-size: 1.2rem; color: #444; max-width: 600px; margin: 20px auto;">Join a community where we can all learn, earn, and grow together. We are building the social networking platform students always needed.</p>
+        <h2 style="font-size: 2.2rem; color: #22c55e;">📌 Ready to build real connections?</h2>
+        <p style="font-size: 1.1rem; color: #444; max-width: 650px; margin: 20px auto; line-height: 1.6;">
+            Reading about careers is only Step 1. The real value comes when you start engaging with peers and seniors in a structured environment.
+        </p>
         
-        <div class="invitation-box">
-          <p style="margin-bottom: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem; color: #22C55E;">Join the Community</p>
-          <p>If you want to be part of the core team shaping this ecosystem, let's talk.</p>
-          <a href="https://wa.me/917338301263" class="whatsapp-num" style="text-decoration: none; color: inherit; display: block;">733-830-1263</a>
-          <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">Message us on WhatsApp</p>
-        </div>
-
-        <div style="margin-top: 60px;">
-          <div class="print-logo" style="font-size: 1.5rem;">C2 <span>Club</span></div>
-          <p style="font-size: 0.9rem; color: #888;">c2club.in · Download the App on Play Store</p>
+        <div class="invitation-box" style="margin-top: 30px; padding: 32px; background: #f8fafc; border-left: 4px solid #22c55e; border-radius: 8px;">
+            <p style="margin-bottom: 16px; font-weight: 700; font-size: 1.2rem; color: #000;">
+                We unlocked the ultimate student collaboration hub inside the free C2 Club App.
+            </p>
+            <p style="margin-bottom: 24px; color: #444; line-height: 1.5;">
+                Connect with verified peers, find mentors, and get real career advice from students who have been there. Don't build your network alone.
+            </p>
+            <a href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp" style="display: inline-block; background: #22c55e; color: #000; padding: 14px 28px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 1.1rem;">👉 Click Here to Join C2 Club Instantly</a>
         </div>
       </div>
 
@@ -233,7 +237,7 @@
 
   <!-- PDF Footer (Print Only) -->
   <div class="print-only print-footer">
-    C2 Club · Building the collaboration layer students always needed. · Download the app at c2club.in
+    C2 Club Career Roadmap Series
   </div>
 
 
@@ -281,12 +285,7 @@
         });
       }
 
-      // Show PDF button only if ?pdf=1 is in URL
-      const urlParams = new URLSearchParams(window.location.search);
-      if (urlParams.get('pdf') === '1') {
-        const pdfBtn = document.getElementById('download-pdf-btn');
-        if (pdfBtn) pdfBtn.style.display = 'flex';
-      }
+
     });
   </script>
 
