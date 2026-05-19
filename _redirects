@@ -2,8 +2,8 @@
 /campus-leader /campus-leader-guide.html 200
 
 # Legacy blog URLs redirect to root equivalents
-/blog/alumni-networks-india-career-outcomes /alumni-networks-india-career-outcomes.html 301
-/blog/alumni-networks-india-career-outcomes.html /alumni-networks-india-career-outcomes.html 301
+
+
 /blog / 301
 /blog/ / 301
 
@@ -20,4 +20,39 @@
 /post/*         /redirect.html       200
 /user/*         /redirect.html       200
 /hub/*          /redirect.html       200
-/ref/*          /redirect.html       200
+/ref/*          /redirect.html       200
+
+# New blog URLs after directory restructure
+/alumni-networks-india-career-outcomes.html /blog/alumni-networks-india-career-outcomes.html 301
+/alumni-networks-india-career-outcomes /blog/alumni-networks-india-career-outcomes.html 301
+/blog/alumni-networks-india-career-outcomes /blog/alumni-networks-india-career-outcomes.html 301
+/blog/what-after-puc-aviation-aerospace-karnataka.html /blog/what-after-pu/what-after-puc-aviation-aerospace-karnataka.html 301
+/blog/what-after-puc-aviation-aerospace-karnataka /blog/what-after-pu/what-after-puc-aviation-aerospace-karnataka.html 301
+/blog/what-after-puc-commerce-pathways-karnataka.html /blog/what-after-pu/what-after-puc-commerce-pathways-karnataka.html 301
+/blog/what-after-puc-commerce-pathways-karnataka /blog/what-after-pu/what-after-puc-commerce-pathways-karnataka.html 301
+/blog/what-after-puc-defense-merchant-navy-karnataka.html /blog/what-after-pu/what-after-puc-defense-merchant-navy-karnataka.html 301
+/blog/what-after-puc-defense-merchant-navy-karnataka /blog/what-after-pu/what-after-puc-defense-merchant-navy-karnataka.html 301
+/blog/what-after-puc-design-pathways-karnataka.html /blog/what-after-pu/what-after-puc-design-pathways-karnataka.html 301
+/blog/what-after-puc-design-pathways-karnataka /blog/what-after-pu/what-after-puc-design-pathways-karnataka.html 301
+/blog/what-after-puc-diploma-polytechnic-karnataka.html /blog/what-after-pu/what-after-puc-diploma-polytechnic-karnataka.html 301
+/blog/what-after-puc-diploma-polytechnic-karnataka /blog/what-after-pu/what-after-puc-diploma-polytechnic-karnataka.html 301
+/blog/what-after-puc-emerging-interdisciplinary-karnataka.html /blog/what-after-pu/what-after-puc-emerging-interdisciplinary-karnataka.html 301
+/blog/what-after-puc-emerging-interdisciplinary-karnataka /blog/what-after-pu/what-after-puc-emerging-interdisciplinary-karnataka.html 301
+/blog/what-after-puc-engineering-pathways-karnataka.html /blog/what-after-pu/what-after-puc-engineering-pathways-karnataka.html 301
+/blog/what-after-puc-engineering-pathways-karnataka /blog/what-after-pu/what-after-puc-engineering-pathways-karnataka.html 301
+/blog/what-after-puc-government-job-prep-karnataka.html /blog/what-after-pu/what-after-puc-government-job-prep-karnataka.html 301
+/blog/what-after-puc-government-job-prep-karnataka /blog/what-after-pu/what-after-puc-government-job-prep-karnataka.html 301
+/blog/what-after-puc-hospitality-pathways-karnataka.html /blog/what-after-pu/what-after-puc-hospitality-pathways-karnataka.html 301
+/blog/what-after-puc-hospitality-pathways-karnataka /blog/what-after-pu/what-after-puc-hospitality-pathways-karnataka.html 301
+/blog/what-after-puc-humanities-social-sciences-karnataka.html /blog/what-after-pu/what-after-puc-humanities-social-sciences-karnataka.html 301
+/blog/what-after-puc-humanities-social-sciences-karnataka /blog/what-after-pu/what-after-puc-humanities-social-sciences-karnataka.html 301
+/blog/what-after-puc-law-pathways-karnataka.html /blog/what-after-pu/what-after-puc-law-pathways-karnataka.html 301
+/blog/what-after-puc-law-pathways-karnataka /blog/what-after-pu/what-after-puc-law-pathways-karnataka.html 301
+/blog/what-after-puc-mass-communication-karnataka.html /blog/what-after-pu/what-after-puc-mass-communication-karnataka.html 301
+/blog/what-after-puc-mass-communication-karnataka /blog/what-after-pu/what-after-puc-mass-communication-karnataka.html 301
+/blog/what-after-puc-medical-pathways-karnataka.html /blog/what-after-pu/what-after-puc-medical-pathways-karnataka.html 301
+/blog/what-after-puc-medical-pathways-karnataka /blog/what-after-pu/what-after-puc-medical-pathways-karnataka.html 301
+/blog/what-after-puc-pure-sciences-pathways-karnataka.html /blog/what-after-pu/what-after-puc-pure-sciences-pathways-karnataka.html 301
+/blog/what-after-puc-pure-sciences-pathways-karnataka /blog/what-after-pu/what-after-puc-pure-sciences-pathways-karnataka.html 301
+/blog/what-after-puc-vocational-skill-based-karnataka.html /blog/what-after-pu/what-after-puc-vocational-skill-based-karnataka.html 301
+/blog/what-after-puc-vocational-skill-based-karnataka /blog/what-after-pu/what-after-puc-vocational-skill-based-karnataka.html 301

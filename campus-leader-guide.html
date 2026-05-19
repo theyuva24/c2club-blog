@@ -1496,7 +1496,6 @@
                     </svg>
                     <span>Download C2 Club</span>
                 </a>
-                <button class="nav-back" onclick="goTo('page-home')">← Back</button>
             </div>
         </nav>
 
@@ -1556,7 +1555,6 @@
                     </svg>
                     <span>Download C2 Club</span>
                 </a>
-                <button class="nav-back" onclick="goTo('page-home')">← Back</button>
             </div>
         </nav>
 
@@ -1746,7 +1744,6 @@
                     </svg>
                     <span>Download C2 Club</span>
                 </a>
-                <button class="nav-back" onclick="goTo('page-home')">← Back</button>
             </div>
         </nav>
 
@@ -2037,10 +2034,32 @@
 
     <script>
         function goTo(pageId) {
+            const route = pageId.replace('page-', '');
+            window.location.hash = route;
+        }
+
+        function handleRouting() {
+            const hash = window.location.hash;
+            let targetPageId = 'page-home';
+            
+            if (hash === '#hub') {
+                targetPageId = 'page-hub';
+            } else if (hash === '#refer') {
+                targetPageId = 'page-refer';
+            } else if (hash === '#posts') {
+                targetPageId = 'page-posts';
+            }
+
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById(pageId).classList.add('active');
+            const targetPage = document.getElementById(targetPageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
             window.scrollTo({ top: 0, behavior: 'instant' });
         }
+
+        window.addEventListener('hashchange', handleRouting);
+        window.addEventListener('load', handleRouting);
 
         function startVideo() {
             const v = document.getElementById('hubVideo');
