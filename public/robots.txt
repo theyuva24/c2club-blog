@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /campus-leader-guide-v3.html
+Disallow: /campus-leader
+
+Sitemap: https://c2club.in/sitemap-index.xml

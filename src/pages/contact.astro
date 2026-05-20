@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const pageTitle = "Contact | C2 Club";
+---
+<Layout
+  title={pageTitle}
+  description="Get in touch with C2 Club for questions, partnerships, and collaborations."
+  isArticle={false}
+>
+  <main class="contact-page"> <section class="contact-hero text-center"> <div class="container"> <span class="section-label">Contact</span> <h1 class="contact-heading">Let's talk.</h1> <p class="contact-subtext">We're building C2 Club thoughtfully. If you have questions, feedback,
+                    collaboration ideas, or press inquiries - we're listening.</p> </div> </section> <section class="contact-methods"> <div class="container"> <div class="contact-methods-container"> <div class="contact-block"> <span class="contact-block-label">📧 General Inquiries</span> <a href="mailto:hello@c2club.in?subject=C2%20Club%20Inquiry" class="contact-email">hello@c2club.in</a> <p class="contact-block-desc">For feedback, questions, and student-related conversations. We love hearing from students.</p> </div> <div class="contact-block"> <span class="contact-block-label">🤝 Partnerships & Collaboration</span> <a href="mailto:contact@c2club.in?subject=Partnership%20Inquiry" class="contact-email">contact@c2club.in</a> <p class="contact-block-desc">For campus partnerships, research collaborations, and structured
+                            discussions about working together.</p> </div> </div> <div class="contact-footer"> <hr class="contact-divider"> <p class="contact-response-time">We typically respond within 24–48 hours.</p> <p class="contact-closing">C2 Club is built for students across Indian campuses.</p> </div> </div> </section> </main>
+</Layout>
+
+

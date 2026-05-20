@@ -1,47 +1,45 @@
-# C2Club Blog
+# C2 Club Blog (Astro Edition)
 
-A student-first peer learning platform with blog content.
+A student-first peer learning platform with blog content, built using [Astro](https://astro.build/).
 
-## Development
+## 🚀 Project Structure
 
-**CRITICAL: The development server MUST be run from the `public` directory for correct routing:**
+This project has been reorganized into a standard Astro structure at the root level:
 
-```bash
-cd public
-npx serve .
+```text
+/
+├── public/          # Static assets (images, fonts, deep link verification files, etc.)
+│   ├── .well-known/ # Android App verification files
+│   ├── images/      # Blog images
+│   ├── style.css    # Global stylesheet
+│   └── _redirects   # Hosting redirect configurations
+├── src/
+│   ├── components/  # Reusable Astro components (Header, Footer, SeriesBox, etc.)
+│   ├── layouts/     # Page layout templates
+│   └── pages/       # Astro page files (index, blog pages, challenges, etc.)
+├── dist/            # Compiled static site (generated during build)
+├── scripts/         # Utility and build orchestration scripts
+├── package.json     # Node.json scripts and dependencies
+└── wrangler.jsonc   # Cloudflare Pages deployment configuration
 ```
 
-**FAILURE NOTICE: If you run `npx serve .` from the root directory (where this README.md is located), you WILL get 404 errors for `/blog/` and other routes.**
+## 🧞 Commands
 
-The directory structure is:
-- Root directory (where you are now): Contains project files like README.md, netlify.toml, etc.
-- `public/` directory: Contains the actual website that gets deployed to Netlify
+All commands should be run from the root of the project:
 
-The development server must be started from the `public` directory to match how the site is deployed on Netlify.
+| Command | Action |
+| :--- | :--- |
+| `npm install` | Installs dependencies |
+| `npm run dev` | Starts local dev server at `localhost:4321` |
+| `npm run build` | Builds the production site to `./dist/` |
+| `npm run preview` | Previews the build locally |
 
-Or alternatively, you can use Python's built-in server:
+## 🔗 Deep Links & Android Integration
 
-```bash
-cd public
-python -m http.server 8000
-```
+The project includes deep link configuration files in `public/` that are served at the root:
+- `public/.well-known/assetlinks.json` - Used by the Android app for App Links verification.
+- `public/.well-known/apple-app-site-association` - Used for iOS Universal Links.
+- `public/redirect.html` - Handles client-side intent routing for Android App deep linking.
+- `public/deeplink-fallback.js` - Dynamic Smart App Banner fallback logic.
 
-## Deployment
-
-This site is configured for deployment to Netlify. The `public` directory is the build output directory.
-
-## Structure
-
-- `public/` - Static HTML files
-  - `blog/` - Blog posts and index
-  - `images/` - Image assets
-  - `_redirects` - Netlify redirect configuration
-- `netlify.toml` - Netlify configuration
-
-## Features
-
-- Clean, institutional black-white theme with neon accents
-- Responsive design
-- Blog section with multiple posts
-- FAQ section with collapsible questions
-- Student-focused content and navigation
+These files are copied verbatim into the production bundle root (`dist/`) during build, ensuring the deep linking integration remains active and uninterrupted.

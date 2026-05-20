@@ -1,0 +1,65 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { blogPosts } from '../../data/blogPosts.js';
+
+const pageTitle = "C2 Club Blog | Insights on campus collaboration";
+---
+<Layout
+  title={pageTitle}
+  description="Insights on alumni networking, student growth, referrals, and career systems in India."
+  isArticle={false}
+>
+  <main class="blog-index">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li aria-current="page">Blog</li>
+        </ol>
+      </nav>
+    </div>
+    <section class="blog-hero section">
+      <div class="container">
+        <span class="section-label">C2 Club Blog</span>
+        <h1 class="blog-main-heading">
+          Insights on campus collaboration and student growth.
+        </h1>
+        <p class="blog-subtext">
+          Research-backed perspectives and grounded insights from Indian
+          student ecosystems. Practical guides, career advice, and real talk.
+        </p>
+      </div>
+    </section>
+
+    <section class="blog-grid-section section">
+      <div class="container">
+        <div class="blog-grid">
+          {blogPosts.map((post) => (
+            <article class="blog-card">
+              <div
+                class="blog-card-image"
+                style={`background-image: url("${post.image}"); background-size: cover; background-position: center; height: 200px; border-radius: 12px; margin-bottom: 20px;`}
+              ></div>
+              <h2 class="blog-card-title">
+                <a href={post.url}>{post.title}</a>
+              </h2>
+              <p class="blog-card-excerpt">
+                {post.excerpt}
+              </p>
+              <div class="blog-card-meta">
+                <span>{post.date}</span>
+                <span class="meta-dot">&middot;</span>
+                <span>{post.readTime}</span>
+              </div>
+              <a href={post.url} class="blog-read-more">Read article &rarr;</a>
+            </article>
+          ))}
+        </div>
+
+        <div class="blog-pagination">
+          <span class="pagination-placeholder">Showing {blogPosts.length} of {blogPosts.length} articles</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

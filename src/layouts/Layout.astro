@@ -1,0 +1,81 @@
+---
+import Header from '../components/Header.astro';
+import MobileMenu from '../components/MobileMenu.astro';
+import Footer from '../components/Footer.astro';
+import PrintCover from '../components/PrintCover.astro';
+import PrintFooter from '../components/PrintFooter.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  isArticle?: boolean;
+  printCoverTitle?: string;
+  printCoverSubtitle?: string;
+  showPrintCover?: boolean;
+}
+
+const {
+  title,
+  description = "Building the collaboration layer students always needed. Connecting campuses, sharing insights, growing together.",
+  isArticle = false,
+  printCoverTitle,
+  printCoverSubtitle,
+  showPrintCover = false
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body class={isArticle ? "article-page" : ""}>
+  {isArticle && <div class="progress-bar" id="progressBar"></div>}
+
+  {showPrintCover && printCoverTitle && (
+    <PrintCover title={printCoverTitle} subtitle={printCoverSubtitle} />
+  )}
+
+  <MobileMenu />
+  
+  <Header />
+
+  <slot />
+
+  <Footer />
+
+  {isArticle && <PrintFooter />}
+
+  <!-- Scripts -->
+  <script is:inline>
+    // Mobile menu toggle logic
+    function toggleMenu() {
+      const menu = document.getElementById("mobileMenu");
+      const toggle = document.getElementById("menuToggle");
+      if (menu && toggle) {
+        menu.classList.toggle("open");
+        toggle.classList.toggle("active");
+      }
+    }
+
+    // Reading progress bar logic
+    if (document.getElementById("progressBar")) {
+      window.addEventListener("scroll", () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById("progressBar").style.width = scrolled + "%";
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { blogPosts } from '../data/blogPosts.js';
+
+const pageTitle = "C2 Club | Foundation for Student Collaboration";
+---
+<Layout
+  title={pageTitle}
+  description="C2 Club: A platform connecting students across campuses to solve real problems and build collaborative communities."
+  isArticle={false}
+>
+  <main data-astro-cid-j7pv25f6>
+    <!-- ═══ HERO ═══ -->
+    <section class="hero section" id="hero" data-astro-cid-j7pv25f6>
+      <div class="container hero-container" data-astro-cid-j7pv25f6>
+        <div class="hero-badge" data-astro-cid-j7pv25f6>🚀 India's Student Collaboration Platform</div>
+        <h1 data-astro-cid-j7pv25f6>College shouldn't feel this disconnected.</h1>
+        <p class="hero-subtitle" data-astro-cid-j7pv25f6>
+          Notes are scattered. Opportunities stay hidden. Seniors feel unreachable. C2
+          Club is the structured, cross-campus student platform built to fix all of that.
+        </p>
+        <div class="hero-actions" data-astro-cid-j7pv25f6>
+          <a href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp" class="btn btn-primary btn-large" data-astro-cid-j7pv25f6>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-j7pv25f6>
+              <polygon points="5 3 19 12 5 21 5 3" data-astro-cid-j7pv25f6></polygon>
+            </svg>
+            Download Free
+          </a>
+          <a href="/blog/index.html" class="btn btn-outline btn-large" data-astro-cid-j7pv25f6>Explore Blog →</a>
+        </div>
+        <div class="hero-trust" data-astro-cid-j7pv25f6>
+          <span data-astro-cid-j7pv25f6>✓ 100% Free</span>
+          <span data-astro-cid-j7pv25f6>✓ No Ads</span>
+          <span data-astro-cid-j7pv25f6>✓ Built for Indian Students</span>
+        </div>
+        <div class="hero-stats" data-astro-cid-j7pv25f6>
+          <div class="hero-stat" data-astro-cid-j7pv25f6>
+            <div class="hero-stat-number" data-count="500" data-astro-cid-j7pv25f6>500<span data-astro-cid-j7pv25f6>+</span></div>
+            <div class="hero-stat-label" data-astro-cid-j7pv25f6>Students</div>
+          </div>
+          <div class="hero-stat" data-astro-cid-j7pv25f6>
+            <div class="hero-stat-number" data-count="15" data-astro-cid-j7pv25f6>15<span data-astro-cid-j7pv25f6>+</span></div>
+            <div class="hero-stat-label" data-astro-cid-j7pv25f6>Campuses</div>
+          </div>
+          <div class="hero-stat" data-astro-cid-j7pv25f6>
+            <div class="hero-stat-number" data-count="25" data-astro-cid-j7pv25f6>25<span data-astro-cid-j7pv25f6>+</span></div>
+            <div class="hero-stat-label" data-astro-cid-j7pv25f6>Active Hubs</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ PROBLEMS WE SOLVE ═══ -->
+    <section class="problems section" id="problems" data-astro-cid-j7pv25f6>
+      <div class="container" data-astro-cid-j7pv25f6>
+        <div class="text-center" data-astro-cid-j7pv25f6>
+          <span class="section-label" data-astro-cid-j7pv25f6>The Problem</span>
+          <h2 class="section-title" data-astro-cid-j7pv25f6>Every student faces these struggles</h2>
+          <p class="section-subtitle" data-astro-cid-j7pv25f6>College infrastructure hasn't kept up with how students actually need to collaborate, share, and grow.</p>
+        </div>
+        <div class="grid problem-grid" data-astro-cid-j7pv25f6>
+          <div class="problem-card" data-astro-cid-j7pv25f6>
+            <span class="problem-card-icon" data-astro-cid-j7pv25f6>📚</span>
+            <div class="accent-line" data-astro-cid-j7pv25f6></div>
+            <h3 data-astro-cid-j7pv25f6>Lost Resources</h3>
+            <p data-astro-cid-j7pv25f6>Notes are scattered across dead WhatsApp groups. Previous year questions get buried in random Drives right before exams.</p>
+          </div>
+          <div class="problem-card" data-astro-cid-j7pv25f6>
+            <span class="problem-card-icon" data-astro-cid-j7pv25f6>🔒</span>
+            <div class="accent-line" data-astro-cid-j7pv25f6></div>
+            <h3 data-astro-cid-j7pv25f6>The Campus Bubble</h3>
+            <p data-astro-cid-j7pv25f6>Hackathons and internships pass by because no one in your college even knew about them. You're limited to your campus.</p>
+          </div>
+          <div class="problem-card" data-astro-cid-j7pv25f6>
+            <span class="problem-card-icon" data-astro-cid-j7pv25f6>❓</span>
+            <div class="accent-line" data-astro-cid-j7pv25f6></div>
+            <h3 data-astro-cid-j7pv25f6>Unanswered Questions</h3>
+            <p data-astro-cid-j7pv25f6>You have real doubts about courses, placements, and career paths - but you don't know who to ask or where to find honest answers.</p>
+          </div>
+          <div class="problem-card" data-astro-cid-j7pv25f6>
+            <span class="problem-card-icon" data-astro-cid-j7pv25f6>🧩</span>
+            <div class="accent-line" data-astro-cid-j7pv25f6></div>
+            <h3 data-astro-cid-j7pv25f6>Echo Chambers</h3>
+            <p data-astro-cid-j7pv25f6>You have a great project idea, but can't find teammates with the right skills who actually want to build it together.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ HOW IT WORKS ═══ -->
+    <section class="section" id="how-it-works" data-astro-cid-j7pv25f6>
+      <div class="container" data-astro-cid-j7pv25f6>
+        <div class="text-center" data-astro-cid-j7pv25f6>
+          <span class="section-label" data-astro-cid-j7pv25f6>How It Works</span>
+          <h2 class="section-title" data-astro-cid-j7pv25f6>Three steps to better collaboration</h2>
+          <p class="section-subtitle" data-astro-cid-j7pv25f6>Get started in minutes. No complicated setup, just real connections.</p>
+        </div>
+        <div class="how-it-works-grid" data-astro-cid-j7pv25f6>
+          <div class="step-card" data-astro-cid-j7pv25f6>
+            <div class="step-number" data-astro-cid-j7pv25f6>1</div>
+            <span class="step-icon" data-astro-cid-j7pv25f6>🏛️</span>
+            <h3 data-astro-cid-j7pv25f6>Join Your Campus Hub</h3>
+            <p data-astro-cid-j7pv25f6>Find or create your college's hub. Connect with students who share your campus and interests.</p>
+          </div>
+          <div class="step-card" data-astro-cid-j7pv25f6>
+            <div class="step-number" data-astro-cid-j7pv25f6>2</div>
+            <span class="step-icon" data-astro-cid-j7pv25f6>💡</span>
+            <h3 data-astro-cid-j7pv25f6>Share & Discover</h3>
+            <p data-astro-cid-j7pv25f6>Post notes, ask questions, share opportunities, and discover resources from students across India.</p>
+          </div>
+          <div class="step-card" data-astro-cid-j7pv25f6>
+            <div class="step-number" data-astro-cid-j7pv25f6>3</div>
+            <span class="step-icon" data-astro-cid-j7pv25f6>🚀</span>
+            <h3 data-astro-cid-j7pv25f6>Grow Together</h3>
+            <p data-astro-cid-j7pv25f6>Find teammates, join challenges, build your network, and unlock real opportunities together.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ WHAT C2 CLUB DOES ═══ -->
+    <section class="solution section bg-light" id="solution" data-astro-cid-j7pv25f6>
+      <div class="container container-sm text-center" data-astro-cid-j7pv25f6>
+        <span class="section-label" data-astro-cid-j7pv25f6>The Platform</span>
+        <h2 class="section-title" data-astro-cid-j7pv25f6>Built for how students actually collaborate</h2>
+        <p class="solution-text" data-astro-cid-j7pv25f6>C2 Club structures collaboration across campuses. Verified notes. Real teammates. Honest discussions - all in one place designed for students.</p>
+        <section class="product-visual" data-astro-cid-j7pv25f6>
+          <img src="discover.jpg" loading="lazy" alt="C2 Club Discover Screen" class="product-left" data-astro-cid-j7pv25f6>
+          <img src="feed.jpg" loading="lazy" alt="C2 Club Feed Screen" class="product-main" data-astro-cid-j7pv25f6>
+          <img src="hub.jpg" loading="lazy" alt="C2 Club Hub Screen" class="product-right" data-astro-cid-j7pv25f6>
+        </section>
+      </div>
+    </section>
+
+    <!-- ═══ WHY NOT OTHERS ═══ -->
+    <section class="why-fails section" id="comparison" data-astro-cid-j7pv25f6>
+      <div class="container container-sm" data-astro-cid-j7pv25f6>
+        <div class="text-center" data-astro-cid-j7pv25f6>
+          <span class="section-label" data-astro-cid-j7pv25f6>Why C2 Club</span>
+          <h2 class="section-title" data-astro-cid-j7pv25f6>Why existing tools fail students</h2>
+        </div>
+        <ul class="comparison-list" data-astro-cid-j7pv25f6>
+          <li data-astro-cid-j7pv25f6><strong data-astro-cid-j7pv25f6>WhatsApp:</strong> Chaotic threads. Resources disappear. Messages get lost in noise.</li>
+          <li data-astro-cid-j7pv25f6><strong data-astro-cid-j7pv25f6>Telegram:</strong> Anonymous dumps. No verification. No structure or trust.</li>
+          <li data-astro-cid-j7pv25f6><strong data-astro-cid-j7pv25f6>LinkedIn:</strong> Too formal. Built for people who already have jobs, not students exploring.</li>
+          <li data-astro-cid-j7pv25f6><strong data-astro-cid-j7pv25f6>Reddit:</strong> Too broad. Not connected to your campus or your specific academic context.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ═══ LATEST FROM BLOG ═══ -->
+    <section class="section bg-light" id="blog-preview" data-astro-cid-j7pv25f6>
+      <div class="container" data-astro-cid-j7pv25f6>
+        <div class="text-center" data-astro-cid-j7pv25f6>
+          <span class="section-label" data-astro-cid-j7pv25f6>Blog</span>
+          <h2 class="section-title" data-astro-cid-j7pv25f6>Latest insights for students</h2>
+          <p class="section-subtitle" data-astro-cid-j7pv25f6>Research-backed perspectives and grounded insights from Indian student ecosystems.</p>
+        </div>
+        <div class="blog-grid" style="margin-bottom: 40px;" data-astro-cid-j7pv25f6>
+          {blogPosts.slice(0, 6).map((post) => (
+            <article class="blog-card" data-astro-cid-j7pv25f6>
+              <div class="blog-card-image" style={`background-image: url('${post.image}'); background-size: cover; background-position: center; height: 180px; border-radius: 12px; margin-bottom: 20px;`} data-astro-cid-j7pv25f6></div>
+              <h2 class="blog-card-title" data-astro-cid-j7pv25f6>
+                <a href={post.url} data-astro-cid-j7pv25f6>{post.title}</a>
+              </h2>
+              <p class="blog-card-excerpt" data-astro-cid-j7pv25f6>{post.excerpt}</p>
+              <div class="blog-card-meta" data-astro-cid-j7pv25f6>
+                <span data-astro-cid-j7pv25f6>{post.date}</span>
+                <span class="meta-dot" data-astro-cid-j7pv25f6>&middot;</span>
+                <span data-astro-cid-j7pv25f6>{post.readTime}</span>
+              </div>
+            </article>
+          ))}
+        </div>
+        <div class="text-center" data-astro-cid-j7pv25f6>
+          <a href="/blog/index.html" class="btn btn-outline" data-astro-cid-j7pv25f6>Read All Articles →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FINAL CTA ═══ -->
+    <section class="cta section" id="download-cta" data-astro-cid-j7pv25f6>
+      <div class="container text-center" data-astro-cid-j7pv25f6>
+        <h2 data-astro-cid-j7pv25f6>Stop navigating college on your own.</h2>
+        <p class="cta-subtitle" data-astro-cid-j7pv25f6>Join thousands of students building structured collaboration across Indian campuses.</p>
+        <div class="cta-actions" style="margin-bottom: 16px;" data-astro-cid-j7pv25f6>
+          <a href="/download.html" class="btn btn-primary btn-large" data-astro-cid-j7pv25f6>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-j7pv25f6>
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" data-astro-cid-j7pv25f6></path>
+              <polyline points="7 10 12 15 17 10" data-astro-cid-j7pv25f6></polyline>
+              <line x1="12" y1="15" x2="12" y2="3" data-astro-cid-j7pv25f6></line>
+            </svg>
+            Download C2 Club
+          </a>
+        </div>
+        <p style="font-size: 0.875rem; color: var(--text-muted);" data-astro-cid-j7pv25f6>100% Free · No Spam · Built for Students</p>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style is:global>
+  .animate-on-scroll[data-astro-cid-j7pv25f6]{opacity:0;transform:translateY(24px);transition:opacity .6s cubic-bezier(.4,0,.2,1),transform .6s cubic-bezier(.4,0,.2,1)}.animate-on-scroll[data-astro-cid-j7pv25f6].visible{opacity:1;transform:translateY(0)}.problem-card[data-astro-cid-j7pv25f6]:nth-child(2) .animate-on-scroll[data-astro-cid-j7pv25f6],.step-card[data-astro-cid-j7pv25f6]:nth-child(2),.blog-card[data-astro-cid-j7pv25f6]:nth-child(2){transition-delay:.1s}.problem-card[data-astro-cid-j7pv25f6]:nth-child(3),.step-card[data-astro-cid-j7pv25f6]:nth-child(3),.blog-card[data-astro-cid-j7pv25f6]:nth-child(3){transition-delay:.2s}.problem-card[data-astro-cid-j7pv25f6]:nth-child(4){transition-delay:.3s}.animate-on-scroll[data-astro-cid-j7pv25f6]:nth-child(2){transition-delay:.1s}.animate-on-scroll[data-astro-cid-j7pv25f6]:nth-child(3){transition-delay:.2s}.animate-on-scroll[data-astro-cid-j7pv25f6]:nth-child(4){transition-delay:.3s}
+</style>

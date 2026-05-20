@@ -1,0 +1,20 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+}
+
+const { title, subtitle = "Karnataka 2026 Edition · Career Roadmap" } = Astro.props;
+---
+<div class="print-only print-cover">
+  <div class="print-logo">C2 <span>Club</span></div>
+  <h1 style="font-size: 4rem; margin-top: 40px">
+    What After PUC?<br />{title}
+  </h1>
+  <p style="font-size: 1.5rem; color: #666; margin-top: 20px">
+    {subtitle}
+  </p>
+  <div style="margin-top: 100px; font-style: italic; color: #22c55e">
+    Building the collaboration layer students always needed.
+  </div>
+</div>
