@@ -1,11 +1,7 @@
 # Campus Leader Guide
 /campus-leader /campus-leader-guide.html 200
 
-# Legacy blog URLs redirect to root equivalents
-
-
-/blog / 301
-/blog/ / 301
+# Blog listing page now exists at /blog/index.html — no redirect needed
 
 # SPA Redirects for Android App Links
 /.well-known/*  /.well-known/:splat  200

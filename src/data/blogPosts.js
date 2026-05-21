@@ -132,7 +132,7 @@ export const blogPosts = [
     image: "/images/engineering-pathway-blog.jpg",
     date: "May 11, 2026",
     readTime: "7 min read",
-    published: false
+    published: true
   },
   {
     title: "The Complete Resume Guide for Indian Engineering Students (2025)",

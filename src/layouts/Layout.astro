@@ -52,7 +52,17 @@ const {
   
   <Header />
 
-  <slot />
+  <table class="print-wrapper-table">
+    <thead class="print-only"><tr><td><div class="print-global-header"></div></td></tr></thead>
+    <tbody><tr><td>
+      <slot />
+    </td></tr></tbody>
+    <tfoot class="print-only"><tr><td>
+      <div class="print-global-footer">
+        <strong style="color: #0f172a;">C2 Club</strong> &nbsp;&mdash;&nbsp; Student Community App
+      </div>
+    </td></tr></tfoot>
+  </table>
 
   {isArticle && <PrintCTA />}
 

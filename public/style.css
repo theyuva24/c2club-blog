@@ -620,18 +620,29 @@ p {
 
 .step-card {
   text-align: center;
-  padding: 40px 28px;
+  padding: 0;
   border-radius: var(--radius-lg);
   background: var(--bg-color);
   border: 1px solid var(--border-color);
   position: relative;
   transition: all 0.3s ease;
+  overflow: hidden;
 }
 
 .step-card:hover {
   border-color: var(--accent);
   box-shadow: var(--shadow-md);
   transform: translateY(-4px);
+}
+
+.step-card-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 0;
+  margin-bottom: 0;
+  display: block;
 }
 
 .step-number {
@@ -645,7 +656,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 20px;
+  margin: 20px auto 16px;
 }
 
 .step-icon {
@@ -657,12 +668,14 @@ p {
 .step-card h3 {
   font-size: 1.125rem;
   margin-bottom: 10px;
+  padding: 0 24px;
 }
 
 .step-card p {
   font-size: 0.9375rem;
   margin-bottom: 0;
   color: var(--text-secondary);
+  padding: 0 24px 28px;
 }
 
 /* =========================================
@@ -704,6 +717,26 @@ p {
   max-width: 700px;
   margin: 0 auto 48px;
   font-size: 1.1875rem;
+}
+
+/* Platform Showcase */
+.platform-showcase {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.platform-hero-img {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.platform-hero-img:hover {
+  transform: translateY(-4px);
 }
 
 .product-visual {
@@ -1563,6 +1596,21 @@ pre {
   .download-hero {
     padding-top: 60px;
   }
+
+  .step-card-img {
+    aspect-ratio: 16 / 9;
+    border-radius: 0;
+    margin-bottom: 0;
+  }
+
+  .platform-hero-img {
+    max-width: 100%;
+    border-radius: 12px;
+  }
+
+  .platform-showcase {
+    margin-top: 28px;
+  }
 }
 
 /* =========================================
@@ -1692,7 +1740,7 @@ pre {
    DARK MODE
    ========================================= */
 
-@media (prefers-color-scheme: dark) {
+@media screen and (prefers-color-scheme: dark) {
   :root {
     --bg-color: #0f0f0f;
     --bg-light: #181818;
@@ -1846,11 +1894,19 @@ pre {
     opacity: 0.9;
   }
 
+  .step-card-img {
+    opacity: 0.9;
+  }
+
+  .platform-hero-img {
+    opacity: 0.92;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
   /* Section Backgrounds */
   .bg-light {
     background-color: #111111 !important;
   }
-
 
 
   /* Divider & Borders */
@@ -2069,7 +2125,7 @@ pre {
   background: #fff5f5;
 }
 
-.callout strong {
+.callout > strong:first-child {
   display: block;
   margin-bottom: 6px;
   font-size: 14px;
@@ -2440,7 +2496,7 @@ pre {
 }
 
 /* Dark mode adjustments for new components */
-@media (prefers-color-scheme: dark) {
+@media screen and (prefers-color-scheme: dark) {
   .callout {
     background: #0f1f0a;
     color: #ddd;
@@ -2603,9 +2659,9 @@ pre {
   color: var(--text-muted);
 }
 
-/* Show breadcrumbs on article pages */
+/* Hide breadcrumbs on article pages */
 .article-page .breadcrumbs {
-  display: block !important;
+  display: none !important;
   margin-bottom: 24px;
 }
 
@@ -2936,7 +2992,7 @@ pre {
 }
 
 /* --- Dark Mode Article Adjustments --- */
-@media (prefers-color-scheme: dark) {
+@media screen and (prefers-color-scheme: dark) {
   .article-page {
     --serif: "Outfit", "DM Sans", system-ui, sans-serif;
     --sans: "DM Sans", system-ui, sans-serif;
@@ -3164,7 +3220,7 @@ pre {
   /* 1. Global Page Dimensions & System Reset */
   @page {
     size: A4 portrait;
-    margin: 20mm 15mm 20mm 15mm !important;
+    margin: 15mm 0.75in 20mm 0.75in !important;
   }
 
   html, body {
@@ -3176,6 +3232,20 @@ pre {
     padding: 0 !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
+  }
+  
+  /* Ensure containers do not constrain the width and add double margins */
+  body.article-page .container,
+  body.article-page .article-container,
+  body.article-page .hero-container,
+  body.article-page .article-outer,
+  body.article-page .article-body,
+  body.article-page .series-box,
+  body.article-page .faq-section {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   /* Strip browser-injected navigation bar/footer metadata stamps completely. Target classes to preserve article heroes */
@@ -3201,14 +3271,43 @@ pre {
   }
 
   /* Keep informational blocks and grids perfectly unified */
-  .data-card, .reality-check-box, .pathway-card, .domain-card, .step, .archetype-row, .callout {
+  .article-page .data-card, .article-page .reality-check-box, .article-page .reality-check-card, .article-page .pathway-card, .article-page .domain-card, .article-page .step, .article-page .archetype-row, .article-page .callout {
     page-break-inside: avoid !important;
     break-inside: avoid !important;
-    margin-bottom: 20px !important;
+    margin-bottom: 12px !important;
     background: #fdfdfd !important;
     border: 1px solid #e2e8f0 !important;
     border-radius: 8px !important;
-    padding: 12px !important;
+    padding: 8px 12px !important;
+    gap: 8px !important;
+  }
+  
+  .article-page .reality-check-num {
+    font-size: 1.5rem !important;
+    min-width: 30px !important;
+  }
+  .article-page .reality-check-title {
+    margin-bottom: 4px !important;
+    font-size: 1.1rem !important;
+  }
+  .article-page .reality-check-description {
+    font-size: 0.9rem !important;
+    line-height: 1.4 !important;
+  }
+  .article-page .domain-header {
+    margin-bottom: 4px !important;
+  }
+  .article-page .domain-header h3, .article-page .pathway-card-label strong {
+    margin: 0 !important;
+    font-size: 1.1rem !important;
+  }
+  .article-page .domain-emoji {
+    font-size: 1.2rem !important;
+  }
+  .article-page .domain-desc, .article-page .domain-best, .article-page .pathway-card p {
+    font-size: 0.9rem !important;
+    margin-bottom: 4px !important;
+    line-height: 1.4 !important;
   }
 
   /* Let tables and lists break across pages naturally, but keep rows and items unified */
@@ -3226,9 +3325,9 @@ pre {
   /* Fix horizontal overflow in tables and wrap headers correctly */
   .article-page .table-wrap, .table-wrap {
     overflow: visible !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 24px 0 !important;
+    width: calc(100% + 0.6in) !important;
+    max-width: calc(100% + 0.6in) !important;
+    margin: 24px -0.3in !important;
     border: 1px solid #cbd5e1 !important;
     box-shadow: none !important;
     background: transparent !important;
@@ -3254,6 +3353,8 @@ pre {
     line-height: 1.4 !important;
     color: #334155 !important;
     white-space: normal !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
   }
 
   th {
@@ -3317,14 +3418,77 @@ pre {
     font-size: 9pt !important;
   }
   
-  @media screen {
-    .print-only { display: none !important; }
+  /* --- Repeating Print Headers & Footers via Native Table --- */
+  .print-wrapper-table {
+    display: table !important;
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+  .print-wrapper-table > thead {
+    display: table-header-group !important;
+  }
+  .print-wrapper-table > tfoot {
+    display: table-footer-group !important;
+  }
+  .print-wrapper-table > tbody {
+    display: table-row-group !important;
+  }
+  .print-wrapper-table td {
+    display: table-cell !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+  .print-wrapper-table > tbody > tr > td {
+    padding-left: 0.75in !important;
+    padding-right: 0.75in !important;
   }
 
-  /* 3. Re-Engineering Final Conversion Pages */
+  @page {
+    margin: 0 !important;
+  }
+
+  .print-global-header {
+    display: block !important;
+    padding-top: 15mm !important;
+  }
+
+  .print-global-footer {
+    display: block !important;
+    padding-bottom: 15mm !important;
+    padding-top: 5mm !important;
+    margin-top: 10mm !important;
+    border-top: 1px solid #e2e8f0 !important;
+    text-align: center !important;
+    font-size: 10pt !important;
+    color: #64748b !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    background: #ffffff !important;
+  }
+  
+  /* Prevent cards and callouts from splitting across pages */
+  .callout, .callout-warn, .domain-card, .reality-check-card {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* 3. Re-Engineering Final Conversion Pages & Cover */
+  .print-cover {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: calc(100vh - 40mm) !important;
+    box-sizing: border-box !important;
+    page-break-after: always !important;
+    break-after: always !important;
+    text-align: center !important;
+  }
+
   .print-end-page, .conversion-cta-page {
-    page-break-before: always !important;
-    break-before: always !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
     display: block !important;
     height: auto !important;
     box-sizing: border-box !important;
@@ -3341,7 +3505,7 @@ pre {
     margin: 0 auto !important;
   }
 
-  .print-end-page .print-logo, .conversion-cta-page .print-logo {
+  .print-cover .print-logo, .print-end-page .print-logo, .conversion-cta-page .print-logo {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
     font-size: 28pt !important;
     font-weight: 800 !important;
@@ -3414,15 +3578,58 @@ pre {
   }
 }
 
-.print-only {
-  display: none;
+/* Hide breadcrumbs everywhere */
+.breadcrumbs {
+  display: none !important;
 }
 
-/* --- PDF Download Button as Inline Action Button --- */
+/* Hide print-only components from the live website */
+@media screen {
+  .print-only,
+  .print-header,
+  .print-footer,
+  .print-cta-page,
+  .print-global-header,
+  .print-global-footer {
+    display: none !important;
+  }
+}
+
+@media screen {
+  /* Safely neuter the print table wrappers on the live site */
+  .print-wrapper-table, 
+  .print-wrapper-table > tbody, 
+  .print-wrapper-table > thead, 
+  .print-wrapper-table > tfoot, 
+  .print-wrapper-table > tbody > tr, 
+  .print-wrapper-table > thead > tr, 
+  .print-wrapper-table > tfoot > tr, 
+  .print-wrapper-table > tbody > tr > td,
+  .print-wrapper-table > thead > tr > td,
+  .print-wrapper-table > tfoot > tr > td {
+    display: block !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    background: transparent !important;
+  }
+  
+  /* Prevent global tr:hover from flashing the entire page! */
+  .print-wrapper-table > tbody > tr:hover,
+  .print-wrapper-table > thead > tr:hover,
+  .print-wrapper-table > tfoot > tr:hover {
+    background-color: transparent !important;
+  }
+}
+
+/* --- PDF Download Button as Floating Action Button --- */
 #download-pdf-btn {
-  display: none !important;
-  position: relative;
-  display: inline-flex;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  display: none; /* Hidden for public viewers (you can still use Ctrl+P or unhide in DevTools) */
   background: linear-gradient(135deg, #00e676, #00c853);
   color: #000000 !important;
   border: none;
@@ -3433,17 +3640,17 @@ pre {
   cursor: pointer;
   align-items: center;
   gap: 8px;
-  box-shadow: 0 4px 12px rgba(0, 230, 118, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 230, 118, 0.4);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   font-family: var(--font-stack, "DM Sans", sans-serif);
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  margin: 20px auto 0 auto;
+  margin: 0;
 }
 
 #download-pdf-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0, 230, 118, 0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 230, 118, 0.5);
   background: linear-gradient(135deg, #00ff88, #00e676);
 }
 
@@ -3458,7 +3665,8 @@ pre {
   #download-pdf-btn {
     padding: 10px 20px;
     font-size: 0.8rem;
-    margin: 16px auto 0 auto;
+    bottom: 20px;
+    right: 20px;
   }
 }
 
@@ -3591,9 +3799,12 @@ pre {
 /* Show featured image only in print (PDF download) */
 @media print {
   .article-page .article-featured-image {
-    display: block !important;
+    display: none !important;
   }
 }
+
+/* --- Screen Default for Print Table Wrapper --- */
+/* Removed invasive table wrappers that caused scroll glitches */
 
 /* --- Antigravity Custom Premium Alignments & Enhancements --- */
 .article-page .article-body a {
@@ -3720,7 +3931,7 @@ pre {
 }
 
 /* Dark Mode Table Overrides */
-@media (prefers-color-scheme: dark) {
+@media screen and (prefers-color-scheme: dark) {
   .article-page .table-wrap {
     background: #141416 !important;
     border-color: #232326 !important;
@@ -3750,7 +3961,7 @@ pre {
   }
 }
 
-@media (min-width: 820px) {
+@media screen and (min-width: 820px) {
   .article-page .article-body .table-wrap {
     margin-left: -60px !important;
     margin-right: -60px !important;
@@ -3840,7 +4051,7 @@ pre {
 }
 
 /* Dark Mode Overrides */
-@media (prefers-color-scheme: dark) {
+@media screen and (prefers-color-scheme: dark) {
   .reality-check-card {
     background: #141416;
     border-color: #232326;
@@ -3883,3 +4094,373 @@ pre {
     min-width: auto;
   }
 }
+
+/* ========================================= */
+/* UNIVERSAL ARTICLE COMPONENTS (Global)     */
+/* ========================================= */
+  .article-page {
+    --black: #0a0a0a;
+    --surface: #111111;
+    --surface-2: #181818;
+    --border: #222222;
+    --border-subtle: #1a1a1a;
+    --green: #22c55e;
+    --green-dim: rgba(34, 197, 94, 0.12);
+    --green-glow: rgba(34, 197, 94, 0.06);
+    --text: #f5f5f5;
+    --text-muted: #b0b0b0;
+    --text-dim: #777777;
+  }
+
+  @media (prefers-color-scheme: light) {
+    .article-page {
+      --black: #ffffff;
+      --surface: #f9f9f9;
+      --surface-2: #f3f3f3;
+      --border: #e5e5e5;
+      --border-subtle: #f0f0f0;
+      --text: #171717;
+      --text-muted: #4b5563;
+      --text-dim: #9ca3af;
+      --green-glow: rgba(34, 197, 94, 0.04);
+    }
+  }
+
+  /* Pathway Grid & Cards */
+  .article-page .pathway-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+    margin: 32px 0 !important;
+  }
+
+  @media (max-width: 600px) {
+    .article-page .pathway-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+
+  .article-page .pathway-card {
+    background: var(--surface) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 10px !important;
+    padding: 24px !important;
+    transition: border-color 0.2s !important;
+  }
+
+  .article-page .pathway-card:hover {
+    border-color: #333 !important;
+  }
+
+  @media (prefers-color-scheme: light) {
+    .article-page .pathway-card:hover {
+      border-color: #d1d5db !important;
+    }
+  }
+
+  .article-page .pathway-card-label {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .article-page .pathway-icon {
+    width: 32px !important;
+    height: 32px !important;
+    background: var(--green-dim) !important;
+    border-radius: 6px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  .article-page .pathway-card-label strong {
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    color: var(--text) !important;
+  }
+
+  .article-page .pathway-card p {
+    font-size: 0.9rem !important;
+    color: var(--text-muted) !important;
+    margin-bottom: 10px !important;
+    font-weight: 400 !important;
+  }
+
+  .article-page .pathway-card ul {
+    list-style: none !important;
+    padding: 0 !important;
+    margin-bottom: 14px !important;
+  }
+
+  .article-page .pathway-card ul li {
+    font-size: 0.875rem !important;
+    color: var(--text-muted) !important;
+    padding: 4px 0 !important;
+    padding-left: 16px !important;
+    position: relative !important;
+    font-weight: 400 !important;
+  }
+
+  .article-page .pathway-card ul li::before {
+    content: "" !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 13px !important;
+    width: 5px !important;
+    height: 1px !important;
+    background: var(--text-dim) !important;
+  }
+
+  /* Domain Grid & Cards */
+  .article-page .domain-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+    margin: 32px 0 !important;
+  }
+
+  @media (max-width: 600px) {
+    .article-page .domain-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+
+  .article-page .domain-card {
+    border: 1px solid var(--border) !important;
+    border-radius: 10px !important;
+    padding: 24px !important;
+    background: var(--surface) !important;
+    transition: border-color 0.25s !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+
+  .article-page .domain-card::after {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 2px !important;
+    background: var(--domain-accent, var(--green)) !important;
+    opacity: 0.6 !important;
+  }
+
+  .article-page .domain-card:hover {
+    border-color: #2a2a2a !important;
+  }
+
+  @media (prefers-color-scheme: light) {
+    .article-page .domain-card:hover {
+      border-color: #d1d5db !important;
+    }
+  }
+
+  .article-page .domain-header {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+    margin-bottom: 4px !important; /* Reduced so it doesn't stack too much with h3 */
+  }
+
+  .article-page .domain-emoji {
+    font-size: 1.4rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .article-page .domain-card h3 {
+    margin: 0 0 12px 0 !important; /* Added margin-bottom to separate from description */
+    font-size: 1.05rem !important; /* Slightly larger */
+    font-family: var(--sans) !important;
+    font-weight: 600 !important;
+    color: var(--text) !important;
+    line-height: 1.4 !important; /* Better wrapping line-height */
+  }
+
+  .article-page .domain-desc {
+    font-size: 0.925rem !important; /* Increased font-size slightly */
+    color: var(--text-muted) !important;
+    margin-bottom: 14px !important; /* More space before following elements */
+    line-height: 1.65 !important; /* Increased line-height for better readability */
+    font-weight: 400 !important;
+  }
+
+  .article-page .domain-best {
+    font-size: 0.85rem !important;
+    color: var(--text-muted) !important;
+    line-height: 1.5 !important;
+    margin-bottom: 12px !important;
+    font-style: italic !important;
+  }
+
+  .article-page .domain-best strong {
+    color: var(--text) !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+  }
+
+  .article-page .pills {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    padding-top: 14px !important;
+    border-top: 1px solid var(--border-subtle) !important;
+  }
+
+  .article-page .pill {
+    font-size: 0.72rem !important;
+    font-weight: 600 !important;
+    padding: 6px 14px !important;
+    border-radius: 50px !important;
+    background: rgba(34, 197, 94, 0.1) !important;
+    color: var(--green) !important;
+    border: 1px solid rgba(34, 197, 94, 0.3) !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+  }
+
+  /* College Filters Steps */
+  .article-page .steps {
+    margin: 32px 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+  }
+
+  .article-page .step {
+    display: grid !important;
+    grid-template-columns: 48px 1fr !important;
+    gap: 20px !important;
+    padding: 20px 0 !important;
+    border-bottom: 1px solid var(--border-subtle) !important;
+    align-items: start !important;
+  }
+
+  .article-page .step:last-child {
+    border-bottom: none !important;
+  }
+
+  .article-page .step-num {
+    font-family: var(--serif) !important;
+    font-size: 2rem !important;
+    color: var(--green) !important;
+    line-height: 1 !important;
+    padding-top: 2px !important;
+  }
+
+  .article-page .step-body h3 {
+    margin-bottom: 5px !important;
+  }
+
+  .article-page .step-body p {
+    font-size: 0.9rem !important;
+    margin-bottom: 0 !important;
+    font-weight: 400 !important;
+    color: var(--text-muted) !important;
+  }
+
+  /* Phase Roadmaps */
+  .article-page .plan-group {
+    margin-bottom: 20px !important;
+  }
+
+  .article-page .plan-phase {
+    font-size: 0.7rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.12em !important;
+    color: var(--green) !important;
+    font-weight: 600 !important;
+    margin-bottom: 10px !important;
+  }
+
+  .article-page .plan-items {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+  }
+
+  .article-page .plan-item {
+    display: flex !important;
+    gap: 14px !important;
+    align-items: flex-start !important;
+    font-size: 0.9rem !important;
+    color: var(--text-muted) !important;
+    font-weight: 400 !important;
+  }
+
+  .article-page .plan-item::before {
+    content: "" !important;
+    display: block !important;
+    width: 5px !important;
+    height: 5px !important;
+    border-radius: 50% !important;
+    background: var(--border) !important;
+    margin-top: 9px !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Footer Call To Action */
+  .article-page .article-cta {
+    margin-top: 48px !important;
+    padding: 36px !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 12px !important;
+    background: var(--surface) !important;
+    text-align: center !important;
+  }
+
+  .article-page .article-cta p.cta-eyebrow {
+    font-size: 0.72rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.12em !important;
+    color: var(--green) !important;
+    font-weight: 600 !important;
+    margin-bottom: 16px !important;
+  }
+
+  .article-page .article-cta h3 {
+    font-family: var(--serif) !important;
+    font-size: 1.6rem !important;
+    font-weight: 400 !important;
+    color: var(--text) !important;
+    margin-bottom: 12px !important;
+  }
+
+  .article-page .article-cta p.cta-body {
+    font-size: 0.9rem !important;
+    color: var(--text-muted) !important;
+    max-width: 420px !important;
+    margin: 0 auto 28px !important;
+    font-weight: 300 !important;
+    line-height: 1.7 !important;
+  }
+
+  .article-page .btn-cta {
+    display: inline-block !important;
+    background: var(--green) !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    font-size: 0.85rem !important;
+    padding: 12px 28px !important;
+    border-radius: 6px !important;
+    text-decoration: none !important;
+    letter-spacing: 0.02em !important;
+    transition: opacity 0.2s !important;
+  }
+
+  .article-page .btn-cta:hover {
+    opacity: 0.85 !important;
+  }
+
+  /* Make odd lone cards span horizontally on PC */
+  @media (min-width: 601px) {
+    .article-page .pathway-grid > *:last-child:nth-child(odd),
+    .article-page .domain-grid > *:last-child:nth-child(odd) {
+      grid-column: 1 / -1 !important;
+    }
+  }
+
