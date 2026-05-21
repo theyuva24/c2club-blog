@@ -4,6 +4,7 @@ import MobileMenu from '../components/MobileMenu.astro';
 import Footer from '../components/Footer.astro';
 import PrintCover from '../components/PrintCover.astro';
 import PrintFooter from '../components/PrintFooter.astro';
+import PrintCTA from '../components/PrintCTA.astro';
 
 interface Props {
   title: string;
@@ -37,6 +38,8 @@ const {
     rel="stylesheet"
   />
   <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" href="/App icon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/App icon.png" />
 </head>
 <body class={isArticle ? "article-page" : ""}>
   {isArticle && <div class="progress-bar" id="progressBar"></div>}
@@ -50,6 +53,8 @@ const {
   <Header />
 
   <slot />
+
+  {isArticle && <PrintCTA />}
 
   <Footer />
 

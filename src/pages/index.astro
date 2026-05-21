@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import { blogPosts } from '../data/blogPosts.js';
 
 const pageTitle = "C2 Club | Foundation for Student Collaboration";
+const visiblePosts = blogPosts.filter(p => p.published !== false);
 ---
 <Layout
   title={pageTitle}
@@ -13,11 +14,10 @@ const pageTitle = "C2 Club | Foundation for Student Collaboration";
     <!-- ═══ HERO ═══ -->
     <section class="hero section" id="hero" data-astro-cid-j7pv25f6>
       <div class="container hero-container" data-astro-cid-j7pv25f6>
-        <div class="hero-badge" data-astro-cid-j7pv25f6>🚀 India's Student Collaboration Platform</div>
-        <h1 data-astro-cid-j7pv25f6>College shouldn't feel this disconnected.</h1>
+        <div class="hero-badge" data-astro-cid-j7pv25f6><span style="color: var(--accent); margin-right: 6px;">●</span> KARNATAKA'S STUDENT PLATFORM</div>
+        <h1 data-astro-cid-j7pv25f6>Your college is a <span class="strike-through" data-astro-cid-j7pv25f6>bubble.</span><br data-astro-cid-j7pv25f6/><span class="text-green" data-astro-cid-j7pv25f6>Break out of it.</span></h1>
         <p class="hero-subtitle" data-astro-cid-j7pv25f6>
-          Notes are scattered. Opportunities stay hidden. Seniors feel unreachable. C2
-          Club is the structured, cross-campus student platform built to fix all of that.
+          C2 Club connects students across campuses — real community, shared resources, skill challenges with prizes. Built for students in Karnataka's tier-2/3 colleges who are bigger than their campus.
         </p>
         <div class="hero-actions" data-astro-cid-j7pv25f6>
           <a href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp" class="btn btn-primary btn-large" data-astro-cid-j7pv25f6>
@@ -157,7 +157,7 @@ const pageTitle = "C2 Club | Foundation for Student Collaboration";
           <p class="section-subtitle" data-astro-cid-j7pv25f6>Research-backed perspectives and grounded insights from Indian student ecosystems.</p>
         </div>
         <div class="blog-grid" style="margin-bottom: 40px;" data-astro-cid-j7pv25f6>
-          {blogPosts.slice(0, 6).map((post) => (
+          {visiblePosts.slice(0, 6).map((post) => (
             <article class="blog-card" data-astro-cid-j7pv25f6>
               <div class="blog-card-image" style={`background-image: url('${post.image}'); background-size: cover; background-position: center; height: 180px; border-radius: 12px; margin-bottom: 20px;`} data-astro-cid-j7pv25f6></div>
               <h2 class="blog-card-title" data-astro-cid-j7pv25f6>

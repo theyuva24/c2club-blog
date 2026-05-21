@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import { blogPosts } from '../../data/blogPosts.js';
 
 const pageTitle = "C2 Club Blog | Insights on campus collaboration";
+const visiblePosts = blogPosts.filter(p => p.published !== false);
 ---
 <Layout
   title={pageTitle}
@@ -34,7 +35,7 @@ const pageTitle = "C2 Club Blog | Insights on campus collaboration";
     <section class="blog-grid-section section">
       <div class="container">
         <div class="blog-grid">
-          {blogPosts.map((post) => (
+          {visiblePosts.map((post) => (
             <article class="blog-card">
               <div
                 class="blog-card-image"
@@ -57,7 +58,7 @@ const pageTitle = "C2 Club Blog | Insights on campus collaboration";
         </div>
 
         <div class="blog-pagination">
-          <span class="pagination-placeholder">Showing {blogPosts.length} of {blogPosts.length} articles</span>
+          <span class="pagination-placeholder">Showing {visiblePosts.length} of {visiblePosts.length} articles</span>
         </div>
       </div>
     </section>

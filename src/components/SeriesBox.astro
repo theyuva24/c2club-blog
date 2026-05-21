@@ -1,4 +1,6 @@
 ---
+import { blogPosts } from '../data/blogPosts.js';
+
 interface Props {
   currentHref: string;
 }
@@ -23,9 +25,15 @@ const seriesItems = [
   { href: "/blog/what-after-pu/what-after-puc-vocational-skill-based-karnataka.html", tag: "Vocational", title: "Vocational & Skill-Based Guide (2026)" }
 ];
 
+// Build a set of published URLs from blogPosts.js (single source of truth)
+const publishedUrls = new Set(
+  blogPosts.filter(p => p.published !== false).map(p => p.url)
+);
+
 const normalizedCurrent = currentHref.split('/').pop() || "";
 const recommendedItems = seriesItems
-  .filter(item => !item.href.endsWith(normalizedCurrent));
+  .filter(item => !item.href.endsWith(normalizedCurrent))
+  .filter(item => publishedUrls.has(item.href));
 ---
 <div class="series-box">
   <span class="series-eyebrow">Series: What After PUC?</span>

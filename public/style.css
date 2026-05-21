@@ -391,7 +391,7 @@ p {
    ========================================= */
 
 .hero {
-  padding: 80px 24px 60px;
+  padding: 50px 24px 60px;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -524,6 +524,30 @@ p {
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+}
+
+/* Custom Hero text styles from screenshot inspiration */
+.strike-through {
+  position: relative;
+  color: var(--text-muted, #94a3b8);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.strike-through::after {
+  content: "";
+  position: absolute;
+  left: -2%;
+  top: 50%;
+  width: 104%;
+  height: 4px;
+  background: #ef4444; /* red line */
+  transform: translateY(-50%) rotate(-1deg);
+  border-radius: 2px;
+}
+
+.text-green {
+  color: var(--accent, #22c55e);
 }
 
 /* =========================================
@@ -1262,7 +1286,7 @@ pre {
 
   /* Hero Redesign */
   .hero {
-    padding: 40px 16px 60px;
+    padding: 24px 16px 60px;
   }
 
   .hero h1 {
@@ -3124,7 +3148,7 @@ pre {
 
 @media print {
   /* Dynamic Variable Mapping for Crisp Universal Light Mode */
-  :root {
+  :root, body, .article-page {
     --black: #ffffff !important;
     --surface: #f8fafc !important;
     --surface-2: #f1f5f9 !important;
@@ -3161,9 +3185,8 @@ pre {
     height: 0 !important;
   }
 
-  /* Kill all layout-distorting web artifacts and negative margins */
+  /* Kill all layout-distorting web artifacts and negative shadow margins */
   * {
-    margin-top: 0 !important;
     box-shadow: none !important;
     text-shadow: none !important;
   }
@@ -3177,8 +3200,8 @@ pre {
     margin-bottom: 15px !important;
   }
 
-  /* Keep informational blocks, data tables, and grids perfectly unified */
-  table, .data-card, .reality-check-box, ul, ol, .pathway-card, .domain-card, .step, .archetype-row, .callout {
+  /* Keep informational blocks and grids perfectly unified */
+  .data-card, .reality-check-box, .pathway-card, .domain-card, .step, .archetype-row, .callout {
     page-break-inside: avoid !important;
     break-inside: avoid !important;
     margin-bottom: 20px !important;
@@ -3188,20 +3211,49 @@ pre {
     padding: 12px !important;
   }
 
-  table {
+  /* Let tables and lists break across pages naturally, but keep rows and items unified */
+  ul, ol, table {
+    page-break-inside: auto !important;
+    break-inside: auto !important;
+    margin-bottom: 20px !important;
+  }
+
+  tr, li {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Fix horizontal overflow in tables and wrap headers correctly */
+  .article-page .table-wrap, .table-wrap {
+    overflow: visible !important;
     width: 100% !important;
-    border-collapse: collapse !important;
+    max-width: 100% !important;
+    margin: 24px 0 !important;
+    border: 1px solid #cbd5e1 !important;
+    box-shadow: none !important;
     background: transparent !important;
-    border: none !important;
     padding: 0 !important;
+  }
+  
+  .article-page .table-wrap table, table {
+    min-width: 0 !important;
+    width: 100% !important;
+    table-layout: auto !important;
+    border-collapse: collapse !important;
+    border: none !important;
+  }
+
+  thead {
+    display: table-header-group !important;
   }
 
   th, td {
-    padding: 12px 10px !important;
+    padding: 10px 12px !important;
     border: 1px solid #e2e8f0 !important;
-    font-size: 11pt !important;
+    font-size: 10pt !important;
     line-height: 1.4 !important;
     color: #334155 !important;
+    white-space: normal !important;
   }
 
   th {
@@ -3214,10 +3266,46 @@ pre {
     background: #f8fafc !important;
   }
 
-  /* Flatten flex containers so they render block by block */
-  .pathway-grid, .domain-grid, .stats-strip, .pills {
+  /* Flatten grids but keep horizontal stats clean */
+  .pathway-grid, .domain-grid, .pills {
     display: block !important;
   }
+  
+  .stats-strip {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-around !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 12px !important;
+    background: #f8fafc !important;
+    margin: 24px 0 !important;
+  }
+
+  .stat-cell {
+    flex: 1 !important;
+    padding: 16px !important;
+    border-right: 1px solid #cbd5e1 !important;
+    border-bottom: none !important;
+    text-align: center !important;
+  }
+
+  .stat-cell:last-child {
+    border-right: none !important;
+  }
+
+  .stat-num {
+    font-size: 24pt !important;
+    color: #00aa50 !important;
+    font-weight: bold !important;
+    margin-bottom: 4px !important;
+  }
+
+  .stat-label {
+    font-size: 9pt !important;
+    color: #334155 !important;
+    text-transform: uppercase !important;
+  }
+
   .pill {
     display: inline-block !important;
     margin: 4px 6px 4px 0 !important;
@@ -3229,60 +3317,100 @@ pre {
     font-size: 9pt !important;
   }
   
-  .print-only {
-    display: block !important;
+  @media screen {
+    .print-only { display: none !important; }
   }
 
-  /* 3. Re-Engineering Final Conversion Pages (Pages 13 & 14) */
-  
-  /* Force the final CTA page to act as a standalone, un-broken vertical card */
-  .conversion-cta-page {
+  /* 3. Re-Engineering Final Conversion Pages */
+  .print-end-page, .conversion-cta-page {
     page-break-before: always !important;
     break-before: always !important;
-    height: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    align-items: center !important;
-    text-align: center !important;
-    padding: 40px 20px !important;
-    background: #f8fafc !important;
-    border: 2px solid #e2e8f0 !important;
-    border-radius: 12px !important;
-    color: #0f172a !important;
-  }
-
-  .conversion-cta-page h2 {
-    color: #00aa50 !important; /* Readable emerald green for highlights in light mode */
-  }
-
-  .conversion-cta-page p {
-    color: #334155 !important;
-  }
-
-  /* Transform plain text links into clear, tappable mobile app store buttons */
-  .pdf-button-primary {
     display: block !important;
-    width: 85% !important;
-    margin: 25px auto 0 auto !important;
-    padding: 16px 24px !important;
-    background: #00E676 !important; /* High-contrast green actionable area */
-    color: #000000 !important;
-    font-weight: bold !important;
-    font-size: 13pt !important;
-    text-transform: uppercase !important;
-    text-decoration: none !important;
-    border-radius: 8px !important;
+    height: auto !important;
+    box-sizing: border-box !important;
+    padding: 40px 30px !important;
+    background: #f8fafc !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 12px !important;
     text-align: center !important;
-    page-break-inside: avoid !important;
+    margin: 40px 0 !important;
   }
 
-  .pdf-button-secondary {
-    display: inline-block !important;
-    margin-top: 15px !important;
-    color: #64748b !important;
+  .print-end-page .print-cta-container, .conversion-cta-page .print-cta-container {
+    max-width: 680px !important;
+    margin: 0 auto !important;
+  }
+
+  .print-end-page .print-logo, .conversion-cta-page .print-logo {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 28pt !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+    margin-bottom: 20px !important;
+    text-transform: uppercase !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  .print-end-page .print-logo .accent-text, .conversion-cta-page .print-logo .accent-text {
+    color: #00aa50 !important;
+  }
+
+  .print-end-page .print-cta-title, .conversion-cta-page h2 {
+    color: #00aa50 !important;
+    font-size: 20pt !important;
+    font-weight: 700 !important;
+    margin-top: 0 !important;
+    margin-bottom: 12px !important;
+    line-height: 1.25 !important;
+  }
+
+  .print-end-page .print-cta-subtitle, .conversion-cta-page p {
+    color: #334155 !important;
+    font-size: 12pt !important;
+    margin-top: 0 !important;
+    margin-bottom: 30px !important;
+    line-height: 1.5 !important;
+  }
+
+  .print-end-page .print-invitation-box, .conversion-cta-page .invitation-box {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-left: 5px solid #00aa50 !important;
+    border-radius: 8px !important;
+    padding: 24px !important;
+    text-align: left !important;
+    margin-bottom: 20px !important;
+  }
+
+  .print-end-page .print-cta-bold, .conversion-cta-page .invitation-box p:first-child {
+    font-weight: 700 !important;
+    font-size: 12pt !important;
+    color: #0f172a !important;
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
+    line-height: 1.4 !important;
+  }
+
+  .print-end-page .print-cta-text, .conversion-cta-page .invitation-box p:nth-child(2) {
+    font-size: 10.5pt !important;
+    color: #334155 !important;
+    line-height: 1.5 !important;
+    margin-top: 0 !important;
+    margin-bottom: 20px !important;
+  }
+
+  .print-end-page .print-pdf-button, .conversion-cta-page .pdf-button-primary, .conversion-cta-page a {
+    display: block !important;
+    background: #00aa50 !important;
+    color: #ffffff !important;
+    padding: 14px 24px !important;
+    border-radius: 8px !important;
+    font-weight: 700 !important;
     font-size: 11pt !important;
-    text-decoration: underline !important;
+    text-decoration: none !important;
+    text-align: center !important;
+    border: none !important;
+    box-shadow: none !important;
   }
 }
 
@@ -3292,6 +3420,7 @@ pre {
 
 /* --- PDF Download Button as Inline Action Button --- */
 #download-pdf-btn {
+  display: none !important;
   position: relative;
   display: inline-flex;
   background: linear-gradient(135deg, #00e676, #00c853);
@@ -3642,12 +3771,12 @@ pre {
 
 .reality-check-card {
   display: flex;
-  gap: 24px;
-  padding: 28px;
+  gap: 12px;
+  padding: 12px 16px;
   background: var(--bg-light, #f8fafc);
   border: 1px solid var(--border-color, #e2e8f0);
-  border-radius: 16px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 8px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
 }

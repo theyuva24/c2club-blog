@@ -1,0 +1,42 @@
+---
+const pathname = Astro.url.pathname;
+const isAdmission = pathname.includes('what-after-pu') || pathname.includes('commerce') || pathname.includes('engineering') || pathname.includes('medical');
+---
+
+<div class="print-only print-end-page">
+  <div class="print-cta-container">
+    <div class="print-logo">C2 <span class="accent-text">Club</span></div>
+    
+    {isAdmission ? (
+      <>
+        <h2 class="print-cta-title">📌 Data is only Step 1. Don't build your choice list alone.</h2>
+        <p class="print-cta-subtitle">15+ Courses, 100+ Colleges, and countless pathways. Stop guessing.</p>
+        
+        <div class="print-invitation-box">
+          <p class="print-cta-bold">We unlocked the ultimate student collaboration hub inside the free C2 Club App.</p>
+          <p class="print-cta-text">
+            Commerce, Engineering, and Medical seniors from top campuses across Karnataka are active inside C2 Club right now. Review campus placement truths, cut-offs, and option entry realities before making your final decisions.
+          </p>
+          <a href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp" class="print-pdf-button">
+            👉 Click Here to Join C2 Club Instantly
+          </a>
+        </div>
+      </>
+    ) : (
+      <>
+        <h2 class="print-cta-title">📌 Ready to build real connections?</h2>
+        <p class="print-cta-subtitle">Reading about careers is only Step 1. Don't build your network alone.</p>
+        
+        <div class="print-invitation-box">
+          <p class="print-cta-bold">We unlocked the ultimate student collaboration hub inside the free C2 Club App.</p>
+          <p class="print-cta-text">
+            Connect with verified peers, find mentors, and get real career advice from seniors and professionals who have been there. Join the C2 Club community today.
+          </p>
+          <a href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp" class="print-pdf-button">
+            👉 Click Here to Join C2 Club Instantly
+          </a>
+        </div>
+      </>
+    )}
+  </div>
+</div>
