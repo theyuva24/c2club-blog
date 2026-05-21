@@ -2,5 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /campus-leader-guide-v3.html
 Disallow: /campus-leader
+Disallow: /blog-template
+Disallow: /blog-template.html
 
 Sitemap: https://c2club.in/sitemap-index.xml

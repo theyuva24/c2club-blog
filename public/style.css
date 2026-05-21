@@ -2733,7 +2733,7 @@ pre {
 
 .article-page .article-body p {
   color: var(--text-secondary);
-  margin-bottom: 28px;
+  margin: 4px 0 8px;
   font-size: 1.05rem;
   line-height: 1.85;
   font-family: var(--sans);
@@ -2743,10 +2743,10 @@ pre {
   position: relative;
   font-family: var(--serif);
   font-size: clamp(1.6rem, 4.5vw, 2.1rem) !important;
-  font-weight: 600 !important;
+  font-weight: 700 !important;
   color: var(--text-primary);
-  margin: 64px 0 28px;
-  padding-left: 20px;
+  margin: 20px 0 8px;
+  padding: 10px 0 10px 20px;
   letter-spacing: -0.02em !important;
   line-height: 1.35 !important;
 }
@@ -2755,19 +2755,20 @@ pre {
   content: '';
   position: absolute;
   left: 0;
-  top: 0.15em;
-  bottom: 0.15em;
-  width: 4px;
-  background: var(--accent, #22c55e);
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: var(--green, #22c55e);
   border-radius: 4px;
 }
 
 .article-page .article-body h3 {
   font-family: var(--sans);
-  font-size: 1.35rem !important;
+  font-size: 1.5rem !important;
   font-weight: 700 !important;
+  font-style: italic !important;
   color: var(--text-primary);
-  margin: 44px 0 20px !important;
+  margin: 12px 0 4px !important;
   letter-spacing: -0.01em !important;
   line-height: 1.4 !important;
 }
@@ -2782,10 +2783,10 @@ pre {
 .article-page .callout {
   border: 1px solid var(--border-light, #f1f5f9) !important;
   border-left: 4px solid var(--border-color, #e2e8f0) !important;
-  padding: 24px 28px !important;
+  padding: 20px 24px !important;
   background: var(--bg-light, #f8fafc) !important;
   border-radius: 16px !important;
-  margin: 36px 0 !important;
+  margin: 8px 0 !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01) !important;
 }
 
@@ -2802,8 +2803,8 @@ pre {
   border-left: 4px solid var(--accent, #22c55e) !important;
   border-radius: 0 !important;
   background: transparent !important;
-  padding: 16px 0 16px 28px !important;
-  margin: 44px 0 !important;
+  padding: 16px 0 16px 24px !important;
+  margin: 8px 0 !important;
   box-shadow: none !important;
 }
 
@@ -2833,8 +2834,8 @@ pre {
   border-left: 5px solid #3b82f6 !important;
   background: linear-gradient(135deg, rgba(59, 130, 246, 0.02) 0%, rgba(59, 130, 246, 0.05) 100%) !important;
   border-radius: 16px !important;
-  padding: 28px !important;
-  margin: 36px 0 !important;
+  padding: 24px !important;
+  margin: 8px 0 !important;
   box-shadow: 0 4px 20px rgba(59, 130, 246, 0.01) !important;
 }
 
@@ -2868,8 +2869,8 @@ pre {
   border-left: 5px solid #f59e0b !important;
   background: linear-gradient(135deg, rgba(245, 158, 11, 0.02) 0%, rgba(245, 158, 11, 0.05) 100%) !important;
   border-radius: 16px !important;
-  padding: 28px !important;
-  margin: 36px 0 !important;
+  padding: 24px !important;
+  margin: 8px 0 !important;
   box-shadow: 0 4px 20px rgba(245, 158, 11, 0.01) !important;
 }
 
@@ -2890,8 +2891,8 @@ pre {
   border-left: 5px solid #ef4444 !important;
   background: linear-gradient(135deg, rgba(239, 68, 68, 0.02) 0%, rgba(239, 68, 68, 0.05) 100%) !important;
   border-radius: 16px !important;
-  padding: 28px !important;
-  margin: 36px 0 !important;
+  padding: 24px !important;
+  margin: 8px 0 !important;
   box-shadow: 0 4px 20px rgba(239, 68, 68, 0.01) !important;
 }
 
@@ -2910,8 +2911,8 @@ pre {
 .article-page .domain-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
-  margin: 48px 0;
+  gap: 12px;
+  margin: 8px 0;
 }
 
 .article-page .domain-card {
@@ -3016,7 +3017,7 @@ pre {
 /* --- Tables --- */
 .article-page .table-wrap {
   overflow-x: auto;
-  margin: 48px 0;
+  margin: 16px 0;
   border: 1px solid var(--border-color);
   border-radius: 16px;
   background: var(--bg-color);
@@ -3716,7 +3717,7 @@ pre {
   line-height: 1.6;
 }
 
-.article-page .btn-cta {
+.article-page a.btn-cta {
   display: inline-block;
   background: var(--accent);
   color: #000000 !important;
@@ -3729,8 +3730,9 @@ pre {
   transition: opacity 0.2s ease;
 }
 
-.article-page .btn-cta:hover {
-  opacity: 0.85;
+.article-page a.btn-cta:hover {
+  opacity: 0.9;
+  color: #000000 !important;
 }
 
 /* --- Pathway Plan Groups --- */
@@ -3870,7 +3872,7 @@ pre {
 /* Table layout styling optimization */
 .article-page .table-wrap {
   width: 100% !important;
-  margin: 40px 0 !important;
+  margin: 16px 0 !important;
   overflow-x: auto !important;
   border: 1px solid var(--border-color, #e2e8f0) !important;
   border-radius: 16px !important;
@@ -4439,10 +4441,10 @@ pre {
     line-height: 1.7 !important;
   }
 
-  .article-page .btn-cta {
+  .article-page .article-cta a.btn-cta {
     display: inline-block !important;
     background: var(--green) !important;
-    color: #ffffff !important;
+    color: #000000 !important;
     font-weight: 600 !important;
     font-size: 0.85rem !important;
     padding: 12px 28px !important;
@@ -4452,8 +4454,9 @@ pre {
     transition: opacity 0.2s !important;
   }
 
-  .article-page .btn-cta:hover {
+  .article-page .article-cta a.btn-cta:hover {
     opacity: 0.85 !important;
+    color: #000000 !important;
   }
 
   /* Make odd lone cards span horizontally on PC */

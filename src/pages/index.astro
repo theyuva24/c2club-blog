@@ -4,6 +4,45 @@ import { blogPosts } from '../data/blogPosts.js';
 
 const pageTitle = "C2 Club | Foundation for Student Collaboration";
 const visiblePosts = blogPosts.filter(p => p.published !== false);
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How can I connect and talk with college students from other campuses in Karnataka?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "C2 Club provides dedicated cross-campus hubs where you can connect, chat, and collaborate with students from VTU, Bangalore University, and various engineering or degree colleges across Karnataka. This helps you break out of your local campus bubble and build a broader network."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where can I find student study resources, notes, and previous year question papers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "All study resources, engineering syllabus notes, lab records, and VTU or college-specific previous year question papers (PYQs) are shared directly by students inside their respective campus and course hubs. These files are organized, verified, and persistently accessible so they don't get buried in random chats."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I get placement referrals and internship opportunities from seniors?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Inside the C2 Club network, seniors who are already placed in product companies and GCCs share referral opportunities, direct hiring contacts, and recruitment experiences. You can connect with them directly in specialized placement discussion boards to build trust and ask for target referrals."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is C2 Club and is it completely free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "C2 Club is a structured collaboration platform built specifically for Indian college students to share academic resources, find project partners, and exchange career opportunities. Yes, the platform is 100% free, has no ads, and is dedicated to helping students succeed."
+      }
+    }
+  ]
+};
 ---
 <Layout
   title={pageTitle}
@@ -179,6 +218,57 @@ const visiblePosts = blogPosts.filter(p => p.published !== false);
         </div>
       </div>
     </section>
+
+    <!-- ═══ FAQ SECTION ═══ -->
+    <section class="section faq-section" id="faq" data-astro-cid-j7pv25f6>
+      <div class="container container-sm" data-astro-cid-j7pv25f6>
+        <div class="text-center" data-astro-cid-j7pv25f6 style="margin-bottom: 40px;">
+          <span class="section-label" data-astro-cid-j7pv25f6>FAQ</span>
+          <h2 class="section-title" data-astro-cid-j7pv25f6>Frequently Asked Questions</h2>
+          <p class="section-subtitle" data-astro-cid-j7pv25f6>Got questions about C2 Club? We've got answers.</p>
+        </div>
+        
+        <div class="faq-list" data-astro-cid-j7pv25f6>
+          <details class="faq-item" data-astro-cid-j7pv25f6>
+            <summary data-astro-cid-j7pv25f6>How can I connect and talk with college students from other campuses in Karnataka?</summary>
+            <div class="faq-answer" data-astro-cid-j7pv25f6>
+              <p data-astro-cid-j7pv25f6>
+                C2 Club provides dedicated cross-campus hubs where you can connect, chat, and collaborate with students from VTU, Bangalore University, and various engineering or degree colleges across Karnataka. This helps you break out of your local campus bubble and build a broader network.
+              </p>
+            </div>
+          </details>
+          
+          <details class="faq-item" data-astro-cid-j7pv25f6>
+            <summary data-astro-cid-j7pv25f6>Where can I find student study resources, notes, and previous year question papers?</summary>
+            <div class="faq-answer" data-astro-cid-j7pv25f6>
+              <p data-astro-cid-j7pv25f6>
+                All study resources, engineering syllabus notes, lab records, and VTU or college-specific previous year question papers (PYQs) are shared directly by students inside their respective campus and course hubs. These files are organized, verified, and persistently accessible so they don't get buried in random chats.
+              </p>
+            </div>
+          </details>
+          
+          <details class="faq-item" data-astro-cid-j7pv25f6>
+            <summary data-astro-cid-j7pv25f6>How do I get placement referrals and internship opportunities from seniors?</summary>
+            <div class="faq-answer" data-astro-cid-j7pv25f6>
+              <p data-astro-cid-j7pv25f6>
+                Inside the C2 Club network, seniors who are already placed in product companies and GCCs share referral opportunities, direct hiring contacts, and recruitment experiences. You can connect with them directly in specialized placement discussion boards to build trust and ask for target referrals.
+              </p>
+            </div>
+          </details>
+          
+          <details class="faq-item" data-astro-cid-j7pv25f6>
+            <summary data-astro-cid-j7pv25f6>What is C2 Club and is it completely free to use?</summary>
+            <div class="faq-answer" data-astro-cid-j7pv25f6>
+              <p data-astro-cid-j7pv25f6>
+                C2 Club is a structured collaboration platform built specifically for Indian college students to share academic resources, find project partners, and exchange career opportunities. Yes, the platform is 100% free, has no ads, and is dedicated to helping students succeed.
+              </p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <script type="application/ld+json" is:inline>{JSON.stringify(faqSchema)}</script>
 
     <!-- ═══ FINAL CTA ═══ -->
     <section class="cta section" id="download-cta" data-astro-cid-j7pv25f6>

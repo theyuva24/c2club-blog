@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import PrintCover from '../components/PrintCover.astro';
 import PrintFooter from '../components/PrintFooter.astro';
 import PrintCTA from '../components/PrintCTA.astro';
+import { blogPosts } from '../data/blogPosts.js';
 
 interface Props {
   title: string;
@@ -13,6 +14,7 @@ interface Props {
   printCoverTitle?: string;
   printCoverSubtitle?: string;
   showPrintCover?: boolean;
+  shouldNoIndex?: boolean;
 }
 
 const {
@@ -21,8 +23,96 @@ const {
   isArticle = false,
   printCoverTitle,
   printCoverSubtitle,
-  showPrintCover = false
+  showPrintCover = false,
+  shouldNoIndex = false
 } = Astro.props;
+
+// Normalization function to match paths reliably
+const normalizePath = (path) => {
+  if (!path) return '';
+  return path
+    .replace(/\.html$/, '') // Remove .html
+    .replace(/\/$/, '')     // Remove trailing slash
+    .toLowerCase();
+};
+
+const currentPathname = Astro.url.pathname;
+const cleanPath = currentPathname.replace(/\/$/, '');
+const siteUrl = 'https://c2club.in';
+const canonicalUrl = `${siteUrl}${cleanPath || ''}`;
+
+// Check if this matches a draft post or a template page
+const normalizedCurrent = normalizePath(currentPathname);
+const matchedPost = blogPosts.find(post => normalizePath(post.url) === normalizedCurrent);
+
+const finalPrintCoverTitle = printCoverTitle || (matchedPost && matchedPost.printCoverTitle);
+const finalPrintCoverSubtitle = printCoverSubtitle || (matchedPost && matchedPost.printCoverSubtitle);
+const finalShowPrintCover = showPrintCover || (matchedPost && matchedPost.showPrintCover) || false;
+
+const isDraft = matchedPost ? matchedPost.published === false : false;
+const isTemplate = currentPathname.includes('blog-template');
+const finalNoIndex = shouldNoIndex || isDraft || isTemplate;
+
+// OG Image logic
+let ogImage = `${siteUrl}/preview.jpg`; // Default fallback
+if (isArticle && matchedPost && matchedPost.image) {
+  ogImage = matchedPost.image.startsWith('http') ? matchedPost.image : `${siteUrl}${matchedPost.image}`;
+}
+
+// Schemas
+// 1. Organization Schema (Global)
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://c2club.in/#organization",
+  "name": "C2 Club",
+  "url": "https://c2club.in",
+  "logo": "https://c2club.in/App icon.png",
+  "sameAs": [
+    "https://play.google.com/store/apps/details?id=com.c2club.uniqueapp"
+  ],
+  "description": "Karnataka's student collaboration platform and campus network."
+};
+
+// 2. WebSite Schema with SearchAction (Homepage only)
+const isHomepage = currentPathname === '/' || currentPathname === '/index.html';
+const websiteSchema = isHomepage ? {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "https://c2club.in",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://c2club.in/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+} : null;
+
+// 3. BlogPosting Schema (Article pages only)
+const articleSchema = isArticle && matchedPost ? {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": matchedPost.title,
+  "description": matchedPost.excerpt || description,
+  "image": ogImage,
+  "datePublished": matchedPost.datePublished || "2026-05-21",
+  "dateModified": matchedPost.dateModified || matchedPost.datePublished || "2026-05-21",
+  "author": {
+    "@type": "Person",
+    "name": matchedPost.author || "C2 Club Team"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "C2 Club",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://c2club.in/App icon.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": canonicalUrl
+  }
+} : null;
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -31,6 +121,23 @@ const {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
+  
+  {finalNoIndex ? (
+    <meta name="robots" content="noindex, nofollow" />
+  ) : (
+    <meta name="robots" content="index, follow" />
+  )}
+
+  <link rel="canonical" href={canonicalUrl} />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content={isArticle ? "article" : "website"} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:site_name" content="C2 Club" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -40,12 +147,17 @@ const {
   <link rel="stylesheet" href="/style.css" />
   <link rel="icon" href="/App icon.png" type="image/png" />
   <link rel="apple-touch-icon" href="/App icon.png" />
+
+  <!-- Schema JSON-LD Injection -->
+  <script type="application/ld+json" is:inline>{JSON.stringify(orgSchema)}</script>
+  {websiteSchema && <script type="application/ld+json" is:inline>{JSON.stringify(websiteSchema)}</script>}
+  {articleSchema && <script type="application/ld+json" is:inline>{JSON.stringify(articleSchema)}</script>}
 </head>
 <body class={isArticle ? "article-page" : ""}>
   {isArticle && <div class="progress-bar" id="progressBar"></div>}
 
-  {showPrintCover && printCoverTitle && (
-    <PrintCover title={printCoverTitle} subtitle={printCoverSubtitle} />
+  {finalShowPrintCover && finalPrintCoverTitle && (
+    <PrintCover title={finalPrintCoverTitle} subtitle={finalPrintCoverSubtitle} />
   )}
 
   <MobileMenu />
