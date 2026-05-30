@@ -39,7 +39,8 @@ const normalizePath = (path) => {
 const currentPathname = Astro.url.pathname;
 const cleanPath = currentPathname.replace(/\/$/, '');
 const siteUrl = 'https://c2club.in';
-const canonicalUrl = `${siteUrl}${cleanPath || ''}`;
+const canonicalUrl = cleanPath === '' ? siteUrl : `${siteUrl}${cleanPath}/`;
+
 
 // Check if this matches a draft post or a template page
 const normalizedCurrent = normalizePath(currentPathname);

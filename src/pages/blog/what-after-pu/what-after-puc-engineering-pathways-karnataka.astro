@@ -1,109 +1,106 @@
 ---
-import Layout from '../../../layouts/Layout.astro';
+import BlogLayout from '../../../layouts/BlogLayout.astro';
 import SeriesBox from '../../../components/SeriesBox.astro';
 
 // Clean title of any HTML tags
 const pageTitle = "What After PUC? Engineering Pathway Guide Karnataka (2026) | C2 Club";
 ---
-<Layout
+<BlogLayout
   title={pageTitle}
   description="KCET, JEE, COMED-K guide for Karnataka engineering aspirants. Compare branches, colleges, fees &amp; career paths - with real student insights."
-  isArticle={true}
   showPrintCover={true}
   printCoverTitle="Engineering Pathways Guide"
   printCoverSubtitle="Karnataka 2026 Edition · Career Roadmap"
->
-  <main data-astro-cid-ezrfn5wc> <div class="article-outer" data-astro-cid-ezrfn5wc> <nav class="breadcrumbs" aria-label="Breadcrumb" data-astro-cid-ezrfn5wc> <ol data-astro-cid-ezrfn5wc> <li data-astro-cid-ezrfn5wc><a href="/" data-astro-cid-ezrfn5wc>Home</a></li> <li data-astro-cid-ezrfn5wc><a href="/blog" data-astro-cid-ezrfn5wc>Blog</a></li> <li aria-current="page" data-astro-cid-ezrfn5wc>Engineering Pathways Guide</li> </ol> </nav> <!-- Hero --> <header class="hero" data-astro-cid-ezrfn5wc> <div class="hero-tag" data-astro-cid-ezrfn5wc>Engineering Guide · Karnataka 2026</div> <h1 data-astro-cid-ezrfn5wc>
-What After PUC?<br data-astro-cid-ezrfn5wc>Engineering Pathways<br data-astro-cid-ezrfn5wc><em data-astro-cid-ezrfn5wc>for Karnataka Students</em> </h1> <p class="hero-lead" data-astro-cid-ezrfn5wc>
-A clear, practical roadmap to navigate KCET, JEE, and COMED-K - and
+
+  breadcrumbCurrent="Engineering Pathways Guide"
+  heroTag="Engineering Guide · Karnataka 2026"
+  heroTitle={`What After PUC?<br>Engineering Pathways<br><em>for Karnataka Students</em>`}
+  heroLead={`A clear, practical roadmap to navigate KCET, JEE, and COMED-K - and
             figure out which branch and college actually fits how you learn and
-            work.
-</p> <div class="hero-meta" data-astro-cid-ezrfn5wc> <span data-astro-cid-ezrfn5wc>May 11, 2026</span> <div class="dot" data-astro-cid-ezrfn5wc></div> <span data-astro-cid-ezrfn5wc>7 min read</span> </div>
-            <button id="download-pdf-btn" onclick="window.print()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px; height:16px; margin-right:8px; display:inline-block; vertical-align:middle;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>Download as Offline PDF</button>
-          </header> <!-- Stats --> <div class="stats-strip" data-astro-cid-ezrfn5wc> <div class="stat-cell" data-astro-cid-ezrfn5wc> <div class="stat-num" data-astro-cid-ezrfn5wc>5</div> <div class="stat-label" data-astro-cid-ezrfn5wc>Entry Pathways</div> </div> <div class="stat-cell" data-astro-cid-ezrfn5wc> <div class="stat-num" data-astro-cid-ezrfn5wc>50+</div> <div class="stat-label" data-astro-cid-ezrfn5wc>Engineering Branches</div> </div> <div class="stat-cell" data-astro-cid-ezrfn5wc> <div class="stat-num" data-astro-cid-ezrfn5wc>6</div> <div class="stat-label" data-astro-cid-ezrfn5wc>Career Paths</div> </div> </div> <!-- Body --> <div class="article-featured-image" style="margin-bottom: 40px; text-align: center" data-astro-cid-ezrfn5wc> <img src="../images/engineering-pathway-blog.jpg" alt="What After PUC? Engineering Pathways for Karnataka Students" style="
-              width: 100%;
-              max-width: 900px;
-              height: auto;
-              border-radius: 16px;
-              box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-            " data-astro-cid-ezrfn5wc> </div> <div class="article-body" data-astro-cid-ezrfn5wc> <h2 data-astro-cid-ezrfn5wc>The real question isn't "Which college?"</h2> <p data-astro-cid-ezrfn5wc>
+            work.`}
+  date="May 11, 2026"
+  readTime="7 min read"
+  stats={[{ num: "5", label: "Entry Pathways" }, { num: "50+", label: "Engineering Branches" }, { num: "6", label: "Career Paths" }]}
+  featuredImageSrc="../images/engineering-pathway-blog.jpg" featuredImageAlt="What After PUC? Engineering Pathways for Karnataka Students"
+>
+<h2>The real question isn't "Which college?"</h2> <p>
 Most students think engineering is just about securing a seat - that
             getting into the college with the highest reported package is the
             ultimate goal. It isn't.
-</p> <p data-astro-cid-ezrfn5wc>
+</p> <p>
 When you're choosing between Computer Science, Mechanical, or AI,
             the right question is:
-<strong data-astro-cid-ezrfn5wc>"Which path fits how I actually like to learn and work?"</strong> </p> <p data-astro-cid-ezrfn5wc>
+<strong>"Which path fits how I actually like to learn and work?"</strong> </p> <p>
 This guide breaks down the 5 entry pathways, simplifies 50+ branches
             into 5 core domains, and gives you practical filters to choose your
-            college - based on real scenarios. At <strong data-astro-cid-ezrfn5wc>C2 Club</strong>, we
+            college - based on real scenarios. At <strong>C2 Club</strong>, we
             believe engineering is more than a degree; it's about finding the
             right environment to grow.
-</p> <h2 data-astro-cid-ezrfn5wc>5 Ways to Enter Engineering</h2> <p data-astro-cid-ezrfn5wc>
+</p> <h2>5 Ways to Enter Engineering</h2> <p>
 Before you dive into the process, understand the financial and
             eligibility differences. Note:
-<strong data-astro-cid-ezrfn5wc>Management Quota</strong> often involves a one-time donation
+<strong>Management Quota</strong> often involves a one-time donation
             + higher annual fees.
-</p> <div class="table-wrap" data-astro-cid-ezrfn5wc> <table data-astro-cid-ezrfn5wc> <thead data-astro-cid-ezrfn5wc> <tr data-astro-cid-ezrfn5wc> <th data-astro-cid-ezrfn5wc>Pathway</th> <th data-astro-cid-ezrfn5wc>Best For</th> <th data-astro-cid-ezrfn5wc>Key Differentiator</th> <th data-astro-cid-ezrfn5wc>Approx. Fees/Year</th> </tr> </thead> <tbody data-astro-cid-ezrfn5wc> <tr data-astro-cid-ezrfn5wc> <td data-astro-cid-ezrfn5wc>KCET</td> <td data-astro-cid-ezrfn5wc>Karnataka domicile students</td> <td data-astro-cid-ezrfn5wc>Most affordable (Govt Quota)</td> <td data-astro-cid-ezrfn5wc><strong data-astro-cid-ezrfn5wc>₹50K – ₹1.2L</strong></td> </tr> <tr data-astro-cid-ezrfn5wc> <td data-astro-cid-ezrfn5wc>JEE Main / Adv</td> <td data-astro-cid-ezrfn5wc>Targeting NITs/IITs/IIITs</td> <td data-astro-cid-ezrfn5wc>National prestige &amp; massive infra</td> <td data-astro-cid-ezrfn5wc><strong data-astro-cid-ezrfn5wc>₹1.5L – ₹3L</strong></td> </tr> <tr data-astro-cid-ezrfn5wc> <td data-astro-cid-ezrfn5wc>COMED-K</td> <td data-astro-cid-ezrfn5wc>Non-KA students &amp; Top PVT colleges</td> <td data-astro-cid-ezrfn5wc>Access to RV, MSRIT, BMS for all</td> <td data-astro-cid-ezrfn5wc><strong data-astro-cid-ezrfn5wc>₹2.8L – ₹4L</strong></td> </tr> <tr data-astro-cid-ezrfn5wc> <td data-astro-cid-ezrfn5wc>Uni-Exams (PESSAT/VIT)</td> <td data-astro-cid-ezrfn5wc>Deemed Universities</td> <td data-astro-cid-ezrfn5wc>Focused curriculum &amp; separate intake</td> <td data-astro-cid-ezrfn5wc><strong data-astro-cid-ezrfn5wc>₹3.5L – ₹5L+</strong></td> </tr> <tr data-astro-cid-ezrfn5wc> <td data-astro-cid-ezrfn5wc>Management Quota</td> <td data-astro-cid-ezrfn5wc>Direct entry (Low rank/No exam)</td> <td data-astro-cid-ezrfn5wc>Expensive but saves a year</td> <td data-astro-cid-ezrfn5wc><strong data-astro-cid-ezrfn5wc>₹5L – ₹15L+</strong></td> </tr> </tbody> </table> </div> <h2 data-astro-cid-ezrfn5wc>Deep Dive: Which process is yours?</h2> <div class="pathway-grid" data-astro-cid-ezrfn5wc> <div class="pathway-card" data-astro-cid-ezrfn5wc> <div class="pathway-card-label" data-astro-cid-ezrfn5wc> <div class="pathway-icon" data-astro-cid-ezrfn5wc>🎯</div> <strong data-astro-cid-ezrfn5wc>KCET (The Affordable Route)</strong> </div> <p data-astro-cid-ezrfn5wc>
+</p> <div class="table-wrap"> <table> <thead> <tr> <th>Pathway</th> <th>Best For</th> <th>Key Differentiator</th> <th>Approx. Fees/Year</th> </tr> </thead> <tbody> <tr> <td>KCET</td> <td>Karnataka domicile students</td> <td>Most affordable (Govt Quota)</td> <td><strong>₹50K – ₹1.2L</strong></td> </tr> <tr> <td>JEE Main / Adv</td> <td>Targeting NITs/IITs/IIITs</td> <td>National prestige &amp; massive infra</td> <td><strong>₹1.5L – ₹3L</strong></td> </tr> <tr> <td>COMED-K</td> <td>Non-KA students &amp; Top PVT colleges</td> <td>Access to RV, MSRIT, BMS for all</td> <td><strong>₹2.8L – ₹4L</strong></td> </tr> <tr> <td>Uni-Exams (PESSAT/VIT)</td> <td>Deemed Universities</td> <td>Focused curriculum &amp; separate intake</td> <td><strong>₹3.5L – ₹5L+</strong></td> </tr> <tr> <td>Management Quota</td> <td>Direct entry (Low rank/No exam)</td> <td>Expensive but saves a year</td> <td><strong>₹5L – ₹15L+</strong></td> </tr> </tbody> </table> </div> <h2>Deep Dive: Which process is yours?</h2> <div class="pathway-grid"> <div class="pathway-card"> <div class="pathway-card-label"> <div class="pathway-icon">🎯</div> <strong>KCET (The Affordable Route)</strong> </div> <p>
 For Karnataka students only. The rank depends on both PUC (50%)
                 and KCET (50%) scores.
-</p> <ul data-astro-cid-ezrfn5wc> <li data-astro-cid-ezrfn5wc>Document verification is mostly online via KEA.</li> <li data-astro-cid-ezrfn5wc>Choice filling: Rank-based priority is everything.</li> </ul> <div class="pathway-tip" data-astro-cid-ezrfn5wc> <strong data-astro-cid-ezrfn5wc>Reality Check:</strong> Highly competitive for top
+</p> <ul> <li>Document verification is mostly online via KEA.</li> <li>Choice filling: Rank-based priority is everything.</li> </ul> <div class="pathway-tip"> <strong>Reality Check:</strong> Highly competitive for top
                 branches like CSE in Bangalore colleges.
-</div> </div> <div class="pathway-card" data-astro-cid-ezrfn5wc> <div class="pathway-card-label" data-astro-cid-ezrfn5wc> <div class="pathway-icon" data-astro-cid-ezrfn5wc>🌐</div> <strong data-astro-cid-ezrfn5wc>JEE (The National Route)</strong> </div> <p data-astro-cid-ezrfn5wc>
+</div> </div> <div class="pathway-card"> <div class="pathway-card-label"> <div class="pathway-icon">🌐</div> <strong>JEE (The National Route)</strong> </div> <p>
 Targeting Central Govt colleges (IITs/NITs) or top private ones
                 like IIIT Bangalore.
-</p> <ul data-astro-cid-ezrfn5wc> <li data-astro-cid-ezrfn5wc>
+</p> <ul> <li>
 Counselling via JoSAA (for IIT/NIT) or individual university
                   portals.
-</li> </ul> <div class="pathway-tip" data-astro-cid-ezrfn5wc> <strong data-astro-cid-ezrfn5wc>Reality Check:</strong> Opens doors to the highest
+</li> </ul> <div class="pathway-tip"> <strong>Reality Check:</strong> Opens doors to the highest
                 salary packages in India.
-</div> </div> <div class="pathway-card" data-astro-cid-ezrfn5wc> <div class="pathway-card-label" data-astro-cid-ezrfn5wc> <div class="pathway-icon" data-astro-cid-ezrfn5wc>🔗</div> <strong data-astro-cid-ezrfn5wc>COMED-K / Uni-Exams</strong> </div> <p data-astro-cid-ezrfn5wc>
+</div> </div> <div class="pathway-card"> <div class="pathway-card-label"> <div class="pathway-icon">🔗</div> <strong>COMED-K / Uni-Exams</strong> </div> <p>
 For both Karnataka and non-Karnataka students targeting private
                 universities.
-</p> <ul data-astro-cid-ezrfn5wc> <li data-astro-cid-ezrfn5wc>Separate entrance exams (PESSAT, VITEEE, MET, COMEDK).</li> </ul> <div class="pathway-tip" data-astro-cid-ezrfn5wc> <strong data-astro-cid-ezrfn5wc>Reality Check:</strong> Great backup if KCET rank is low
+</p> <ul> <li>Separate entrance exams (PESSAT, VITEEE, MET, COMEDK).</li> </ul> <div class="pathway-tip"> <strong>Reality Check:</strong> Great backup if KCET rank is low
                 but you have the budget.
-</div> </div> <div class="pathway-card" data-astro-cid-ezrfn5wc> <div class="pathway-card-label" data-astro-cid-ezrfn5wc> <div class="pathway-icon" data-astro-cid-ezrfn5wc>💼</div> <strong data-astro-cid-ezrfn5wc>Management Quota</strong> </div> <p data-astro-cid-ezrfn5wc>
+</div> </div> <div class="pathway-card"> <div class="pathway-card-label"> <div class="pathway-icon">💼</div> <strong>Management Quota</strong> </div> <p>
 Direct admission. You don't wait for counselling. You talk to
                 the college directly.
-</p> <ul data-astro-cid-ezrfn5wc> <li data-astro-cid-ezrfn5wc>
+</p> <ul> <li>
 Best to secure seats early (often before results are out).
-</li> </ul> <div class="pathway-tip" data-astro-cid-ezrfn5wc> <strong data-astro-cid-ezrfn5wc>Reality Check:</strong> Check if the college is actually
+</li> </ul> <div class="pathway-tip"> <strong>Reality Check:</strong> Check if the college is actually
                 worth the high premium.
-</div> </div> </div> <div class="callout" data-astro-cid-ezrfn5wc> <div class="callout-label" data-astro-cid-ezrfn5wc>Universal Truth</div> <p data-astro-cid-ezrfn5wc>
+</div> </div> </div> <div class="callout"> <div class="callout-label">Universal Truth</div> <p>
 All 5 pathways lead to the
-<strong data-astro-cid-ezrfn5wc>same AICTE-approved degree</strong>. The differences lie
+<strong>same AICTE-approved degree</strong>. The differences lie
               in fees, college options, and competition. Choose based on your
               budget and exam performance - not FOMO.
-</p> </div> <h2 data-astro-cid-ezrfn5wc>
-Don't pick a branch by "Trend".<br data-astro-cid-ezrfn5wc>Pick by what you'll enjoy
+</p> </div> <h2>
+Don't pick a branch by "Trend".<br>Pick by what you'll enjoy
             daily.
-</h2> <p data-astro-cid-ezrfn5wc>
+</h2> <p>
 Engineering is about the
-<strong data-astro-cid-ezrfn5wc>tools you use to solve problems</strong>. Group branches by
+<strong>tools you use to solve problems</strong>. Group branches by
             their core "vibe" to find your fit.
-</p> <div class="domain-grid" data-astro-cid-ezrfn5wc> <div class="domain-card" style="--domain-accent: #3b82f6" data-astro-cid-ezrfn5wc> <div class="domain-header" data-astro-cid-ezrfn5wc> <div class="domain-emoji" data-astro-cid-ezrfn5wc>💻</div> <h3 data-astro-cid-ezrfn5wc>Software &amp; Intelligence</h3> </div> <p class="domain-desc" data-astro-cid-ezrfn5wc> <strong data-astro-cid-ezrfn5wc>If you like:</strong> Logic, abstract math, and virtual
+</p> <div class="domain-grid"> <div class="domain-card" style="--domain-accent: #3b82f6"> <div class="domain-header"> <div class="domain-emoji">💻</div> <h3>Software &amp; Intelligence</h3> </div> <p class="domain-desc"> <strong>If you like:</strong> Logic, abstract math, and virtual
                 building.
-</p> <p class="domain-best" data-astro-cid-ezrfn5wc>
+</p> <p class="domain-best">
 You'll deal with code, data structures, and algorithms for 4+
                 years.
-</p> <div class="pills" data-astro-cid-ezrfn5wc> <span class="pill" data-astro-cid-ezrfn5wc>CSE</span> <span class="pill" data-astro-cid-ezrfn5wc>ISE</span> <span class="pill" data-astro-cid-ezrfn5wc>AI &amp; ML</span> <span class="pill" data-astro-cid-ezrfn5wc>Cyber Security</span> </div> </div> <div class="domain-card" style="--domain-accent: #8b5cf6" data-astro-cid-ezrfn5wc> <div class="domain-header" data-astro-cid-ezrfn5wc> <div class="domain-emoji" data-astro-cid-ezrfn5wc>⚡</div> <h3 data-astro-cid-ezrfn5wc>Circuits &amp; Signals</h3> </div> <p class="domain-desc" data-astro-cid-ezrfn5wc> <strong data-astro-cid-ezrfn5wc>If you like:</strong> Gadgets, hardware, and how devices
+</p> <div class="pills"> <span class="pill">CSE</span> <span class="pill">ISE</span> <span class="pill">AI &amp; ML</span> <span class="pill">Cyber Security</span> </div> </div> <div class="domain-card" style="--domain-accent: #8b5cf6"> <div class="domain-header"> <div class="domain-emoji">⚡</div> <h3>Circuits &amp; Signals</h3> </div> <p class="domain-desc"> <strong>If you like:</strong> Gadgets, hardware, and how devices
                 communicate.
-</p> <p class="domain-best" data-astro-cid-ezrfn5wc>
+</p> <p class="domain-best">
 The bridge between physics and software. Think chip design and
                 networking.
-</p> <div class="pills" data-astro-cid-ezrfn5wc> <span class="pill" data-astro-cid-ezrfn5wc>ECE</span> <span class="pill" data-astro-cid-ezrfn5wc>EEE</span> <span class="pill" data-astro-cid-ezrfn5wc>Telecom</span> <span class="pill" data-astro-cid-ezrfn5wc>Instrumentation</span> </div> </div> <div class="domain-card" style="--domain-accent: #f59e0b" data-astro-cid-ezrfn5wc> <div class="domain-header" data-astro-cid-ezrfn5wc> <div class="domain-emoji" data-astro-cid-ezrfn5wc>⚙️</div> <h3 data-astro-cid-ezrfn5wc>Machines &amp; Systems</h3> </div> <p class="domain-desc" data-astro-cid-ezrfn5wc> <strong data-astro-cid-ezrfn5wc>If you like:</strong> Moving parts, design, engines, and
+</p> <div class="pills"> <span class="pill">ECE</span> <span class="pill">EEE</span> <span class="pill">Telecom</span> <span class="pill">Instrumentation</span> </div> </div> <div class="domain-card" style="--domain-accent: #f59e0b"> <div class="domain-header"> <div class="domain-emoji">⚙️</div> <h3>Machines &amp; Systems</h3> </div> <p class="domain-desc"> <strong>If you like:</strong> Moving parts, design, engines, and
                 robotics.
-</p> <p class="domain-best" data-astro-cid-ezrfn5wc>
+</p> <p class="domain-best">
 Hands-on systems, forces, thermodynamics, and manufacturing.
-</p> <div class="pills" data-astro-cid-ezrfn5wc> <span class="pill" data-astro-cid-ezrfn5wc>Mechanical</span> <span class="pill" data-astro-cid-ezrfn5wc>Robotics</span> <span class="pill" data-astro-cid-ezrfn5wc>Aerospace</span> <span class="pill" data-astro-cid-ezrfn5wc>Mechatronics</span> </div> </div> <div class="domain-card" style="--domain-accent: #ef4444" data-astro-cid-ezrfn5wc> <div class="domain-header" data-astro-cid-ezrfn5wc> <div class="domain-emoji" data-astro-cid-ezrfn5wc>🏗️</div> <h3 data-astro-cid-ezrfn5wc>Infrastructure &amp; Earth</h3> </div> <p class="domain-desc" data-astro-cid-ezrfn5wc> <strong data-astro-cid-ezrfn5wc>If you like:</strong> Large scale construction and the
+</p> <div class="pills"> <span class="pill">Mechanical</span> <span class="pill">Robotics</span> <span class="pill">Aerospace</span> <span class="pill">Mechatronics</span> </div> </div> <div class="domain-card" style="--domain-accent: #ef4444"> <div class="domain-header"> <div class="domain-emoji">🏗️</div> <h3>Infrastructure &amp; Earth</h3> </div> <p class="domain-desc"> <strong>If you like:</strong> Large scale construction and the
                 physical world.
-</p> <p class="domain-best" data-astro-cid-ezrfn5wc>
+</p> <p class="domain-best">
 Designing cities, buildings, and managing natural resources.
-</p> <div class="pills" data-astro-cid-ezrfn5wc> <span class="pill" data-astro-cid-ezrfn5wc>Civil</span> <span class="pill" data-astro-cid-ezrfn5wc>Environmental</span> <span class="pill" data-astro-cid-ezrfn5wc>Mining</span> </div> </div> <div class="domain-card" style="--domain-accent: #22c55e" data-astro-cid-ezrfn5wc> <div class="domain-header" data-astro-cid-ezrfn5wc> <div class="domain-emoji" data-astro-cid-ezrfn5wc>🧬</div> <h3 data-astro-cid-ezrfn5wc>Bio &amp; Chemical Process</h3> </div> <p class="domain-desc" data-astro-cid-ezrfn5wc> <strong data-astro-cid-ezrfn5wc>If you like:</strong> Biology, chemistry, and healthcare
+</p> <div class="pills"> <span class="pill">Civil</span> <span class="pill">Environmental</span> <span class="pill">Mining</span> </div> </div> <div class="domain-card" style="--domain-accent: #22c55e"> <div class="domain-header"> <div class="domain-emoji">🧬</div> <h3>Bio &amp; Chemical Process</h3> </div> <p class="domain-desc"> <strong>If you like:</strong> Biology, chemistry, and healthcare
                 tech.
-</p> <p class="domain-best" data-astro-cid-ezrfn5wc>
+</p> <p class="domain-best">
 Processing molecules and biological systems into products.
-</p> <div class="pills" data-astro-cid-ezrfn5wc> <span class="pill" data-astro-cid-ezrfn5wc>Biotech</span> <span class="pill" data-astro-cid-ezrfn5wc>Chemical</span> <span class="pill" data-astro-cid-ezrfn5wc>Food Tech</span> <span class="pill" data-astro-cid-ezrfn5wc>Biomedical</span> </div> </div> </div> <h2 data-astro-cid-ezrfn5wc>5 Brutally Honest Reality Checks</h2> <p data-astro-cid-ezrfn5wc>
+</p> <div class="pills"> <span class="pill">Biotech</span> <span class="pill">Chemical</span> <span class="pill">Food Tech</span> <span class="pill">Biomedical</span> </div> </div> </div> <h2>5 Brutally Honest Reality Checks</h2> <p>
 Forget the brochures. Use these 5 practical filters to see if a
             college is actually worth your 4 years and lakhs of rupees.
 </p>
@@ -113,8 +110,8 @@ Forget the brochures. Use these 5 practical filters to see if a
     <div class="reality-check-content">
       <h3 class="reality-check-title">The "LinkedIn Search" Filter</h3>
       <p class="reality-check-description">
-        <strong data-astro-cid-ezrfn5wc>Don't look at the website.</strong> Go to LinkedIn (or
-                  check the <strong data-astro-cid-ezrfn5wc>C2 Club community</strong>), search for the
+        <strong>Don't look at the website.</strong> Go to LinkedIn (or
+                  check the <strong>C2 Club community</strong>), search for the
                   college name, and filter by "People". See where the 2022-2024
                   graduates are working. If 80% are in "Support" or "Testing"
                   roles at mass recruiters, the college is a placement factory,
@@ -168,65 +165,65 @@ Forget the brochures. Use these 5 practical filters to see if a
         A college's true value is its Alumni. A 20-year-old college
                   has seniors who are now Managers and Directors. They are your
                   ticket to referrals. Platforms like
-<strong data-astro-cid-ezrfn5wc>C2 Club</strong> are built to bridge this gap, helping
+<strong>C2 Club</strong> are built to bridge this gap, helping
                   you connect with seniors who have already cleared the path
                   you're on.
       </p>
     </div>
   </div>
-<div class="callout" data-astro-cid-ezrfn5wc>
-  <div class="callout-label" data-astro-cid-ezrfn5wc>Practical Tip</div> <p data-astro-cid-ezrfn5wc>
+<div class="callout">
+  <div class="callout-label">Practical Tip</div> <p>
 Visit the college canteen and talk to a 3rd-year student. Ask
               them:
-<em data-astro-cid-ezrfn5wc>"If you could go back, would you join this college again?"</em>
+<em>"If you could go back, would you join this college again?"</em>
 Their face will tell you more than any ranking list.
-</p> </div> <h2 data-astro-cid-ezrfn5wc>The After-B.Tech Reality: 4 Main Routes</h2> <p data-astro-cid-ezrfn5wc>
+</p> </div> <h2>The After-B.Tech Reality: 4 Main Routes</h2> <p>
 Engineering is a foundation. Here is how you practically move into
             the high-earning bracket or government stability.
-</p> <h3 data-astro-cid-ezrfn5wc>1. The Private Sector (Corporate Career)</h3> <p data-astro-cid-ezrfn5wc>The biggest employer. It is divided into three distinct worlds:</p> <div class="table-wrap" data-astro-cid-ezrfn5wc> <table data-astro-cid-ezrfn5wc> <thead data-astro-cid-ezrfn5wc> <tr data-astro-cid-ezrfn5wc> <th data-astro-cid-ezrfn5wc>Category</th> <th data-astro-cid-ezrfn5wc>Examples</th> <th data-astro-cid-ezrfn5wc>Starting Salary</th> <th data-astro-cid-ezrfn5wc>What they want</th> </tr> </thead> <tbody data-astro-cid-ezrfn5wc> <tr data-astro-cid-ezrfn5wc> <td data-astro-cid-ezrfn5wc><strong data-astro-cid-ezrfn5wc>Product-Based</strong></td> <td data-astro-cid-ezrfn5wc>Google, Amazon, Adobe, Startups</td> <td data-astro-cid-ezrfn5wc><strong data-astro-cid-ezrfn5wc>₹12L – ₹45L+</strong></td> <td data-astro-cid-ezrfn5wc>High-level Coding, DSA, System Design</td> </tr> <tr data-astro-cid-ezrfn5wc> <td data-astro-cid-ezrfn5wc><strong data-astro-cid-ezrfn5wc>Service-Based</strong></td> <td data-astro-cid-ezrfn5wc>TCS, Infosys, Wipro, Accenture</td> <td data-astro-cid-ezrfn5wc><strong data-astro-cid-ezrfn5wc>₹3.6L – ₹7L</strong></td> <td data-astro-cid-ezrfn5wc>Basic Coding, Aptitude, Communication</td> </tr> <tr data-astro-cid-ezrfn5wc> <td data-astro-cid-ezrfn5wc><strong data-astro-cid-ezrfn5wc>Core Industry</strong></td> <td data-astro-cid-ezrfn5wc>L&amp;T, Bosch, Tata Motors, Reliance</td> <td data-astro-cid-ezrfn5wc><strong data-astro-cid-ezrfn5wc>₹4L – ₹9L</strong></td> <td data-astro-cid-ezrfn5wc>Branch Fundamentals, AutoCAD, MATLAB</td> </tr> </tbody> </table> </div> <h3 data-astro-cid-ezrfn5wc>2. Government Exams (Stability &amp; Power)</h3> <p data-astro-cid-ezrfn5wc>
+</p> <h3>1. The Private Sector (Corporate Career)</h3> <p>The biggest employer. It is divided into three distinct worlds:</p> <div class="table-wrap"> <table> <thead> <tr> <th>Category</th> <th>Examples</th> <th>Starting Salary</th> <th>What they want</th> </tr> </thead> <tbody> <tr> <td><strong>Product-Based</strong></td> <td>Google, Amazon, Adobe, Startups</td> <td><strong>₹12L – ₹45L+</strong></td> <td>High-level Coding, DSA, System Design</td> </tr> <tr> <td><strong>Service-Based</strong></td> <td>TCS, Infosys, Wipro, Accenture</td> <td><strong>₹3.6L – ₹7L</strong></td> <td>Basic Coding, Aptitude, Communication</td> </tr> <tr> <td><strong>Core Industry</strong></td> <td>L&amp;T, Bosch, Tata Motors, Reliance</td> <td><strong>₹4L – ₹9L</strong></td> <td>Branch Fundamentals, AutoCAD, MATLAB</td> </tr> </tbody> </table> </div> <h3>2. Government Exams (Stability &amp; Power)</h3> <p>
 You don't just "get" a govt job; you clear a specific exam. There
             are two paths for engineers:
-</p> <div class="domain-grid" data-astro-cid-ezrfn5wc> <div class="domain-card" style="--domain-accent: #8b5cf6" data-astro-cid-ezrfn5wc> <div class="domain-header" data-astro-cid-ezrfn5wc> <div class="domain-emoji" data-astro-cid-ezrfn5wc>🛡️</div> <h3 data-astro-cid-ezrfn5wc>Engineering-Specific</h3> </div> <p class="domain-desc" data-astro-cid-ezrfn5wc>
+</p> <div class="domain-grid"> <div class="domain-card" style="--domain-accent: #8b5cf6"> <div class="domain-header"> <div class="domain-emoji">🛡️</div> <h3>Engineering-Specific</h3> </div> <p class="domain-desc">
 Using your degree to join technical govt wings.
 </p> <ul style="
                   font-size: 0.85rem;
                   color: var(--text-muted);
                   padding-left: 20px;
-                " data-astro-cid-ezrfn5wc> <li data-astro-cid-ezrfn5wc> <strong data-astro-cid-ezrfn5wc>IES / ESE:</strong> The UPSC for engineers. Leads to
+                "> <li> <strong>IES / ESE:</strong> The UPSC for engineers. Leads to
                   Group-A Gazetted posts.
-</li> <li data-astro-cid-ezrfn5wc> <strong data-astro-cid-ezrfn5wc>GATE for PSUs:</strong> High-paying jobs in IOCL,
+</li> <li> <strong>GATE for PSUs:</strong> High-paying jobs in IOCL,
                   ONGC, NTPC, etc.
-</li> <li data-astro-cid-ezrfn5wc> <strong data-astro-cid-ezrfn5wc>ISRO / DRDO / BARC:</strong> Scientific officer roles
+</li> <li> <strong>ISRO / DRDO / BARC:</strong> Scientific officer roles
                   via their own exams.
-</li> </ul> </div> <div class="domain-card" style="--domain-accent: #22c55e" data-astro-cid-ezrfn5wc> <div class="domain-header" data-astro-cid-ezrfn5wc> <div class="domain-emoji" data-astro-cid-ezrfn5wc>🏛️</div> <h3 data-astro-cid-ezrfn5wc>General (Open to All)</h3> </div> <p class="domain-desc" data-astro-cid-ezrfn5wc>
+</li> </ul> </div> <div class="domain-card" style="--domain-accent: #22c55e"> <div class="domain-header"> <div class="domain-emoji">🏛️</div> <h3>General (Open to All)</h3> </div> <p class="domain-desc">
 Using your degree as a qualifier for civil/banking roles.
 </p> <ul style="
                   font-size: 0.85rem;
                   color: var(--text-muted);
                   padding-left: 20px;
-                " data-astro-cid-ezrfn5wc> <li data-astro-cid-ezrfn5wc><strong data-astro-cid-ezrfn5wc>UPSC CSE:</strong> Becoming an IAS/IPS/IFS.</li> <li data-astro-cid-ezrfn5wc> <strong data-astro-cid-ezrfn5wc>Banking (SBI/IBPS PO):</strong> Fast recruitment and
+                "> <li><strong>UPSC CSE:</strong> Becoming an IAS/IPS/IFS.</li> <li> <strong>Banking (SBI/IBPS PO):</strong> Fast recruitment and
                   good growth.
-</li> <li data-astro-cid-ezrfn5wc> <strong data-astro-cid-ezrfn5wc>SSC CGL:</strong> For Income Tax, Excise, and CBI
+</li> <li> <strong>SSC CGL:</strong> For Income Tax, Excise, and CBI
                   inspector roles.
-</li> </ul> </div> </div> <h3 data-astro-cid-ezrfn5wc>3. Higher Education &amp; Management</h3> <div class="pathway-grid" data-astro-cid-ezrfn5wc> <div class="pathway-card" data-astro-cid-ezrfn5wc> <div class="pathway-card-label" data-astro-cid-ezrfn5wc> <strong data-astro-cid-ezrfn5wc>MS / M.Tech (Technical)</strong> </div> <p data-astro-cid-ezrfn5wc>
+</li> </ul> </div> </div> <h3>3. Higher Education &amp; Management</h3> <div class="pathway-grid"> <div class="pathway-card"> <div class="pathway-card-label"> <strong>MS / M.Tech (Technical)</strong> </div> <p>
 For specialization. MS (Abroad) for global exposure or M.Tech
                 (IITs via GATE) for research roles in India.
-</p> </div> <div class="pathway-card" data-astro-cid-ezrfn5wc> <div class="pathway-card-label" data-astro-cid-ezrfn5wc> <strong data-astro-cid-ezrfn5wc>MBA (Management)</strong> </div> <p data-astro-cid-ezrfn5wc>
+</p> </div> <div class="pathway-card"> <div class="pathway-card-label"> <strong>MBA (Management)</strong> </div> <p>
 The "Career Reset". Best after 2 years of work. Moves you into
-                high-paying roles like <strong data-astro-cid-ezrfn5wc>Product Manager</strong> or
-<strong data-astro-cid-ezrfn5wc>Strategy Consultant</strong>.
-</p> </div> </div> <h3 data-astro-cid-ezrfn5wc>4. Entrepreneurship</h3> <p data-astro-cid-ezrfn5wc>
+                high-paying roles like <strong>Product Manager</strong> or
+<strong>Strategy Consultant</strong>.
+</p> </div> </div> <h3>4. Entrepreneurship</h3> <p>
 Building your own product. High risk, but the only path with
-<strong data-astro-cid-ezrfn5wc>unlimited financial upside</strong>. In the startup world,
+<strong>unlimited financial upside</strong>. In the startup world,
             your skills matter 100x more than your college name.
-</p> <div class="callout-warn" data-astro-cid-ezrfn5wc> <div class="callout-label" data-astro-cid-ezrfn5wc>Reality Check</div> <p data-astro-cid-ezrfn5wc>
+</p> <div class="callout-warn"> <div class="callout-label">Reality Check</div> <p>
 Your college teaches theory. Your career grows through the
               projects you build outside class, the internships you secure
               early, and the networks you actually nurture.
-<strong data-astro-cid-ezrfn5wc>Getting in is just day one.</strong> </p> </div> <h2 data-astro-cid-ezrfn5wc>Your Admission Roadmap</h2> <p data-astro-cid-ezrfn5wc>
+<strong>Getting in is just day one.</strong> </p> </div> <h2>Your Admission Roadmap</h2> <p>
 Since official counseling dates change every year, follow this
             process-based roadmap instead of fixed dates.
-<strong data-astro-cid-ezrfn5wc>Accuracy Note:</strong> Always verify live schedules on
+<strong>Accuracy Note:</strong> Always verify live schedules on
             official portals as KEA/JoSAA often update timelines with short
             notice.
 </p> <div class="steps">
@@ -269,10 +266,10 @@ Since official counseling dates change every year, follow this
                 C2 Club to start your journey.</li></ul>
     </div>
   </div>
-</div> <div class="callout callout-warn" data-astro-cid-ezrfn5wc> <div class="callout-label" data-astro-cid-ezrfn5wc>Official Sources of Truth</div> <p data-astro-cid-ezrfn5wc>
+</div> <div class="callout callout-warn"> <div class="callout-label">Official Sources of Truth</div> <p>
 Avoid unofficial WhatsApp groups for date updates. Only trust
               these portals:
-</p> <ul style="margin-top: 12px; margin-bottom: 0" data-astro-cid-ezrfn5wc> <li data-astro-cid-ezrfn5wc> <strong data-astro-cid-ezrfn5wc>KEA (KCET):</strong> <a href="https://cetonline.karnataka.gov.in/kea/" target="_blank" style="color: var(--green)" data-astro-cid-ezrfn5wc>cetonline.karnataka.gov.in/kea/</a> </li> <li data-astro-cid-ezrfn5wc> <strong data-astro-cid-ezrfn5wc>JoSAA (JEE):</strong> <a href="https://josaa.nic.in/" target="_blank" style="color: var(--green)" data-astro-cid-ezrfn5wc>josaa.nic.in</a> </li> <li data-astro-cid-ezrfn5wc> <strong data-astro-cid-ezrfn5wc>COMEDK:</strong> <a href="https://www.comedk.org/" target="_blank" style="color: var(--green)" data-astro-cid-ezrfn5wc>comedk.org</a> </li> </ul> </div> <p data-astro-cid-ezrfn5wc>
+</p> <ul style="margin-top: 12px; margin-bottom: 0"> <li> <strong>KEA (KCET):</strong> <a href="https://cetonline.karnataka.gov.in/kea/" target="_blank" style="color: var(--green)">cetonline.karnataka.gov.in/kea/</a> </li> <li> <strong>JoSAA (JEE):</strong> <a href="https://josaa.nic.in/" target="_blank" style="color: var(--green)">josaa.nic.in</a> </li> <li> <strong>COMEDK:</strong> <a href="https://www.comedk.org/" target="_blank" style="color: var(--green)">comedk.org</a> </li> </ul> </div> <p>
 While guides give you the blueprint, navigating KCET counseling or finding senior notes shouldn't happen in an isolated WhatsApp group. This is exactly why we built the cross-campus student hubs inside the C2 Club app-where Karnataka students share actual PYQs, notes, and verify cut-offs in real-time.
 </p> </div>   <!-- /article-body -->
 
@@ -287,35 +284,35 @@ While guides give you the blueprint, navigating KCET counseling or finding senio
 
 <SeriesBox currentHref={Astro.url.pathname} />
 
-<div class="faq-section" data-astro-cid-ezrfn5wc> <h2 data-astro-cid-ezrfn5wc>Student Q&A: Engineering After PUC Science</h2> <details class="faq-item" data-astro-cid-ezrfn5wc> <summary data-astro-cid-ezrfn5wc>
+<div class="faq-section"> <h2>Student Q&A: Engineering After PUC Science</h2> <details class="faq-item"> <summary>
 What exams should I write after PUC science in Karnataka for engineering?
-</summary> <p data-astro-cid-ezrfn5wc>
+</summary> <p>
 To enter engineering in Karnataka, you should write KCET (if you are a Karnataka domicile), COMED-K (open to all students), or national exams like JEE Main and JEE Advanced. Additionally, some deemed universities conduct their own entrance exams like PESSAT, VITEEE, and MET.
-</p> </details> <details class="faq-item" data-astro-cid-ezrfn5wc> <summary data-astro-cid-ezrfn5wc>
+</p> </details> <details class="faq-item"> <summary>
 Which is the best engineering college in Karnataka?
-</summary> <p data-astro-cid-ezrfn5wc>
+</summary> <p>
 There is no single "best" college. RVCE, PESU, and BMSCE are
                 top-rated for placements, while NITK Surathkal leads in
-                prestige. The best college for <em data-astro-cid-ezrfn5wc>you</em> depends on your
+                prestige. The best college for <em>you</em> depends on your
                 KCET/JEE rank, budget, and how much you value personal time over
                 strict academics.
-</p> </details> <details class="faq-item" data-astro-cid-ezrfn5wc> <summary data-astro-cid-ezrfn5wc>How do I choose between CSE, ISE, and AI/ML?</summary> <p data-astro-cid-ezrfn5wc>
+</p> </details> <details class="faq-item"> <summary>How do I choose between CSE, ISE, and AI/ML?</summary> <p>
 At the undergraduate level, the core curriculum for CSE and ISE
                 is 90% identical and both are treated equally by recruiters.
                 AI/ML is a specialization within CSE; choose it only if you are
                 certain about working with data and algorithms early on.
                 Otherwise, plain CSE/ISE offers more flexibility.
-</p> </details> <details class="faq-item" data-astro-cid-ezrfn5wc> <summary data-astro-cid-ezrfn5wc>
+</p> </details> <details class="faq-item"> <summary>
 Is Management Quota actually worth the high fees?
-</summary> <p data-astro-cid-ezrfn5wc>
+</summary> <p>
 It is worth it ONLY if the college has a proven track record of
                 placing students in high-paying product companies (₹12L+) and if
                 you can afford it without massive debt. For many, a "lower"
                 college with lower fees and more free time to self-learn is a
                 better ROI.
-</p> </details> <details class="faq-item" data-astro-cid-ezrfn5wc> <summary data-astro-cid-ezrfn5wc>
+</p> </details> <details class="faq-item"> <summary>
 What is the most important thing to do in the first year?
-</summary> <p data-astro-cid-ezrfn5wc>
+</summary> <p>
 Start networking. Connect with 3rd and 4th-year seniors who are
                 already placed. Join communities like C2 Club to understand the
                 industry requirements early so you don't wait until the 7th
@@ -323,6 +320,5 @@ Start networking. Connect with 3rd and 4th-year seniors who are
 </p> </details> </div>
 
   <!-- /article-body -->
-</div> <!-- /article-outer --> </main>
 </Layout>
-
+</BlogLayout>

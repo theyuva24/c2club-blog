@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import { blogPosts } from './src/data/blogPosts.js';
 
-// Normalization function to match paths reliably
+// Normalization function to match paths reliably (strips slashes for internal matching)
 const normalizePath = (path) => {
   if (!path) return '';
   return path
@@ -25,9 +25,15 @@ blogPosts.forEach(post => {
 // https://astro.build/config
 export default defineConfig({
   site: 'https://c2club.in',
+  
+  // 1. Force trailing slashes globally to perfectly align with Cloudflare Pages
+  trailingSlash: 'always',
+  
   build: {
+    // 2. Change 'file' to 'directory' so it builds as /path/index.html instead of /path.html
     format: 'directory'
   },
+  
   integrations: [
     sitemap({
       serialize(item) {

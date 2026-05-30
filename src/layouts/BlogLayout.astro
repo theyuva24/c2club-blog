@@ -1,0 +1,111 @@
+---
+import Layout from './Layout.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  printCoverTitle?: string;
+  printCoverSubtitle?: string;
+  showPrintCover?: boolean;
+  shouldNoIndex?: boolean;
+
+  breadcrumbCurrent: string;
+  heroTag?: string;
+  heroTitle: string; 
+  heroLead: string; 
+  date: string;
+  readTime: string;
+
+  stats?: { num: string; label: string }[];
+
+  featuredImageSrc?: string;
+  featuredImageAlt?: string;
+}
+
+const {
+  title,
+  description,
+  printCoverTitle,
+  printCoverSubtitle,
+  showPrintCover,
+  shouldNoIndex,
+
+  breadcrumbCurrent,
+  heroTag,
+  heroTitle,
+  heroLead,
+  date,
+  readTime,
+
+  stats,
+  featuredImageSrc,
+  featuredImageAlt
+} = Astro.props;
+---
+<Layout
+  title={title}
+  description={description}
+  isArticle={true}
+  showPrintCover={showPrintCover}
+  printCoverTitle={printCoverTitle}
+  printCoverSubtitle={printCoverSubtitle}
+  shouldNoIndex={shouldNoIndex}
+>
+  <main>
+    <div class="article-outer">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li aria-current="page">{breadcrumbCurrent}</li>
+        </ol>
+      </nav>
+
+      <!-- Hero -->
+      <header class="hero">
+        {heroTag ? (
+            <div class="hero-tag">{heroTag}</div>
+        ) : (
+            <span class="hero-tag">Student Resource Series</span>
+        )}
+        <h1 set:html={heroTitle} />
+        <p class="hero-lead" set:html={heroLead} />
+        <div class="hero-meta">
+          <span>{date}</span>
+          <div class="dot"></div>
+          <span>{readTime}</span>
+        </div>
+        <button id="download-pdf-btn" onclick="window.print()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px; height:16px; margin-right:8px; display:inline-block; vertical-align:middle;">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>Download as Offline PDF
+        </button>
+      </header>
+
+      <!-- Stats -->
+      {stats && stats.length > 0 && (
+        <div class="stats-strip">
+          {stats.map(stat => (
+            <div class="stat-cell">
+              <div class="stat-num">{stat.num}</div>
+              <div class="stat-label">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <!-- Body -->
+      {featuredImageSrc && (
+        <div class="article-featured-image" style="margin-bottom: 40px; text-align: center">
+          <img src={featuredImageSrc} alt={featuredImageAlt || title} style="width: 100%; max-width: 900px; height: auto; border-radius: 16px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);" />
+        </div>
+      )}
+
+      <div class="article-body">
+        <slot />
+      </div>
+    </div>
+  </main>
+</Layout>

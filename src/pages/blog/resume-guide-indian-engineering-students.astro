@@ -1,127 +1,127 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import BlogLayout from '../../layouts/BlogLayout.astro';
 import SeriesBox from '../../components/SeriesBox.astro';
 
 // Clean title of any HTML tags
 const pageTitle = "The Complete Resume Guide for Indian Engineering Students (2025) | C2 Club";
 ---
-<Layout
+<BlogLayout
   title={pageTitle}
   description="Everything an Indian engineering student needs to know about resumes, ATS, referrals, campus vs off-campus hiring - with data, real examples, and branch-specific guidance."
-  isArticle={true}
   showPrintCover={false}
   printCoverTitle=""
   printCoverSubtitle=""
->
-  <main class="article-outer" data-astro-cid-6rmsvolh> <nav class="breadcrumbs" aria-label="Breadcrumb" data-astro-cid-6rmsvolh> <ol data-astro-cid-6rmsvolh> <li data-astro-cid-6rmsvolh><a href="/" data-astro-cid-6rmsvolh>Home</a></li> <li data-astro-cid-6rmsvolh><a href="/blog" data-astro-cid-6rmsvolh>Blog</a></li> <li aria-current="page" data-astro-cid-6rmsvolh>Resume Guide</li> </ol> </nav> <header class="hero" data-astro-cid-6rmsvolh> <span class="hero-tag" data-astro-cid-6rmsvolh>System Design · India · 2025</span> <h1 data-astro-cid-6rmsvolh>The Complete Resume Guide for Indian Engineering Students</h1> <p class="hero-lead" data-astro-cid-6rmsvolh>
-An evidence-based deep dive into the mechanics of hiring, the reality
+
+  breadcrumbCurrent="Resume Guide"
+  heroTag="System Design · India · 2025"
+  heroTitle={`The Complete Resume Guide for Indian Engineering Students`}
+  heroLead={`An evidence-based deep dive into the mechanics of hiring, the reality
           of ATS, and the branch-specific strategies that move the needle for
-          Indian students.
-</p> <div class="hero-meta" data-astro-cid-6rmsvolh> <span data-astro-cid-6rmsvolh>May 16, 2026</span> <span class="dot" data-astro-cid-6rmsvolh></span> <span class="read-time" data-astro-cid-6rmsvolh>45 min read</span> </div> <button id="download-pdf-btn" onclick="window.print()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>Download as Offline PDF</button> </header> <div class="stats-strip" data-astro-cid-6rmsvolh> <div class="stat-cell" data-astro-cid-6rmsvolh> <div class="stat-num" data-astro-cid-6rmsvolh>1.5M</div> <div class="stat-label" data-astro-cid-6rmsvolh>Graduates/Year</div> </div> <div class="stat-cell" data-astro-cid-6rmsvolh> <div class="stat-num" data-astro-cid-6rmsvolh>1.2%</div> <div class="stat-label" data-astro-cid-6rmsvolh>Cold Apply Rate</div> </div> <div class="stat-cell" data-astro-cid-6rmsvolh> <div class="stat-num" data-astro-cid-6rmsvolh>20%</div> <div class="stat-label" data-astro-cid-6rmsvolh>Referral Success</div> </div> </div> <!-- Body --> <div class="article-featured-image" style="margin-bottom: 40px; text-align: center" data-astro-cid-6rmsvolh> <img src="../images/resume-guide-blog.jpg" alt="The Complete Resume Guide for Indian Engineering Students" style="
-            width: 100%;
-            max-width: 900px;
-            height: auto;
-            border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-          " data-astro-cid-6rmsvolh> </div> <div class="article-body" data-astro-cid-6rmsvolh> <p data-astro-cid-6rmsvolh>
+          Indian students.`}
+  date="Mar 18, 2026"
+  readTime="45 min read"
+  stats={[{ num: "1.5M", label: "Graduates/Year" }, { num: "1.2%", label: "Cold Apply Rate" }, { num: "20%", label: "Referral Success" }]}
+  featuredImageSrc="../images/resume-guide-blog.jpg" featuredImageAlt="The Complete Resume Guide for Indian Engineering Students"
+>
+<p>
 India produces 1.5 million engineering graduates every year. The
           economy generates roughly 150,000 engineering jobs in the same period.
           That's a 10:1 ratio. Most students don't realize that they are
           competing not just with their batchmates, but with the structural
           reality of these numbers.
-</p> <p data-astro-cid-6rmsvolh>
+</p> <p>
 This guide isn't about "how to make a pretty document." It's about how
           to navigate the system that sits between you and a job. We've compiled
           data from over 2,400 JD analyses, recruiter interviews, and real-world
           hiring outcomes to give you the honest truth.
-</p> <div class="callout" data-astro-cid-6rmsvolh> <span class="callout-label" data-astro-cid-6rmsvolh>The Central Thesis</span> <p data-astro-cid-6rmsvolh>
-A resume's only job is to get you an <strong data-astro-cid-6rmsvolh>interview</strong>. It
+</p> <div class="callout"> <span class="callout-label">The Central Thesis</span> <p>
+A resume's only job is to get you an <strong>interview</strong>. It
             is a marketing document, not a biography. It is a script for your
             interview, not a record of your past.
-</p> </div> <h2 data-astro-cid-6rmsvolh>Chapter 1: The Four Worlds of Indian Engineering Employment</h2> <p data-astro-cid-6rmsvolh>
+</p> </div> <h2>Chapter 1: The Four Worlds of Indian Engineering Employment</h2> <p>
 Before you write, you must know who you are writing for. The job
           market in India is not one entity; it's four distinct worlds with
           entirely different rules.
-</p> <div class="table-wrap" data-astro-cid-6rmsvolh> <table data-astro-cid-6rmsvolh> <thead data-astro-cid-6rmsvolh> <tr data-astro-cid-6rmsvolh> <th data-astro-cid-6rmsvolh>World</th> <th data-astro-cid-6rmsvolh>Examples</th> <th data-astro-cid-6rmsvolh>Hiring Signal</th> </tr> </thead> <tbody data-astro-cid-6rmsvolh> <tr data-astro-cid-6rmsvolh> <td data-astro-cid-6rmsvolh><strong data-astro-cid-6rmsvolh>1. Large IT Services</strong></td> <td data-astro-cid-6rmsvolh>TCS, Infosys, Wipro, Cognizant</td> <td data-astro-cid-6rmsvolh>Aptitude Score + Eligibility (CGPA)</td> </tr> <tr data-astro-cid-6rmsvolh> <td data-astro-cid-6rmsvolh><strong data-astro-cid-6rmsvolh>2. Product Companies & GCCs</strong></td> <td data-astro-cid-6rmsvolh>Razorpay, Zoho, Samsung R&D, Intel</td> <td data-astro-cid-6rmsvolh>Tech Depth + DSA + Deployed Projects</td> </tr> <tr data-astro-cid-6rmsvolh> <td data-astro-cid-6rmsvolh><strong data-astro-cid-6rmsvolh>3. Startups</strong></td> <td data-astro-cid-6rmsvolh>CRED, PhonePe, and early-stage firms</td> <td data-astro-cid-6rmsvolh>Speed + Ownership + Portfolio</td> </tr> <tr data-astro-cid-6rmsvolh> <td data-astro-cid-6rmsvolh><strong data-astro-cid-6rmsvolh>4. Core & PSUs</strong></td> <td data-astro-cid-6rmsvolh>L&T, Bosch, ONGC, NTPC</td> <td data-astro-cid-6rmsvolh>Domain Depth + GATE Rank</td> </tr> </tbody> </table> </div> <h2 data-astro-cid-6rmsvolh>Chapter 2: What Actually Happens After You Hit Apply?</h2> <p data-astro-cid-6rmsvolh>
+</p> <div class="table-wrap"> <table> <thead> <tr> <th>World</th> <th>Examples</th> <th>Hiring Signal</th> </tr> </thead> <tbody> <tr> <td><strong>1. Large IT Services</strong></td> <td>TCS, Infosys, Wipro, Cognizant</td> <td>Aptitude Score + Eligibility (CGPA)</td> </tr> <tr> <td><strong>2. Product Companies & GCCs</strong></td> <td>Razorpay, Zoho, Samsung R&D, Intel</td> <td>Tech Depth + DSA + Deployed Projects</td> </tr> <tr> <td><strong>3. Startups</strong></td> <td>CRED, PhonePe, and early-stage firms</td> <td>Speed + Ownership + Portfolio</td> </tr> <tr> <td><strong>4. Core & PSUs</strong></td> <td>L&T, Bosch, ONGC, NTPC</td> <td>Domain Depth + GATE Rank</td> </tr> </tbody> </table> </div> <h2>Chapter 2: What Actually Happens After You Hit Apply?</h2> <p>
 Most students imagine a human reading their resume immediately. The
           reality is much colder. Depending on the company size, your resume
           faces different gatekeepers.
-</p> <div class="steps" data-astro-cid-6rmsvolh> <div class="step" data-astro-cid-6rmsvolh> <div class="step-num" data-astro-cid-6rmsvolh>1</div> <div class="step-body" data-astro-cid-6rmsvolh> <h3 data-astro-cid-6rmsvolh>The ATS Filter</h3> <p data-astro-cid-6rmsvolh>
+</p> <div class="steps"> <div class="step"> <div class="step-num">1</div> <div class="step-body"> <h3>The ATS Filter</h3> <p>
 At companies with 100+ employees, an
-<strong data-astro-cid-6rmsvolh>Applicant Tracking System</strong> parses your resume.
+<strong>Applicant Tracking System</strong> parses your resume.
                 If it can't read your font, if your contact info is in a text
                 box, or if your skills are in a complex table, you are DQ'd
                 before a human even knows you exist.
-</p> </div> </div> <div class="step" data-astro-cid-6rmsvolh> <div class="step-num" data-astro-cid-6rmsvolh>2</div> <div class="step-body" data-astro-cid-6rmsvolh> <h3 data-astro-cid-6rmsvolh>The 6-Second Recruiter Scan</h3> <p data-astro-cid-6rmsvolh>
+</p> </div> </div> <div class="step"> <div class="step-num">2</div> <div class="step-body"> <h3>The 6-Second Recruiter Scan</h3> <p>
 A recruiter handles 50–100 applications a day. They don't
                 "read"; they scan for keywords, college name, and CGPA. If they
                 don't find what they need in 6 seconds, they move on.
-</p> </div> </div> <div class="step" data-astro-cid-6rmsvolh> <div class="step-num" data-astro-cid-6rmsvolh>3</div> <div class="step-body" data-astro-cid-6rmsvolh> <h3 data-astro-cid-6rmsvolh>The Hiring Manager Deep Dive</h3> <p data-astro-cid-6rmsvolh>
+</p> </div> </div> <div class="step"> <div class="step-num">3</div> <div class="step-body"> <h3>The Hiring Manager Deep Dive</h3> <p>
 This is where your projects matter. The person who will actually
                 work with you reads the technical details. They are looking for
-                proof that you can <em data-astro-cid-6rmsvolh>actually build stuff</em>.
-</p> </div> </div> </div> <h2 data-astro-cid-6rmsvolh>Chapter 3: The Hierarchy of Resume Elements</h2> <p data-astro-cid-6rmsvolh>
+                proof that you can <em>actually build stuff</em>.
+</p> </div> </div> </div> <h2>Chapter 3: The Hierarchy of Resume Elements</h2> <p>
 What should you spend 80% of your time on? Most students spend it on
           "design." Recruiters spend it on "evidence."
-</p> <div class="table-wrap" data-astro-cid-6rmsvolh> <table data-astro-cid-6rmsvolh> <thead data-astro-cid-6rmsvolh> <tr data-astro-cid-6rmsvolh> <th data-astro-cid-6rmsvolh>Element</th> <th data-astro-cid-6rmsvolh>Recruiter's View</th> <th data-astro-cid-6rmsvolh>Impact Score</th> </tr> </thead> <tbody data-astro-cid-6rmsvolh> <tr data-astro-cid-6rmsvolh> <td data-astro-cid-6rmsvolh><strong data-astro-cid-6rmsvolh>Eligibility (CGPA)</strong></td> <td data-astro-cid-6rmsvolh>Binary: Pass or Fail</td> <td data-astro-cid-6rmsvolh>Critical (for first filter)</td> </tr> <tr data-astro-cid-6rmsvolh> <td data-astro-cid-6rmsvolh><strong data-astro-cid-6rmsvolh>Projects (Quality)</strong></td> <td data-astro-cid-6rmsvolh>Proof of Competence</td> <td data-astro-cid-6rmsvolh>Highest (for final selection)</td> </tr> <tr data-astro-cid-6rmsvolh> <td data-astro-cid-6rmsvolh><strong data-astro-cid-6rmsvolh>Internships</strong></td> <td data-astro-cid-6rmsvolh>Professional Validation</td> <td data-astro-cid-6rmsvolh>High</td> </tr> <tr data-astro-cid-6rmsvolh> <td data-astro-cid-6rmsvolh><strong data-astro-cid-6rmsvolh>Certifications</strong></td> <td data-astro-cid-6rmsvolh>Noise vs Signal</td> <td data-astro-cid-6rmsvolh>Low (unless NPTEL Elite)</td> </tr> <tr data-astro-cid-6rmsvolh> <td data-astro-cid-6rmsvolh><strong data-astro-cid-6rmsvolh>Design/Template</strong></td> <td data-astro-cid-6rmsvolh>Irrelevant if readable</td> <td data-astro-cid-6rmsvolh>Zero</td> </tr> </tbody> </table> </div> <div class="callout callout-red" data-astro-cid-6rmsvolh> <span class="callout-label" data-astro-cid-6rmsvolh>The Photo Trap</span> <p data-astro-cid-6rmsvolh>
+</p> <div class="table-wrap"> <table> <thead> <tr> <th>Element</th> <th>Recruiter's View</th> <th>Impact Score</th> </tr> </thead> <tbody> <tr> <td><strong>Eligibility (CGPA)</strong></td> <td>Binary: Pass or Fail</td> <td>Critical (for first filter)</td> </tr> <tr> <td><strong>Projects (Quality)</strong></td> <td>Proof of Competence</td> <td>Highest (for final selection)</td> </tr> <tr> <td><strong>Internships</strong></td> <td>Professional Validation</td> <td>High</td> </tr> <tr> <td><strong>Certifications</strong></td> <td>Noise vs Signal</td> <td>Low (unless NPTEL Elite)</td> </tr> <tr> <td><strong>Design/Template</strong></td> <td>Irrelevant if readable</td> <td>Zero</td> </tr> </tbody> </table> </div> <div class="callout callout-red"> <span class="callout-label">The Photo Trap</span> <p>
 Do NOT put a photo on your resume for Indian private sector
             engineering roles. It triggers bias and breaks ATS systems. Save it
             for your LinkedIn profile.
-</p> </div> <h2 data-astro-cid-6rmsvolh>Chapter 4: How to Write Bullets Like a Pro</h2> <p data-astro-cid-6rmsvolh>
+</p> </div> <h2>Chapter 4: How to Write Bullets Like a Pro</h2> <p>
 Stop describing your duties. Start describing your impact. Use the
           Google "XYZ" Formula:
-<strong data-astro-cid-6rmsvolh>Accomplished [X] as measured by [Y], by doing [Z].</strong> </p> <h3 data-astro-cid-6rmsvolh>Examples (Before vs. After)</h3> <div class="ba-grid" data-astro-cid-6rmsvolh> <div class="ba-card bad" data-astro-cid-6rmsvolh> <span class="ba-label" data-astro-cid-6rmsvolh>❌ Weak</span> <p data-astro-cid-6rmsvolh>"Worked on an Android app for the college fest."</p> </div> <div class="ba-card good" data-astro-cid-6rmsvolh> <span class="ba-label" data-astro-cid-6rmsvolh>✅ Professional</span> <p data-astro-cid-6rmsvolh>
+<strong>Accomplished [X] as measured by [Y], by doing [Z].</strong> </p> <h3>Examples (Before vs. After)</h3> <div class="ba-grid"> <div class="ba-card bad"> <span class="ba-label">❌ Weak</span> <p>"Worked on an Android app for the college fest."</p> </div> <div class="ba-card good"> <span class="ba-label">✅ Professional</span> <p>
 "Built an Android app in Flutter for 2,000+ attendees, reducing
               registration time by 40% using Firebase real-time sync."
-</p> </div> <div class="ba-card bad" data-astro-cid-6rmsvolh> <span class="ba-label" data-astro-cid-6rmsvolh>❌ Weak</span> <p data-astro-cid-6rmsvolh>"Did thermal analysis of a engine component."</p> </div> <div class="ba-card good" data-astro-cid-6rmsvolh> <span class="ba-label" data-astro-cid-6rmsvolh>✅ Professional</span> <p data-astro-cid-6rmsvolh>
+</p> </div> <div class="ba-card bad"> <span class="ba-label">❌ Weak</span> <p>"Did thermal analysis of a engine component."</p> </div> <div class="ba-card good"> <span class="ba-label">✅ Professional</span> <p>
 "Performed CFD simulation of heat exchanger in ANSYS Fluent,
               optimizing baffle spacing to improve heat transfer by 14%."
-</p> </div> </div> <h2 data-astro-cid-6rmsvolh>Chapter 5: Branch-Specific Deep Dives</h2> <h3 data-astro-cid-6rmsvolh>CS and IT: The Product vs. Service Split</h3> <p data-astro-cid-6rmsvolh>
+</p> </div> </div> <h2>Chapter 5: Branch-Specific Deep Dives</h2> <h3>CS and IT: The Product vs. Service Split</h3> <p>
 For IT services, focus on CGPA and aptitude. For Product/GCCs, focus
           on:
-</p> <ul data-astro-cid-6rmsvolh> <li data-astro-cid-6rmsvolh> <strong data-astro-cid-6rmsvolh>LeetCode:</strong> Top 15% globally or 300+ problems solved.
-</li> <li data-astro-cid-6rmsvolh> <strong data-astro-cid-6rmsvolh>GitHub:</strong> Pinned repos with clean READMEs and
+</p> <ul> <li> <strong>LeetCode:</strong> Top 15% globally or 300+ problems solved.
+</li> <li> <strong>GitHub:</strong> Pinned repos with clean READMEs and
             architecture diagrams.
-</li> <li data-astro-cid-6rmsvolh> <strong data-astro-cid-6rmsvolh>AI Angle:</strong> One project using an LLM API
-            (OpenAI/Gemini) in a <em data-astro-cid-6rmsvolh>practical</em> way.
-</li> </ul> <h3 data-astro-cid-6rmsvolh>ECE: Choosing a Track</h3> <p data-astro-cid-6rmsvolh>ECE students fail by trying to be "generalists." You must choose:</p> <div class="table-wrap" data-astro-cid-6rmsvolh> <table data-astro-cid-6rmsvolh> <thead data-astro-cid-6rmsvolh> <tr data-astro-cid-6rmsvolh> <th data-astro-cid-6rmsvolh>Track</th> <th data-astro-cid-6rmsvolh>Skills Needed</th> <th data-astro-cid-6rmsvolh>Target Companies</th> </tr> </thead> <tbody data-astro-cid-6rmsvolh> <tr data-astro-cid-6rmsvolh> <td data-astro-cid-6rmsvolh><strong data-astro-cid-6rmsvolh>VLSI</strong></td> <td data-astro-cid-6rmsvolh>Verilog/VHDL, Digital Design</td> <td data-astro-cid-6rmsvolh>Intel, Qualcomm, Samsung</td> </tr> <tr data-astro-cid-6rmsvolh> <td data-astro-cid-6rmsvolh><strong data-astro-cid-6rmsvolh>Embedded/IoT</strong></td> <td data-astro-cid-6rmsvolh>C/C++, RTOS, UART/SPI</td> <td data-astro-cid-6rmsvolh>Bosch, Texas Instruments</td> </tr> <tr data-astro-cid-6rmsvolh> <td data-astro-cid-6rmsvolh><strong data-astro-cid-6rmsvolh>Software</strong></td> <td data-astro-cid-6rmsvolh>DSA, Java/Python</td> <td data-astro-cid-6rmsvolh>GCCs and Startups</td> </tr> </tbody> </table> </div> <h3 data-astro-cid-6rmsvolh>Mechanical: The EV Opportunity</h3> <p data-astro-cid-6rmsvolh>
+</li> <li> <strong>AI Angle:</strong> One project using an LLM API
+            (OpenAI/Gemini) in a <em>practical</em> way.
+</li> </ul> <h3>ECE: Choosing a Track</h3> <p>ECE students fail by trying to be "generalists." You must choose:</p> <div class="table-wrap"> <table> <thead> <tr> <th>Track</th> <th>Skills Needed</th> <th>Target Companies</th> </tr> </thead> <tbody> <tr> <td><strong>VLSI</strong></td> <td>Verilog/VHDL, Digital Design</td> <td>Intel, Qualcomm, Samsung</td> </tr> <tr> <td><strong>Embedded/IoT</strong></td> <td>C/C++, RTOS, UART/SPI</td> <td>Bosch, Texas Instruments</td> </tr> <tr> <td><strong>Software</strong></td> <td>DSA, Java/Python</td> <td>GCCs and Startups</td> </tr> </tbody> </table> </div> <h3>Mechanical: The EV Opportunity</h3> <p>
 The PLI scheme and EV growth are the biggest opportunities for Mech
-          graduates in India. Learn <strong data-astro-cid-6rmsvolh>Thermal Management</strong> and
-<strong data-astro-cid-6rmsvolh>BMS (Battery Management Systems)</strong>. Highlight
+          graduates in India. Learn <strong>Thermal Management</strong> and
+<strong>BMS (Battery Management Systems)</strong>. Highlight
           SolidWorks/ANSYS certifications specifically.
-</p> <h3 data-astro-cid-6rmsvolh>Civil: The BIM Advantage</h3> <p data-astro-cid-6rmsvolh>
+</p> <h3>Civil: The BIM Advantage</h3> <p>
 BIM professionals (Revit, Navisworks) command a
-<strong data-astro-cid-6rmsvolh>40% salary premium</strong> over generalist civil engineers.
+<strong>40% salary premium</strong> over generalist civil engineers.
           If you are in Civil, your resume must scream BIM or Structural
           Analysis (STAAD.Pro/ETABS).
-</p> <h2 data-astro-cid-6rmsvolh>Chapter 6: Referrals - The Growth Hack</h2> <p data-astro-cid-6rmsvolh>
+</p> <h2>Chapter 6: Referrals - The Growth Hack</h2> <p>
 A cold application on a job site has a 1.2% hire rate. A referral has
-          a <strong data-astro-cid-6rmsvolh>20% hire rate</strong>. But don't spam alumni.
-</p> <div class="ba-grid" data-astro-cid-6rmsvolh> <div class="ba-card bad" data-astro-cid-6rmsvolh> <span class="ba-label" data-astro-cid-6rmsvolh>❌ The "Pls Help" Spam</span> <p data-astro-cid-6rmsvolh>
+          a <strong>20% hire rate</strong>. But don't spam alumni.
+</p> <div class="ba-grid"> <div class="ba-card bad"> <span class="ba-label">❌ The "Pls Help" Spam</span> <p>
 "Hi, I am a fresher looking for job. Please refer me to your
               company. I am hardworking."
-</p> </div> <div class="ba-card good" data-astro-cid-6rmsvolh> <span class="ba-label" data-astro-cid-6rmsvolh>✅ The Targeted Request</span> <p data-astro-cid-6rmsvolh>
+</p> </div> <div class="ba-card good"> <span class="ba-label">✅ The Targeted Request</span> <p>
 "Hi Priya, I'm Arjun (CS RVCE). I've built a React project
               matching your team's stack. I noticed Job ID 2847 - would you be
               open to referring me? Resume attached."
-</p> </div> </div> <h2 data-astro-cid-6rmsvolh>Chapter 7: Time Allocation Strategy</h2> <p data-astro-cid-6rmsvolh>
+</p> </div> </div> <h2>Chapter 7: Time Allocation Strategy</h2> <p>
 Where you spend your time depends on your target. Most students follow
           the same path for every company. This is a mistake.
-</p> <div class="time-alloc" data-astro-cid-6rmsvolh> <div class="time-alloc-title" data-astro-cid-6rmsvolh>For Product Companies and GCCs</div> <div class="time-bar-row" data-astro-cid-6rmsvolh> <span class="time-bar-label" data-astro-cid-6rmsvolh>DSA & Competitive Programming</span> <div class="time-bar-track" data-astro-cid-6rmsvolh> <div class="time-bar-fill" style="width: 35%" data-astro-cid-6rmsvolh></div> </div> <span class="time-bar-pct" data-astro-cid-6rmsvolh>35%</span> </div> <div class="time-bar-row" data-astro-cid-6rmsvolh> <span class="time-bar-label" data-astro-cid-6rmsvolh>Real Projects (Build + Deploy)</span> <div class="time-bar-track" data-astro-cid-6rmsvolh> <div class="time-bar-fill" style="width: 25%" data-astro-cid-6rmsvolh></div> </div> <span class="time-bar-pct" data-astro-cid-6rmsvolh>25%</span> </div> <div class="time-bar-row" data-astro-cid-6rmsvolh> <span class="time-bar-label" data-astro-cid-6rmsvolh>Resume, LinkedIn, Portfolio</span> <div class="time-bar-track" data-astro-cid-6rmsvolh> <div class="time-bar-fill" style="width: 20%" data-astro-cid-6rmsvolh></div> </div> <span class="time-bar-pct" data-astro-cid-6rmsvolh>20%</span> </div> <div class="time-bar-row" data-astro-cid-6rmsvolh> <span class="time-bar-label" data-astro-cid-6rmsvolh>Referral Network Building</span> <div class="time-bar-track" data-astro-cid-6rmsvolh> <div class="time-bar-fill" style="width: 20%" data-astro-cid-6rmsvolh></div> </div> <span class="time-bar-pct" data-astro-cid-6rmsvolh>20%</span> </div> </div> <h2 data-astro-cid-6rmsvolh>Chapter 8: The "No Experience" Strategy</h2> <p data-astro-cid-6rmsvolh>
+</p> <div class="time-alloc"> <div class="time-alloc-title">For Product Companies and GCCs</div> <div class="time-bar-row"> <span class="time-bar-label">DSA & Competitive Programming</span> <div class="time-bar-track"> <div class="time-bar-fill" style="width: 35%"></div> </div> <span class="time-bar-pct">35%</span> </div> <div class="time-bar-row"> <span class="time-bar-label">Real Projects (Build + Deploy)</span> <div class="time-bar-track"> <div class="time-bar-fill" style="width: 25%"></div> </div> <span class="time-bar-pct">25%</span> </div> <div class="time-bar-row"> <span class="time-bar-label">Resume, LinkedIn, Portfolio</span> <div class="time-bar-track"> <div class="time-bar-fill" style="width: 20%"></div> </div> <span class="time-bar-pct">20%</span> </div> <div class="time-bar-row"> <span class="time-bar-label">Referral Network Building</span> <div class="time-bar-track"> <div class="time-bar-fill" style="width: 20%"></div> </div> <span class="time-bar-pct">20%</span> </div> </div> <h2>Chapter 8: The "No Experience" Strategy</h2> <p>
 If you are in your final year and have nothing on your resume, you
-          have <strong data-astro-cid-6rmsvolh>8 weeks</strong> to fix it. Here is the roadmap:
-</p> <ul data-astro-cid-6rmsvolh> <li data-astro-cid-6rmsvolh> <strong data-astro-cid-6rmsvolh>Weeks 1–2:</strong> Build one real, non-tutorial project.
+          have <strong>8 weeks</strong> to fix it. Here is the roadmap:
+</p> <ul> <li> <strong>Weeks 1–2:</strong> Build one real, non-tutorial project.
             Deploy it.
-</li> <li data-astro-cid-6rmsvolh> <strong data-astro-cid-6rmsvolh>Weeks 3–4:</strong> Document lab work and college projects
-            with <em data-astro-cid-6rmsvolh>specific</em> tech details.
-</li> <li data-astro-cid-6rmsvolh> <strong data-astro-cid-6rmsvolh>Weeks 5–6:</strong> Complete an NPTEL or Industry
+</li> <li> <strong>Weeks 3–4:</strong> Document lab work and college projects
+            with <em>specific</em> tech details.
+</li> <li> <strong>Weeks 5–6:</strong> Complete an NPTEL or Industry
             certification (AWS/AZ-900).
-</li> <li data-astro-cid-6rmsvolh> <strong data-astro-cid-6rmsvolh>Weeks 7–8:</strong> Optimize LinkedIn and reach out to 50
+</li> <li> <strong>Weeks 7–8:</strong> Optimize LinkedIn and reach out to 50
             seniors for referrals.
-</li> </ul> <div class="callout callout-warn" data-astro-cid-6rmsvolh> <span class="callout-label" data-astro-cid-6rmsvolh>The Direct Email Hack</span> <p data-astro-cid-6rmsvolh>
+</li> </ul> <div class="callout callout-warn"> <span class="callout-label">The Direct Email Hack</span> <p>
 For small companies, the most effective path is a direct,
             well-written email to the founder or tech lead. Use this template:
-</p> </div> <div class="resume-code" data-astro-cid-6rmsvolh>
+</p> </div> <div class="resume-code">
 Subject: Internship Application - [Branch] Student, [College Name] Hi
           [Name], I'm [Your Name], a [Year] year [Branch] student at [College].
           I've built [Project] using [Stack] (GitHub: [link]). I'm genuinely
@@ -129,910 +129,16 @@ Subject: Internship Application - [Branch] Student, [College Name] Hi
           interns for [Duration]? [Name] | [Phone] | [LinkedIn]
 </div> </div> 
 
-  <div class="article-cta" data-astro-cid-6rmsvolh>
-    <p class="cta-eyebrow" data-astro-cid-6rmsvolh>C2 Club · Student Community App</p>
-    <h3 data-astro-cid-6rmsvolh>Build your referral network today.</h3>
-    <p class="cta-body" data-astro-cid-6rmsvolh>
+  <div class="article-cta">
+    <p class="cta-eyebrow">C2 Club · Student Community App</p>
+    <h3>Build your referral network today.</h3>
+    <p class="cta-body">
       A resume gets you in the door, but referrals get you the job. Join C2 Club to connect with seniors and land placements.
     </p>
-    <a href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp" class="btn-cta" data-astro-cid-6rmsvolh>Join C2 Club</a>
+    <a href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp" class="btn-cta">Join C2 Club</a>
   </div>
 
 </main> </Layout>
 
-<style is:global>
-  /* Base variable system and style overrides for this blog post */
-  .article-page {
-    --black: #0a0a0a;
-    --surface: #111111;
-    --surface-2: #181818;
-    --border: #222222;
-    --border-subtle: #1a1a1a;
-    --green: #22c55e;
-    --green-dim: rgba(34, 197, 94, 0.12);
-    --green-glow: rgba(34, 197, 94, 0.06);
-    --text: #f5f5f5;
-    --text-muted: #b0b0b0;
-    --text-dim: #777777;
-    --serif: "DM Serif Display", Georgia, serif;
-    --sans: "DM Sans", system-ui, sans-serif;
-    
-    background-color: var(--black) !important;
-    color: var(--text) !important;
-    font-family: var(--sans) !important;
-    font-size: 18px !important;
-    line-height: 1.65 !important;
-  }
 
-  /* Light mode override matching system preference */
-  @media (prefers-color-scheme: light) {
-    .article-page {
-      --black: #ffffff;
-      --surface: #f9f9f9;
-      --surface-2: #f3f3f3;
-      --border: #e5e5e5;
-      --border-subtle: #f0f0f0;
-      --text: #171717;
-      --text-muted: #4b5563;
-      --text-dim: #9ca3af;
-      --green-glow: rgba(34, 197, 94, 0.04);
-    }
-  }
-
-  /* Print overrides to guarantee pristine PDF conversion */
-  @media print {
-    .article-page {
-      --black: #ffffff !important;
-      --surface: #f8fafc !important;
-      --surface-2: #f1f5f9 !important;
-      --border: #cbd5e1 !important;
-      --border-subtle: #e2e8f0 !important;
-      --green: #00aa50 !important;
-      --text: #0f172a !important;
-      --text-muted: #334155 !important;
-      --text-dim: #64748b !important;
-      
-      background-color: #ffffff !important;
-      color: #111111 !important;
-      font-size: 11pt !important;
-    }
-  }
-
-  @media screen {
-  /* Spacing and Layout constraints */
-  .article-page .article-outer {
-    max-width: 900px !important;
-    margin: 0 auto !important;
-    padding: 0 24px 56px !important;
-  }
-
-  /* Breadcrumbs styling */
-  .article-page .breadcrumbs {
-    margin-top: 32px !important;
-    margin-bottom: 0 !important;
-    display: block !important;
-  }
-
-  .article-page .breadcrumbs ol {
-    display: flex !important;
-    list-style: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-
-  .article-page .breadcrumbs li {
-    font-size: 0.8rem !important;
-    color: var(--text-dim) !important;
-  }
-
-  .article-page .breadcrumbs li a {
-    color: var(--text-dim) !important;
-    text-decoration: none !important;
-    transition: color 0.2s !important;
-  }
-
-  .article-page .breadcrumbs li a:hover {
-    color: var(--text-muted) !important;
-  }
-
-  .article-page .breadcrumbs li:not(:last-child)::after {
-    content: "/" !important;
-    margin: 0 10px !important;
-    color: var(--text-dim) !important;
-  }
-
-  /* Hero Banner Layout */
-  .article-page .hero {
-    padding: 80px 0 48px !important;
-    text-align: center !important;
-    border-bottom: 1px solid var(--border-subtle) !important;
-    margin-bottom: 44px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    background: none !important;
-  }
-
-  .article-page .hero-tag {
-    display: inline-block !important;
-    font-size: 0.72rem !important;
-    font-weight: 600 !important;
-    color: var(--green) !important;
-    letter-spacing: 0.08em !important;
-    text-transform: uppercase !important;
-    margin-bottom: 24px !important;
-    padding: 6px 14px !important;
-    background: var(--green-dim) !important;
-    border-radius: 50px !important;
-  }
-
-  .article-page h1 {
-    font-family: var(--serif) !important;
-    font-size: clamp(2.2rem, 6vw, 3.8rem) !important;
-    font-weight: 400 !important;
-    line-height: 1.1 !important;
-    color: var(--text) !important;
-    margin-bottom: 24px !important;
-    letter-spacing: -0.02em !important;
-    text-align: center !important;
-  }
-
-  .article-page h1 em {
-    font-style: italic !important;
-    font-family: var(--serif) !important;
-  }
-
-  .article-page .hero-lead {
-    font-size: 1.15rem !important;
-    color: var(--text-muted) !important;
-    line-height: 1.6 !important;
-    max-width: 720px !important;
-    margin: 0 auto 32px !important;
-    font-weight: 400 !important;
-    text-align: center !important;
-  }
-
-  .article-page .hero-meta {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 16px !important;
-    font-size: 0.85rem !important;
-    color: var(--text-dim) !important;
-    margin-bottom: 0 !important;
-  }
-
-  .article-page .hero-meta span {
-    display: flex !important;
-    align-items: center !important;
-    gap: 8px !important;
-  }
-
-  .article-page .dot {
-    width: 4px !important;
-    height: 4px !important;
-    border-radius: 50% !important;
-    background: var(--border-subtle) !important;
-  }
-
-
-
-  /* Stats Block */
-  .article-page .stats-strip {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    border: 1px solid var(--border) !important;
-    border-radius: 12px !important;
-    overflow: hidden !important;
-    margin-bottom: 44px !important;
-    background: none !important;
-  }
-
-  .article-page .stat-cell {
-    padding: 28px 24px !important;
-    border-right: 1px solid var(--border) !important;
-    border-bottom: none !important;
-    text-align: center !important;
-  }
-
-  .article-page .stat-cell:last-child {
-    border-right: none !important;
-  }
-
-  .article-page .stat-num {
-    font-family: var(--serif) !important;
-    font-size: 2.8rem !important;
-    color: var(--green) !important;
-    line-height: 1 !important;
-    margin-bottom: 6px !important;
-  }
-
-  .article-page .stat-label {
-    font-size: 0.75rem !important;
-    color: var(--text-dim) !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.08em !important;
-    font-weight: 500 !important;
-  }
-
-  @media (max-width: 480px) {
-    .article-page .stats-strip {
-      grid-template-columns: repeat(3, 1fr) !important;
-    }
-    .article-page .stat-cell {
-      padding: 16px 8px !important;
-    }
-    .article-page .stat-num {
-      font-size: 1.6rem !important;
-    }
-    .article-page .stat-label {
-      font-size: 0.55rem !important;
-    }
-  }
-
-  /* Article Body Typography */
-  .article-page .article-body {
-    max-width: 680px !important;
-    margin: 0 auto !important;
-  }
-
-  .article-page .article-body p {
-    color: var(--text-muted) !important;
-    margin-bottom: 14px !important;
-    font-size: 1rem !important;
-    line-height: 1.65 !important;
-    font-family: var(--sans) !important;
-    font-weight: 400 !important;
-  }
-
-  .article-page .article-body h2 {
-    font-family: var(--serif) !important;
-    font-size: clamp(1.4rem, 3vw, 1.9rem) !important;
-    font-weight: 400 !important;
-    color: var(--text) !important;
-    margin: 40px 0 14px !important;
-    letter-spacing: -0.01em !important;
-    line-height: 1.25 !important;
-  }
-
-  .article-page .article-body h3 {
-    font-family: var(--sans) !important;
-    font-size: 1rem !important;
-    font-weight: 600 !important;
-    color: var(--text) !important;
-    margin: 28px 0 10px !important;
-    letter-spacing: 0.01em !important;
-  }
-
-  .article-page .article-body strong {
-    color: var(--text) !important;
-    font-weight: 600 !important;
-  }
-
-  /* Universal Truth Callouts */
-  .article-page .callout {
-    border-left: 2px solid var(--green) !important;
-    padding: 20px 24px !important;
-    background: var(--green-glow) !important;
-    border-radius: 0 8px 8px 0 !important;
-    margin: 32px 0 !important;
-  }
-
-  .article-page .callout-label {
-    font-size: 0.7rem !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.1em !important;
-    color: var(--green) !important;
-    font-weight: 600 !important;
-    margin-bottom: 8px !important;
-  }
-
-  .article-page .callout p {
-    font-size: 0.95rem !important;
-    color: var(--text-muted) !important;
-    margin: 0 !important;
-    font-weight: 400 !important;
-  }
-
-  .article-page .callout p strong {
-    color: var(--text) !important;
-  }
-
-  /* Reality Check Callouts (Warning style) */
-  .article-page .callout-warn {
-    border-left: 2px solid #f59e0b !important;
-    padding: 20px 24px !important;
-    background: rgba(245, 158, 11, 0.05) !important;
-    border-radius: 0 8px 8px 0 !important;
-    margin: 32px 0 !important;
-  }
-
-  .article-page .callout-warn .callout-label {
-    color: #f59e0b !important;
-  }
-
-  .article-page .callout-warn p {
-    color: var(--text-muted) !important;
-    margin: 0 !important;
-    font-size: 0.95rem !important;
-    font-weight: 300 !important;
-  }
-
-  .article-page .callout-warn p strong {
-    color: var(--text) !important;
-  }
-
-  /* Data & Details Tables */
-  .article-page .table-wrap {
-    overflow-x: auto !important;
-    margin: 32px 0 !important;
-    border: 1px solid var(--border) !important;
-    border-radius: 10px !important;
-    background: none !important;
-  }
-
-  @media screen and (min-width: 768px) {
-    .article-page .table-wrap {
-      width: auto !important;
-      margin-left: calc(50% - 426px) !important;
-      margin-right: calc(50% - 426px) !important;
-    }
-  }
-  @media screen and (min-width: 768px) and (max-width: 900px) {
-    .article-page .table-wrap {
-      margin-left: calc(50% - 50vw + 24px) !important;
-      margin-right: calc(50% - 50vw + 24px) !important;
-    }
-  }
-
-  .article-page table {
-    width: 100% !important;
-    border-collapse: collapse !important;
-    font-size: 0.9rem !important;
-  }
-
-  .article-page thead th {
-    background: var(--surface) !important;
-    padding: 14px 20px !important;
-    text-align: left !important;
-    font-weight: 500 !important;
-    font-size: 0.75rem !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.07em !important;
-    color: var(--text-dim) !important;
-    border-bottom: 1px solid var(--border) !important;
-    white-space: nowrap !important;
-  }
-
-  .article-page tbody td {
-    padding: 16px 20px !important;
-    border-bottom: 1px solid var(--border-subtle) !important;
-    color: var(--text-muted) !important;
-    vertical-align: top !important;
-    line-height: 1.5 !important;
-  }
-
-  .article-page tbody tr:last-child td {
-    border-bottom: none !important;
-  }
-
-  .article-page tbody td:first-child {
-    color: var(--text) !important;
-    font-weight: 500 !important;
-  }
-
-  .article-page tbody tr:hover td {
-    background: var(--surface) !important;
-  }
-
-  /* Pathway Grid & Cards */
-  .article-page .pathway-grid {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 16px !important;
-    margin: 32px 0 !important;
-  }
-
-  @media (max-width: 600px) {
-    .article-page .pathway-grid {
-      grid-template-columns: 1fr !important;
-    }
-  }
-
-  .article-page .pathway-card {
-    background: var(--surface) !important;
-    border: 1px solid var(--border) !important;
-    border-radius: 10px !important;
-    padding: 24px !important;
-    transition: border-color 0.2s !important;
-  }
-
-  .article-page .pathway-card:hover {
-    border-color: #333 !important;
-  }
-
-  @media (prefers-color-scheme: light) {
-    .article-page .pathway-card:hover {
-      border-color: #d1d5db !important;
-    }
-  }
-
-  .article-page .pathway-card-label {
-    display: flex !important;
-    align-items: center !important;
-    gap: 10px !important;
-    margin-bottom: 14px !important;
-  }
-
-  .article-page .pathway-icon {
-    width: 32px !important;
-    height: 32px !important;
-    background: var(--green-dim) !important;
-    border-radius: 6px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    font-size: 1rem !important;
-    flex-shrink: 0 !important;
-  }
-
-  .article-page .pathway-card-label strong {
-    font-size: 0.95rem !important;
-    font-weight: 600 !important;
-    color: var(--text) !important;
-  }
-
-  .article-page .pathway-card p {
-    font-size: 0.9rem !important;
-    color: var(--text-muted) !important;
-    margin-bottom: 10px !important;
-    font-weight: 400 !important;
-  }
-
-  .article-page .pathway-card ul {
-    list-style: none !important;
-    padding: 0 !important;
-    margin-bottom: 14px !important;
-  }
-
-  .article-page .pathway-card ul li {
-    font-size: 0.875rem !important;
-    color: var(--text-muted) !important;
-    padding: 4px 0 !important;
-    padding-left: 16px !important;
-    position: relative !important;
-    font-weight: 400 !important;
-  }
-
-  .article-page .pathway-card ul li::before {
-    content: "" !important;
-    position: absolute !important;
-    left: 0 !important;
-    top: 13px !important;
-    width: 5px !important;
-    height: 1px !important;
-    background: var(--text-dim) !important;
-  }
-
-  .article-page .pathway-tip {
-    font-size: 0.8rem !important;
-    color: var(--green) !important;
-    font-weight: 400 !important;
-    padding-top: 14px !important;
-    border-top: 1px solid var(--border-subtle) !important;
-    line-height: 1.5 !important;
-  }
-
-  .article-page .pathway-tip strong {
-    font-weight: 600 !important;
-  }
-
-  /* Domain Grid & Cards */
-  .article-page .domain-grid {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 16px !important;
-    margin: 32px 0 !important;
-  }
-
-  @media (max-width: 600px) {
-    .article-page .domain-grid {
-      grid-template-columns: 1fr !important;
-    }
-  }
-
-  .article-page .domain-card {
-    border: 1px solid var(--border) !important;
-    border-radius: 10px !important;
-    padding: 24px !important;
-    background: var(--surface) !important;
-    transition: border-color 0.25s !important;
-    position: relative !important;
-    overflow: hidden !important;
-  }
-
-  .article-page .domain-card::after {
-    content: "" !important;
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 2px !important;
-    background: var(--domain-accent, var(--green)) !important;
-    opacity: 0.6 !important;
-  }
-
-  .article-page .domain-card:hover {
-    border-color: #2a2a2a !important;
-    transform: none !important;
-    box-shadow: none !important;
-  }
-
-  @media (prefers-color-scheme: light) {
-    .article-page .domain-card:hover {
-      border-color: #d1d5db !important;
-    }
-  }
-
-  .article-page .domain-header {
-    display: flex !important;
-    align-items: center !important;
-    gap: 12px !important;
-    margin-bottom: 12px !important;
-  }
-
-  .article-page .domain-emoji {
-    font-size: 1.4rem !important;
-  }
-
-  .article-page .domain-card h3 {
-    margin: 0 !important;
-    font-size: 0.95rem !important;
-    font-family: var(--sans) !important;
-    font-weight: 600 !important;
-    color: var(--text) !important;
-  }
-
-  .article-page .domain-desc {
-    font-size: 0.9rem !important;
-    color: var(--text-muted) !important;
-    margin-bottom: 10px !important;
-    line-height: 1.55 !important;
-    font-weight: 400 !important;
-  }
-
-  .article-page .domain-best {
-    font-size: 0.85rem !important;
-    color: var(--text-muted) !important;
-    line-height: 1.5 !important;
-    margin-bottom: 12px !important;
-    font-style: italic !important;
-  }
-
-  .article-page .domain-best strong {
-    color: var(--text) !important;
-    font-style: normal !important;
-    font-weight: 500 !important;
-  }
-
-  .article-page .pills {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    gap: 8px !important;
-    padding-top: 14px !important;
-    border-top: 1px solid var(--border-subtle) !important;
-  }
-
-  .article-page .pill {
-    font-size: 0.72rem !important;
-    font-weight: 600 !important;
-    padding: 6px 14px !important;
-    border-radius: 50px !important;
-    background: rgba(34, 197, 94, 0.1) !important;
-    color: var(--green) !important;
-    border: 1px solid rgba(34, 197, 94, 0.3) !important;
-    letter-spacing: 0.05em !important;
-    text-transform: uppercase !important;
-  }
-
-  /* College Filters Steps */
-  .article-page .steps {
-    margin: 32px 0 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 0 !important;
-  }
-
-  .article-page .step {
-    display: grid !important;
-    grid-template-columns: 48px 1fr !important;
-    gap: 20px !important;
-    padding: 20px 0 !important;
-    border-bottom: 1px solid var(--border-subtle) !important;
-    align-items: start !important;
-  }
-
-  .article-page .step:last-child {
-    border-bottom: none !important;
-  }
-
-  .article-page .step-num {
-    font-family: var(--serif) !important;
-    font-size: 2rem !important;
-    color: var(--green) !important;
-    line-height: 1 !important;
-    padding-top: 2px !important;
-  }
-
-  .article-page .step-body h3 {
-    margin-bottom: 5px !important;
-  }
-
-  .article-page .step-body p {
-    font-size: 0.9rem !important;
-    margin-bottom: 0 !important;
-    font-weight: 400 !important;
-    color: var(--text-muted) !important;
-  }
-
-  /* Phase Roadmaps */
-  .article-page .plan-group {
-    margin-bottom: 20px !important;
-  }
-
-  .article-page .plan-phase {
-    font-size: 0.7rem !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.12em !important;
-    color: var(--green) !important;
-    font-weight: 600 !important;
-    margin-bottom: 10px !important;
-  }
-
-  .article-page .plan-items {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 6px !important;
-  }
-
-  .article-page .plan-item {
-    display: flex !important;
-    gap: 14px !important;
-    align-items: flex-start !important;
-    font-size: 0.9rem !important;
-    color: var(--text-muted) !important;
-    font-weight: 400 !important;
-  }
-
-  .article-page .plan-item::before {
-    content: "" !important;
-    display: block !important;
-    width: 5px !important;
-    height: 5px !important;
-    border-radius: 50% !important;
-    background: var(--border) !important;
-    margin-top: 9px !important;
-    flex-shrink: 0 !important;
-  }
-
-  /* FAQ Accordion */
-  .article-page .faq-section {
-    max-width: 680px !important;
-    margin: 64px auto 0 !important;
-    padding-top: 48px !important;
-    border-top: 1px solid var(--border-subtle) !important;
-  }
-
-  .article-page .faq-section h2 {
-    font-family: var(--serif) !important;
-    font-size: 1.8rem !important;
-    margin-bottom: 32px !important;
-    text-align: center !important;
-    color: var(--text) !important;
-  }
-
-  .article-page .faq-item {
-    margin-bottom: 12px !important;
-    border: 1px solid var(--border-subtle) !important;
-    border-radius: 12px !important;
-    overflow: hidden !important;
-    transition: all 0.2s ease !important;
-    background: var(--surface) !important;
-  }
-
-  .article-page .faq-item:hover {
-    border-color: var(--green) !important;
-  }
-
-  .article-page .faq-item summary {
-    padding: 20px 24px !important;
-    list-style: none !important;
-    cursor: pointer !important;
-    font-weight: 500 !important;
-    font-size: 1rem !important;
-    color: var(--text) !important;
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-  }
-
-  .article-page .faq-item summary::-webkit-details-marker {
-    display: none !important;
-  }
-
-  .article-page .faq-item summary::after {
-    content: "+" !important;
-    font-size: 1.4rem !important;
-    color: var(--green) !important;
-    transition: transform 0.3s ease !important;
-  }
-
-  .article-page .faq-item[open] summary::after {
-    transform: rotate(45deg) !important;
-  }
-
-  .article-page .faq-item[open] {
-    background: var(--surface-2) !important;
-    border-color: var(--green) !important;
-  }
-
-  .article-page .faq-item p {
-    padding: 0 24px 24px !important;
-    margin: 0 !important;
-    font-size: 0.95rem !important;
-    color: var(--text-muted) !important;
-    line-height: 1.7 !important;
-  }
-
-  @media (max-width: 768px) {
-    .article-page .faq-section {
-      margin-top: 48px !important;
-      padding-top: 32px !important;
-    }
-    .article-page .faq-item summary {
-      padding: 16px 20px !important;
-      font-size: 0.95rem !important;
-    }
-  }
-
-  /* Series Box Navigator overrides */
-  .article-page .series-box {
-    background: var(--surface-2) !important;
-    border: 1px solid var(--border) !important;
-    border-radius: 20px !important;
-    padding: 40px !important;
-    margin: 56px auto !important;
-    max-width: 900px !important;
-    position: relative !important;
-    overflow: hidden !important;
-  }
-
-  .article-page .series-box::before {
-    content: "" !important;
-    position: absolute !important;
-    top: 0 !important;
-    right: 0 !important;
-    width: 150px !important;
-    height: 150px !important;
-    background: radial-gradient(
-      circle,
-      var(--green-dim) 0%,
-      transparent 70%
-    ) !important;
-    z-index: 0 !important;
-  }
-
-  .article-page .series-eyebrow {
-    color: var(--green) !important;
-    font-size: 0.8rem !important;
-    font-weight: 700 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.1em !important;
-    margin-bottom: 12px !important;
-    display: block !important;
-  }
-
-  .article-page .series-title {
-    font-family: var(--serif) !important;
-    font-size: 1.8rem !important;
-    margin-bottom: 24px !important;
-    border: 0 !important;
-    padding: 0 !important;
-  }
-
-  .article-page .series-grid {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 20px !important;
-    position: relative !important;
-    z-index: 1 !important;
-  }
-
-  .article-page .series-item {
-    background: var(--surface) !important;
-    border: 1px solid var(--border) !important;
-    border-radius: 12px !important;
-    padding: 24px !important;
-    text-decoration: none !important;
-    transition: all 0.2s !important;
-  }
-
-  .article-page .series-item:hover {
-    border-color: var(--green) !important;
-    transform: translateY(-4px) !important;
-  }
-
-  .article-page .series-item-tag {
-    font-size: 0.7rem !important;
-    color: var(--text-dim) !important;
-    text-transform: uppercase !important;
-    margin-bottom: 8px !important;
-    display: block !important;
-  }
-
-  .article-page .series-item-title {
-    color: var(--text) !important;
-    font-weight: 600 !important;
-    font-size: 1rem !important;
-  }
-
-  @media (max-width: 600px) {
-    .article-page .series-grid {
-      grid-template-columns: 1fr !important;
-    }
-  }
-
-  /* Footer Call To Action overrides */
-  .article-page .article-cta {
-    margin-top: 48px !important;
-    padding: 36px !important;
-    border: 1px solid var(--border) !important;
-    border-radius: 12px !important;
-    background: var(--surface) !important;
-    text-align: center !important;
-  }
-
-  .article-page .article-cta p.cta-eyebrow {
-    font-size: 0.72rem !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.12em !important;
-    color: var(--green) !important;
-    font-weight: 600 !important;
-    margin-bottom: 16px !important;
-  }
-
-  .article-page .article-cta h3 {
-    font-family: var(--serif) !important;
-    font-size: 1.6rem !important;
-    font-weight: 400 !important;
-    color: var(--text) !important;
-    margin-bottom: 12px !important;
-  }
-
-  .article-page .article-cta p.cta-body {
-    font-size: 0.9rem !important;
-    color: var(--text-muted) !important;
-    max-width: 420px !important;
-    margin: 0 auto 28px !important;
-    font-weight: 300 !important;
-    line-height: 1.7 !important;
-  }
-
-  .article-page .btn-cta {
-    display: inline-block !important;
-    background: var(--green) !important;
-    color: #000000 !important;
-    font-weight: 600 !important;
-    font-size: 0.85rem !important;
-    padding: 12px 28px !important;
-    border-radius: 6px !important;
-    text-decoration: none !important;
-    letter-spacing: 0.02em !important;
-    transition: opacity 0.2s !important;
-  }
-
-  .article-page .btn-cta:hover {
-    opacity: 0.85 !important;
-  }
-  }
-</style>
+</BlogLayout>
