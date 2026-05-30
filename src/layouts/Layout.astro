@@ -67,7 +67,7 @@ const orgSchema = {
   "@id": "https://c2club.in/#organization",
   "name": "C2 Club",
   "url": "https://c2club.in",
-  "logo": "https://c2club.in/App icon.png",
+  "logo": "https://c2club.in/app-icon.png",
   "sameAs": [
     "https://play.google.com/store/apps/details?id=com.c2club.uniqueapp"
   ],
@@ -75,7 +75,7 @@ const orgSchema = {
 };
 
 // 2. WebSite Schema with SearchAction (Homepage only)
-const isHomepage = currentPathname === '/' || currentPathname === '/index.html';
+const isHomepage = currentPathname === '/' || currentPathname === '/index';
 const websiteSchema = isHomepage ? {
   "@context": "https://schema.org",
   "@type": "WebSite",
@@ -105,7 +105,7 @@ const articleSchema = isArticle && matchedPost ? {
     "name": "C2 Club",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://c2club.in/App icon.png"
+      "url": "https://c2club.in/app-icon.png"
     }
   },
   "mainEntityOfPage": {
@@ -145,8 +145,8 @@ const articleSchema = isArticle && matchedPost ? {
     rel="stylesheet"
   />
   <link rel="stylesheet" href="/style.css" />
-  <link rel="icon" href="/App icon.png" type="image/png" />
-  <link rel="apple-touch-icon" href="/App icon.png" />
+  <link rel="icon" href="/app-icon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/app-icon.png" />
 
   <!-- Schema JSON-LD Injection -->
   <script type="application/ld+json" is:inline>{JSON.stringify(orgSchema)}</script>

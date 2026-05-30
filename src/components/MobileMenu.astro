@@ -6,7 +6,7 @@ const cleanPath = pathname.replace(/\/$/, "");
   <div class="mobile-menu-drawer">
     <div class="drawer-header">
       <div class="logo">
-          <img class="logo-icon" src="/App icon.png" width="28" height="28" alt="C2 Club Logo" />
+          <img src="/app-icon.png" width="24" height="24" alt="C2 Club" style="border-radius: 4px;" />
         <span class="logo-text">C2<span class="logo-text-light">Club</span></span>
       </div>
       <button class="close-menu" onclick="toggleMenu()" aria-label="Close menu">
@@ -19,9 +19,9 @@ const cleanPath = pathname.replace(/\/$/, "");
     
     <nav class="drawer-links">
       <a href="/" class={cleanPath === "" || cleanPath === "/" ? "active" : ""}>Home</a>
-      <a href="/challenges.html" class={cleanPath === "/challenges.html" ? "active" : ""}>Challenges</a>
-      <a href="/blog/index.html" class={cleanPath.startsWith("/blog") ? "active" : ""}>Blog</a>
-      <a href="/contact.html" class={cleanPath === "/contact.html" ? "active" : ""}>Contact</a>
+      <a href="/challenges" class={cleanPath === "/challenges" ? "active" : ""}>Challenges</a>
+      <a href="/blog" class={cleanPath.startsWith("/blog") ? "active" : ""}>Blog</a>
+      <a href="/contact" class={cleanPath === "/contact" ? "active" : ""}>Contact</a>
     </nav>
     
     <div class="drawer-footer">

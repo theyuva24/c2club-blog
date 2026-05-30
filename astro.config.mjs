@@ -26,7 +26,7 @@ blogPosts.forEach(post => {
 export default defineConfig({
   site: 'https://c2club.in',
   build: {
-    format: 'file'
+    format: 'directory'
   },
   integrations: [
     sitemap({

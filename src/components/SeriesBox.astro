@@ -8,21 +8,21 @@ interface Props {
 const { currentHref } = Astro.props;
 
 const seriesItems = [
-  { href: "/blog/what-after-pu/what-after-puc-engineering-pathways-karnataka.html", tag: "Engineering", title: "Engineering Pathway Guide Karnataka (2026)" },
-  { href: "/blog/what-after-pu/what-after-puc-medical-pathways-karnataka.html", tag: "Medical", title: "Medical Pathways Guide Karnataka (2026)" },
-  { href: "/blog/what-after-pu/what-after-puc-commerce-pathways-karnataka.html", tag: "Commerce", title: "Commerce Pathways Guide Karnataka (2026)" },
-  { href: "/blog/what-after-pu/what-after-puc-law-pathways-karnataka.html", tag: "Law", title: "Law Pathways Guide Karnataka (2026)" },
-  { href: "/blog/what-after-pu/what-after-puc-pure-sciences-pathways-karnataka.html", tag: "Pure Sciences", title: "Pure Sciences Pathways Guide Karnataka (2026)" },
-  { href: "/blog/what-after-pu/what-after-puc-hospitality-pathways-karnataka.html", tag: "Hospitality", title: "Hospitality Pathways Guide Karnataka (2026)" },
-  { href: "/blog/what-after-pu/what-after-puc-design-pathways-karnataka.html", tag: "Design", title: "Design Pathways Guide Karnataka (2026)" },
-  { href: "/blog/what-after-pu/what-after-puc-aviation-aerospace-karnataka.html", tag: "Aviation", title: "Aviation & Aerospace Pathways Guide Karnataka (2026)" },
-  { href: "/blog/what-after-pu/what-after-puc-defense-merchant-navy-karnataka.html", tag: "Defense", title: "Defense & Merchant Navy Guide Karnataka (2026)" },
-  { href: "/blog/what-after-pu/what-after-puc-diploma-polytechnic-karnataka.html", tag: "Diploma", title: "Diploma & Polytechnic Guide Karnataka (2026)" },
-  { href: "/blog/what-after-pu/what-after-puc-government-job-prep-karnataka.html", tag: "Government", title: "Government Job Prep Guide Karnataka (2026)" },
-  { href: "/blog/what-after-pu/what-after-puc-humanities-social-sciences-karnataka.html", tag: "Humanities", title: "Humanities & Social Sciences Guide (2026)" },
-  { href: "/blog/what-after-pu/what-after-puc-mass-communication-karnataka.html", tag: "Media", title: "Mass Communication & Journalism Guide (2026)" },
-  { href: "/blog/what-after-pu/what-after-puc-emerging-interdisciplinary-karnataka.html", tag: "Emerging", title: "Emerging & Interdisciplinary Guide (2026)" },
-  { href: "/blog/what-after-pu/what-after-puc-vocational-skill-based-karnataka.html", tag: "Vocational", title: "Vocational & Skill-Based Guide (2026)" }
+  { href: "/blog/what-after-pu/what-after-puc-engineering-pathways-karnataka", tag: "Engineering", title: "Engineering Pathway Guide Karnataka (2026)" },
+  { href: "/blog/what-after-pu/what-after-puc-medical-pathways-karnataka", tag: "Medical", title: "Medical Pathways Guide Karnataka (2026)" },
+  { href: "/blog/what-after-pu/what-after-puc-commerce-pathways-karnataka", tag: "Commerce", title: "Commerce Pathways Guide Karnataka (2026)" },
+  { href: "/blog/what-after-pu/what-after-puc-law-pathways-karnataka", tag: "Law", title: "Law Pathways Guide Karnataka (2026)" },
+  { href: "/blog/what-after-pu/what-after-puc-pure-sciences-pathways-karnataka", tag: "Pure Sciences", title: "Pure Sciences Pathways Guide Karnataka (2026)" },
+  { href: "/blog/what-after-pu/what-after-puc-hospitality-pathways-karnataka", tag: "Hospitality", title: "Hospitality Pathways Guide Karnataka (2026)" },
+  { href: "/blog/what-after-pu/what-after-puc-design-pathways-karnataka", tag: "Design", title: "Design Pathways Guide Karnataka (2026)" },
+  { href: "/blog/what-after-pu/what-after-puc-aviation-aerospace-karnataka", tag: "Aviation", title: "Aviation & Aerospace Pathways Guide Karnataka (2026)" },
+  { href: "/blog/what-after-pu/what-after-puc-defense-merchant-navy-karnataka", tag: "Defense", title: "Defense & Merchant Navy Guide Karnataka (2026)" },
+  { href: "/blog/what-after-pu/what-after-puc-diploma-polytechnic-karnataka", tag: "Diploma", title: "Diploma & Polytechnic Guide Karnataka (2026)" },
+  { href: "/blog/what-after-pu/what-after-puc-government-job-prep-karnataka", tag: "Government", title: "Government Job Prep Guide Karnataka (2026)" },
+  { href: "/blog/what-after-pu/what-after-puc-humanities-social-sciences-karnataka", tag: "Humanities", title: "Humanities & Social Sciences Guide (2026)" },
+  { href: "/blog/what-after-pu/what-after-puc-mass-communication-karnataka", tag: "Media", title: "Mass Communication & Journalism Guide (2026)" },
+  { href: "/blog/what-after-pu/what-after-puc-emerging-interdisciplinary-karnataka", tag: "Emerging", title: "Emerging & Interdisciplinary Guide (2026)" },
+  { href: "/blog/what-after-pu/what-after-puc-vocational-skill-based-karnataka", tag: "Vocational", title: "Vocational & Skill-Based Guide (2026)" }
 ];
 
 // Build a set of published URLs from blogPosts.js (single source of truth)
@@ -30,7 +30,8 @@ const publishedUrls = new Set(
   blogPosts.filter(p => p.published !== false).map(p => p.url)
 );
 
-const normalizedCurrent = currentHref.split('/').pop() || "";
+const cleanPath = currentHref.replace(/\/$/, '').replace(/\.html$/, '');
+const normalizedCurrent = cleanPath.split('/').pop() || "";
 const recommendedItems = seriesItems
   .filter(item => !item.href.endsWith(normalizedCurrent))
   .filter(item => publishedUrls.has(item.href));
