@@ -260,8 +260,9 @@ p {
   border: 1px solid var(--border-color);
   border-radius: var(--radius);
   padding: 20px;
-  text-decoration: none;
-  transition: var(--transition);
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+  display: block;
 }
 
 .series-item:hover {
