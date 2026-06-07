@@ -4467,4 +4467,40 @@ pre {
       grid-column: 1 / -1 !important;
     }
   }
+@media print {
+  img {
+    break-inside: avoid;
+  }
 
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+
+  p {
+    orphans: 3;
+    widows: 3;
+    line-height: 1.6 !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .navbar,
+  .footer,
+  .download-button,
+  header,
+  .mobile-menu {
+    display: none !important;
+  }
+
+  .table-scroll-hint {
+    display: none !important;
+  }
+
+  .table-wrapper {
+    overflow: visible !important;
+  }
+
+  .table-wrapper table {
+    min-width: 100% !important;
+  }
+}
