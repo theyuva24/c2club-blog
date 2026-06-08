@@ -5,7 +5,7 @@ import path from 'path';
 
 const BASE_URL = 'http://localhost:4321/blog/what-after-pu';
 const CONTENT_DIR = 'src/pages/blog/what-after-pu';
-const OUTPUT_DIR = 'public/downloads/pdfs';
+const OUTPUT_DIR = 'public/downloads/what-after-pu';
 
 if (!fs.existsSync(OUTPUT_DIR)) {
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
@@ -29,11 +29,15 @@ async function generatePdfs() {
   for (let i = 0; i < files.length; i++) {
     const file = files[i];
     const slug = file.replace('.astro', '');
-
-    // FIXED: Astro requires trailing slash
     const url = `${BASE_URL}/${slug}/`;
 
-    const outputPath = path.join(OUTPUT_DIR, `${slug}.pdf`);
+    // Extract core course name
+    let courseName = slug;
+    if (slug.startsWith('what-after-puc-') && slug.endsWith('-karnataka')) {
+      courseName = slug.replace('what-after-puc-', '').replace('-karnataka', '');
+    }
+    const pdfFilename = `${courseName}-what-after-pu.pdf`;
+    const outputPath = path.join(OUTPUT_DIR, pdfFilename);
 
     console.log(`\nProcessing [${i + 1}/${files.length}]`);
     console.log(`URL: ${url}`);
@@ -42,6 +46,13 @@ async function generatePdfs() {
       const response = await page.goto(url, {
         waitUntil: 'networkidle0'
       });
+
+      // 404 Validation
+      const pageTitle = await page.title();
+      const bodyText = await page.evaluate(() => document.body.innerText);
+      if (pageTitle.includes('404') || bodyText.includes('404') || bodyText.includes('Your site is configured with trailingSlash set to always')) {
+        throw new Error(`404 Page detected at ${url}. PDF generation failed.`);
+      }
 
       if (!response) {
         throw new Error(`No response received for ${url}`);
@@ -157,31 +168,9 @@ async function generatePdfs() {
           }
         });
       } else if (i === files.length - 1) {
-        await page.evaluate(() => {
-          const cover =
-            document.querySelector('.print-cover');
-
-          if (cover) {
-            cover.style.setProperty(
-              'display',
-              'none',
-              'important'
-            );
-          }
-        });
+        // Keep Cover, Keep CTA
       } else {
         await page.evaluate(() => {
-          const cover =
-            document.querySelector('.print-cover');
-
-          if (cover) {
-            cover.style.setProperty(
-              'display',
-              'none',
-              'important'
-            );
-          }
-
           const cta =
             document.querySelector('.print-end-page');
 
@@ -246,7 +235,7 @@ async function generatePdfs() {
   const mergedPdf = await PDFDocument.create();
 
   for (const buffer of pdfBuffers) {
-    const pdf = await PDFDocument.load(buffer);
+    const pdf = await PDFDocument.load(buffer, { ignoreEncryption: true });
 
     const copiedPages = await mergedPdf.copyPages(
       pdf,
@@ -260,7 +249,7 @@ async function generatePdfs() {
 
   const masterOutputPath = path.join(
     OUTPUT_DIR,
-    'complete-career-guide-2026.pdf'
+    'what-after-pu-complete-guide.pdf'
   );
 
   const masterBytes = await mergedPdf.save();

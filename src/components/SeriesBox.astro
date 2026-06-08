@@ -41,7 +41,7 @@ const recommendedItems = seriesItems
   <h3 class="series-title">Explore other career paths</h3>
   <div class="series-grid">
     {recommendedItems.map(item => (
-      <a href={item.href} class="series-item">
+      <a href={item.href + "/"} class="series-item" style="text-decoration: none !important;">
         <span class="series-item-tag">{item.tag}</span>
         <span class="series-item-title">{item.title}</span>
       </a>

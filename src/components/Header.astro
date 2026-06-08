@@ -25,9 +25,9 @@ const cleanPath = pathname.replace(/\/$/, "");
     
     <ul class="nav-links">
       <li><a href="/" class={cleanPath === "" || cleanPath === "/" ? "active" : ""}>Home</a></li>
-      <li><a href="/challenges" class={cleanPath === "/challenges" ? "active" : ""}>Challenges</a></li>
-      <li><a href="/blog" class={cleanPath.startsWith("/blog") ? "active" : ""}>Blog</a></li>
-      <li><a href="/contact" class={cleanPath === "/contact" ? "active" : ""}>Contact</a></li>
+      <li><a href="/challenges/" class={cleanPath === "/challenges" ? "active" : ""}>Challenges</a></li>
+      <li><a href="/blog/" class={cleanPath.startsWith("/blog") ? "active" : ""}>Blog</a></li>
+      <li><a href="/contact/" class={cleanPath === "/contact" ? "active" : ""}>Contact</a></li>
       <li>
         <a
           href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp"
