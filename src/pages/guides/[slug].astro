@@ -1,0 +1,689 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { guides } from '../../data/guides.js';
+
+export async function getStaticPaths() {
+  return guides.map(guide => ({
+    params: { slug: guide.slug },
+    props: { guide }
+  }));
+}
+
+const { guide } = Astro.props;
+
+// Construct full title and meta description for SEO
+const seoTitle = `${guide.category} Career Guide PDF Download | C2 Club`;
+const seoDescription = `Download the C2 Club ${guide.category} Career Guide PDF and explore career paths, colleges, entrance exams, and opportunities in Karnataka.`;
+---
+
+<Layout
+  title={seoTitle}
+  description={seoDescription}
+  isArticle={false}
+  ogImage={guide.image}
+>
+  <main class="download-landing-page">
+    <div class="container landing-container">
+      <a href="/guide/" class="back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Back to Career Guides
+      </a>
+
+      <div class="landing-grid">
+        <!-- Preview Column -->
+        <div class="preview-column">
+          <div class="mock-pdf-container" style={`--accent-color: ${guide.color}; --accent-bg: ${guide.bgColor}`}>
+            <div class="mock-pdf-badge">{guide.category}</div>
+            <div class="mock-pdf-icon">{guide.icon}</div>
+            <h2 class="mock-pdf-title">What After PUC?</h2>
+            <p class="mock-pdf-subtitle">{guide.category} Pathways</p>
+            <div class="mock-pdf-meta">
+              <span>Karnataka Edition</span>
+              <div class="meta-dot"></div>
+              <span>2026</span>
+            </div>
+            <div class="mock-pdf-footer">
+              <span class="logo-brand">C2<span class="logo-brand-light">Club</span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Info Column -->
+        <div class="info-column">
+          <span class="category-badge" style={`color: ${guide.color}; background-color: ${guide.bgColor}`}>{guide.category}</span>
+          <h1 class="guide-title">{guide.title}</h1>
+          <p class="guide-description">{guide.description}</p>
+
+          <div class="action-card">
+            <a 
+              href={guide.pdf} 
+              target="_blank"
+              class="btn btn-primary download-btn" 
+              id="main-download-btn"
+              data-slug={guide.slug}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              Download Free PDF Guide
+            </a>
+            <p class="cta-microcopy">Instant download • No signup required</p>
+            
+            {guide.articleUrl && guide.articleUrl !== '/guide/' && (
+              <a href={guide.articleUrl} class="btn btn-secondary read-online-btn">
+                Read Detailed Guide Online &rarr;
+              </a>
+            )}
+          </div>
+
+          <!-- Sharing tools -->
+          <div class="share-section">
+            <h3>Share this Career Guide</h3>
+            <p class="share-instructions">Share this download page with students and parents to help them plan their careers.</p>
+            <div class="share-buttons">
+              <button class="share-btn copy-btn" id="copyLinkBtn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                </svg>
+                <span id="copyText">Copy Download Link</span>
+              </button>
+              <a href={`https://api.whatsapp.com/send?text=${encodeURIComponent(`Here is the official C2 Club ${guide.title}. Share it with students who need it! Download here: `)}`} target="_blank" rel="noopener noreferrer" class="share-btn whatsapp-btn" id="whatsappShareBtn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                </svg>
+                Share to WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Related Guides section -->
+      {(() => {
+        const related = guides.filter(g => g.slug !== guide.slug).slice(0, 3);
+        return (
+          <div class="related-guides-section">
+            <h3 class="related-title">You may also like</h3>
+            <div class="related-grid">
+              {related.map(item => (
+                <a href={`/guides/${item.slug}/`} class="related-card">
+                  <span class="related-card-icon">{item.icon}</span>
+                  <div class="related-card-info">
+                    <h4>{item.category} Pathways</h4>
+                    <p>Get Career Guide &rarr;</p>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        );
+      })()}
+    </div>
+  </main>
+</Layout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Dynamic WhatsApp URL generation with current location href
+    const whatsappBtn = document.getElementById('whatsappShareBtn');
+    if (whatsappBtn) {
+      const baseText = whatsappBtn.getAttribute('href').split('text=')[0] + 'text=';
+      const originalText = decodeURIComponent(whatsappBtn.getAttribute('href').split('text=')[1] || '');
+      whatsappBtn.setAttribute('href', baseText + encodeURIComponent(originalText + window.location.href));
+    }
+
+    // Copy to clipboard functionality
+    const copyBtn = document.getElementById('copyLinkBtn');
+    const copyText = document.getElementById('copyText');
+    if (copyBtn && copyText) {
+      copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          copyText.textContent = 'Link Copied!';
+          copyBtn.classList.add('copied');
+          setTimeout(() => {
+            copyText.textContent = 'Copy Download Link';
+            copyBtn.classList.remove('copied');
+          }, 3000);
+        }).catch(err => {
+          console.error('Failed to copy: ', err);
+        });
+      });
+    }
+
+    // Download event tracking
+    const downloadBtn = document.getElementById('main-download-btn');
+    if (downloadBtn) {
+      downloadBtn.addEventListener('click', () => {
+        const slug = downloadBtn.getAttribute('data-slug');
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'guide_download', {
+            guide: slug
+          });
+        }
+      });
+    }
+  });
+</script>
+
+<style>
+  .download-landing-page {
+    padding: 60px 20px 100px;
+    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+    min-height: calc(100vh - 72px - 200px);
+  }
+
+  .landing-container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #64748b;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 40px;
+    transition: color 0.2s ease;
+  }
+
+  .back-link:hover {
+    color: #22c55e;
+  }
+
+  .landing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  /* Mock PDF Card Styling */
+  .preview-column {
+    display: flex;
+    justify-content: center;
+  }
+
+  .mock-pdf-container {
+    width: 320px;
+    height: 440px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-top: 10px solid var(--accent-color);
+    border-radius: 12px;
+    box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.15);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .mock-pdf-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 30px 60px -10px rgba(15, 23, 42, 0.25);
+  }
+
+  .mock-pdf-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, transparent 50%, var(--accent-bg) 50%);
+    border-bottom-left-radius: 8px;
+    opacity: 0.8;
+  }
+
+  .mock-pdf-badge {
+    align-self: flex-start;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    background-color: var(--accent-bg);
+    color: var(--accent-color);
+  }
+
+  .mock-pdf-icon {
+    font-size: 4rem;
+    margin: 20px 0;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.08));
+  }
+
+  .mock-pdf-title {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+    color: #0f172a;
+    line-height: 1.2;
+    margin: 10px 0 5px;
+  }
+
+  .mock-pdf-subtitle {
+    font-size: 1.1rem;
+    color: #475569;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+
+  .mock-pdf-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: #64748b;
+    border-top: 1px solid #f1f5f9;
+    width: 100%;
+    justify-content: center;
+    padding-top: 20px;
+  }
+
+  .meta-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #cbd5e1;
+  }
+
+  .mock-pdf-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+  }
+
+  .logo-brand {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #0f172a;
+  }
+
+  .logo-brand-light {
+    font-weight: 400;
+    color: #64748b;
+  }
+
+  /* Info Column Styling */
+  .category-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 20px;
+  }
+
+  .guide-title {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 2.5rem;
+    color: #0f172a;
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+
+  .guide-description {
+    font-size: 1.15rem;
+    color: #475569;
+    line-height: 1.6;
+    margin-bottom: 35px;
+  }
+
+  .action-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .download-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: #22c55e;
+    color: #ffffff;
+    padding: 16px 28px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 10px 15px -3px rgba(34, 197, 94, 0.3);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .download-btn:hover {
+    background-color: #16a34a;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 20px -3px rgba(34, 197, 94, 0.4);
+  }
+
+  .cta-microcopy {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #64748b;
+    margin: 4px 0 12px;
+  }
+
+  .read-online-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #cbd5e1;
+    color: #334155;
+    background: transparent;
+    padding: 14px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .read-online-btn:hover {
+    background-color: #f8fafc;
+    border-color: #94a3b8;
+  }
+
+  /* Share Tools Styling */
+  .share-section {
+    border-top: 1px solid #e2e8f0;
+    padding-top: 30px;
+  }
+
+  .share-section h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 8px;
+  }
+
+  .share-instructions {
+    color: #64748b;
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+  }
+
+  .share-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: none;
+  }
+
+  .btn-icon {
+    flex-shrink: 0;
+  }
+
+  .copy-btn {
+    background-color: #f1f5f9;
+    color: #475569;
+    border: 1px solid #cbd5e1;
+  }
+
+  .copy-btn:hover {
+    background-color: #e2e8f0;
+    color: #0f172a;
+  }
+
+  .copy-btn.copied {
+    background-color: #dcfce7;
+    color: #15803d;
+    border-color: #bbf7d0;
+  }
+
+  .whatsapp-btn {
+    background-color: #25d366;
+    color: #ffffff;
+    box-shadow: 0 4px 6px -1px rgba(37, 211, 102, 0.2);
+  }
+
+  .whatsapp-btn:hover {
+    background-color: #20ba5a;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px -1px rgba(37, 211, 102, 0.3);
+  }
+
+  /* Dark mode support */
+  @media (prefers-color-scheme: dark) {
+    .download-landing-page {
+      background: linear-gradient(180deg, #0f172a 0%, #020617 100%);
+      min-height: calc(100vh - 72px - 200px);
+    }
+    
+    .back-link {
+      color: #94a3b8;
+    }
+    
+    .back-link:hover {
+      color: #22c55e;
+    }
+
+    .mock-pdf-container {
+      background: #1e293b;
+      border-color: rgba(255, 255, 255, 0.05);
+    }
+    
+    .mock-pdf-title {
+      color: #f8fafc;
+    }
+    
+    .mock-pdf-subtitle {
+      color: #cbd5e1;
+    }
+
+    .mock-pdf-meta {
+      border-color: #334155;
+      color: #94a3b8;
+    }
+
+    .meta-dot {
+      background-color: #475569;
+    }
+
+    .logo-brand {
+      color: #f8fafc;
+    }
+    
+    .logo-brand-light {
+      color: #94a3b8;
+    }
+
+    .guide-title {
+      color: #f8fafc;
+    }
+
+    .guide-description {
+      color: #cbd5e1;
+    }
+
+    .action-card {
+      background: #1e293b;
+      border-color: #334155;
+    }
+
+    .cta-microcopy {
+      color: #cbd5e1;
+    }
+
+    .read-online-btn {
+      border-color: #475569;
+      color: #cbd5e1;
+    }
+
+    .read-online-btn:hover {
+      background-color: #334155;
+      border-color: #64748b;
+    }
+
+    .share-section {
+      border-color: #334155;
+    }
+
+    .share-section h3 {
+      color: #f8fafc;
+    }
+
+    .share-instructions {
+      color: #94a3b8;
+    }
+
+    .copy-btn {
+      background-color: #1e293b;
+      color: #cbd5e1;
+      border-color: #475569;
+    }
+
+    .copy-btn:hover {
+      background-color: #334155;
+      color: #f8fafc;
+    }
+
+    .copy-btn.copied {
+      background-color: #064e3b;
+      color: #a7f3d0;
+      border-color: #047857;
+    }
+  }
+
+  /* Responsive styling */
+  @media (max-width: 800px) {
+    .landing-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .preview-column,
+    .back-link,
+    .category-badge {
+      display: none;
+    }
+
+    .guide-title {
+      font-size: 2rem;
+    }
+  }
+
+  /* Related Guides Styling */
+  .related-guides-section {
+    margin-top: 80px;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 40px;
+  }
+  
+  .related-title {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 24px;
+  }
+  
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .related-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 16px 20px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  
+  .related-card:hover {
+    transform: translateY(-2px);
+    border-color: #22c55e;
+    box-shadow: 0 10px 15px -3px rgba(34, 197, 94, 0.05);
+  }
+  
+  .related-card-icon {
+    font-size: 2rem;
+  }
+  
+  .related-card-info h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 4px;
+  }
+  
+  .related-card-info p {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #22c55e;
+    margin: 0;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    .related-guides-section {
+      border-color: #334155;
+    }
+    
+    .related-title {
+      color: #f8fafc;
+    }
+    
+    .related-card {
+      background: #1e293b;
+      border-color: #334155;
+    }
+    
+    .related-card:hover {
+      border-color: #22c55e;
+    }
+    
+    .related-card-info h4 {
+      color: #f8fafc;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .related-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
