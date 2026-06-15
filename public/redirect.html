@@ -21,85 +21,132 @@
             margin-bottom: 20px;
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .text { font-size: 16px; font-weight: 500; }
+        .text { font-size: 16px; font-weight: 500; text-align: center; padding: 0 24px; }
         .fallback-btn {
-            margin-top: 30px; padding: 10px 20px;
+            margin-top: 30px; padding: 12px 24px;
             background: #39FF14; color: #000;
             text-decoration: none; border-radius: 8px;
-            font-weight: bold; display: none;
+            font-weight: bold; display: none; font-size: 15px;
         }
     </style>
 </head>
 <body>
     <div class="spinner"></div>
     <div class="text">Opening C2 Club...</div>
-    <a id="fallbackBtn" class="fallback-btn" href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp">Go to Play Store</a>
+    <a id="fallbackBtn" class="fallback-btn" href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp">Download on Play Store</a>
 
     <script>
         (function() {
             var ua = navigator.userAgent.toLowerCase();
             var isAndroid = ua.indexOf("android") > -1;
             var isIOS = /ipad|iphone|ipod/.test(ua) && !window.MSStream;
-            
-            // Get referral code
+
+            // ── Helpers ──────────────────────────────────────────────────────
             function getReferralCode() {
-                var code = null;
+                // Priority 1: /ref/{code} path pattern
+                var segments = window.location.pathname.split('/').filter(Boolean);
+                if (segments[0] === 'ref' && segments.length > 1 && segments[1]) {
+                    return segments[1].trim().toUpperCase();
+                }
+                // Priority 2: ?ref= query param (legacy / alternate format)
                 var params = new URLSearchParams(window.location.search);
                 if (params.has('ref')) {
-                    code = params.get('ref');
-                } else {
-                    var segments = window.location.pathname.split('/');
-                    var refIndex = segments.indexOf('ref');
-                    if (refIndex !== -1 && segments.length > refIndex + 1) {
-                        code = segments[refIndex + 1];
-                    }
+                    return params.get('ref').trim().toUpperCase();
                 }
-                return code ? code.trim() : null;
+                return null;
             }
 
+            function buildPlayStoreUrl(refCode) {
+                var base = 'https://play.google.com/store/apps/details?id=com.c2club.uniqueapp';
+                if (refCode) {
+                    // Play Store referrer format: referrer=ref%3DABC123
+                    // The installed app reads this via PlayInstallReferrer API as "ref=ABC123"
+                    base += '&referrer=' + encodeURIComponent('ref=' + refCode);
+                }
+                return base;
+            }
+
+            var path = window.location.pathname;
+            var search = window.location.search;
+            var fullPath = path + search;
             var refCode = getReferralCode();
-            var playStoreBase = "https://play.google.com/store/apps/details?id=com.c2club.uniqueapp";
-            var playStoreUrl = playStoreBase;
-            if (refCode) {
-                // Encode the referral code accurately for Play Store referrer param
-                playStoreUrl += "&referrer=ref%3D" + encodeURIComponent(refCode);
+            var playStoreUrl = buildPlayStoreUrl(refCode);
+
+            // ── Determine link type ──────────────────────────────────────────
+            var isRefLink = path.indexOf('/ref/') === 0 || path === '/ref';
+
+            if (isIOS) {
+                if (isRefLink) {
+                    // iOS - show friendly message (no iOS app yet)
+                    document.querySelector('.text').innerText = 'C2 Club is coming soon to iOS! Your friend\u2019s invite will be waiting.';
+                    var fallbackBtn = document.getElementById('fallbackBtn');
+                    fallbackBtn.href = 'https://c2club.in/download/';
+                    fallbackBtn.textContent = 'Learn More';
+                    fallbackBtn.style.display = 'block';
+                } else {
+                    document.querySelector('.text').innerText = 'C2 Club is coming soon to iOS!';
+                }
+                return;
             }
 
-            // --- CHALLENGE FALLBACK LOGIC ---
-            var fallbackUrl = playStoreUrl;
-            var path = window.location.pathname; 
-            var isChallenge = path.indexOf('/challenge/') > -1;
-            
-            if (isChallenge) {
-                // For challenges, fallback to the website display page instead of Play Store
-                // We add no_redirect=true to prevent loop if challenge.html uses deeplink-fallback.js
-                fallbackUrl = window.location.origin + "/challenge-view.html?id=" + path.split('/challenge/')[1] + "&no_redirect=true";
-                if (refCode) fallbackUrl += "&ref=" + encodeURIComponent(refCode);
+            if (!isAndroid) {
+                // Desktop: redirect to homepage
+                window.location.replace('/' + search);
+                return;
             }
-            // ---------------------------------
 
-            // Path tracking to rebuild intent
-            var search = window.location.search; 
-            var fullPath = path + search; 
+            // ── Android handling ─────────────────────────────────────────────
+            if (isRefLink) {
+                // ── REFERRAL LINK: New-user install path ─────────────────────
+                //
+                // If we reach this page for a /ref/ URL it means Android App
+                // Links did NOT fire (app is not installed or link verification
+                // failed). The correct action is to go straight to Play Store
+                // with the referrer parameter so the install is attributed.
+                //
+                // We do NOT use the Android intent:// scheme here because
+                // Chrome on modern Android does not reliably follow
+                // S.browser_fallback_url, which would lose the referrer.
+                document.querySelector('.text').innerText = 'Taking you to install C2 Club\u2026';
+                var fallbackBtn = document.getElementById('fallbackBtn');
+                fallbackBtn.href = playStoreUrl;
+                fallbackBtn.textContent = 'Download C2 Club';
+                fallbackBtn.style.display = 'block';
 
-            if (isAndroid) {
-                var intentUrl = "intent://c2club.in" + fullPath + "#Intent;" +
-                                "scheme=https;" +
-                                "package=com.c2club.uniqueapp;" +
-                                "S.browser_fallback_url=" + encodeURIComponent(fallbackUrl) + ";" +
-                                "end;";
+                // Small delay so the button is visible if the redirect is blocked
+                setTimeout(function() {
+                    window.location.replace(playStoreUrl);
+                }, 400);
+
+            } else {
+                // ── CONTENT LINK: Existing-user deep-link path ───────────────
+                //
+                // For challenge/post/hub/entry links the user likely has the app.
+                // Use the intent:// scheme so the OS opens the app directly.
+                // If the app is not installed, fall back to Play Store.
+                var fallbackUrl = playStoreUrl;
+
+                if (path.indexOf('/challenge/') > -1) {
+                    // Challenges: show web fallback page first, then Play Store
+                    var challengeId = path.split('/challenge/')[1] || '';
+                    fallbackUrl = window.location.origin + '/challenge-view.html?id=' + challengeId + '&no_redirect=true';
+                    if (refCode) fallbackUrl += '&ref=' + encodeURIComponent(refCode);
+                }
+
+                var intentUrl = 'intent://c2club.in' + fullPath + '#Intent;' +
+                                'scheme=https;' +
+                                'package=com.c2club.uniqueapp;' +
+                                'S.browser_fallback_url=' + encodeURIComponent(fallbackUrl) + ';' +
+                                'end;';
 
                 window.location.replace(intentUrl);
-                
+
+                // Show a manual button after 3 s in case intent didn't fire
                 setTimeout(function() {
                     document.getElementById('fallbackBtn').href = fallbackUrl;
                     document.getElementById('fallbackBtn').style.display = 'block';
-                    document.querySelector('.text').innerText = "If nothing happens, tap below.";
+                    document.querySelector('.text').innerText = 'If nothing happens, tap below.';
                 }, 3000);
-            } else if (isIOS) {
-                document.querySelector('.text').innerText = "C2 Club is coming soon to iOS!";
-            } else {
-                window.location.replace("/" + search);
             }
         })();
     </script>
