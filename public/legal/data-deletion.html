@@ -3,29 +3,458 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Deletion Form - C2 Club</title>
+    <title>Data Deletion Request - C2 Club</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        input[type="text"], input[type="tel"], textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--border-color);
+            font-size: 1rem;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        input[type="text"]:focus, input[type="tel"]:focus, textarea:focus {
+            border-color: var(--primary);
+        }
+        .error-message {
+            background-color: #fef2f2;
+            color: var(--danger);
+            border: 1px solid #fee2e2;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+            display: none;
+            text-align: left;
+        }
+        .step {
+            display: none;
+        }
+        .step.active {
+            display: block;
+        }
+        .option-card {
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-align: left;
+        }
+        .option-card.selected {
+            border-color: var(--primary);
+            background-color: #eff6ff;
+        }
+        .option-icon {
+            font-size: 1.75rem;
+            padding: 0.5rem;
+            background: #f3f4f6;
+            border-radius: 0.5rem;
+        }
+        .option-card.selected .option-icon {
+            background: #dbeafe;
+            color: var(--primary);
+        }
+        .option-details {
+            flex: 1;
+        }
+        .option-details h3 {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+        .option-details p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border-left-color: var(--primary);
+            animation: spin 1s linear infinite;
+            margin: 2rem auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .phone-input-wrapper {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .phone-prefix {
+            padding: 0.75rem 1rem;
+            background: #f3f4f6;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+        }
+        .profile-badge {
+            background: #f3f4f6;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+            border-left: 4px solid var(--primary);
+        }
+        .profile-badge p {
+            margin: 0.25rem 0;
+            font-size: 0.95rem;
+        }
+        .profile-badge strong {
+            color: var(--text-main);
+        }
+    </style>
+    <!-- Firebase SDKs (Compat version) -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
     <div class="container">
-        <div class="card" id="form-container">
-            <h1>Data Deletion Request</h1>
-            <p>To ensure your request is processed securely and accurately, we use a dedicated Google Form for account and data deletion requests.</p>
-            
-            <div style="text-align: center; padding: 2rem 0;">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">📝</div>
-                <p style="margin-bottom: 2rem;">Click the button below to fill out the official deletion request form.</p>
+        <div class="card">
+            <div id="error-box" class="error-message"></div>
+
+            <!-- STEP 1: Phone Input -->
+            <div id="step-phone" class="step active">
+                <h1>Data Deletion Request</h1>
+                <p>Verify your phone number to manage and delete your C2 Club account data.</p>
+                <br>
+                <div class="form-group">
+                    <label for="phone-number">Mobile Phone Number</label>
+                    <div class="phone-input-wrapper">
+                        <span class="phone-prefix">+91</span>
+                        <input type="tel" id="phone-number" placeholder="Enter 10-digit mobile number" maxlength="10">
+                    </div>
+                </div>
+                <div id="recaptcha-container"></div>
+                <button onclick="sendVerificationCode()" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 0.85rem;">
+                    Send Verification Code →
+                </button>
+            </div>
+
+            <!-- STEP 2: OTP Input -->
+            <div id="step-otp" class="step">
+                <h1>Verify OTP</h1>
+                <p>We've sent a 6-digit verification code to your mobile phone number.</p>
+                <br>
+                <div class="form-group">
+                    <label for="otp-code">Verification Code</label>
+                    <input type="text" id="otp-code" placeholder="Enter 6-digit code" maxlength="6" style="text-align: center; letter-spacing: 0.5rem; font-size: 1.25rem;">
+                </div>
+                <div style="display: flex; gap: 1rem;">
+                    <button onclick="showStep('step-phone')" class="btn btn-outline" style="flex: 1; justify-content: center;">Back</button>
+                    <button onclick="verifyOtp()" class="btn btn-primary" style="flex: 2; justify-content: center;">Verify & Continue →</button>
+                </div>
+            </div>
+
+            <!-- STEP 3: Options -->
+            <div id="step-options" class="step">
+                <h1>Configure Deletion</h1>
+                <p>Select how you want to handle your contribution data and confirm deletion.</p>
                 
-                <a href="https://forms.gle/d1oKMJH7CQu73c379" target="_blank" class="btn btn-danger" style="display: inline-block; width: auto; padding: 1rem 2rem; font-size: 1.1rem;">
-                    Open Deletion Form →
+                <div class="profile-badge">
+                    <p>Logged in as: <strong id="user-name-display">Loading...</strong></p>
+                    <p>Phone: <strong id="user-phone-display">...</strong></p>
+                </div>
+
+                <div id="opt-delete" class="option-card selected" onclick="selectOption(true)">
+                    <div class="option-icon">🗑️</div>
+                    <div class="option-details">
+                        <h3>Delete Everything</h3>
+                        <p>Permanently remove your profile, posts, comments, and files</p>
+                    </div>
+                </div>
+
+                <div id="opt-anon" class="option-card" onclick="selectOption(false)">
+                    <div class="option-icon">🎭</div>
+                    <div class="option-details">
+                        <h3>Anonymize Content</h3>
+                        <p>Keep your posts/comments but display them under "Deleted User"</p>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-top: 1.5rem;">
+                    <label for="delete-reason">Optional: Why are you leaving?</label>
+                    <textarea id="delete-reason" rows="2" placeholder="Help us improve C2 Club..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm-text">Type "DELETE" to confirm:</label>
+                    <input type="text" id="confirm-text" placeholder="Type DELETE" oninput="onConfirmInput()">
+                </div>
+
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <button onclick="cancelAndSignOut()" class="btn btn-outline" style="flex: 1; justify-content: center;">Cancel</button>
+                    <button id="btn-submit-delete" onclick="submitDeletion()" class="btn btn-danger" style="flex: 2; justify-content: center;" disabled>
+                        Confirm Account Deletion
+                    </button>
+                </div>
+            </div>
+
+            <!-- STEP 4: Processing -->
+            <div id="step-processing" class="step">
+                <h1>Scheduling Deletion...</h1>
+                <div class="spinner"></div>
+                <p>Your deletion request is being processed. Please do not close this browser window.</p>
+            </div>
+
+            <!-- STEP 5: Success -->
+            <div id="step-success" class="step">
+                <div style="font-size: 4rem; margin-bottom: 1.5rem; text-align: center;">✅</div>
+                <h1>Deletion Scheduled</h1>
+                <p>Your account has been suspended and scheduled for permanent deletion in 30 days.</p>
+                <p>If you change your mind, you can reactivate your account by logging in to the C2 Club app within 30 days.</p>
+                <br>
+                <a href="index.html" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 0.85rem;">
+                    Return to Website
                 </a>
             </div>
 
-            <div class="footer-links" style="margin-top: 1rem;">
-                <a href="index.html" class="btn btn-outline">Back to Home</a>
+            <!-- GLOBAL SPINNER FOR STEP TRANSITIONS -->
+            <div id="global-loading" style="display: none;">
+                <div class="spinner"></div>
+                <p style="text-align: center;" id="loading-text">Processing...</p>
+            </div>
+
+            <!-- BACK TO LEGAL INDEX -->
+            <div id="footer-nav" class="footer-links" style="margin-top: 2rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
+                <a href="index.html" class="btn btn-outline">Back to Legal Home</a>
             </div>
         </div>
     </div>
+
+    <script>
+        // Firebase Production Web Config
+        const firebaseConfig = {
+            apiKey: 'AIzaSyAzp97MbDWUeovlocMTrES82p3I0lN1y70',
+            appId: '1:218086364023:web:a6b8f49fa50d530dc74772',
+            messagingSenderId: '218086364023',
+            projectId: 'c2club-fd6722',
+            authDomain: 'c2club-fd6722.firebaseapp.com',
+            storageBucket: 'c2club-fd6722.firebasestorage.app'
+        };
+
+        // Initialize Firebase Compat
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // Setup invisible recaptcha verifier
+        window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+            'size': 'invisible',
+            'callback': (response) => {}
+        });
+
+        let deleteContent = true;
+
+        function showStep(stepId) {
+            document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
+            document.getElementById('global-loading').style.display = 'none';
+            document.getElementById(stepId).classList.add('active');
+            
+            // Hide footer nav on processing
+            const footer = document.getElementById('footer-nav');
+            if (stepId === 'step-processing') {
+                footer.style.display = 'none';
+            } else {
+                footer.style.display = 'block';
+            }
+        }
+
+        function showError(msg) {
+            const errBox = document.getElementById('error-box');
+            errBox.innerText = msg;
+            errBox.style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function hideError() {
+            document.getElementById('error-box').style.display = 'none';
+        }
+
+        function toggleLoading(show, text = 'Processing...') {
+            if (show) {
+                document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
+                document.getElementById('loading-text').innerText = text;
+                document.getElementById('global-loading').style.display = 'block';
+            } else {
+                document.getElementById('global-loading').style.display = 'none';
+            }
+        }
+
+        function sendVerificationCode() {
+            const phoneInput = document.getElementById('phone-number').value.trim();
+            if (!phoneInput || phoneInput.length < 10) {
+                showError('Please enter a valid 10-digit mobile number.');
+                return;
+            }
+            const phoneNumber = '+91' + phoneInput;
+            hideError();
+            toggleLoading(true, 'Sending verification SMS...');
+
+            auth.signInWithPhoneNumber(phoneNumber, window.recaptchaVerifier)
+                .then((confirmationResult) => {
+                    window.confirmationResult = confirmationResult;
+                    toggleLoading(false);
+                    showStep('step-otp');
+                })
+                .catch((error) => {
+                    toggleLoading(false);
+                    showStep('step-phone');
+                    showError('Failed to send verification SMS: ' + error.message);
+                });
+        }
+
+        function verifyOtp() {
+            const code = document.getElementById('otp-code').value.trim();
+            if (!code || code.length < 6) {
+                showError('Please enter the 6-digit verification code.');
+                return;
+            }
+            hideError();
+            toggleLoading(true, 'Verifying code...');
+
+            window.confirmationResult.confirm(code)
+                .then((result) => {
+                    const user = result.user;
+                    db.collection('users').doc(user.uid).get()
+                        .then((doc) => {
+                            toggleLoading(false);
+                            if (doc.exists) {
+                                const data = doc.data();
+                                document.getElementById('user-name-display').innerText = data.fullName || 'Registered User';
+                                document.getElementById('user-phone-display').innerText = user.phoneNumber;
+                            } else {
+                                document.getElementById('user-name-display').innerText = 'Registered User';
+                                document.getElementById('user-phone-display').innerText = user.phoneNumber;
+                            }
+                            showStep('step-options');
+                        })
+                        .catch((err) => {
+                            toggleLoading(false);
+                            document.getElementById('user-name-display').innerText = 'Registered User';
+                            document.getElementById('user-phone-display').innerText = user.phoneNumber;
+                            showStep('step-options');
+                        });
+                })
+                .catch((error) => {
+                    toggleLoading(false);
+                    showStep('step-otp');
+                    showError('Verification code invalid or expired. Please check and try again.');
+                });
+        }
+
+        function selectOption(del) {
+            deleteContent = del;
+            document.getElementById('opt-delete').classList.toggle('selected', del);
+            document.getElementById('opt-anon').classList.toggle('selected', !del);
+        }
+
+        function onConfirmInput() {
+            const val = document.getElementById('confirm-text').value.trim();
+            const btn = document.getElementById('btn-submit-delete');
+            btn.disabled = (val !== 'DELETE');
+        }
+
+        function cancelAndSignOut() {
+            toggleLoading(true, 'Signing out...');
+            auth.signOut().then(() => {
+                toggleLoading(false);
+                document.getElementById('phone-number').value = '';
+                document.getElementById('otp-code').value = '';
+                document.getElementById('confirm-text').value = '';
+                document.getElementById('delete-reason').value = '';
+                showStep('step-phone');
+            });
+        }
+
+        function submitDeletion() {
+            const user = auth.currentUser;
+            if (!user) {
+                showError('Session expired. Please log in again.');
+                showStep('step-phone');
+                return;
+            }
+
+            const reason = document.getElementById('delete-reason').value.trim();
+            const userName = document.getElementById('user-name-display').innerText;
+
+            showStep('step-processing');
+
+            const docId = user.uid;
+            const requestDoc = {
+                userId: user.uid,
+                userEmail: user.email || '',
+                userName: userName,
+                userCollege: 'Web Portal Deletion',
+                userCourse: 'Web Portal Deletion',
+                userPhone: user.phoneNumber || '',
+                reason: reason,
+                deleteContent: deleteContent,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                status: 'pending'
+            };
+
+            const docRef = db.collection('delete_account_requests').doc(docId);
+            
+            docRef.set(requestDoc)
+                .then(() => {
+                    // Listen for state changes
+                    const unsubscribe = docRef.onSnapshot((doc) => {
+                        if (doc.exists) {
+                            const status = doc.data().status;
+                            if (status === 'completed') {
+                                unsubscribe();
+                                auth.signOut().then(() => {
+                                    showStep('step-success');
+                                });
+                            } else if (status === 'failed') {
+                                unsubscribe();
+                                showStep('step-options');
+                                showError('Server failed to delete data: ' + (doc.data().error || 'Unknown error'));
+                            }
+                        }
+                    }, (error) => {
+                        // When user is deleted, Auth is wiped, so Firestore throws permission-denied.
+                        // This signals deletion completed successfully.
+                        unsubscribe();
+                        auth.signOut().then(() => {
+                            showStep('step-success');
+                        });
+                    });
+                })
+                .catch((error) => {
+                    showStep('step-options');
+                    showError('Failed to queue deletion request: ' + error.message);
+                });
+        }
+    </script>
 </body>
 </html>
