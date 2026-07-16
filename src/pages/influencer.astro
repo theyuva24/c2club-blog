@@ -579,6 +579,72 @@
       100% { transform: rotate(360deg); }
     }
 
+    /* Link Sharing Section */
+    .link-sharing-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      backdrop-filter: blur(8px);
+    }
+
+    .link-sharing-title {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    .link-sharing-box {
+      display: flex;
+      gap: 10px;
+    }
+
+    .link-input-field {
+      flex: 1;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: #fff;
+      font-family: monospace;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .link-input-field:focus {
+      border-color: var(--primary);
+    }
+
+    .btn-copy-link {
+      background: var(--primary);
+      border: none;
+      border-radius: 8px;
+      padding: 12px 20px;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s;
+    }
+
+    .btn-copy-link:hover {
+      background: var(--primary-hover);
+    }
+
+    .link-sharing-info {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
       .section-header {
@@ -594,6 +660,9 @@
       }
       .search-input:focus {
         width: 100%;
+      }
+      .link-sharing-box {
+        flex-direction: column;
       }
     }
   </style>
@@ -650,6 +719,24 @@
       <div class="welcome-section">
         <h2>Welcome back, <span id="partnerName">Partner</span>!</h2>
         <p>Campaign performance overview for referral code: <span id="partnerCode" class="code-badge">CODE</span></p>
+      </div>
+
+      <!-- Link Sharing Card -->
+      <div class="link-sharing-card">
+        <div class="link-sharing-title">Your Live Referral Link</div>
+        <div class="link-sharing-box">
+          <input type="text" id="shareableLinkInput" class="link-input-field" readonly value="" placeholder="Generating link..." />
+          <button id="copyLinkBtn" class="btn-copy-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            <span id="copyLinkText">Copy Link</span>
+          </button>
+        </div>
+        <div class="link-sharing-info">
+          This link tracks user installs from the Play Store and records them automatically under your dashboard.
+        </div>
       </div>
 
       <!-- Statistics grid -->
@@ -807,6 +894,25 @@
       leadsData = [];
     });
 
+    // Copy Link Event Listener
+    document.getElementById('copyLinkBtn').addEventListener('click', () => {
+      const shareableLinkInput = document.getElementById('shareableLinkInput');
+      const copyLinkText = document.getElementById('copyLinkText');
+      if (!shareableLinkInput || !shareableLinkInput.value) return;
+
+      shareableLinkInput.select();
+      shareableLinkInput.setSelectionRange(0, 99999); // For mobile devices
+
+      navigator.clipboard.writeText(shareableLinkInput.value).then(() => {
+        copyLinkText.textContent = 'Copied!';
+        setTimeout(() => {
+          copyLinkText.textContent = 'Copy Link';
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy text: ', err);
+      });
+    });
+
     // Main Login Logic
     async function login(code, passcode, isAutoLogin = false) {
       // Toggle button states
@@ -870,6 +976,12 @@
       statDownloads.textContent = data.totalRegistered;
       statActives.textContent = data.totalCredited;
       statConversion.textContent = `${data.conversionRate}%`;
+
+      // Update the copyable referral link
+      const shareableLinkInput = document.getElementById('shareableLinkInput');
+      if (shareableLinkInput) {
+        shareableLinkInput.value = `https://c2club.in/download?ref=${data.referralCode}`;
+      }
 
       // Save lead list globally for filtering
       leadsData = data.leads || [];
