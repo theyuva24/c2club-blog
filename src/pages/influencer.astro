@@ -1,0 +1,978 @@
+---
+// src/pages/influencer.astro
+// Standalone page for the Influencer Referral Dashboard
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Influencer Partner Dashboard | C2 Club</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="/app-icon.png" type="image/png" />
+
+  <style>
+    /* Premium Reset & Colors */
+    :root {
+      --bg-dark: #0b0f19;
+      --bg-card: rgba(17, 24, 39, 0.75);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --primary: #8b5cf6;
+      --primary-glow: rgba(139, 92, 246, 0.15);
+      --primary-hover: #a78bfa;
+      --success: #10b981;
+      --success-glow: rgba(16, 185, 129, 0.15);
+      --warning: #f59e0b;
+      --warning-glow: rgba(245, 158, 11, 0.15);
+      --font-family: 'Outfit', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(79, 70, 229, 0.08) 0%, transparent 40%);
+      color: var(--text-main);
+      font-family: var(--font-family);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header styling */
+    header {
+      border-bottom: 1px solid var(--border-color);
+      padding: 20px 0;
+      backdrop-filter: blur(8px);
+      background-color: rgba(11, 15, 25, 0.8);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: 0.5px;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .logo img {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+    }
+
+    .logout-btn {
+      background: transparent;
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #ef4444;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 500;
+      font-family: var(--font-family);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .logout-btn:hover {
+      background-color: rgba(239, 68, 68, 0.1);
+      border-color: #ef4444;
+    }
+
+    /* Main Content Area */
+    main {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 0;
+    }
+
+    /* Auth Card (Login) */
+    .auth-container {
+      width: 100%;
+      max-width: 440px;
+    }
+
+    .glass-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(79, 70, 229, 0.1), transparent, rgba(139, 92, 246, 0.1));
+      border-radius: 22px;
+      z-index: -1;
+    }
+
+    .auth-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .auth-header h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .auth-header p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .input-field {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 12px 16px;
+      color: #fff;
+      font-family: var(--font-family);
+      font-size: 1rem;
+      transition: all 0.2s ease;
+    }
+
+    .input-field:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.25);
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: linear-gradient(135deg, var(--primary), #4f46e5);
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      padding: 14px;
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: var(--font-family);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(139, 92, 246, 0.4);
+      background: linear-gradient(135deg, var(--primary-hover), #5850ec);
+    }
+
+    .btn-submit:active {
+      transform: translateY(1px);
+    }
+
+    .btn-submit:disabled {
+      background: rgba(156, 163, 175, 0.2);
+      color: rgba(255, 255, 255, 0.4);
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+    }
+
+    .error-msg {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #ef4444;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 0.875rem;
+      display: none;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Dashboard Container (Grid) */
+    .dashboard-container {
+      width: 100%;
+      display: none;
+      animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .welcome-section {
+      margin-bottom: 30px;
+    }
+
+    .welcome-section h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .welcome-section p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .welcome-section .code-badge {
+      background-color: var(--primary-glow);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      color: var(--primary-hover);
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      display: inline-block;
+      margin-top: 4px;
+    }
+
+    /* Metrics Grid */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .metric-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .metric-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .metric-info h3 {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .metric-value {
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .metric-icon-box {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .metric-card.downloads .metric-icon-box {
+      background: var(--primary-glow);
+      color: var(--primary-hover);
+    }
+
+    .metric-card.actives .metric-icon-box {
+      background: var(--success-glow);
+      color: var(--success);
+    }
+
+    .metric-card.conversion .metric-icon-box {
+      background: var(--warning-glow);
+      color: var(--warning);
+    }
+
+    /* Table Section */
+    .leads-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 40px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .section-header h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .controls-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .search-box {
+      position: relative;
+    }
+
+    .search-input {
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 10px 16px 10px 40px;
+      color: #fff;
+      font-family: var(--font-family);
+      width: 240px;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      width: 300px;
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+      width: 16px;
+      height: 16px;
+    }
+
+    .btn-export {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 500;
+      font-family: var(--font-family);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+    }
+
+    .btn-export:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Leads Table */
+    .table-container {
+      overflow-x: auto;
+      width: 100%;
+      border-radius: 8px;
+      background: rgba(10, 15, 25, 0.4);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th {
+      padding: 16px 24px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border-color);
+      background: rgba(15, 23, 42, 0.2);
+    }
+
+    td {
+      padding: 16px 24px;
+      font-size: 0.95rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-main);
+      vertical-align: middle;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background-color: rgba(255, 255, 255, 0.01);
+    }
+
+    /* Table cell contents */
+    .user-cell {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--primary-glow);
+      color: var(--primary-hover);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: 1.5px solid rgba(139, 92, 246, 0.2);
+      overflow: hidden;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .status-badge.registered {
+      background-color: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+      color: var(--warning);
+    }
+
+    .status-badge.credited {
+      background-color: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      color: var(--success);
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+
+    .status-badge.registered .status-dot {
+      background-color: var(--warning);
+    }
+
+    .status-badge.credited .status-dot {
+      background-color: var(--success);
+    }
+
+    .empty-state {
+      padding: 48px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .empty-state svg {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 16px;
+      opacity: 0.5;
+    }
+
+    /* Footer styling */
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 24px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* Keyframes & Loaders */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .spinner {
+      border: 3px solid rgba(255, 255, 255, 0.1);
+      border-top: 3px solid #fff;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .controls-row {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .search-input {
+        width: 100%;
+      }
+      .search-input:focus {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- App Header -->
+  <header>
+    <div class="container header-content">
+      <a href="/" class="logo">
+        <img src="/app-icon.png" alt="C2 Club Logo" />
+        <span>C2 Club Partner Portal</span>
+      </a>
+      <button id="logoutBtn" class="logout-btn" style="display: none;">Logout</button>
+    </div>
+  </header>
+
+  <!-- Content Box -->
+  <main class="container">
+    
+    <!-- AUTHENTICATION FORM -->
+    <div id="authSection" class="auth-container">
+      <div class="glass-card">
+        <div class="auth-header">
+          <h1>Influencer Dashboard</h1>
+          <p>Enter your credentials to access your campaign stats</p>
+        </div>
+
+        <div id="loginError" class="error-msg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          <span id="errorText">Invalid referral code or passcode.</span>
+        </div>
+
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="referralCode">Referral Code</label>
+            <input type="text" id="referralCode" class="input-field" placeholder="e.g. PARTNER100" required autocomplete="off" />
+          </div>
+
+          <div class="form-group">
+            <label for="passcode">Secret Passcode</label>
+            <input type="password" id="passcode" class="input-field" placeholder="e.g. 6-digit PIN" required />
+          </div>
+
+          <button type="submit" id="submitBtn" class="btn-submit">
+            <span>Access Dashboard</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- DASHBOARD VIEW -->
+    <div id="dashboardSection" class="dashboard-container">
+      <div class="welcome-section">
+        <h2>Welcome back, <span id="partnerName">Partner</span>!</h2>
+        <p>Campaign performance overview for referral code: <span id="partnerCode" class="code-badge">CODE</span></p>
+      </div>
+
+      <!-- Statistics grid -->
+      <div class="metrics-grid">
+        <div class="metric-card downloads">
+          <div class="metric-info">
+            <h3>App Downloads</h3>
+            <div id="statDownloads" class="metric-value">0</div>
+          </div>
+          <div class="metric-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          </div>
+        </div>
+
+        <div class="metric-card actives">
+          <div class="metric-info">
+            <h3>Active Users</h3>
+            <div id="statActives" class="metric-value">0</div>
+          </div>
+          <div class="metric-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+        </div>
+
+        <div class="metric-card conversion">
+          <div class="metric-info">
+            <h3>Conversion Rate</h3>
+            <div id="statConversion" class="metric-value">0%</div>
+          </div>
+          <div class="metric-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Leads Details -->
+      <div class="leads-section">
+        <div class="section-header">
+          <h3>Referred Users Detail</h3>
+          <div class="controls-row">
+            <div class="search-box">
+              <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input type="text" id="searchInput" class="search-input" placeholder="Search by name..." />
+            </div>
+            <button id="exportBtn" class="btn-export">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>Export CSV</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table id="leadsTable">
+            <thead>
+              <tr>
+                <th>User</th>
+                <th>Status</th>
+                <th>Joined Date</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody">
+              <!-- Dynamically populated rows -->
+            </tbody>
+          </table>
+          <div id="emptyState" class="empty-state" style="display: none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+            <p id="emptyStateText">No referred users found yet.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- App Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 C2 Club. Partner Referral & Analytics Management.</p>
+    </div>
+  </footer>
+
+  <!-- Frontend Logic -->
+  <script is:inline>
+    // Configuration & State
+    let leadsData = []; // holds unfiltered records
+
+    // Resolves API Endpoint (supports local emulators and production)
+    function getApiUrl() {
+      const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      const projectId = 'c2club-fd6722'; // Project ID from test_firestore.js
+      if (isLocal) {
+        // Points to local Firebase functions emulator
+        return `http://127.0.0.1:5001/${projectId}/us-central1/getInfluencerStats`;
+      }
+      // Points to live Cloud Function (region: us-central1)
+      return `https://us-central1-${projectId}.cloudfunctions.net/getInfluencerStats`;
+    }
+
+    // DOM Elements
+    const authSection = document.getElementById('authSection');
+    const dashboardSection = document.getElementById('dashboardSection');
+    const logoutBtn = document.getElementById('logoutBtn');
+    
+    const loginForm = document.getElementById('loginForm');
+    const referralCodeInput = document.getElementById('referralCode');
+    const passcodeInput = document.getElementById('passcode');
+    const submitBtn = document.getElementById('submitBtn');
+    
+    const loginError = document.getElementById('loginError');
+    const errorText = document.getElementById('errorText');
+
+    const partnerName = document.getElementById('partnerName');
+    const partnerCode = document.getElementById('partnerCode');
+    const statDownloads = document.getElementById('statDownloads');
+    const statActives = document.getElementById('statActives');
+    const statConversion = document.getElementById('statConversion');
+    
+    const tableBody = document.getElementById('tableBody');
+    const emptyState = document.getElementById('emptyState');
+    const emptyStateText = document.getElementById('emptyStateText');
+    const searchInput = document.getElementById('searchInput');
+    const exportBtn = document.getElementById('exportBtn');
+
+    // Startup Authentication Check
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedCode = sessionStorage.getItem('influencer_code');
+      const savedPasscode = sessionStorage.getItem('influencer_passcode');
+
+      if (savedCode && savedPasscode) {
+        login(savedCode, savedPasscode, true);
+      }
+    });
+
+    // Handle Form Submit
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const code = referralCodeInput.value.trim();
+      const passcode = passcodeInput.value.trim();
+      login(code, passcode, false);
+    });
+
+    // Logout Click
+    logoutBtn.addEventListener('click', () => {
+      sessionStorage.removeItem('influencer_code');
+      sessionStorage.removeItem('influencer_passcode');
+      
+      // UI Transitions
+      logoutBtn.style.display = 'none';
+      dashboardSection.style.display = 'none';
+      authSection.style.display = 'block';
+      
+      // Clear inputs
+      referralCodeInput.value = '';
+      passcodeInput.value = '';
+      leadsData = [];
+    });
+
+    // Main Login Logic
+    async function login(code, passcode, isAutoLogin = false) {
+      // Toggle button states
+      submitBtn.disabled = true;
+      const originalBtnText = submitBtn.innerHTML;
+      submitBtn.innerHTML = '<div class="spinner"></div>';
+      loginError.style.display = 'none';
+
+      try {
+        const response = await fetch(getApiUrl(), {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ code, passcode })
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+          // Store credentials in Session Storage for session persistence
+          sessionStorage.setItem('influencer_code', code);
+          sessionStorage.setItem('influencer_passcode', passcode);
+
+          // Populate Dashboard
+          populateDashboard(result);
+
+          // Switch Views
+          authSection.style.display = 'none';
+          dashboardSection.style.display = 'block';
+          logoutBtn.style.display = 'block';
+        } else {
+          // Display error returned by Cloud Function
+          showError(result.error || 'Failed to authenticate.');
+          if (isAutoLogin) {
+            // Clear corrupt storage
+            sessionStorage.removeItem('influencer_code');
+            sessionStorage.removeItem('influencer_passcode');
+          }
+        }
+      } catch (err) {
+        console.error('Login request error:', err);
+        showError('Network error. Make sure the Firebase functions emulator is running or you have internet access.');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnText;
+      }
+    }
+
+    // Display error box
+    function showError(message) {
+      errorText.textContent = message;
+      loginError.style.display = 'flex';
+      loginError.style.animation = 'fadeIn 0.2s ease-out';
+    }
+
+    // Populate the dashboard metrics and table
+    function populateDashboard(data) {
+      partnerName.textContent = data.influencerName;
+      partnerCode.textContent = data.referralCode;
+      statDownloads.textContent = data.totalRegistered;
+      statActives.textContent = data.totalCredited;
+      statConversion.textContent = `${data.conversionRate}%`;
+
+      // Save lead list globally for filtering
+      leadsData = data.leads || [];
+      renderTable(leadsData);
+    }
+
+    // Render lead rows dynamically
+    function renderTable(leads) {
+      tableBody.innerHTML = '';
+      
+      if (leads.length === 0) {
+        emptyState.style.display = 'block';
+        return;
+      }
+
+      emptyState.style.display = 'none';
+
+      leads.forEach(lead => {
+        const row = document.createElement('tr');
+        
+        // Date Formatter
+        const joinedDate = new Date(lead.createdAt);
+        const formattedDate = joinedDate.toLocaleDateString('en-IN', {
+          day: 'numeric',
+          month: 'short',
+          year: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        });
+
+        // User Avatar Initial
+        const firstLetter = lead.userName.charAt(0).toUpperCase() || 'F';
+        const avatarHtml = lead.userAvatar 
+          ? `<img src="${lead.userAvatar}" alt="${lead.userName}" />`
+          : firstLetter;
+
+        // Status Badge Style
+        const statusClass = lead.status === 'credited' ? 'credited' : 'registered';
+        const statusLabel = lead.status === 'credited' ? 'Posted' : 'Registered';
+
+        row.innerHTML = `
+          <td>
+            <div class="user-cell">
+              <div class="avatar">${avatarHtml}</div>
+              <span>${lead.userName}</span>
+            </div>
+          </td>
+          <td>
+            <span class="status-badge ${statusClass}">
+              <span class="status-dot"></span>
+              ${statusLabel}
+            </span>
+          </td>
+          <td>${formattedDate}</td>
+        `;
+
+        tableBody.appendChild(row);
+      });
+    }
+
+    // Local Search Filtering
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase().trim();
+      const filtered = leadsData.filter(lead => 
+        lead.userName.toLowerCase().includes(query)
+      );
+      
+      if (filtered.length === 0 && query !== '') {
+        emptyStateText.textContent = `No users found matching "${searchInput.value}"`;
+      } else {
+        emptyStateText.textContent = 'No referred users found yet.';
+      }
+      
+      renderTable(filtered);
+    });
+
+    // Local CSV Export
+    exportBtn.addEventListener('click', () => {
+      if (leadsData.length === 0) {
+        alert('No data to export.');
+        return;
+      }
+
+      const headers = ['User ID', 'Referred Name', 'Referral Status', 'Join Date'];
+      const rows = leadsData.map(lead => [
+        lead.id,
+        lead.userName,
+        lead.status === 'credited' ? 'Active (Posted)' : 'Registered',
+        new Date(lead.createdAt).toLocaleString('en-IN')
+      ]);
+
+      let csvContent = "data:text/csv;charset=utf-8," 
+        + [headers.join(','), ...rows.map(e => e.map(val => `"${val.replace(/"/g, '""')}"`).join(','))].join('\n');
+      
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      const code = sessionStorage.getItem('influencer_code') || 'referral';
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", `referrals_${code.toLowerCase()}_export.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+  </script>
+</body>
+</html>
