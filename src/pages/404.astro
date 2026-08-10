@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout
+  title="Page not found | C2 Club"
+  description="The page you requested could not be found."
+  shouldNoIndex={true}
+>
+  <main class="not-found">
+    <span class="error-code">404</span>
+    <h1>This page has moved or does not exist.</h1>
+    <p>Explore current student guides, challenges, and stories from the C2 Club community.</p>
+    <div class="not-found-actions">
+      <a class="btn btn-primary" href="/">Go home</a>
+      <a class="btn btn-outline" href="/blog/">Explore the blog</a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .not-found{min-height:62vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 20px}.error-code{font-size:.8rem;font-weight:900;letter-spacing:.2em;color:var(--accent);text-transform:uppercase}.not-found h1{max-width:720px;margin:16px auto 12px;font-size:clamp(2.2rem,7vw,4.5rem);line-height:1.05}.not-found p{max-width:560px;color:var(--text-secondary);line-height:1.7}.not-found-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:24px}@media(max-width:480px){.not-found-actions a{width:100%}}
+</style>

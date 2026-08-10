@@ -220,20 +220,31 @@
 
             <!-- STEP 4: Processing -->
             <div id="step-processing" class="step">
-                <h1>Scheduling Deletion...</h1>
+                <h1>Processing Deletion...</h1>
                 <div class="spinner"></div>
-                <p>Your deletion request is being processed. Please do not close this browser window.</p>
+                <p>Your deletion request is being processed. Keep this browser window open while we confirm the result.</p>
             </div>
 
             <!-- STEP 5: Success -->
             <div id="step-success" class="step">
                 <div style="font-size: 4rem; margin-bottom: 1.5rem; text-align: center;">✅</div>
-                <h1>Deletion Scheduled</h1>
-                <p>Your account has been suspended and scheduled for permanent deletion in 30 days.</p>
-                <p>If you change your mind, you can reactivate your account by logging in to the C2 Club app within 30 days.</p>
+                <h1>Account Deleted</h1>
+                <p>The server confirmed that your C2 Club account deletion is complete.</p>
                 <br>
-                <a href="index.html" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 0.85rem;">
+                <a href="/" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 0.85rem;">
                     Return to Website
+                </a>
+            </div>
+
+            <!-- STEP 6: Submitted, confirmation unavailable -->
+            <div id="step-unconfirmed" class="step">
+                <div style="font-size: 4rem; margin-bottom: 1.5rem; text-align: center;">⏳</div>
+                <h1>Request Submitted</h1>
+                <p>We received your deletion request, but this page could not confirm that processing finished.</p>
+                <p>Do not submit another request. Please check again later or contact support if you need help.</p>
+                <br>
+                <a href="/contact/" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 0.85rem;">
+                    Contact Support
                 </a>
             </div>
 
@@ -403,22 +414,13 @@
                 return;
             }
 
-            const reason = document.getElementById('delete-reason').value.trim();
-            const userName = document.getElementById('user-name-display').innerText;
-
             showStep('step-processing');
 
             const docId = user.uid;
             const requestDoc = {
                 userId: user.uid,
-                userEmail: user.email || '',
-                userName: userName,
-                userCollege: 'Web Portal Deletion',
-                userCourse: 'Web Portal Deletion',
-                userPhone: user.phoneNumber || '',
-                reason: reason,
                 deleteContent: deleteContent,
-                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                requestedAt: firebase.firestore.FieldValue.serverTimestamp(),
                 status: 'pending'
             };
 
@@ -426,28 +428,39 @@
             
             docRef.set(requestDoc)
                 .then(() => {
-                    // Listen for state changes
-                    const unsubscribe = docRef.onSnapshot((doc) => {
+                    let settled = false;
+                    let unsubscribe = () => {};
+                    const confirmationTimeout = window.setTimeout(() => {
+                        if (settled) return;
+                        settled = true;
+                        unsubscribe();
+                        showStep('step-unconfirmed');
+                    }, 120000);
+
+                    unsubscribe = docRef.onSnapshot((doc) => {
                         if (doc.exists) {
                             const status = doc.data().status;
                             if (status === 'completed') {
+                                settled = true;
+                                window.clearTimeout(confirmationTimeout);
                                 unsubscribe();
                                 auth.signOut().then(() => {
                                     showStep('step-success');
                                 });
                             } else if (status === 'failed') {
+                                settled = true;
+                                window.clearTimeout(confirmationTimeout);
                                 unsubscribe();
                                 showStep('step-options');
-                                showError('Server failed to delete data: ' + (doc.data().error || 'Unknown error'));
+                                showError('The server could not complete the deletion. Please try again or contact support.');
                             }
                         }
                     }, (error) => {
-                        // When user is deleted, Auth is wiped, so Firestore throws permission-denied.
-                        // This signals deletion completed successfully.
+                        if (settled) return;
+                        settled = true;
+                        window.clearTimeout(confirmationTimeout);
                         unsubscribe();
-                        auth.signOut().then(() => {
-                            showStep('step-success');
-                        });
+                        showStep('step-unconfirmed');
                     });
                 })
                 .catch((error) => {

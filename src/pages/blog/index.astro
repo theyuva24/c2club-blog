@@ -37,10 +37,15 @@ const visiblePosts = blogPosts.filter(p => p.published !== false);
         <div class="blog-grid">
           {visiblePosts.map((post) => (
             <article class="blog-card">
-              <div
+              <img
                 class="blog-card-image"
-                style={`background-image: url("${post.image}"); background-size: cover; background-position: center; height: 200px; border-radius: 12px; margin-bottom: 20px;`}
-              ></div>
+                src={post.image}
+                width="1200"
+                height="675"
+                loading="lazy"
+                decoding="async"
+                alt={post.title}
+              />
               <h2 class="blog-card-title">
                 <a href={post.url}>{post.title.replace(/^What After PUC\?\s*/i, '')}</a>
               </h2>

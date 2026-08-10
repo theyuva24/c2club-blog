@@ -129,7 +129,7 @@
                 if (path.indexOf('/challenge/') > -1) {
                     // Challenges: show web fallback page first, then Play Store
                     var challengeId = path.split('/challenge/')[1] || '';
-                    fallbackUrl = window.location.origin + '/challenge-view.html?id=' + challengeId + '&no_redirect=true';
+                    fallbackUrl = window.location.origin + '/challenge-view/?id=' + encodeURIComponent(challengeId) + '&no_redirect=true';
                     if (refCode) fallbackUrl += '&ref=' + encodeURIComponent(refCode);
                 }
 

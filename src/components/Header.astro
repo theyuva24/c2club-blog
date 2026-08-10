@@ -14,7 +14,11 @@ const cleanPath = pathname.replace(/\/$/, "");
     
     <button
       class="menu-toggle"
-      aria-label="Toggle navigation"
+      type="button"
+      aria-label="Open navigation"
+      aria-controls="mobileMenu"
+      aria-expanded="false"
+      aria-haspopup="dialog"
       id="menuToggle"
       onclick="toggleMenu()"
     >

@@ -79,17 +79,13 @@ const orgSchema = {
   "description": "Karnataka's student collaboration platform and campus network."
 };
 
-// 2. WebSite Schema with SearchAction (Homepage only)
+// 2. WebSite schema (homepage only). Add SearchAction only when a real search route exists.
 const isHomepage = currentPathname === '/' || currentPathname === '/index';
 const websiteSchema = isHomepage ? {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "url": "https://c2club.in",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://c2club.in/search?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
+  "name": "C2 Club",
+  "url": "https://c2club.in"
 } : null;
 
 // 3. BlogPosting Schema (Article pages only)
@@ -142,6 +138,10 @@ const articleSchema = isArticle && matchedPost ? {
   <meta property="og:description" content={description} />
   <meta property="og:image" content={ogImage} />
   <meta property="og:site_name" content="C2 Club" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -189,15 +189,55 @@ const articleSchema = isArticle && matchedPost ? {
 
   <!-- Scripts -->
   <script is:inline>
-    // Mobile menu toggle logic
-    function toggleMenu() {
+    // Mobile menu state, keyboard handling, and focus management.
+    let menuReturnFocus = null;
+    function toggleMenu(forceOpen) {
       const menu = document.getElementById("mobileMenu");
       const toggle = document.getElementById("menuToggle");
       if (menu && toggle) {
-        menu.classList.toggle("open");
-        toggle.classList.toggle("active");
+        const shouldOpen = typeof forceOpen === 'boolean'
+          ? forceOpen
+          : !menu.classList.contains('open');
+        menu.classList.toggle("open", shouldOpen);
+        toggle.classList.toggle("active", shouldOpen);
+        toggle.setAttribute('aria-expanded', String(shouldOpen));
+        toggle.setAttribute('aria-label', shouldOpen ? 'Close navigation' : 'Open navigation');
+        menu.setAttribute('aria-hidden', String(!shouldOpen));
+        document.body.style.overflow = shouldOpen ? 'hidden' : '';
+
+        if (shouldOpen) {
+          menuReturnFocus = document.activeElement;
+          menu.querySelector('.close-menu')?.focus();
+        } else if (menuReturnFocus instanceof HTMLElement) {
+          menuReturnFocus.focus();
+          menuReturnFocus = null;
+        }
       }
     }
+    window.toggleMenu = toggleMenu;
+
+    document.addEventListener('keydown', (event) => {
+      const menu = document.getElementById('mobileMenu');
+      if (!menu?.classList.contains('open')) return;
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        toggleMenu(false);
+        return;
+      }
+      if (event.key !== 'Tab') return;
+      const focusable = [...menu.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')]
+        .filter((item) => item instanceof HTMLElement);
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
 
     // Reading progress bar logic
     if (document.getElementById("progressBar")) {

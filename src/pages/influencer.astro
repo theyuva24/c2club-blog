@@ -704,7 +704,7 @@
 
           <div class="form-group">
             <label for="passcode">Secret Passcode</label>
-            <input type="password" id="passcode" class="input-field" placeholder="e.g. 6-digit PIN" required />
+            <input type="password" id="passcode" class="input-field" placeholder="e.g. 6-digit PIN" required autocomplete="off" autocapitalize="none" spellcheck="false" />
           </div>
 
           <button type="submit" id="submitBtn" class="btn-submit">
@@ -863,11 +863,7 @@
     // Startup Authentication Check
     document.addEventListener('DOMContentLoaded', () => {
       const savedCode = sessionStorage.getItem('influencer_code');
-      const savedPasscode = sessionStorage.getItem('influencer_passcode');
-
-      if (savedCode && savedPasscode) {
-        login(savedCode, savedPasscode, true);
-      }
+      if (savedCode) referralCodeInput.value = savedCode;
     });
 
     // Handle Form Submit
@@ -875,13 +871,12 @@
       e.preventDefault();
       const code = referralCodeInput.value.trim();
       const passcode = passcodeInput.value.trim();
-      login(code, passcode, false);
+      login(code, passcode);
     });
 
     // Logout Click
     logoutBtn.addEventListener('click', () => {
       sessionStorage.removeItem('influencer_code');
-      sessionStorage.removeItem('influencer_passcode');
       
       // UI Transitions
       logoutBtn.style.display = 'none';
@@ -914,11 +909,12 @@
     });
 
     // Main Login Logic
-    async function login(code, passcode, isAutoLogin = false) {
+    async function login(code, passcode) {
       // Toggle button states
       submitBtn.disabled = true;
-      const originalBtnText = submitBtn.innerHTML;
-      submitBtn.innerHTML = '<div class="spinner"></div>';
+      const spinner = document.createElement('div');
+      spinner.className = 'spinner';
+      submitBtn.replaceChildren(spinner);
       loginError.style.display = 'none';
 
       try {
@@ -933,9 +929,8 @@
         const result = await response.json();
 
         if (response.ok && result.success) {
-          // Store credentials in Session Storage for session persistence
+          // Keep only the non-secret referral code as a convenience.
           sessionStorage.setItem('influencer_code', code);
-          sessionStorage.setItem('influencer_passcode', passcode);
 
           // Populate Dashboard
           populateDashboard(result);
@@ -947,18 +942,16 @@
         } else {
           // Display error returned by Cloud Function
           showError(result.error || 'Failed to authenticate.');
-          if (isAutoLogin) {
-            // Clear corrupt storage
-            sessionStorage.removeItem('influencer_code');
-            sessionStorage.removeItem('influencer_passcode');
-          }
         }
       } catch (err) {
         console.error('Login request error:', err);
         showError('Network error. Make sure the Firebase functions emulator is running or you have internet access.');
       } finally {
+        passcodeInput.value = '';
         submitBtn.disabled = false;
-        submitBtn.innerHTML = originalBtnText;
+        const label = document.createElement('span');
+        label.textContent = 'Access Dashboard';
+        submitBtn.replaceChildren(label);
       }
     }
 
@@ -990,7 +983,7 @@
 
     // Render lead rows dynamically
     function renderTable(leads) {
-      tableBody.innerHTML = '';
+      tableBody.replaceChildren();
       
       if (leads.length === 0) {
         emptyState.style.display = 'block';
@@ -1001,10 +994,11 @@
 
       leads.forEach(lead => {
         const row = document.createElement('tr');
+        const userName = String(lead?.userName || 'Friend');
         
         // Date Formatter
         const joinedDate = new Date(lead.createdAt);
-        const formattedDate = joinedDate.toLocaleDateString('en-IN', {
+        const formattedDate = Number.isNaN(joinedDate.getTime()) ? 'Date unavailable' : joinedDate.toLocaleDateString('en-IN', {
           day: 'numeric',
           month: 'short',
           year: 'numeric',
@@ -1013,30 +1007,52 @@
         });
 
         // User Avatar Initial
-        const firstLetter = lead.userName.charAt(0).toUpperCase() || 'F';
-        const avatarHtml = lead.userAvatar 
-          ? `<img src="${lead.userAvatar}" alt="${lead.userName}" />`
-          : firstLetter;
+        const firstLetter = userName.charAt(0).toUpperCase() || 'F';
 
         // Status Badge Style
         const statusClass = lead.status === 'credited' ? 'credited' : 'registered';
         const statusLabel = lead.status === 'credited' ? 'Posted' : 'Registered';
 
-        row.innerHTML = `
-          <td>
-            <div class="user-cell">
-              <div class="avatar">${avatarHtml}</div>
-              <span>${lead.userName}</span>
-            </div>
-          </td>
-          <td>
-            <span class="status-badge ${statusClass}">
-              <span class="status-dot"></span>
-              ${statusLabel}
-            </span>
-          </td>
-          <td>${formattedDate}</td>
-        `;
+        const userCell = document.createElement('td');
+        const userWrapper = document.createElement('div');
+        userWrapper.className = 'user-cell';
+        const avatar = document.createElement('div');
+        avatar.className = 'avatar';
+        let avatarUrl = null;
+        try {
+          const candidate = new URL(String(lead?.userAvatar || ''));
+          if (candidate.protocol === 'https:') avatarUrl = candidate.href;
+        } catch {
+          avatarUrl = null;
+        }
+        if (avatarUrl) {
+          const image = document.createElement('img');
+          image.src = avatarUrl;
+          image.alt = '';
+          image.loading = 'lazy';
+          image.decoding = 'async';
+          image.referrerPolicy = 'no-referrer';
+          image.addEventListener('error', () => avatar.replaceChildren(firstLetter), { once: true });
+          avatar.appendChild(image);
+        } else {
+          avatar.textContent = firstLetter;
+        }
+        const name = document.createElement('span');
+        name.textContent = userName;
+        userWrapper.append(avatar, name);
+        userCell.appendChild(userWrapper);
+
+        const statusCell = document.createElement('td');
+        const statusBadge = document.createElement('span');
+        statusBadge.className = `status-badge ${statusClass}`;
+        const statusDot = document.createElement('span');
+        statusDot.className = 'status-dot';
+        statusBadge.append(statusDot, document.createTextNode(statusLabel));
+        statusCell.appendChild(statusBadge);
+
+        const dateCell = document.createElement('td');
+        dateCell.textContent = formattedDate;
+        row.append(userCell, statusCell, dateCell);
 
         tableBody.appendChild(row);
       });
@@ -1046,7 +1062,7 @@
     searchInput.addEventListener('input', () => {
       const query = searchInput.value.toLowerCase().trim();
       const filtered = leadsData.filter(lead => 
-        lead.userName.toLowerCase().includes(query)
+        String(lead?.userName || '').toLowerCase().includes(query)
       );
       
       if (filtered.length === 0 && query !== '') {
@@ -1073,8 +1089,13 @@
         new Date(lead.createdAt).toLocaleString('en-IN')
       ]);
 
+      const escapeCsvCell = (value) => {
+        let cell = String(value ?? '');
+        if (/^[=+\-@\t\r]/.test(cell)) cell = `'${cell}`;
+        return `"${cell.replace(/"/g, '""')}"`;
+      };
       let csvContent = "data:text/csv;charset=utf-8," 
-        + [headers.join(','), ...rows.map(e => e.map(val => `"${val.replace(/"/g, '""')}"`).join(','))].join('\n');
+        + [headers.join(','), ...rows.map(e => e.map(escapeCsvCell).join(','))].join('\n');
       
       const encodedUri = encodeURI(csvContent);
       const link = document.createElement("a");

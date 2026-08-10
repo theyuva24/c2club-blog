@@ -2,14 +2,14 @@
 const { pathname } = Astro.url;
 const cleanPath = pathname.replace(/\/$/, "");
 ---
-<div class="mobile-menu-backdrop" id="mobileMenu">
-  <div class="mobile-menu-drawer">
+<div class="mobile-menu-backdrop" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Site navigation" aria-hidden="true">
+  <div class="mobile-menu-drawer" tabindex="-1">
     <div class="drawer-header">
       <div class="logo">
           <img src="/app-icon.png" width="24" height="24" alt="C2 Club" style="border-radius: 4px;" />
         <span class="logo-text">C2<span class="logo-text-light">Club</span></span>
       </div>
-      <button class="close-menu" onclick="toggleMenu()" aria-label="Close menu">
+      <button class="close-menu" type="button" onclick="toggleMenu(false)" aria-label="Close navigation">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -17,7 +17,7 @@ const cleanPath = pathname.replace(/\/$/, "");
       </button>
     </div>
     
-    <nav class="drawer-links">
+    <nav class="drawer-links" aria-label="Mobile navigation">
       <a href="/" class={cleanPath === "" || cleanPath === "/" ? "active" : ""}>Home</a>
       <a href="/challenges/" class={cleanPath === "/challenges" ? "active" : ""}>Challenges</a>
       <a href="/blog/" class={cleanPath.startsWith("/blog") ? "active" : ""}>Blog</a>
@@ -37,23 +37,16 @@ const cleanPath = pathname.replace(/\/$/, "");
 </div>
 
 <script>
-  // Add programmatic backdrop click close listener
+  // Close from the backdrop and after selecting a destination.
   const backdrop = document.getElementById("mobileMenu");
   if (backdrop) {
     backdrop.addEventListener("click", (event) => {
       if (event.target === backdrop) {
-        if (typeof (window as any).toggleMenu === "function") {
-          (window as any).toggleMenu();
-        } else {
-          // Fallback manual toggle if layout script is not ready
-          const menu = document.getElementById("mobileMenu");
-          const toggle = document.getElementById("menuToggle");
-          if (menu && toggle) {
-            menu.classList.remove("open");
-            toggle.classList.remove("active");
-          }
-        }
+        (window as any).toggleMenu?.(false);
       }
+    });
+    backdrop.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => (window as any).toggleMenu?.(false));
     });
   }
 </script>
@@ -105,6 +98,14 @@ const cleanPath = pathname.replace(/\/$/, "");
 
   .mobile-menu-backdrop.open .mobile-menu-drawer {
     transform: translateX(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-menu-backdrop,
+    .mobile-menu-drawer,
+    .close-menu {
+      transition: none;
+    }
   }
 
   /* Drawer Header */

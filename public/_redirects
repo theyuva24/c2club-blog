@@ -1,5 +1,12 @@
 # Campus Leader Guide
 /campus-leader /campus-leader-guide.html 200
+/campus-leader-guide /campus-leader-guide.html 200
+
+# Stable legal aliases
+/privacy-policy /legal/privacy.html 301
+/privacy-policy/ /legal/privacy.html 301
+/terms-of-service /legal/terms.html 301
+/terms-of-service/ /legal/terms.html 301
 
 # Blog listing page now exists at /blog/index.html — no redirect needed
 
