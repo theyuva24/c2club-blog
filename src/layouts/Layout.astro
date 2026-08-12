@@ -30,7 +30,7 @@ const {
 } = Astro.props;
 
 // Normalization function to match paths reliably
-const normalizePath = (path) => {
+const normalizePath = (path: string) => {
   if (!path) return '';
   return path
     .replace(/\.html$/, '') // Remove .html
@@ -57,7 +57,7 @@ const isTemplate = currentPathname.includes('blog-template');
 const finalNoIndex = shouldNoIndex || isDraft || isTemplate;
 
 // OG Image logic
-let ogImage = `${siteUrl}/preview.jpg`; // Default fallback
+let ogImage = `${siteUrl}/og-c2-club-light.webp`; // Optimized light-mode social preview
 if (customOgImage) {
   ogImage = customOgImage.startsWith('http') ? customOgImage : `${siteUrl}${customOgImage}`;
 } else if (isArticle && matchedPost && matchedPost.image) {
@@ -85,7 +85,33 @@ const websiteSchema = isHomepage ? {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "C2 Club",
-  "url": "https://c2club.in"
+  "url": "https://c2club.in",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://c2club.in/search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+} : null;
+
+const appSchema = isHomepage ? {
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "C2 Club: Student Community",
+  "operatingSystem": "Android",
+  "applicationCategory": "SocialNetworkingApplication",
+  "description": "A student community platform for cross-campus connections, resources, challenges, and opportunities.",
+  "url": "https://c2club.in/",
+  "downloadUrl": "https://play.google.com/store/apps/details?id=com.c2club.uniqueapp",
+  "image": "https://c2club.in/app-icon.png",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "INR"
+  },
+  "publisher": { "@id": "https://c2club.in/#organization" }
 } : null;
 
 // 3. BlogPosting Schema (Article pages only)
@@ -138,10 +164,15 @@ const articleSchema = isArticle && matchedPost ? {
   <meta property="og:description" content={description} />
   <meta property="og:image" content={ogImage} />
   <meta property="og:site_name" content="C2 Club" />
+  <meta property="og:locale" content="en_IN" />
+  <meta property="og:image:alt" content="C2 Club — Karnataka's student network" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImage} />
+  <meta name="theme-color" content="#f5f7f2" />
+  <meta name="color-scheme" content="light" />
+  <meta name="application-name" content="C2 Club" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -150,13 +181,18 @@ const articleSchema = isArticle && matchedPost ? {
     rel="stylesheet"
   />
   <link rel="stylesheet" href="/style.css" />
-  <link rel="icon" href="/app-icon.png" type="image/png" />
-  <link rel="apple-touch-icon" href="/app-icon.png" />
+  <link rel="stylesheet" href="/site-refresh.css" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="search" type="application/opensearchdescription+xml" title="Search C2 Club" href="/opensearch.xml" />
 
   <!-- Schema JSON-LD Injection -->
-  <script type="application/ld+json" is:inline>{JSON.stringify(orgSchema)}</script>
-  {websiteSchema && <script type="application/ld+json" is:inline>{JSON.stringify(websiteSchema)}</script>}
-  {articleSchema && <script type="application/ld+json" is:inline>{JSON.stringify(articleSchema)}</script>}
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(orgSchema)} />
+  {websiteSchema && <script type="application/ld+json" is:inline set:html={JSON.stringify(websiteSchema)} />}
+  {appSchema && <script type="application/ld+json" is:inline set:html={JSON.stringify(appSchema)} />}
+  {articleSchema && <script type="application/ld+json" is:inline set:html={JSON.stringify(articleSchema)} />}
 </head>
 <body class={isArticle ? "article-page" : ""}>
   {isArticle && <div class="progress-bar" id="progressBar"></div>}
@@ -247,6 +283,24 @@ const articleSchema = isArticle && matchedPost ? {
         const scrolled = (winScroll / height) * 100;
         document.getElementById("progressBar").style.width = scrolled + "%";
       });
+    }
+
+    // Small, progressive interactions. Content remains visible without JavaScript.
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduceMotion && 'IntersectionObserver' in window) {
+      const revealTargets = document.querySelectorAll('.pain-card, .feature-card, .step-tile, .refresh-blog-card, .arena-strip, .faq-item, .challenge-card');
+      revealTargets.forEach((item, index) => {
+        item.classList.add('reveal-ready');
+        item.style.setProperty('--reveal-delay', `${Math.min(index % 4, 3) * 55}ms`);
+      });
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+      revealTargets.forEach((item) => revealObserver.observe(item));
     }
   </script>
 </body>

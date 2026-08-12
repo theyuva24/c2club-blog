@@ -2,281 +2,117 @@
 import Layout from '../layouts/Layout.astro';
 import { blogPosts } from '../data/blogPosts.js';
 
-const pageTitle = "C2 Club | Foundation for Student Collaboration";
-const visiblePosts = blogPosts.filter(p => p.published !== false);
-
+const pageTitle = "C2 Club | Karnataka's Student Network";
+const visiblePosts = blogPosts.filter((post) => post.published !== false).slice(0, 6);
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How can I connect and talk with college students from other campuses in Karnataka?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "C2 Club provides dedicated cross-campus hubs where you can connect, chat, and collaborate with students from VTU, Bangalore University, and various engineering or degree colleges across Karnataka. This helps you break out of your local campus bubble and build a broader network."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Where can I find student study resources, notes, and previous year question papers?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "All study resources, engineering syllabus notes, lab records, and VTU or college-specific previous year question papers (PYQs) are shared directly by students inside their respective campus and course hubs. These files are organized, verified, and persistently accessible so they don't get buried in random chats."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I get placement referrals and internship opportunities from seniors?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Inside the C2 Club network, seniors who are already placed in product companies and GCCs share referral opportunities, direct hiring contacts, and recruitment experiences. You can connect with them directly in specialized placement discussion boards to build trust and ask for target referrals."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is C2 Club and is it completely free to use?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "C2 Club is a structured collaboration platform built specifically for Karnataka college students to share academic resources, find project partners, and exchange career opportunities. Yes, the platform is 100% free, has no ads, and is dedicated to helping students succeed."
-      }
-    }
+    { "@type": "Question", "name": "How can I connect with students from other campuses in Karnataka?", "acceptedAnswer": { "@type": "Answer", "text": "C2 Club provides campus and cross-campus hubs where students can connect, share resources, and collaborate beyond their own college." } },
+    { "@type": "Question", "name": "Where can I find study resources and previous year question papers?", "acceptedAnswer": { "@type": "Answer", "text": "Students share notes, academic resources, and previous year question papers inside relevant campus and course communities on C2 Club." } },
+    { "@type": "Question", "name": "Can I discover internships, challenges, and project teammates?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. C2 Club helps students discover opportunities, participate in challenges, and connect with peers who want to build and learn together." } },
+    { "@type": "Question", "name": "Is C2 Club free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. C2 Club is free to use and is built for Karnataka's student community." } }
   ]
 };
 ---
-<Layout
-  title={pageTitle}
-  description="C2 Club: A platform connecting students across campuses to solve real problems and build collaborative communities."
-  isArticle={false}
->
-  <main>
-    <!-- ═══ HERO ═══ -->
-    <section class="hero section" id="hero">
-      <div class="container hero-container">
-        <div class="hero-badge"><span style="color: var(--accent); margin-right: 6px;">●</span> KARNATAKA'S STUDENT PLATFORM</div>
-        <h1>Your college is a <span class="strike-through">bubble.</span><br/><span class="text-green">Break out of it.</span></h1>
-        <p class="hero-subtitle">
-          C2 Club connects students across campuses — real community, shared resources, skill challenges with prizes. Built for students in Karnataka's tier-2/3 colleges who are bigger than their campus.
-        </p>
-        <div class="hero-actions">
-          <a href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp" class="btn btn-primary btn-large">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="5 3 19 12 5 21 5 3"></polygon>
-            </svg>
-            Download Free
-          </a>
-          <a href="/blog/" class="btn btn-outline btn-large">Explore Blog →</a>
+<Layout title={pageTitle} description="C2 Club connects Karnataka students across campuses for communities, resources, challenges, and opportunities." isArticle={false}>
+  <main class="site-shell">
+    <section class="c2-hero">
+      <div class="container c2-hero-grid">
+        <div class="c2-hero-copy">
+          <span class="c2-eyebrow">Built beyond the campus bubble</span>
+          <h1>Your college is one chapter. <em>Meet the whole network.</em></h1>
+          <p>Find students who think like you, resources that actually help, and opportunities your campus group never heard about.</p>
+          <div class="c2-hero-actions">
+            <a href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp" class="c2-btn c2-btn--primary">Get C2 Club free <span aria-hidden="true">↗</span></a>
+            <a href="/challenges/" class="c2-btn c2-btn--ghost">Explore challenges</a>
+          </div>
+          <div class="c2-trust-row"><span>Free to join</span><span>No ads</span><span>Made for Karnataka students</span></div>
         </div>
-        <div class="hero-trust">
-          <span>✓ 100% Free</span>
-          <span>✓ No Ads</span>
-          <span>✓ Built for Karnataka Students</span>
+
+        <div class="signal-panel" aria-label="A preview of the C2 Club student network">
+          <div class="signal-head"><span class="signal-live">Campus signal live</span><small>Across Karnataka</small></div>
+          <img class="signal-image" src="/images/c2-hero-banner.jpg" width="1200" height="675" alt="Students connecting through the C2 Club platform" fetchpriority="high" />
+          <div class="signal-stack">
+            <div class="signal-item"><span class="signal-icon">01</span><span class="signal-copy"><strong>Campus communities</strong><small>Meet students beyond your circle</small></span><span class="signal-arrow">→</span></div>
+            <div class="signal-item"><span class="signal-icon">02</span><span class="signal-copy"><strong>Useful resources</strong><small>Find what your semester needs</small></span><span class="signal-arrow">→</span></div>
+            <div class="signal-item"><span class="signal-icon">03</span><span class="signal-copy"><strong>Challenges & opportunities</strong><small>Show what you can do</small></span><span class="signal-arrow">→</span></div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ═══ PROBLEMS WE SOLVE ═══ -->
-    <section class="problems section" id="problems">
+    <section class="site-section site-section--paper">
       <div class="container">
-        <div class="text-center">
-          <span class="section-label">The Problem</span>
-          <h2 class="section-title">Every student faces these struggles</h2>
-          <p class="section-subtitle">College infrastructure hasn't kept up with how students actually need to collaborate, share, and grow.</p>
+        <div class="c2-section-head">
+          <div><span class="c2-eyebrow">The reality</span><h2 class="c2-heading c2-heading--small">Your ambition should not depend on your college group chat.</h2></div>
+          <p class="c2-lede">The right note, teammate, event, or career answer often exists—just outside your immediate circle.</p>
         </div>
-        <div class="grid problem-grid">
-          <div class="problem-card">
-            <span class="problem-card-icon">📚</span>
-            <div class="accent-line"></div>
-            <h3>Lost Resources</h3>
-            <p>Notes are scattered across dead WhatsApp groups. Previous year questions get buried in random Drives right before exams.</p>
-          </div>
-          <div class="problem-card">
-            <span class="problem-card-icon">🔒</span>
-            <div class="accent-line"></div>
-            <h3>The Campus Bubble</h3>
-            <p>Hackathons and internships pass by because no one in your college even knew about them. You're limited to your campus.</p>
-          </div>
-          <div class="problem-card">
-            <span class="problem-card-icon">❓</span>
-            <div class="accent-line"></div>
-            <h3>Unanswered Questions</h3>
-            <p>You have real doubts about courses, placements, and career paths - but you don't know who to ask or where to find honest answers.</p>
-          </div>
-          <div class="problem-card">
-            <span class="problem-card-icon">🧩</span>
-            <div class="accent-line"></div>
-            <h3>Echo Chambers</h3>
-            <p>You have a great project idea, but can't find teammates with the right skills who actually want to build it together.</p>
-          </div>
+        <div class="pain-grid">
+          <article class="pain-card"><span class="pain-index">01</span><h3>Resources disappear</h3><p>Notes and links get buried in noisy groups exactly when you need them.</p></article>
+          <article class="pain-card"><span class="pain-index">02</span><h3>Opportunities arrive late</h3><p>Hackathons, internships, and events pass before they reach your campus.</p></article>
+          <article class="pain-card"><span class="pain-index">03</span><h3>Questions stay local</h3><p>Your best answer may be with a senior or student at another college.</p></article>
+          <article class="pain-card"><span class="pain-index">04</span><h3>Builders stay isolated</h3><p>Good ideas stall when finding a serious teammate feels impossible.</p></article>
         </div>
       </div>
     </section>
 
-    <!-- ═══ HOW IT WORKS ═══ -->
-    <section class="section" id="how-it-works">
+    <section class="site-section site-section--dark">
       <div class="container">
-        <div class="text-center">
-          <span class="section-label">How It Works</span>
-          <h2 class="section-title">Three steps to better collaboration</h2>
-          <p class="section-subtitle">Get started in minutes. No complicated setup, just real connections.</p>
+        <div class="c2-section-head">
+          <div><span class="c2-eyebrow">One student layer</span><h2 class="c2-heading c2-heading--small">Everything useful about college, connected.</h2></div>
+          <p class="c2-lede">A focused space for community, discovery, and action—not another feed designed to waste your time.</p>
         </div>
-        <div class="how-it-works-grid">
-          <div class="step-card">
-            <img src="/images/c2-community.jpg" loading="lazy" alt="Find your student community on C2 Club" class="step-card-img" />
-            <div class="step-number">1</div>
-            <h3>Join Your Campus Hub</h3>
-            <p>Find or create your college's hub. Connect with students who share your campus and interests.</p>
-          </div>
-          <div class="step-card">
-            <img src="/images/c2-discussions.jpg" loading="lazy" alt="Ask, vent, share on C2 Club" class="step-card-img" />
-            <div class="step-number">2</div>
-            <h3>Share & Discover</h3>
-            <p>Post notes, ask questions, share opportunities, and discover resources from students across Karnataka.</p>
-          </div>
-          <div class="step-card">
-            <img src="/images/c2-profile.jpg" loading="lazy" alt="Your college identity on C2 Club" class="step-card-img" />
-            <div class="step-number">3</div>
-            <h3>Grow Together</h3>
-            <p>Find teammates, join challenges, build your network, and unlock real opportunities together.</p>
-          </div>
+        <div class="feature-stage">
+          <article class="feature-card feature-card--visual"><span class="feature-badge">Community</span><h3>Find your people beyond your campus.</h3><p>Join relevant hubs, ask honest questions, and connect with students who share your course, interests, or goals.</p><img src="/images/c2-community.jpg" loading="lazy" decoding="async" width="1200" height="675" alt="C2 Club student community interface" /></article>
+          <article class="feature-card feature-card--lime"><span class="feature-badge">Resources</span><h3>Stop searching the same scattered folders.</h3><p>Discover notes, academic material, and student-shared guidance in the communities where they belong.</p></article>
+          <article class="feature-card feature-card--blue"><span class="feature-badge">Momentum</span><h3>Turn “I should do more” into something real.</h3><p>Discover challenges, collaborators, and practical career guides that help you take the next step.</p></article>
         </div>
       </div>
     </section>
 
-    <!-- ═══ WHAT C2 CLUB DOES ═══ -->
-    <section class="solution section bg-light" id="solution">
-      <div class="container text-center">
-        <div style="margin-bottom: 32px;">
-          <span class="section-label">The Platform</span>
-          <h2 class="section-title">Built for how students actually collaborate</h2>
-        </div>
-        <div class="platform-showcase" style="margin-bottom: 32px;">
-          <img src="/images/c2-hero-banner.jpg" loading="lazy" alt="C2 Club Platform - Made for Students" class="platform-hero-img" style="width: 100%; max-width: 1000px; margin: 0 auto; border-radius: 20px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);" />
-        </div>
-        <div class="container-sm" style="margin: 0 auto;">
-          <p class="solution-text" style="font-size: 1.125rem; color: var(--text-muted);">C2 Club structures collaboration across campuses. Verified notes. Real teammates. Honest discussions - all in one place designed for students.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══ WHY NOT OTHERS ═══ -->
-    <section class="why-fails section" id="comparison" style="padding-top: 40px; padding-bottom: 40px;">
-      <div class="container container-sm">
-        <div class="text-center">
-          <span class="section-label">Why C2 Club</span>
-          <h2 class="section-title">Why existing tools fail students</h2>
-        </div>
-        <ul class="comparison-list">
-          <li style="padding: 12px 0;"><strong>WhatsApp:</strong> Chaotic threads. Resources disappear. Messages get lost in noise.</li>
-          <li style="padding: 12px 0;"><strong>Telegram:</strong> Anonymous dumps. No verification. No structure or trust.</li>
-          <li style="padding: 12px 0;"><strong>LinkedIn:</strong> Too formal. Built for people who already have jobs, not students exploring.</li>
-          <li style="padding: 12px 0;"><strong>Reddit:</strong> Too broad. Not connected to your campus or your specific academic context.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ═══ LATEST FROM BLOG ═══ -->
-    <section class="section bg-light" id="blog-preview">
+    <section class="site-section site-section--paper">
       <div class="container">
-        <div class="text-center">
-          <span class="section-label">Blog</span>
-          <h2 class="section-title">Latest insights for students</h2>
-          <p class="section-subtitle">Research-backed perspectives and grounded insights from Karnataka student ecosystems.</p>
-        </div>
-        <div class="blog-grid" style="margin-bottom: 40px;">
-          {visiblePosts.slice(0, 6).map((post) => (
-            <article class="blog-card">
-              <div class="blog-card-image" style={`background-image: url('${post.image}'); background-size: cover; background-position: center; height: 180px; border-radius: 12px; margin-bottom: 20px;`}></div>
-              <h2 class="blog-card-title">
-                <a href={post.url}>{post.title}</a>
-              </h2>
-              <p class="blog-card-excerpt">{post.excerpt}</p>
-              <div class="blog-card-meta">
-                <span>{post.date}</span>
-                <span class="meta-dot">&middot;</span>
-                <span>{post.readTime}</span>
-              </div>
-            </article>
-          ))}
-        </div>
-        <div class="text-center">
-          <a href="/blog/" class="btn btn-outline">Read All Articles →</a>
+        <div class="c2-section-head"><div><span class="c2-eyebrow">Start simply</span><h2 class="c2-heading c2-heading--small">From campus bubble to wider network.</h2></div><p class="c2-lede">No formal networking performance. Just students helping students move forward.</p></div>
+        <div class="steps-grid">
+          <article class="step-tile"><img src="/images/c2-profile.jpg" loading="lazy" decoding="async" width="1200" height="675" alt="A student profile on C2 Club" /><div class="step-tile-body"><h3>Show where you belong</h3><p>Create your student identity and find your campus and interests.</p></div></article>
+          <article class="step-tile"><img src="/images/c2-discussions.jpg" loading="lazy" decoding="async" width="1200" height="675" alt="A student discussion on C2 Club" /><div class="step-tile-body"><h3>Join useful conversations</h3><p>Ask, share, learn, and discover what students elsewhere already know.</p></div></article>
+          <article class="step-tile"><img src="/images/c2-feed.jpg" loading="lazy" decoding="async" width="1200" height="675" alt="Student opportunities in the C2 Club feed" /><div class="step-tile-body"><h3>Act on what you find</h3><p>Enter a challenge, meet a teammate, or use a guide to plan your next move.</p></div></article>
         </div>
       </div>
     </section>
 
-    <!-- ═══ FAQ SECTION ═══ -->
-    <section class="section faq-section" id="faq">
-      <div class="container container-sm">
-        <div class="text-center" style="margin-bottom: 40px;">
-          <span class="section-label">FAQ</span>
-          <h2 class="section-title">Frequently Asked Questions</h2>
-          <p class="section-subtitle">Got questions about C2 Club? We've got answers.</p>
+    <section class="site-section site-section--soft">
+      <div class="container">
+        <div class="arena-strip"><div><span class="c2-eyebrow">C2 Club Arena</span><h2>Skills deserve a stage.</h2><p>Take part in student challenges, create something worth showing, and learn alongside ambitious peers.</p><a href="/challenges/" class="c2-btn c2-btn--primary">Enter the Arena <span aria-hidden="true">→</span></a></div><img src="/images/c2-challenges.jpg" loading="lazy" decoding="async" width="1200" height="675" alt="C2 Club student challenges" /></div>
+      </div>
+    </section>
+
+    <section class="site-section site-section--paper">
+      <div class="container">
+        <div class="c2-section-head"><div><span class="c2-eyebrow">Student playbook</span><h2 class="c2-heading c2-heading--small">Useful reads for the decisions ahead.</h2></div><a href="/blog/" class="c2-btn c2-btn--dark">View all articles</a></div>
+        <div class="refresh-blog-grid">
+          {visiblePosts.map((post) => <article class="refresh-blog-card"><img src={post.image} width="1200" height="675" loading="lazy" decoding="async" alt="" /><div class="refresh-blog-body"><h3><a href={post.url}>{post.title.replace(/^What After PUC\?\s*/i, '')}</a></h3><p>{post.excerpt}</p><span class="refresh-blog-meta">{post.date} · {post.readTime}</span></div></article>)}
         </div>
-        
+      </div>
+    </section>
+
+    <section class="site-section site-section--dark">
+      <div class="container faq-refresh">
+        <div><span class="c2-eyebrow">Straight answers</span><h2 class="c2-heading c2-heading--small">Before you join.</h2><p class="c2-lede">The essentials, without the sales pitch.</p></div>
         <div class="faq-list">
-          <details class="faq-item">
-            <summary>How can I connect and talk with college students from other campuses in Karnataka?</summary>
-            <div class="faq-answer">
-              <p>
-                C2 Club provides dedicated cross-campus hubs where you can connect, chat, and collaborate with students from VTU, Bangalore University, and various engineering or degree colleges across Karnataka. This helps you break out of your local campus bubble and build a broader network.
-              </p>
-            </div>
-          </details>
-          
-          <details class="faq-item">
-            <summary>Where can I find student study resources, notes, and previous year question papers?</summary>
-            <div class="faq-answer">
-              <p>
-                All study resources, engineering syllabus notes, lab records, and VTU or college-specific previous year question papers (PYQs) are shared directly by students inside their respective campus and course hubs. These files are organized, verified, and persistently accessible so they don't get buried in random chats.
-              </p>
-            </div>
-          </details>
-          
-          <details class="faq-item">
-            <summary>How do I get placement referrals and internship opportunities from seniors?</summary>
-            <div class="faq-answer">
-              <p>
-                Inside the C2 Club network, seniors who are already placed in product companies and GCCs share referral opportunities, direct hiring contacts, and recruitment experiences. You can connect with them directly in specialized placement discussion boards to build trust and ask for target referrals.
-              </p>
-            </div>
-          </details>
-          
-          <details class="faq-item">
-            <summary>What is C2 Club and is it completely free to use?</summary>
-            <div class="faq-answer">
-              <p>
-                C2 Club is a structured collaboration platform built specifically for Karnataka college students to share academic resources, find project partners, and exchange career opportunities. Yes, the platform is 100% free, has no ads, and is dedicated to helping students succeed.
-              </p>
-            </div>
-          </details>
+          <details class="faq-item"><summary>Who is C2 Club for?</summary><div class="faq-answer"><p>It is built for college students in Karnataka who want better access to peers, resources, challenges, and opportunities beyond their immediate campus circle.</p></div></details>
+          <details class="faq-item"><summary>Can I connect with students from other colleges?</summary><div class="faq-answer"><p>Yes. Cross-campus discovery is central to C2 Club, while relevant campus and interest communities keep conversations useful.</p></div></details>
+          <details class="faq-item"><summary>What can I find inside the app?</summary><div class="faq-answer"><p>Student communities, shared resources, discussions, challenges, guides, and connections with peers who have similar goals.</p></div></details>
+          <details class="faq-item"><summary>Is C2 Club free?</summary><div class="faq-answer"><p>Yes. C2 Club is free to join and use.</p></div></details>
         </div>
       </div>
     </section>
 
-    <script type="application/ld+json" is:inline>{JSON.stringify(faqSchema)}</script>
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
 
-    <!-- ═══ FINAL CTA ═══ -->
-    <section class="cta section" id="download-cta">
-      <div class="container text-center">
-        <h2>Stop navigating college on your own.</h2>
-        <p class="cta-subtitle">Join students building structured collaboration across Karnataka campuses.</p>
-        <div class="cta-actions" style="margin-bottom: 16px;">
-          <a href="/download/" class="btn btn-primary btn-large">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-              <polyline points="7 10 12 15 17 10"></polyline>
-              <line x1="12" y1="15" x2="12" y2="3"></line>
-            </svg>
-            Download C2 Club
-          </a>
-        </div>
-        <p style="font-size: 0.875rem; color: var(--text-muted);">100% Free · No Spam · Built for Karnataka Students</p>
-      </div>
+    <section class="site-section final-banner">
+      <div class="container"><h2>College is local. Your potential is not.</h2><p>Join the student network built to help Karnataka students go further together.</p><a href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp" class="c2-btn c2-btn--dark">Download C2 Club <span aria-hidden="true">↗</span></a></div>
     </section>
   </main>
 </Layout>
-
-<style is:global>
-  .animate-on-scroll{opacity:0;transform:translateY(24px);transition:opacity .6s cubic-bezier(.4,0,.2,1),transform .6s cubic-bezier(.4,0,.2,1)}.animate-on-scroll.visible{opacity:1;transform:translateY(0)}.problem-card:nth-child(2) .animate-on-scroll,.step-card:nth-child(2),.blog-card:nth-child(2){transition-delay:.1s}.problem-card:nth-child(3),.step-card:nth-child(3),.blog-card:nth-child(3){transition-delay:.2s}.problem-card:nth-child(4){transition-delay:.3s}.animate-on-scroll:nth-child(2){transition-delay:.1s}.animate-on-scroll:nth-child(3){transition-delay:.2s}.animate-on-scroll:nth-child(4){transition-delay:.3s}
-</style>

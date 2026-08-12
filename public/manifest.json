@@ -1,21 +1,26 @@
 {
-  "name": "C2 Club",
+  "id": "/",
+  "name": "C2 Club — Student Network",
   "short_name": "C2 Club",
-  "description": "Building the collaboration layer students always needed. Connecting campuses, sharing insights, growing together.",
+  "description": "Connect with students across Karnataka for communities, resources, challenges, and opportunities.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#0a0a0a",
-  "theme_color": "#22C55E",
+  "background_color": "#f8faf5",
+  "theme_color": "#f5f7f2",
+  "categories": ["education", "social", "productivity"],
   "icons": [
     {
-      "src": "/favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
     },
     {
-      "src": "/preview.jpg",
-      "sizes": "1200x630",
-      "type": "image/jpeg"
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }

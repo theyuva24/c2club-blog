@@ -1,0 +1,80 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { blogPosts } from '../data/blogPosts.js';
+
+const searchableItems = [
+  { title: 'C2 Club Challenges', excerpt: 'Compete, create, showcase your skills, and join active student challenges across Karnataka.', url: '/challenges/', image: '/images/c2-challenges.jpg', type: 'Experience' },
+  { title: 'Career Guides', excerpt: 'Explore practical pathways and decision guides for life after PUC and college.', url: '/guide/', image: '/images/c2-platform-overview.jpg', type: 'Collection' },
+  ...blogPosts.filter((post) => post.published !== false).map((post) => ({ ...post, type: 'Article' }))
+];
+---
+<Layout title="Search C2 Club | Student Guides & Opportunities" description="Search C2 Club student guides, career pathways, challenges, and campus resources." shouldNoIndex={true}>
+  <main class="site-shell search-page">
+    <section class="search-hero">
+      <div class="container">
+        <span class="c2-eyebrow">Find your next step</span>
+        <h1>What are you trying to figure out?</h1>
+        <p>Search career paths, student guides, campus growth, and C2 Club challenges.</p>
+        <form class="search-form" role="search" action="/search/" method="get">
+          <label class="sr-only" for="site-search">Search C2 Club</label>
+          <span aria-hidden="true" class="search-icon">⌕</span>
+          <input id="site-search" name="q" type="search" inputmode="search" autocomplete="off" placeholder="Try “engineering”, “resume”, or “design”…" />
+          <button type="submit">Search</button>
+        </form>
+        <div class="search-suggestions" aria-label="Popular searches"><span>Popular:</span><button type="button" data-query="engineering">Engineering</button><button type="button" data-query="after PUC">After PUC</button><button type="button" data-query="government jobs">Government jobs</button><button type="button" data-query="resume">Resume</button></div>
+      </div>
+    </section>
+
+    <section class="site-section site-section--paper search-results-section">
+      <div class="container">
+        <div class="search-results-head"><h2 id="results-title">Explore everything</h2><p id="results-count" role="status" aria-live="polite">{searchableItems.length} results</p></div>
+        <div class="search-results" id="search-results">
+          {searchableItems.map((item) => (
+            <article class="search-result" data-search-item data-title={item.title.toLowerCase()} data-copy={item.excerpt.toLowerCase()} data-type={item.type.toLowerCase()}>
+              <img src={item.image} width="1200" height="675" loading="lazy" decoding="async" alt="" />
+              <div><span>{item.type}</span><h2><a href={item.url}>{item.title.replace(/^What After PUC\?\s*/i, '')}</a></h2><p>{item.excerpt}</p><a class="search-result-link" href={item.url}>Open <span aria-hidden="true">→</span></a></div>
+            </article>
+          ))}
+        </div>
+        <div class="search-empty" id="search-empty" hidden><span aria-hidden="true">?</span><h2>No exact match yet</h2><p>Try a shorter phrase, a course name, or browse all student guides.</p><a class="c2-btn c2-btn--dark" href="/blog/">Browse the Blog</a></div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<script>
+  const input = document.querySelector<HTMLInputElement>('#site-search');
+  const items = [...document.querySelectorAll<HTMLElement>('[data-search-item]')];
+  const count = document.querySelector('#results-count');
+  const title = document.querySelector('#results-title');
+  const empty = document.querySelector<HTMLElement>('#search-empty');
+
+  const normalize = (value: string) => value.toLowerCase().trim().replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ');
+  const search = (rawQuery: string, updateUrl = true) => {
+    const query = normalize(rawQuery);
+    const terms = query.split(' ').filter(Boolean);
+    let visible = 0;
+    items.forEach((item) => {
+      const titleText = item.dataset.title || '';
+      const copy = `${item.dataset.copy || ''} ${item.dataset.type || ''}`;
+      const matches = !terms.length || terms.every((term) => titleText.includes(term) || copy.includes(term));
+      item.hidden = !matches;
+      if (matches) visible += 1;
+    });
+    if (count) count.textContent = `${visible} ${visible === 1 ? 'result' : 'results'}`;
+    if (title) title.textContent = query ? `Results for “${rawQuery.trim()}”` : 'Explore everything';
+    if (empty) empty.hidden = visible !== 0;
+    if (updateUrl) {
+      const url = new URL(window.location.href);
+      query ? url.searchParams.set('q', rawQuery.trim()) : url.searchParams.delete('q');
+      history.replaceState({}, '', url);
+    }
+  };
+
+  const initialQuery = new URLSearchParams(window.location.search).get('q') || '';
+  if (input) { input.value = initialQuery; search(initialQuery, false); }
+  document.querySelector('.search-form')?.addEventListener('submit', (event) => { event.preventDefault(); search(input?.value || ''); });
+  input?.addEventListener('input', () => search(input.value));
+  document.querySelectorAll<HTMLButtonElement>('[data-query]').forEach((button) => button.addEventListener('click', () => { if (!input) return; input.value = button.dataset.query || ''; search(input.value); input.focus(); }));
+  document.addEventListener('keydown', (event) => { if (event.key === '/' && document.activeElement !== input) { event.preventDefault(); input?.focus(); } });
+</script>

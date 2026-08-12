@@ -4,6 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import { blogPosts } from './src/data/blogPosts.js';
 
 // Normalization function to match paths reliably (strips slashes for internal matching)
+/** @param {string} path */
 const normalizePath = (path) => {
   if (!path) return '';
   return path
@@ -13,6 +14,7 @@ const normalizePath = (path) => {
 };
 
 // Create a lookup map of published posts and their modified dates
+/** @type {Record<string, { published: boolean, lastmod: string }>} */
 const postMetadataMap = {};
 blogPosts.forEach(post => {
   const norm = normalizePath(post.url);
@@ -25,6 +27,8 @@ blogPosts.forEach(post => {
 // https://astro.build/config
 export default defineConfig({
   site: 'https://c2club.in',
+  // Preserve Astro 6's HTML-aware whitespace behavior during the v7 migration.
+  compressHTML: true,
   
   // 1. Force trailing slashes globally to perfectly align with Cloudflare Pages
   trailingSlash: 'always',
@@ -42,7 +46,7 @@ export default defineConfig({
           const pathname = parsedUrl.pathname;
 
           // Exclude templates/placeholders
-          if (pathname.includes('blog-template')) {
+          if (pathname.includes('blog-template') || pathname === '/search/' || pathname === '/404.html' || pathname === '/404/') {
             return undefined;
           }
 

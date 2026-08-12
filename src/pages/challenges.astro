@@ -10,18 +10,15 @@ const pageTitle = "Active Challenges | C2 Club";
 >
   <main>
     <section class="challenges-hero">
-      <span class="eyebrow">C2 Club Arena</span>
-      <h1>Challenges</h1>
-      <p>Compete with students across Karnataka, showcase your skills, and win exclusive rewards.</p>
-      <img
-        src="/images/c2-challenges.jpg"
-        loading="eager"
-        fetchpriority="high"
-        width="1200"
-        height="675"
-        alt="Weekly Campus Challenges — compete, create, and get noticed"
-        class="challenges-hero-img"
-      />
+      <div class="challenges-hero-grid">
+        <div>
+          <span class="eyebrow">C2 Club Arena</span>
+          <h1>Don’t just scroll.<br/><em>Show your skill.</em></h1>
+          <p>Compete with students across Karnataka, build something worth sharing, and turn your ability into visible proof.</p>
+          <div class="arena-principles"><span>Student-first</span><span>Skill-led</span><span>Built to participate</span></div>
+        </div>
+        <img src="/images/c2-challenges.jpg" loading="eager" fetchpriority="high" width="1200" height="675" alt="C2 Club student challenges" class="challenges-hero-img" />
+      </div>
     </section>
 
     <section class="challenge-results" aria-live="polite" aria-busy="true" id="challenge-results">
@@ -145,33 +142,36 @@ const pageTitle = "Active Challenges | C2 Club";
 </script>
 
 <style is:global>
-  :root{--app-bg:#0a0a0a;--app-surface:#141414;--app-accent:#22c55e;--app-text:#fff;--app-text-dim:rgba(255,255,255,.68)}
+  :root{--app-bg:#f8faf5;--app-surface:#fff;--app-accent:#63f28c;--app-text:#102018;--app-text-dim:#526158}
   body{background:var(--app-bg);color:var(--app-text)}
-  .challenges-hero{padding:76px 20px 34px;text-align:center;background:radial-gradient(circle at 50% 30%,rgba(34,197,94,.12),transparent 55%)}
-  .eyebrow{display:inline-flex;padding:8px 14px;border:1px solid rgba(34,197,94,.24);border-radius:999px;color:#4ade80;background:rgba(34,197,94,.08);font-size:.75rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
-  .challenges-hero h1{color:#fff;font-size:clamp(2.5rem,7vw,4rem);margin:18px 0 10px}
-  .challenges-hero p{color:var(--app-text-dim);max-width:620px;margin:0 auto;line-height:1.7}
-  .challenges-hero-img{max-width:680px;width:100%;height:auto;margin:38px auto 0;display:block;border-radius:22px;box-shadow:0 20px 60px rgba(0,0,0,.36)}
-  .challenge-results{min-height:320px;padding:22px 20px 80px}
+  .challenges-hero{padding:clamp(64px,9vw,118px) 24px 58px;background:radial-gradient(circle at 82% 20%,rgba(99,242,140,.34),transparent 28%),var(--app-bg)}
+  .challenges-hero-grid{display:grid;grid-template-columns:1fr .86fr;align-items:center;gap:clamp(42px,8vw,90px);max-width:1180px;margin:0 auto}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;color:#168a43;font-size:.75rem;font-weight:900;letter-spacing:.11em;text-transform:uppercase}.eyebrow:before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;box-shadow:0 0 0 5px rgba(99,242,140,.18)}
+  .challenges-hero h1{color:#102018;font-size:clamp(3.2rem,7vw,6.4rem);line-height:.9;letter-spacing:-.065em;margin:20px 0 24px}.challenges-hero h1 em{color:#168a43;font-family:"DM Serif Display",serif;font-weight:400}
+  .challenges-hero p{color:var(--app-text-dim);max-width:620px;margin:0;line-height:1.7;font-size:1.08rem}
+  .arena-principles{display:flex;flex-wrap:wrap;gap:9px;margin-top:28px}.arena-principles span{padding:8px 11px;border:1px solid rgba(16,32,24,.12);border-radius:999px;color:#526158;background:rgba(255,255,255,.65);font-size:.72rem;font-weight:750}
+  .challenges-hero-img{width:100%;height:auto;display:block;border:1px solid rgba(16,32,24,.1);border-radius:28px;box-shadow:0 24px 70px rgba(25,48,34,.15);transform:rotate(1.5deg)}
+  .challenge-results{min-height:320px;padding:54px 24px 100px;background:#edf2eb}
   .challenges-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:26px;max-width:1160px;margin:0 auto}
-  .challenge-card{background:var(--app-surface);border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.08);transition:transform .25s,border-color .25s;text-decoration:none;color:inherit;display:flex;flex-direction:column}
-  .challenge-card:hover,.challenge-card:focus-visible{transform:translateY(-6px);border-color:var(--app-accent);outline:none}
+  .challenge-card{background:var(--app-surface);border-radius:24px;overflow:hidden;border:1px solid #d8e1d9;transition:transform .25s,border-color .25s,box-shadow .25s;text-decoration:none;color:inherit;display:flex;flex-direction:column}
+  .challenge-card:hover,.challenge-card:focus-visible{transform:translateY(-6px);border-color:rgba(99,242,140,.6);box-shadow:0 20px 50px rgba(0,0,0,.22);outline:none}
   .card-banner{width:100%;height:190px;object-fit:cover;background:#222}
   .card-content{padding:22px;flex-grow:1;display:flex;flex-direction:column}
-  .card-tag{font-size:.7rem;font-weight:900;color:#4ade80;text-transform:uppercase;letter-spacing:.09em;margin-bottom:10px}
-  .card-title{color:#fff;font-size:1.3rem;font-weight:800;margin:0 0 10px;line-height:1.25}
+  .card-tag{font-size:.7rem;font-weight:900;color:#168a43;text-transform:uppercase;letter-spacing:.09em;margin-bottom:10px}
+  .card-title{color:#102018;font-size:1.3rem;font-weight:800;margin:0 0 10px;line-height:1.25}
   .card-excerpt{font-size:.92rem;color:var(--app-text-dim);line-height:1.55;margin:0 0 22px}
-  .card-footer{margin-top:auto;display:flex;gap:16px;justify-content:space-between;align-items:center;padding-top:16px;border-top:1px solid rgba(255,255,255,.07);font-size:.82rem;color:var(--app-text-dim)}
+  .card-footer{margin-top:auto;display:flex;gap:16px;justify-content:space-between;align-items:center;padding-top:16px;border-top:1px solid #e6ece7;font-size:.82rem;color:var(--app-text-dim)}
   .status-badge{font-size:.7rem;font-weight:800;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.1)}
   .status-active{background:rgba(34,197,94,.18);color:#4ade80}.status-upcoming{background:rgba(59,130,246,.18);color:#93c5fd}
-  .state-card{max-width:620px;margin:18px auto;text-align:center;padding:52px 28px;border:1px solid rgba(255,255,255,.08);border-radius:22px;background:rgba(255,255,255,.025)}
+  .state-card{max-width:620px;margin:18px auto;text-align:center;padding:52px 28px;border:1px solid #d8e1d9;border-radius:22px;background:#fff}
   .state-card[hidden],.challenges-grid[hidden]{display:none}
-  .state-card h2{color:#fff;margin:12px 0 8px}.state-card p{color:var(--app-text-dim);line-height:1.65;max-width:480px;margin:0 auto 22px}
-  .state-icon{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:50%;background:rgba(34,197,94,.13);color:#4ade80;font-size:1.3rem;font-weight:900}
+  .state-card h2{color:#102018;margin:12px 0 8px}.state-card p{color:var(--app-text-dim);line-height:1.65;max-width:480px;margin:0 auto 22px}
+  .state-icon{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#e1f8e7;color:#168a43;font-size:1.3rem;font-weight:900}
   .primary-action{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:12px;padding:12px 20px;background:var(--app-accent);color:#07120a;text-decoration:none;font:inherit;font-weight:800;cursor:pointer}
   .primary-action:hover,.primary-action:focus-visible{background:#4ade80;outline:3px solid rgba(74,222,128,.28);outline-offset:3px}
-  .spinner{width:38px;height:38px;border:4px solid rgba(255,255,255,.1);border-top-color:var(--app-accent);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 18px}
+  .spinner{width:38px;height:38px;border:4px solid rgba(16,32,24,.1);border-top-color:#168a43;border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 18px}
   @keyframes spin{to{transform:rotate(360deg)}}
   @media (prefers-reduced-motion:reduce){.spinner{animation:none}.challenge-card{transition:none}}
-  @media (max-width:600px){.challenges-hero{padding-top:54px}.challenge-results{padding-inline:16px}.state-card{padding:40px 20px}}
+  @media (max-width:850px){.challenges-hero-grid{grid-template-columns:1fr}.challenges-hero-img{max-width:650px;transform:none}}
+  @media (max-width:600px){.challenges-hero{padding:58px 18px}.challenge-results{padding-inline:16px}.state-card{padding:40px 20px}.challenges-hero h1{font-size:clamp(3rem,15vw,4.4rem)}}
 </style>

@@ -1,259 +1,39 @@
----
-// Unified premium footer component for all pages
----
 <footer class="footer">
   <div class="container footer-inner">
-    <div class="footer-grid">
+    <div class="footer-top">
       <div class="footer-brand">
-        <a href="/" class="footer-logo">
-          <img class="logo-icon" src="/app-icon.png" width="28" height="28" alt="C2 Club Logo" />
-          <span class="logo-text">C2<span class="logo-text-light">Club</span></span>
-        </a>
-        <p class="footer-tagline">
-          Building the collaboration layer Karnataka students always needed. Connecting campuses, sharing insights, and growing together.
-        </p>
-        <div class="footer-socials">
-
-          <a href="mailto:hello@c2club.in" aria-label="Email" class="social-link">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-              <polyline points="22,6 12,13 2,6"></polyline>
-            </svg>
-          </a>
-        </div>
+        <a href="/" class="footer-logo"><span class="footer-mark">C2</span><span><strong>C2 Club</strong><small>Student network</small></span></a>
+        <p>Built for students who want more than what one campus can offer.</p>
+        <a class="footer-email" href="mailto:hello@c2club.in">hello@c2club.in <span aria-hidden="true">↗</span></a>
       </div>
-      
-      <div class="footer-links-group">
-        <div class="footer-column">
-          <h3>Explore</h3>
-          <a href="/">Home</a>
-          <a href="/blog/">Blog</a>
-          <a href="/guide/">Career Guides</a>
-          <a href="/challenges/">Challenges</a>
-          <a href="/campus-leader-guide.html">Campus Leader</a>
-        </div>
-        
-        <div class="footer-column">
-          <h3>Get App</h3>
-          <a href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp" target="_blank" rel="noopener noreferrer">Android App</a>
-        </div>
-        
-        <div class="footer-column">
-          <h3>Connect</h3>
-          <a href="/contact/">Contact Form</a>
-          <a href="mailto:hello@c2club.in">hello@c2club.in</a>
-          <a href="mailto:contact@c2club.in">contact@c2club.in</a>
-        </div>
+      <div class="footer-links">
+        <div><h2>Explore</h2><a href="/">Home</a><a href="/challenges/">Challenges</a><a href="/blog/">Blog</a><a href="/search/">Search</a><a href="/guide/">Career guides</a></div>
+        <div><h2>Community</h2><a href="/campus-leader-guide.html">Campus leader</a><a href="/contact/">Contact</a><a href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp" target="_blank" rel="noopener noreferrer">Android app ↗</a></div>
+        <div><h2>Legal</h2><a href="/legal/privacy.html">Privacy</a><a href="/legal/terms.html">Terms</a><a href="/legal/data-deletion.html">Delete account</a></div>
       </div>
     </div>
-    
-    <div class="footer-bottom">
-      <p class="copyright">&copy; 2026 C2 Club. All rights reserved.</p>
-      <div class="footer-bottom-links">
-        <a href="/legal/privacy.html">Privacy Policy</a>
-        <span class="dot-separator">&middot;</span>
-        <a href="/legal/terms.html">Terms of Service</a>
-      </div>
-    </div>
+    <div class="footer-bottom"><p>© 2026 C2 Club</p><p>Made for Karnataka's student community.</p></div>
   </div>
 </footer>
-
 <style>
-  .footer {
-    background-color: var(--bg-light, #f8fafc);
-    border-top: 1px solid var(--border-color, #e2e8f0);
-    padding: 80px 0 40px;
-    color: var(--text-primary, #0f172a);
-    font-family: var(--font-stack, inherit);
-  }
-
-  .footer-inner {
-    display: flex;
-    flex-direction: column;
-    gap: 60px;
-  }
-
-  .footer-grid {
-    display: grid;
-    grid-template-columns: 1.25fr 2fr;
-    gap: 64px;
-    align-items: start;
-  }
-
-  .footer-brand {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-width: 360px;
-  }
-
-  /* Logo styling */
-  .footer-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-  }
-
-  .logo-icon {
-    flex-shrink: 0;
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
-
-  .footer-logo:hover .logo-icon {
-    transform: rotate(5deg) scale(1.05);
-  }
-
-  .logo-text {
-    font-size: 1.35rem;
-    font-weight: 800;
-    letter-spacing: -0.025em;
-    color: var(--text-primary, #0f172a);
-  }
-
-  .logo-text-light {
-    font-weight: 400;
-    color: var(--text-secondary, #475569);
-  }
-
-  .footer-tagline {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: var(--text-secondary, #475569);
-    margin: 0;
-  }
-
-  .footer-socials {
-    display: flex;
-    gap: 12px;
-  }
-
-  .social-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background-color: #ffffff;
-    border: 1px solid var(--border-color, #e2e8f0);
-    color: var(--text-secondary, #475569);
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .social-link {
-      background-color: #1e1e1e;
-    }
-  }
-
-  .social-link:hover {
-    color: var(--accent, #22c55e);
-    background-color: var(--bg-subtle, #f0fdf4);
-    border-color: var(--accent-light, #dcfce7);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.1);
-  }
-
-  /* Links columns styling */
-  .footer-links-group {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-  }
-
-  .footer-column {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .footer-column h3 {
-    font-size: 0.8125rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--text-muted, #94a3b8);
-    margin: 0;
-  }
-
-  .footer-column a {
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: var(--text-secondary, #475569);
-    text-decoration: none;
-    transition: all 0.2s ease;
-    align-self: flex-start;
-  }
-
-  .footer-column a:hover {
-    color: var(--accent, #22c55e);
-    transform: translateX(4px);
-  }
-
-  /* Bottom bar */
-  .footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 24px;
-    border-top: 1px solid var(--border-color, #e2e8f0);
-  }
-
-  .copyright {
-    font-size: 0.875rem;
-    color: var(--text-secondary, #475569);
-    margin: 0;
-  }
-
-  .footer-bottom-links {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .footer-bottom-links a {
-    font-size: 0.875rem;
-    color: var(--text-secondary, #475569);
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
-
-  .footer-bottom-links a:hover {
-    color: var(--accent, #22c55e);
-  }
-
-  .dot-separator {
-    color: var(--text-muted, #94a3b8);
-    user-select: none;
-  }
-
-  /* Responsive Design */
-  @media (max-width: 1024px) {
-    .footer-grid {
-      grid-template-columns: 1fr;
-      gap: 48px;
-    }
-  }
-
-  @media (max-width: 640px) {
-    .footer {
-      padding: 60px 0 30px;
-    }
-
-    .footer-inner {
-      gap: 40px;
-    }
-
-    .footer-links-group {
-      grid-template-columns: 1fr;
-      gap: 32px;
-    }
-
-    .footer-bottom {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 16px;
-    }
-  }
+  .footer { padding: 78px 0 28px; color: #f7fff9; background: #07120d; border-top: 1px solid rgba(255,255,255,.08); }
+  .footer-inner { display: grid; gap: 62px; }
+  .footer-top { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(50px, 10vw, 130px); }
+  .footer-brand { max-width: 390px; }
+  .footer-logo { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 24px; color: inherit; text-decoration: none; }
+  .footer-mark { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 14px; color: #07120d; background: #63f28c; font-size: .84rem; font-weight: 950; }
+  .footer-logo > span:last-child { display: grid; line-height: 1.05; }
+  .footer-logo strong { color: #f7fff9; }
+  .footer-logo small { margin-top: 5px; color: #778c7f; font-size: .62rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+  .footer-brand p { max-width: 350px; color: #8fa297; font-size: 1rem; }
+  .footer-email { display: inline-flex; gap: 8px; color: #63f28c; font-size: .9rem; font-weight: 750; text-decoration: none; }
+  .footer-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+  .footer-links > div { display: flex; flex-direction: column; align-items: flex-start; gap: 13px; }
+  .footer-links h2 { margin: 0 0 8px; color: #62766a; font-size: .69rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+  .footer-links a { color: #c1d0c6; font-size: .88rem; font-weight: 650; text-decoration: none; }
+  .footer-links a:hover { color: #63f28c; transform: translateX(3px); }
+  .footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding-top: 23px; border-top: 1px solid rgba(255,255,255,.08); }
+  .footer-bottom p { margin: 0; color: #63776b; font-size: .76rem; }
+  @media (max-width: 800px) { .footer-top { grid-template-columns: 1fr; } }
+  @media (max-width: 560px) { .footer { padding-top: 60px; } .footer-links { grid-template-columns: 1fr 1fr; } .footer-bottom { flex-direction: column; } }
 </style>

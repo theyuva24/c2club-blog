@@ -2,70 +2,33 @@
 import Layout from '../../layouts/Layout.astro';
 import { blogPosts } from '../../data/blogPosts.js';
 
-const pageTitle = "C2 Club Blog | Insights on campus collaboration";
-const visiblePosts = blogPosts.filter(p => p.published !== false);
+const pageTitle = "C2 Club Blog | Student Guides & Campus Insights";
+const visiblePosts = blogPosts.filter((post) => post.published !== false);
+const [featuredPost, ...remainingPosts] = visiblePosts;
 ---
-<Layout
-  title={pageTitle}
-  description="Insights on alumni networking, student growth, referrals, and career systems in Karnataka."
-  isArticle={false}
->
-  <main class="blog-index">
-    <div class="container">
-      <nav class="breadcrumbs" aria-label="Breadcrumb">
-        <ol>
-          <li><a href="/">Home</a></li>
-          <li aria-current="page">Blog</li>
-        </ol>
-      </nav>
-    </div>
-    <section class="blog-hero section">
+<Layout title={pageTitle} description="Practical student guides, career pathways, campus insights, and useful advice for Karnataka students." isArticle={false}>
+  <main class="site-shell">
+    <section class="blog-refresh-hero">
       <div class="container">
-        <span class="section-label">C2 Club Blog</span>
-        <h1 class="blog-main-heading">
-          Insights on campus collaboration and student growth.
-        </h1>
-        <p class="blog-subtext">
-          Research-backed perspectives and grounded insights from Karnataka
-          student ecosystems. Practical guides, career advice, and real talk.
-        </p>
+        <span class="c2-eyebrow">The student playbook</span>
+        <h1>Real guidance for decisions college rarely explains.</h1>
+        <p>Career paths, campus strategy, practical preparation, and honest context—written for students figuring out what comes next.</p>
+        <div class="topic-row" aria-label="Topics covered"><span class="topic-pill">Career paths</span><span class="topic-pill">Campus growth</span><span class="topic-pill">Skills</span><span class="topic-pill">After PUC</span></div>
       </div>
     </section>
-
-    <section class="blog-grid-section section">
+    <section class="site-section site-section--paper">
       <div class="container">
-        <div class="blog-grid">
-          {visiblePosts.map((post) => (
-            <article class="blog-card">
-              <img
-                class="blog-card-image"
-                src={post.image}
-                width="1200"
-                height="675"
-                loading="lazy"
-                decoding="async"
-                alt={post.title}
-              />
-              <h2 class="blog-card-title">
-                <a href={post.url}>{post.title.replace(/^What After PUC\?\s*/i, '')}</a>
-              </h2>
-              <p class="blog-card-excerpt">
-                {post.excerpt}
-              </p>
-              <div class="blog-card-meta">
-                <span>{post.date}</span>
-                <span class="meta-dot">&middot;</span>
-                <span>{post.readTime}</span>
-              </div>
-              <a href={post.url} class="blog-read-more">Read article &rarr;</a>
-            </article>
-          ))}
+        {featuredPost && <article class="blog-feature"><img src={featuredPost.image} width="1200" height="675" alt="" fetchpriority="high" /><div class="blog-feature-copy"><span class="c2-eyebrow">Featured guide</span><h2><a href={featuredPost.url}>{featuredPost.title.replace(/^What After PUC\?\s*/i, '')}</a></h2><p>{featuredPost.excerpt}</p><span class="refresh-blog-meta">{featuredPost.date} · {featuredPost.readTime}</span><div><a href={featuredPost.url} class="c2-btn c2-btn--primary">Read the guide <span aria-hidden="true">→</span></a></div></div></article>}
+        <div class="c2-section-head"><div><span class="c2-eyebrow">Browse all</span><h2 class="c2-heading c2-heading--small">Pick the question on your mind.</h2></div><p class="c2-lede">Clear, grounded reads designed to help you choose and act.</p></div>
+        <div class="refresh-blog-grid">
+          {remainingPosts.map((post) => <article class="refresh-blog-card"><img src={post.image} width="1200" height="675" loading="lazy" decoding="async" alt="" /><div class="refresh-blog-body"><h2><a href={post.url}>{post.title.replace(/^What After PUC\?\s*/i, '')}</a></h2><p>{post.excerpt}</p><span class="refresh-blog-meta">{post.date} · {post.readTime}</span></div></article>)}
         </div>
-
-        <div class="blog-pagination">
-          <span class="pagination-placeholder">Showing {visiblePosts.length} of {visiblePosts.length} articles</span>
-        </div>
+        <p class="blog-count">Showing {visiblePosts.length} student guides</p>
       </div>
     </section>
   </main>
 </Layout>
+<style>
+  .blog-count { margin: 38px 0 0; text-align: center; color: #718078; font-size: .8rem; font-weight: 750; }
+  .blog-feature-copy .c2-btn { margin-top: 26px; }
+</style>
