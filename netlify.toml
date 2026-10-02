@@ -13,11 +13,6 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
 
 [[redirects]]
-  from = "/cards/*"
-  to = "/cards/index.html"
-  status = 200
-
-[[redirects]]
   from = "/challenge/*"
   to = "/redirect.html"
   status = 200

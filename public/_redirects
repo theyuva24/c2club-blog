@@ -16,9 +16,6 @@
 # Deep Link Intent Routing (Manual only)
 /app            /redirect.html       200
 
-# Card Persona Landing Portal
-/cards/*        /cards/index.html    200
-
 # Deep Link Routes - Route to redirect.html for app opening intent
 # These MUST be before the catch-all /* rule
 /challenge/*    /redirect.html       200
