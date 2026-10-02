@@ -180,8 +180,8 @@
                 <p>Select how you want to handle your contribution data and confirm deletion.</p>
                 
                 <div class="profile-badge">
-                    <p>Logged in as: <strong id="user-name-display">Loading...</strong></p>
-                    <p>Phone: <strong id="user-phone-display">...</strong></p>
+                    <p>Phone verified: <strong id="user-phone-display">Verified number</strong></p>
+                    <p>Your verification must remain recent while you submit this request.</p>
                 </div>
 
                 <div id="opt-delete" class="option-card selected" onclick="selectOption(true)">
@@ -200,10 +200,6 @@
                     </div>
                 </div>
 
-                <div class="form-group" style="margin-top: 1.5rem;">
-                    <label for="delete-reason">Optional: Why are you leaving?</label>
-                    <textarea id="delete-reason" rows="2" placeholder="Help us improve C2 Club..."></textarea>
-                </div>
 
                 <div class="form-group">
                     <label for="confirm-text">Type "DELETE" to confirm:</label>
@@ -354,26 +350,9 @@
 
             window.confirmationResult.confirm(code)
                 .then((result) => {
-                    const user = result.user;
-                    db.collection('users').doc(user.uid).get()
-                        .then((doc) => {
-                            toggleLoading(false);
-                            if (doc.exists) {
-                                const data = doc.data();
-                                document.getElementById('user-name-display').innerText = data.fullName || 'Registered User';
-                                document.getElementById('user-phone-display').innerText = user.phoneNumber;
-                            } else {
-                                document.getElementById('user-name-display').innerText = 'Registered User';
-                                document.getElementById('user-phone-display').innerText = user.phoneNumber;
-                            }
-                            showStep('step-options');
-                        })
-                        .catch((err) => {
-                            toggleLoading(false);
-                            document.getElementById('user-name-display').innerText = 'Registered User';
-                            document.getElementById('user-phone-display').innerText = user.phoneNumber;
-                            showStep('step-options');
-                        });
+                    toggleLoading(false);
+                    document.getElementById('user-phone-display').innerText = result.user.phoneNumber || 'Verified number';
+                    showStep('step-options');
                 })
                 .catch((error) => {
                     toggleLoading(false);
@@ -401,7 +380,6 @@
                 document.getElementById('phone-number').value = '';
                 document.getElementById('otp-code').value = '';
                 document.getElementById('confirm-text').value = '';
-                document.getElementById('delete-reason').value = '';
                 showStep('step-phone');
             });
         }
@@ -414,6 +392,41 @@
                 return;
             }
 
+            hideError();
+            toggleLoading(true, 'Checking recent verification...');
+
+            user.getIdTokenResult(true)
+                .then((tokenResult) => {
+                    const authTimeMs = Date.parse(tokenResult.authTime || '');
+                    const maxAuthAgeMs = 10 * 60 * 1000;
+
+                    if (!Number.isFinite(authTimeMs) || Date.now() - authTimeMs >= maxAuthAgeMs) {
+                        const error = new Error('Recent phone verification is required.');
+                        error.code = 'recent-auth-required';
+                        throw error;
+                    }
+
+                    toggleLoading(false);
+                    writeDeletionRequest(user);
+                })
+                .catch((error) => {
+                    toggleLoading(false);
+
+                    if (error.code === 'recent-auth-required') {
+                        auth.signOut().finally(() => {
+                            showStep('step-phone');
+                            showError('Your verification expired. Please verify your phone number again before submitting.');
+                        });
+                        return;
+                    }
+
+                    showStep('step-options');
+                    showError('We could not confirm your recent verification. Please try again.');
+                    console.error('Recent authentication check failed:', error);
+                });
+        }
+
+        function writeDeletionRequest(user) {
             showStep('step-processing');
 
             const docId = user.uid;
