@@ -1,0 +1,48 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[redirects]]
+  from = "/cards/*"
+  to = "/cards/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/challenge/*"
+  to = "/redirect.html"
+  status = 200
+
+[[redirects]]
+  from = "/entry/*"
+  to = "/redirect.html"
+  status = 200
+
+[[redirects]]
+  from = "/post/*"
+  to = "/redirect.html"
+  status = 200
+
+[[redirects]]
+  from = "/user/*"
+  to = "/redirect.html"
+  status = 200
+
+[[redirects]]
+  from = "/hub/*"
+  to = "/redirect.html"
+  status = 200
+
+[[redirects]]
+  from = "/ref/*"
+  to = "/redirect.html"
+  status = 200
