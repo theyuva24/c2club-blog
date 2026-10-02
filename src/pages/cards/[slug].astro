@@ -50,7 +50,7 @@ const currentArchetype = ARCH.find(a => a.slug === slug) || ARCH[1];
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Figtree:wght@500;700;800&display=swap" rel="stylesheet">
-<style>
+<style is:global>
   :root {
     --bg: #0A9F6C;      /* emerald */
     --deep: #067A53;    /* emerald, one step darker (halo + dots) */
@@ -150,7 +150,17 @@ const currentArchetype = ARCH.find(a => a.slug === slug) || ARCH[1];
 <main>
   <section class="screen on" id="reveal" aria-live="polite">
     <h1 id="revealTitle">This card says you're {currentArchetype.a} {currentArchetype.name}.</h1>
-    <div id="revealCard"></div>
+    <div id="revealCard">
+      <article class={`card ${currentArchetype.dark ? "dark" : ""}`} style={`--card:${currentArchetype.card};--ct:${currentArchetype.t};${currentArchetype.glow ? "--glow:" + currentArchetype.glow : ""}`}>
+        <div class="nm">{currentArchetype.name}</div>
+        <div class="art">
+          <span class="em" aria-hidden="true">{currentArchetype.em}</span>
+          <img src={`/card-art/${currentArchetype.slug}.png`} alt="" onerror="this.remove()" />
+        </div>
+        <div class="st">{currentArchetype.stat}</div>
+        <div class="ft">C2 Club</div>
+      </article>
+    </div>
     <p class="sub">Accurate or not?</p>
     <div class="row">
       <button class="btn pri" id="yes">Yes, that's me</button>
@@ -261,14 +271,12 @@ function openJoin(a) {
 
   if (isAndroid) {
     b.textContent = `Join the ${a.pl}`;
-    // Direct Play Store referral URL
     b.href = playUrl(a.slug);
     b.onclick = () => {
       track("join_click", { card: a.slug });
       try { localStorage.setItem("c2_card", a.slug); } catch (e) {}
     };
   } else {
-    // Desktop / iOS non-Android fallback: WhatsApp share
     b.textContent = "Send this to my phone";
     const pageUrl = window.location.href;
     const waText = encodeURIComponent(`Check out the ${a.name} Club on C2 Club! ${pageUrl}`);
