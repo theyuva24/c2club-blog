@@ -56,12 +56,29 @@
                 return null;
             }
 
-            function buildPlayStoreUrl(refCode) {
+            function getTargetHubId() {
+                var segments = window.location.pathname.split('/').filter(Boolean);
+                if (segments[0] === 'hub' && segments.length > 1 && segments[1]) {
+                    return segments[1].trim();
+                }
+                var params = new URLSearchParams(window.location.search);
+                if (params.has('hub')) {
+                    return params.get('hub').trim();
+                }
+                return null;
+            }
+
+            function buildPlayStoreUrl(refCode, targetHubId) {
                 var base = 'https://play.google.com/store/apps/details?id=com.c2club.uniqueapp';
+                var referrerParts = [];
                 if (refCode) {
-                    // Play Store referrer format: referrer=ref%3DABC123
-                    // The installed app reads this via PlayInstallReferrer API as "ref=ABC123"
-                    base += '&referrer=' + encodeURIComponent('ref=' + refCode);
+                    referrerParts.push('ref=' + encodeURIComponent(refCode));
+                }
+                if (targetHubId) {
+                    referrerParts.push('hub=' + encodeURIComponent(targetHubId));
+                }
+                if (referrerParts.length > 0) {
+                    base += '&referrer=' + encodeURIComponent(referrerParts.join('&'));
                 }
                 return base;
             }
@@ -70,7 +87,8 @@
             var search = window.location.search;
             var fullPath = path + search;
             var refCode = getReferralCode();
-            var playStoreUrl = buildPlayStoreUrl(refCode);
+            var targetHubId = getTargetHubId();
+            var playStoreUrl = buildPlayStoreUrl(refCode, targetHubId);
 
             // ── Determine link type ──────────────────────────────────────────
             var isRefLink = path.indexOf('/ref/') === 0 || path === '/ref';

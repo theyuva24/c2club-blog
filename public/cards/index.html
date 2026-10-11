@@ -22,7 +22,7 @@
     --body: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   }
   * { box-sizing: border-box; margin: 0; }
-  html, body { height: 100%; }
+  html, body { height: 100%; min-height: 100dvh; }
   body {
     background-color: var(--bg);
     background-image: radial-gradient(var(--deep) 1.8px, transparent 2px);
@@ -32,57 +32,78 @@
     font-weight: 500;
     padding: env(safe-area-inset-top, 0px) 0 env(safe-area-inset-bottom, 0px);
     overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
   }
-  .screen { display: none; min-height: 100%; flex-direction: column; align-items: center; justify-content: center; padding: 20px 20px 28px; text-align: center; }
+  .screen {
+    display: none;
+    min-height: 100dvh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 18px 24px;
+    text-align: center;
+  }
   .screen.on { display: flex; }
 
-  h1 { font-family: var(--display); font-weight: 400; font-size: clamp(1.7rem, 7.4vw, 2.5rem); line-height: 1.08; max-width: 14em; text-wrap: balance; }
-  .sub { font-weight: 800; font-size: 1.15rem; margin-top: 14px; }
+  h1 { font-family: var(--display); font-weight: 400; font-size: clamp(1.4rem, 6.5vw, 2.3rem); line-height: 1.1; max-width: 14em; text-wrap: balance; }
+  .sub { font-weight: 800; font-size: 1.1rem; margin-top: 10px; }
 
   /* ---- the sticker card ---- */
   .card {
     --w: min(70vw, 280px);
     width: var(--w); aspect-ratio: 60 / 91; flex: none;
     background: var(--card); color: var(--ct);
-    border: 12px solid #fff; border-radius: 26px;
+    border: 10px solid #fff; border-radius: 24px;
     box-shadow: 0 10px 0 rgba(4,40,28,.28), 0 18px 30px rgba(4,40,28,.25);
     display: flex; flex-direction: column; padding: 10px 10px 8px; text-align: left; position: relative; overflow: hidden;
   }
   .card.dark { border-color: var(--glow); box-shadow: 0 0 0 3px #0a0a14, 0 0 22px var(--glow), 0 0 46px var(--glow); }
-  .card .nm { font-family: var(--display); font-size: clamp(1.05rem, 5.2vw, 1.4rem); line-height: 1.05; }
-  .card .art { flex: 1; margin: 8px 0; border-radius: 14px; background: rgba(255,255,255,.2); background: color-mix(in srgb, var(--ct) 14%, transparent); position: relative; display: grid; place-items: center; overflow: hidden; }
-  .card .art .em { font-size: clamp(3.4rem, 17vw, 5.4rem); }
-  .card .art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  .card .st { font-weight: 800; font-size: .8rem; line-height: 1.25; }
-  .card .ft { margin-top: 6px; font-weight: 800; font-size: .66rem; opacity: .85; }
+  .card .nm { font-family: var(--display); font-size: clamp(1rem, 4.8vw, 1.35rem); line-height: 1.05; }
+  .card .art { flex: 1; margin: 6px 0; border-radius: 12px; background: rgba(255,255,255,.2); background: color-mix(in srgb, var(--ct) 14%, transparent); position: relative; display: grid; place-items: center; overflow: hidden; }
+  .card .art .em { font-size: clamp(3rem, 15vw, 4.8rem); }
+  .card .art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 32%; }
+  .card .st { font-weight: 800; font-size: .78rem; line-height: 1.25; }
+  .card .ft { margin-top: 4px; font-weight: 800; font-size: .64rem; opacity: .85; }
 
-  #revealCard { position: relative; display: grid; place-items: center; margin: 22px 0 6px; }
-  #revealCard::before { content: ""; position: absolute; width: min(92vw, 380px); aspect-ratio: 1; border-radius: 50%; background: var(--deep); box-shadow: 0 0 0 10px rgba(5,46,34,.12); }
-  #reveal .card { position: relative; z-index: 1; transform: rotate(-3deg); animation: slap .5s cubic-bezier(.2,1.4,.4,1) both; }
-  @keyframes slap { from { transform: scale(1.35) rotate(-9deg); opacity: 0; } to { transform: scale(1) rotate(-3deg); opacity: 1; } }
+  #revealCard { position: relative; display: grid; place-items: center; margin: 16px 0 6px; }
+  #revealCard::before { content: ""; position: absolute; width: min(88vw, 360px); aspect-ratio: 1; border-radius: 50%; background: var(--deep); box-shadow: 0 0 0 8px rgba(5,46,34,.12); }
+  #reveal .card { position: relative; z-index: 1; transform: rotate(-3deg); animation: slap .4s cubic-bezier(.2,1.4,.4,1) both; }
+  @keyframes slap { from { transform: scale(1.25) rotate(-9deg); opacity: 0; } to { transform: scale(1) rotate(-3deg); opacity: 1; } }
 
   /* ---- buttons ---- */
-  .row { display: flex; flex-direction: column; gap: 12px; width: min(100%, 340px); margin-top: 22px; }
+  .row { display: flex; flex-direction: column; gap: 10px; width: min(100%, 320px); margin-top: 16px; }
   .btn {
-    font: 800 1.05rem/1 var(--body); cursor: pointer; padding: 16px 18px; border-radius: 16px;
+    font: 800 1rem/1 var(--body); cursor: pointer; padding: 15px 18px; border-radius: 16px;
     border: 3px solid var(--ink); background: #fff; color: var(--ink);
-    box-shadow: 0 5px 0 var(--ink); transition: transform .08s, box-shadow .08s;
+    box-shadow: 0 4px 0 var(--ink); transition: transform .08s, box-shadow .08s;
+    touch-action: manipulation;
   }
-  .btn:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--ink); }
-  .btn.ghost { background: transparent; box-shadow: none; }
+  .btn:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--ink); }
+  .btn.ghost { background: transparent; box-shadow: none; border-color: transparent; }
   .btn.ghost:active { transform: none; opacity: .7; }
   .btn.pri { background: var(--sun); color: var(--ink); }
   :focus-visible { outline: 4px solid var(--ink); outline-offset: 3px; }
 
   /* ---- swipe screen ---- */
   #pick { justify-content: flex-start; padding-left: 0; padding-right: 0; }
-  #pick h1 { padding: 18px 20px 0; font-size: clamp(1.5rem, 6.4vw, 2.1rem); }
-  .back { align-self: flex-start; margin: 10px 14px 0; }
-  .track { display: flex; gap: 22px; overflow-x: auto; scroll-snap-type: x mandatory; width: 100%; padding: 26px calc(50vw - var(--hw, 140px)) 8px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  #pick h1 { padding: 14px 18px 0; font-size: clamp(1.4rem, 6vw, 1.95rem); }
+  .back { align-self: flex-start; margin: 8px 12px 0; padding: 10px 14px; }
+  .track {
+    display: flex;
+    gap: 18px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    width: 100%;
+    padding: 20px calc(50vw - var(--hw, 135px)) 12px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    touch-action: pan-x;
+    overscroll-behavior-x: contain;
+  }
   .track::-webkit-scrollbar { display: none; }
-  .slide { scroll-snap-align: center; display: flex; flex-direction: column; align-items: center; gap: 18px; flex: none; }
+  .slide { scroll-snap-align: center; display: flex; flex-direction: column; align-items: center; gap: 14px; flex: none; }
   .slide .btn { width: min(70vw, 280px); }
-  .hint { font-weight: 700; font-size: .9rem; margin-top: 10px; opacity: .8; }
+  .hint { font-weight: 700; font-size: .85rem; margin-top: 6px; opacity: .8; }
 
   /* ---- join sheet ---- */
   dialog { border: 0; padding: 0; background: transparent; max-width: none; width: 100%; margin: auto 0 0; color: var(--ink); }
@@ -93,6 +114,25 @@
   .sheet p { margin: 10px auto 0; max-width: 24em; font-weight: 700; }
   .sheet .row { margin: 20px auto 0; }
   .note { font-size: .85rem; font-weight: 700; margin-top: 14px; opacity: .75; }
+
+  /* Short / Compact screens (iPhone SE, compact Androids) */
+  @media (max-height: 700px) {
+    .screen { padding: 12px 14px 16px; justify-content: space-evenly; }
+    h1 { font-size: clamp(1.2rem, 4.8vw, 1.45rem); line-height: 1.15; }
+    .sub { font-size: 0.92rem; margin: 6px 0 0; }
+    #revealCard { margin: 8px 0 4px; }
+    #revealCard::before { width: min(72vw, 290px); }
+    .card { --w: min(56vw, 190px); border-width: 8px; border-radius: 18px; }
+    .row { margin-top: 10px; gap: 8px; }
+    .btn { padding: 11px 14px; font-size: 0.92rem; }
+  }
+
+  /* Very narrow screens (e.g. 320px - 360px) */
+  @media (max-width: 360px) {
+    .card { --w: 220px; }
+    .row, .slide .btn { width: 220px; }
+    h1 { font-size: 1.3rem; }
+  }
 
   @media (min-width: 700px) {
     dialog { max-width: 460px; margin: auto; }
@@ -180,8 +220,13 @@ function theme(a) { /* page stays emerald; only the cards change colour */ }
 function cardHTML(a) {
   return `<article class="card ${a.dark ? "dark" : ""}" style="--card:${a.card};--ct:${a.t};${a.glow ? "--glow:" + a.glow : ""}">
     <div class="nm">${a.name}</div>
-    <div class="art"><span class="em" aria-hidden="true">${a.em}</span>
-      <img src="${ART_PATH}${a.slug}.png" alt="" onerror="this.remove()"></div>
+    <div class="art">
+      <span class="em" aria-hidden="true">${a.em}</span>
+      <picture>
+        <source srcset="${ART_PATH}${a.slug}.webp" type="image/webp">
+        <img src="${ART_PATH}${a.slug}.png" alt="${a.name}" loading="lazy" decoding="async" onerror="this.parentElement.remove()">
+      </picture>
+    </div>
     <div class="st">${a.stat}</div>
     <div class="ft">C2 Club</div>
   </article>`;
@@ -209,6 +254,14 @@ function playUrl(slug) {
   return `https://play.google.com/store/apps/details?id=${APP_ID}&referrer=${encodeURIComponent(referrer)}`;
 }
 
+function intentUrl(slug) {
+  const params = new URLSearchParams(location.search);
+  const c = params.get("c");
+  const fallback = encodeURIComponent(playUrl(slug));
+  const cParam = c ? `&c=${encodeURIComponent(c)}` : "";
+  return `intent://c2club.in/cards/${slug}?s=qr${cParam}#Intent;scheme=https;package=${APP_ID};S.browser_fallback_url=${fallback};end`;
+}
+
 function openJoin(a) {
   const n = Number(counts[a.slug] || 0);
   const proof = n >= MIN_FOR_SOCIAL_PROOF;
@@ -220,8 +273,8 @@ function openJoin(a) {
 
   if (isAndroid) {
     b.textContent = `Join the ${a.pl}`;
-    // FIX 1: Set direct Play Store referral URL without re-navigating to current page
-    b.href = playUrl(a.slug);
+    // Intent URI: Opens app directly if installed; if not installed, Play Store opens with referrer
+    b.href = intentUrl(a.slug);
     b.onclick = () => {
       track("join_click", { card: a.slug });
       try { localStorage.setItem("c2_card", a.slug); } catch (e) {}

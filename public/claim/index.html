@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to the Club! Claim Your Free Welcome Pack 🎁</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Lilita+One&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0d0f17;
+      --bg-card: #161824;
+      --bg-card-hover: #1f2233;
+      --accent-yellow: #ffd000;
+      --accent-teal: #00d2a0;
+      --accent-coral: #ff5263;
+      --accent-blue: #3b82f6;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-dark: #2a2e45;
+      --font-display: 'Lilita One', cursive, sans-serif;
+      --font-sub: 'Fredoka', cursive, sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 10% 15%, rgba(255, 208, 0, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 50%, rgba(0, 210, 160, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 50% 90%, rgba(59, 130, 246, 0.07) 0%, transparent 40%);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 14px 60px 14px;
+      line-height: 1.5;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 640px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Hero / Welcome Banner */
+    .hero-banner {
+      background: linear-gradient(145deg, #1c1f30, #131420);
+      border: 3px solid #333852;
+      border-radius: 24px;
+      padding: 26px 20px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45), 0 4px 0 #000;
+      overflow: hidden;
+    }
+
+    .club-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #ffd000;
+      color: #111;
+      font-family: var(--font-display);
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 999px;
+      border: 2px solid #111;
+      box-shadow: 0 3px 0 #111;
+      margin-bottom: 14px;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 5.5vw, 34px);
+      line-height: 1.15;
+      color: #fff;
+      text-shadow: 2px 2px 0 #111;
+      margin-bottom: 10px;
+    }
+
+    .hero-title span {
+      color: var(--accent-yellow);
+      display: inline-block;
+    }
+
+    .hero-desc {
+      font-size: 14.5px;
+      color: #cbd5e1;
+      max-width: 520px;
+      margin: 0 auto 18px auto;
+      line-height: 1.55;
+    }
+
+    /* Cards Fan Preview */
+    .cards-fan-container {
+      margin: 8px auto 16px auto;
+      position: relative;
+      width: 100%;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .fan-card {
+      position: absolute;
+      width: 120px;
+      height: 170px;
+      border-radius: 12px;
+      border: 3px solid #111;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.5), 0 3px 0 #111;
+      overflow: hidden;
+      background: #222;
+      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      cursor: pointer;
+    }
+
+    .fan-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .fan-card:nth-child(1) { transform: translateX(-95px) rotate(-14deg); z-index: 1; }
+    .fan-card:nth-child(2) { transform: translateX(-45px) rotate(-6deg); z-index: 2; }
+    .fan-card:nth-child(3) { transform: translateX(0px) rotate(0deg) scale(1.06); z-index: 3; border-color: #ffd000; box-shadow: 0 14px 28px rgba(0, 0, 0, 0.6), 0 4px 0 #ffd000; }
+    .fan-card:nth-child(4) { transform: translateX(45px) rotate(6deg); z-index: 2; }
+    .fan-card:nth-child(5) { transform: translateX(95px) rotate(14deg); z-index: 1; }
+
+    .fan-card:hover {
+      transform: translateY(-14px) scale(1.15) !important;
+      z-index: 10 !important;
+      box-shadow: 0 20px 32px rgba(0, 0, 0, 0.7), 0 6px 0 #ffd000;
+    }
+
+    .fan-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0, 210, 160, 0.14);
+      border: 1.5px solid var(--accent-teal);
+      color: #34d399;
+      font-family: var(--font-sub);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+    }
+
+    /* Form Card */
+    .form-section {
+      background: var(--bg-card);
+      border: 2px solid var(--border-dark);
+      border-radius: 20px;
+      padding: 22px 18px;
+      box-shadow: 0 6px 0 #000;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .step-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: var(--accent-yellow);
+      color: #111;
+      font-family: var(--font-display);
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #111;
+      box-shadow: 0 2px 0 #111;
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-family: var(--font-sub);
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .section-desc {
+      font-size: 13px;
+      color: #94a3b8;
+      margin-top: 2px;
+    }
+
+    .input-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .col-full {
+      grid-column: 1 / -1;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    label {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #94a3b8;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .req {
+      color: var(--accent-coral);
+    }
+
+    input, textarea, select {
+      width: 100%;
+      background: #0d0f17;
+      border: 2px solid #2a2e45;
+      border-radius: 12px;
+      padding: 12px 14px;
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 14px;
+      transition: all 0.2s ease;
+      outline: none;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--accent-yellow);
+      box-shadow: 0 0 0 3px rgba(255, 208, 0, 0.18);
+      background: #141724;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: #4b5563;
+    }
+
+    /* GPS Auto-Fill Card */
+    .gps-hero-card {
+      background: linear-gradient(135deg, rgba(0, 210, 160, 0.12), rgba(22, 27, 46, 0.6));
+      border: 2px solid var(--accent-teal);
+      border-radius: 16px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 12px rgba(0, 210, 160, 0.1);
+    }
+
+    .gps-hero-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .gps-hero-icon {
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .gps-hero-title {
+      font-family: var(--font-sub);
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .gps-hero-sub {
+      font-size: 12px;
+      color: #94a3b8;
+      margin-top: 1px;
+    }
+
+    .gps-action-btn {
+      background: var(--accent-teal);
+      color: #032e23;
+      font-family: var(--font-sub);
+      font-weight: 700;
+      font-size: 13px;
+      padding: 9px 16px;
+      border-radius: 10px;
+      border: 2px solid #111;
+      box-shadow: 0 3px 0 #111;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .gps-action-btn:hover {
+      background: #00e6af;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 0 #111;
+    }
+
+    .gps-action-btn:active {
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 #111;
+    }
+
+    /* GPS Locked Verified Card */
+    .gps-locked-card {
+      background: #0d0f17;
+      border: 1.5px solid var(--accent-teal);
+      border-radius: 14px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .gps-locked-text {
+      font-size: 13px;
+      color: #e2e8f0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .gps-badge-tag {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-teal);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .gps-edit-btn {
+      background: none;
+      border: 1px solid #475569;
+      color: #94a3b8;
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .gps-edit-btn:hover {
+      color: #fff;
+      border-color: #cbd5e1;
+    }
+
+    /* Question Pill Blocks */
+    .question-block {
+      margin-bottom: 18px;
+    }
+
+    .question-label {
+      font-family: var(--font-sub);
+      font-size: 14px;
+      font-weight: 600;
+      color: #f1f5f9;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .pill-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .vibe-pill {
+      background: #0d0f17;
+      border: 1.5px solid #2a2e45;
+      border-radius: 12px;
+      padding: 11px 14px;
+      font-size: 13.5px;
+      color: #cbd5e1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+
+    .vibe-pill:hover {
+      border-color: #4b5578;
+      background: #141724;
+    }
+
+    .vibe-pill.active {
+      border-color: var(--accent-teal);
+      background: rgba(0, 210, 160, 0.1);
+      color: #fff;
+      font-weight: 600;
+      box-shadow: 0 2px 0 var(--accent-teal);
+    }
+
+    .vibe-icon {
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    /* College Headcount Chips */
+    .chips-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .size-chip {
+      background: #0d0f17;
+      border: 1.5px solid #2a2e45;
+      border-radius: 999px;
+      padding: 9px 16px;
+      font-size: 13.5px;
+      color: #cbd5e1;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      user-select: none;
+      font-family: var(--font-sub);
+      font-weight: 600;
+    }
+
+    .size-chip:hover {
+      border-color: #4b5578;
+      background: #141724;
+    }
+
+    .size-chip.active {
+      border-color: var(--accent-yellow);
+      background: rgba(255, 208, 0, 0.12);
+      color: var(--accent-yellow);
+      box-shadow: 0 2px 0 var(--accent-yellow);
+    }
+
+    /* Trust Box */
+    .trust-box {
+      background: rgba(22, 27, 46, 0.5);
+      border: 1.5px dashed #2d3752;
+      border-radius: 14px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 12.5px;
+      color: #94a3b8;
+      line-height: 1.5;
+    }
+
+    .trust-icon {
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .trust-box strong {
+      color: #f1f5f9;
+    }
+
+    /* Submit Button */
+    .submit-btn {
+      background: var(--accent-yellow);
+      color: #111;
+      font-family: var(--font-display);
+      font-size: 20px;
+      padding: 18px 24px;
+      border-radius: 16px;
+      border: 3px solid #111;
+      box-shadow: 0 6px 0 #111;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.15s ease;
+      width: 100%;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 0 #111;
+      background: #ffe033;
+    }
+
+    .submit-btn:active {
+      transform: translateY(3px);
+      box-shadow: 0 2px 0 #111;
+    }
+
+    /* Success Screen */
+    .success-screen {
+      display: none;
+      background: var(--bg-card);
+      border: 3px solid var(--accent-teal);
+      border-radius: 24px;
+      padding: 36px 20px;
+      text-align: center;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 4px 0 #000;
+      animation: popIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes popIn {
+      0% { opacity: 0; transform: scale(0.92); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .success-icon {
+      font-size: 56px;
+      margin-bottom: 14px;
+      animation: bounce 1s infinite alternate ease-in-out;
+    }
+
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to { transform: translateY(-8px); }
+    }
+
+    .success-title {
+      font-family: var(--font-display);
+      font-size: 32px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .success-title span {
+      color: var(--accent-teal);
+    }
+
+    .success-subtitle {
+      font-size: 14.5px;
+      color: #cbd5e1;
+      max-width: 480px;
+      margin: 0 auto 20px auto;
+      line-height: 1.6;
+    }
+
+    .dispatch-badge {
+      background: rgba(0, 210, 160, 0.15);
+      border: 1.5px solid var(--accent-teal);
+      color: var(--accent-teal);
+      font-family: var(--font-sub);
+      font-weight: 700;
+      font-size: 13.5px;
+      padding: 8px 16px;
+      border-radius: 30px;
+      display: inline-block;
+      margin-bottom: 22px;
+    }
+
+    .summary-card {
+      background: #0d0f17;
+      border: 2px solid #2a2e45;
+      border-radius: 16px;
+      padding: 16px;
+      text-align: left;
+      font-size: 13.5px;
+      margin-bottom: 22px;
+      color: #94a3b8;
+    }
+
+    .summary-card div {
+      margin-bottom: 7px;
+    }
+    .summary-card strong {
+      color: #fff;
+    }
+
+    /* Courier Label Preview Box (Format strictly for Blue Dart / Speed Post) */
+    .courier-label-box {
+      background: #0d0f17;
+      border: 2px dashed #3b82f6;
+      border-radius: 14px;
+      padding: 16px;
+      text-align: left;
+      font-family: monospace;
+      font-size: 13px;
+      color: #e2e8f0;
+      margin-bottom: 22px;
+      line-height: 1.6;
+    }
+
+    .courier-label-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #2a2e45;
+      font-family: var(--font-sub);
+      color: #93c5fd;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .copy-label-btn {
+      background: #1e293b;
+      border: 1.5px solid #475569;
+      color: #cbd5e1;
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-size: 11.5px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: var(--font-body);
+      transition: all 0.15s ease;
+    }
+
+    .copy-label-btn:hover {
+      background: #334155;
+      color: #fff;
+      border-color: #94a3b8;
+    }
+
+    .invite-box {
+      background: #1c1f30;
+      border: 2px solid #333852;
+      border-radius: 16px;
+      padding: 18px;
+    }
+
+    .invite-btn {
+      background: #25d366;
+      color: #fff;
+      font-family: var(--font-sub);
+      font-weight: 700;
+      font-size: 14.5px;
+      padding: 12px 20px;
+      border-radius: 12px;
+      border: 2px solid #111;
+      box-shadow: 0 4px 0 #111;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 520px) {
+      .input-grid {
+        grid-template-columns: 1fr;
+      }
+      .crowd-grid {
+        grid-template-columns: 1fr;
+      }
+      .cards-fan-container {
+        height: 170px;
+      }
+      .fan-card {
+        width: 100px;
+        height: 140px;
+      }
+      .fan-card:nth-child(1) { transform: translateX(-75px) rotate(-14deg); }
+      .fan-card:nth-child(2) { transform: translateX(-35px) rotate(-6deg); }
+      .fan-card:nth-child(4) { transform: translateX(35px) rotate(6deg); }
+      .fan-card:nth-child(5) { transform: translateX(75px) rotate(14deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Hero / Welcome Header -->
+    <header class="hero-banner">
+      <div class="club-pill">🎁 Free Personality Card Pack • Zero Catch</div>
+      <h1 class="hero-title">Every Friend in Your Gang is One of These Cards. <br><span>We’re Sending You a Pack to Tag Them.</span></h1>
+      <p class="hero-desc">
+        From the guy who calculates 75% attendance down to the minute, to the one scribbling assignments at 8:59 AM. We printed limited physical college personality cards for you to hand out to the exact friends who match them. Zero catch, zero cost—claim your pack below!
+      </p>
+
+      <!-- Tactile Card Fan Showcase -->
+      <div class="cards-fan-container">
+        <div class="fan-card" title="The Canteen Commander">
+          <img src="card3_canteen_final.jpg" alt="Canteen Commander">
+        </div>
+        <div class="fan-card" title="The Assignment Survivor">
+          <img src="card9_survivor_final.jpg" alt="Assignment Survivor">
+        </div>
+        <div class="fan-card" title="The All-Rounder">
+          <img src="card11_rounder_final.jpg" alt="The All-Rounder">
+        </div>
+        <div class="fan-card" title="The Attendance Calculator">
+          <img src="card7_calculator_final.jpg" alt="Attendance Calculator">
+        </div>
+        <div class="fan-card" title="The Campus Influencer">
+          <img src="card10_influencer_final.jpg" alt="Campus Influencer">
+        </div>
+      </div>
+
+      <div class="fan-badge">
+        ✨ 100% Free Physical Pack • Hand Them Out Across Your Campus
+      </div>
+    </header>
+
+    <!-- The Claim Form -->
+    <form class="claim-form" id="claimForm" onsubmit="handleClaim(event)">
+
+      <!-- Section 1: Who Are You Tagging in Your Gang? (Step 1 - High Fun, Zero Friction) -->
+      <div class="form-section">
+        <div class="section-header">
+          <div class="step-num">1</div>
+          <div>
+            <h2 class="section-title">Who Are You Tagging in Your Gang?</h2>
+            <div class="section-desc">Helps us curate the exact personality cards for your circle</div>
+          </div>
+        </div>
+
+        <!-- 1. The First Personality Tag -->
+        <div class="question-block">
+          <label class="question-label">Which friend in your gang gets their card first?</label>
+          <div class="pill-stack" id="intentPills">
+            <div class="vibe-pill active" onclick="selectStackPill(this, 'intentPlan')">
+              <span class="vibe-icon">🧮</span>
+              <span>The Attendance Calculator — The friend always hanging at 75.1%</span>
+            </div>
+            <div class="vibe-pill" onclick="selectStackPill(this, 'intentPlan')">
+              <span class="vibe-icon">⚡</span>
+              <span>The Assignment Survivor — The 8:59 AM speed-scribbler</span>
+            </div>
+            <div class="vibe-pill" onclick="selectStackPill(this, 'intentPlan')">
+              <span class="vibe-icon">🏆</span>
+              <span>The All-Rounder — Manages 4 clubs, sports & somehow still passes</span>
+            </div>
+            <div class="vibe-pill" onclick="selectStackPill(this, 'intentPlan')">
+              <span class="vibe-icon">☕</span>
+              <span>The Canteen Boss — Never found in class, always at the chai tapri</span>
+            </div>
+            <div class="vibe-pill" onclick="selectStackPill(this, 'intentPlan')">
+              <span class="vibe-icon">📱</span>
+              <span>The Campus Influencer — Making reels in every college corridor</span>
+            </div>
+          </div>
+          <input type="hidden" id="intentPlan" name="intentPlan" value="The Attendance Calculator — The friend always hanging at 75.1%">
+        </div>
+
+        <!-- 2. College Headcount (Size of the Pond) -->
+        <div class="question-block">
+          <label class="question-label">Roughly how many students are in your college?</label>
+          <div class="chips-container" id="collegeSizeChips">
+            <div class="size-chip" onclick="selectCollegeChip(this, 'under 500')">under 500</div>
+            <div class="size-chip active" onclick="selectCollegeChip(this, '500–1,500')">500–1,500</div>
+            <div class="size-chip" onclick="selectCollegeChip(this, '1,500–3,000')">1,500–3,000</div>
+            <div class="size-chip" onclick="selectCollegeChip(this, '3,000+')">3,000+</div>
+            <div class="size-chip" onclick="selectCollegeChip(this, 'not sure')">not sure</div>
+          </div>
+          <input type="hidden" id="collegeHeadcount" name="collegeHeadcount" value="500–1,500">
+        </div>
+
+        <!-- 3. What happens when they get it -->
+        <div class="question-block" style="margin-bottom: 4px;">
+          <label class="question-label">What's going to happen when you hand these cards to them?</label>
+          <div class="pill-stack" id="realityPills">
+            <div class="vibe-pill active" onclick="selectStackPill(this, 'campusReality')">
+              <span class="vibe-icon">🤣</span>
+              <span>Non-stop roasting in the hostel room & WhatsApp group</span>
+            </div>
+            <div class="vibe-pill" onclick="selectStackPill(this, 'campusReality')">
+              <span class="vibe-icon">🚪</span>
+              <span>Sticking their personality card on their hostel door / desk</span>
+            </div>
+            <div class="vibe-pill" onclick="selectStackPill(this, 'campusReality')">
+              <span class="vibe-icon">📸</span>
+              <span>Taking photos of them holding their matching card for stories</span>
+            </div>
+            <div class="vibe-pill" onclick="selectStackPill(this, 'campusReality')">
+              <span class="vibe-icon">🔄</span>
+              <span>Passing the cards around the entire class during boring lectures</span>
+            </div>
+          </div>
+          <input type="hidden" id="campusReality" name="campusReality" value="Non-stop roasting in the hostel room & WhatsApp group">
+        </div>
+
+      </div>
+
+      <!-- Section 2: Courier Delivery Address (At the End - Required for Speed Post / Blue Dart) -->
+      <div class="form-section">
+        <div class="section-header">
+          <div class="step-num">2</div>
+          <div>
+            <h2 class="section-title">Delivery & Shipping Address</h2>
+            <div class="section-desc">Strict courier consignee format (Speed Post / Blue Dart dispatch)</div>
+          </div>
+        </div>
+
+        <!-- 1-Tap GPS Auto-Fill Hero -->
+        <div class="gps-hero-card" id="gpsHeroCard">
+          <div class="gps-hero-left">
+            <div class="gps-hero-icon">📍</div>
+            <div>
+              <div class="gps-hero-title">Auto-Detect Location via GPS</div>
+              <div class="gps-hero-sub" id="gpsSubText">Locks your real GPS and auto-fills PIN, City, State & Area</div>
+            </div>
+          </div>
+          <button type="button" class="gps-action-btn" id="gpsBtn" onclick="triggerGPSAutoFill()">
+            <span>Auto-Fill GPS</span>
+          </button>
+        </div>
+
+        <!-- GPS Verified Summary Chip (Visible after GPS lock) -->
+        <div class="gps-locked-card" id="gpsLockedCard" style="display: none;">
+          <div class="gps-locked-text">
+            <span class="gps-badge-tag" id="gpsAccuracyTag">✓ GPS Location Verified</span>
+            <span id="gpsLockedSummaryText">Detecting location...</span>
+          </div>
+          <button type="button" class="gps-edit-btn" onclick="toggleManualAddress()">Edit Manually</button>
+        </div>
+
+        <div class="input-grid">
+          <div class="input-group">
+            <label for="fullName">Full Name / Consignee Name <span class="req">*</span></label>
+            <input type="text" id="fullName" name="fullName" required placeholder="e.g. Rahul Sharma" autocomplete="name">
+          </div>
+
+          <div class="input-group">
+            <label for="phone">Active Mobile Number <span class="req">*</span></label>
+            <input type="tel" id="phone" name="phone" required placeholder="e.g. 9876543210" pattern="[0-9]{10}" inputmode="tel" maxlength="10" autocomplete="tel">
+          </div>
+
+          <div class="input-group col-full">
+            <label for="altPhone">Alternate / WhatsApp Number <span style="color:#64748b; font-weight:normal;">(Recommended for delivery calls)</span></label>
+            <input type="tel" id="altPhone" name="altPhone" placeholder="e.g. 9812345678 (Helpful if you're in class)" pattern="[0-9]{10}" inputmode="tel" maxlength="10">
+          </div>
+
+          <!-- Address Line 1 is ALWAYS needed (GPS cannot know room/flat no.) -->
+          <div class="input-group col-full">
+            <label for="addressLine1">Room No. / Hostel Block / Flat / Building <span class="req">*</span></label>
+            <input type="text" id="addressLine1" name="addressLine1" required placeholder="e.g. Cauvery Boys Hostel, Room 304, Block B" autocomplete="address-line1">
+          </div>
+
+          <!-- Remaining Address Fields (Auto-filled & collapsed when GPS is used) -->
+          <div class="col-full" id="manualAddressFields">
+            <div class="input-grid">
+              <div class="input-group col-full">
+                <label for="addressLine2">Campus / Street / Nearby Landmark <span class="req">*</span></label>
+                <input type="text" id="addressLine2" name="addressLine2" required placeholder="e.g. Near Gate No. 2, Opposite Central Library" autocomplete="address-line2">
+              </div>
+
+              <div class="input-group">
+                <label for="city">City / District <span class="req">*</span></label>
+                <input type="text" id="city" name="city" required placeholder="e.g. Bengaluru" autocomplete="address-level2">
+              </div>
+
+              <div class="input-group">
+                <label for="state">State <span class="req">*</span></label>
+                <input type="text" id="state" name="state" required placeholder="e.g. Karnataka" autocomplete="address-level1">
+              </div>
+
+              <!-- PIN Code placed at the end of the address block as required by Indian couriers -->
+              <div class="input-group col-full">
+                <label for="pincode">PIN Code (6 Digits) <span class="req">*</span></label>
+                <input type="text" id="pincode" name="pincode" required placeholder="e.g. 560059" pattern="[0-9]{6}" inputmode="numeric" maxlength="6" autocomplete="postal-code">
+              </div>
+            </div>
+          </div>
+
+          <input type="hidden" id="gpsCoordinates" name="gpsCoordinates" value="">
+          <input type="hidden" id="gpsAccuracy" name="gpsAccuracy" value="">
+        </div>
+      </div>
+
+      <!-- Trust Notice -->
+      <div class="trust-box">
+        <div class="trust-icon">🔒</div>
+        <div>
+          <strong>100% Student-First & Safe:</strong>
+          We never make sales calls, and your details are never shared. Your phone number is strictly required by the delivery courier (Speed Post / Blue Dart) for SMS tracking and delivery calling.
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="submit-btn" id="submitBtn">
+        🎁 Send My Free Welcome Pack
+      </button>
+    </form>
+
+    <!-- Success Screen (Revealed on Submit) -->
+    <div class="success-screen" id="successScreen">
+      <div class="success-icon">📬</div>
+      <h2 class="success-title">Pack Queued, <span id="confirmedName">Friend</span>!</h2>
+      <p class="success-subtitle">
+        Your free physical personality card pack is being boxed for your gang. Get ready to hand them out and tag everyone!
+      </p>
+
+      <div class="dispatch-badge">
+        🚀 Delivery Courier Dispatch in 24–48 Hours
+      </div>
+
+      <!-- Official Courier Consignee Label (Blue Dart / Speed Post format with PIN at end) -->
+      <div class="courier-label-box" id="courierLabelBox">
+        <div class="courier-label-header">
+          <span>📦 Courier Dispatch Consignee Slip</span>
+          <button type="button" class="copy-label-btn" onclick="copyCourierSlip()">📋 Copy Label</button>
+        </div>
+        <div id="formattedCourierSlip">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <div class="summary-card">
+        <div>📦 <strong>Item:</strong> Personality Card Pack (Ready to Tag Your Friends)</div>
+        <div>📱 <strong>Courier Contact:</strong> <span id="confirmedPhone">+91-XXXXXXXXXX</span></div>
+        <div>📍 <strong>Shipping To:</strong> <span id="confirmedAddress">Address</span></div>
+        <div id="confirmedGpsRow" style="display:none;">🌐 <strong>GPS Pin:</strong> <span id="confirmedGps">Lat, Lng</span></div>
+      </div>
+
+      <div class="invite-box">
+        <p style="font-size: 14px; color: #cbd5e1; margin-bottom: 6px;">
+          Want to warn your hostel gang that their personality cards are coming?
+        </p>
+        <a href="#" id="waShareBtn" class="invite-btn" target="_blank">
+          📲 Tell the Gang on WhatsApp
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // URL param extraction for seamless auto-linking
+    const urlParams = new URLSearchParams(window.location.search);
+    const studentId = urlParams.get('id') || urlParams.get('ref') || 'member_' + Math.floor(1000 + Math.random() * 9000);
+    const prefillPhone = urlParams.get('phone') || urlParams.get('mobile');
+    const prefillName = urlParams.get('name');
+
+    if (prefillPhone) {
+      document.getElementById('phone').value = prefillPhone;
+    }
+    if (prefillName) {
+      document.getElementById('fullName').value = prefillName;
+    }
+
+    // Pill stack selector
+    function selectStackPill(el, hiddenId) {
+      const container = el.parentElement;
+      container.querySelectorAll('.vibe-pill').forEach(p => p.classList.remove('active'));
+      el.classList.add('active');
+      document.getElementById(hiddenId).value = el.querySelector('span:last-child').innerText.trim();
+    }
+
+    // College size chip selector
+    function selectCollegeChip(el, value) {
+      document.querySelectorAll('#collegeSizeChips .size-chip').forEach(c => c.classList.remove('active'));
+      el.classList.add('active');
+      document.getElementById('collegeHeadcount').value = value;
+    }
+
+    // Toggle manual address fields if user wants to inspect/modify
+    function toggleManualAddress() {
+      const container = document.getElementById('manualAddressFields');
+      const isHidden = container.style.display === 'none';
+      container.style.display = isHidden ? 'block' : 'none';
+    }
+
+    // GPS Auto-Fill & Location Lock (Multi-tier resilient fallback)
+    function triggerGPSAutoFill() {
+      const btn = document.getElementById('gpsBtn');
+      const subText = document.getElementById('gpsSubText');
+      const lockedCard = document.getElementById('gpsLockedCard');
+      const summaryText = document.getElementById('gpsLockedSummaryText');
+      const accuracyTag = document.getElementById('gpsAccuracyTag');
+      const manualFields = document.getElementById('manualAddressFields');
+
+      if (!navigator.geolocation) {
+        subText.innerText = "GPS not supported on this browser. Please fill address manually below.";
+        return;
+      }
+
+      btn.innerText = "Locating...";
+      btn.disabled = true;
+      subText.innerText = "Requesting device location (click 'Allow' in browser popup)...";
+
+      async function onPosSuccess(pos) {
+        const lat = pos.coords.latitude;
+        const lng = pos.coords.longitude;
+        const acc = Math.round(pos.coords.accuracy);
+
+        document.getElementById('gpsCoordinates').value = `${lat.toFixed(6)},${lng.toFixed(6)}`;
+        document.getElementById('gpsAccuracy').value = `${acc}m`;
+
+        // Accuracy badge assessment
+        if (acc <= 150) {
+          accuracyTag.innerText = `✓ High-Precision GPS Locked (±${acc}m)`;
+          accuracyTag.style.color = '#00d2a0';
+        } else {
+          accuracyTag.innerText = `📍 Location Detected (±${acc}m accuracy)`;
+          accuracyTag.style.color = '#ffd000';
+        }
+
+        subText.innerText = `Coordinates locked (${lat.toFixed(4)}, ${lng.toFixed(4)}). Resolving PIN & City...`;
+
+        // Reverse Geocoding via BigDataCloud (Client-side CORS enabled, high accuracy in India)
+        try {
+          const res = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=en`);
+          if (res.ok) {
+            const data = await res.json();
+            
+            if (data.postcode) document.getElementById('pincode').value = data.postcode;
+            if (data.city || data.locality) document.getElementById('city').value = data.city || data.locality;
+            if (data.principalSubdivision) document.getElementById('state').value = data.principalSubdivision;
+            
+            const landmarkArea = data.localityInfo?.administrative?.[3]?.name || data.locality || "";
+            if (landmarkArea && !document.getElementById('addressLine2').value) {
+              document.getElementById('addressLine2').value = landmarkArea;
+            }
+
+            const resolvedSummary = `${document.getElementById('city').value || ''}, ${document.getElementById('state').value || ''} - ${document.getElementById('pincode').value || ''}`;
+            summaryText.innerText = resolvedSummary;
+
+            // Reduce friction: Collapse manual fields and present clean verified chip!
+            lockedCard.style.display = 'flex';
+            manualFields.style.display = 'none';
+
+            btn.innerText = "✓ GPS Attached";
+            btn.classList.add('attached');
+            btn.disabled = false;
+            subText.innerHTML = `<span style="color:#00d2a0; font-weight:600;">Location auto-filled! You only need to enter your Room / Hostel No.</span>`;
+            
+            // Focus user right into the only remaining field
+            document.getElementById('addressLine1').focus();
+            return;
+          }
+        } catch (apiErr) {
+          console.warn("Reverse geocode network error:", apiErr);
+        }
+
+        // Fallback if reverse geocoding was slow: show coordinates
+        lockedCard.style.display = 'flex';
+        summaryText.innerText = `Coordinates: ${lat.toFixed(5)}, ${lng.toFixed(5)} (±${acc}m)`;
+        btn.innerText = "✓ Pinned";
+        btn.disabled = false;
+      }
+
+      // Tier 1: Try High-Accuracy with 15s timeout & 5-minute cached position
+      navigator.geolocation.getCurrentPosition(
+        onPosSuccess,
+        (err) => {
+          console.warn("High accuracy GPS failed (code " + err.code + "): " + err.message);
+
+          // If user clicked Block/Denied, show clear instructions
+          if (err.code === 1) { // PERMISSION_DENIED
+            subText.innerText = "Location permission blocked or dismissed. Please allow location in your browser bar or enter address below.";
+            btn.innerText = "Retry GPS";
+            btn.disabled = false;
+            return;
+          }
+
+          // Tier 2: Automatic fallback to standard accuracy (Wi-Fi / IP positioning)
+          subText.innerText = "Fine-tuning location via Wi-Fi network...";
+          navigator.geolocation.getCurrentPosition(
+            onPosSuccess,
+            (fallbackErr) => {
+              console.warn("Standard accuracy fallback failed:", fallbackErr);
+              let msg = "Could not detect location. Please fill your courier address below.";
+              if (fallbackErr.code === 1) msg = "Location permission was denied. Please enter address below.";
+              else if (fallbackErr.code === 3) msg = "Location request timed out. Please enter address manually below.";
+              subText.innerText = msg;
+              btn.innerText = "Retry GPS";
+              btn.disabled = false;
+            },
+            { enableHighAccuracy: false, timeout: 12000, maximumAge: 600000 }
+          );
+        },
+        { enableHighAccuracy: true, timeout: 15000, maximumAge: 300000 }
+      );
+    }
+
+    // Copy formatted courier consignee slip to clipboard
+    function copyCourierSlip() {
+      const slipText = document.getElementById('formattedCourierSlip').innerText;
+      navigator.clipboard.writeText(slipText).then(() => {
+        const copyBtn = document.querySelector('.copy-label-btn');
+        if (copyBtn) {
+          const orig = copyBtn.innerText;
+          copyBtn.innerText = '✓ Copied!';
+          setTimeout(() => { copyBtn.innerText = orig; }, 2000);
+        }
+      });
+    }
+
+    // Handle Form Submit
+    function handleClaim(e) {
+      e.preventDefault();
+
+      const btn = document.getElementById('submitBtn');
+      btn.innerText = '⏳ Securing your pack...';
+      btn.disabled = true;
+
+      const formData = {
+        studentId: studentId,
+        fullName: document.getElementById('fullName').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        altPhone: document.getElementById('altPhone') ? document.getElementById('altPhone').value.trim() : '',
+        addressLine1: document.getElementById('addressLine1').value.trim(),
+        addressLine2: document.getElementById('addressLine2').value.trim(),
+        city: document.getElementById('city').value.trim(),
+        state: document.getElementById('state').value.trim(),
+        pincode: document.getElementById('pincode').value.trim(),
+        gps: document.getElementById('gpsCoordinates').value,
+        gpsAccuracy: document.getElementById('gpsAccuracy').value,
+        intentPlan: document.getElementById('intentPlan').value,
+        collegeHeadcount: document.getElementById('collegeHeadcount').value,
+        campusReality: document.getElementById('campusReality').value,
+        timestamp: new Date().toISOString()
+      };
+
+      // Store in browser storage for instant local verification
+      try {
+        const stored = JSON.parse(localStorage.getItem('card_claims') || '[]');
+        stored.push(formData);
+        localStorage.setItem('card_claims', JSON.stringify(stored));
+      } catch (err) {
+        console.error(err);
+      }
+
+      // Transition smoothly to confirmation screen
+      setTimeout(() => {
+        const hero = document.querySelector('.hero-banner');
+        if (hero) hero.style.display = 'none';
+        document.getElementById('claimForm').style.display = 'none';
+        document.getElementById('successScreen').style.display = 'block';
+
+        document.getElementById('confirmedName').innerText = formData.fullName;
+        
+        let phoneDisplay = '+91-' + formData.phone;
+        if (formData.altPhone) phoneDisplay += ` (Alt: ${formData.altPhone})`;
+        document.getElementById('confirmedPhone').innerText = phoneDisplay;
+        
+        let fullAddr = formData.addressLine1;
+        if (formData.addressLine2) fullAddr += ', ' + formData.addressLine2;
+        if (formData.city) fullAddr += ', ' + formData.city;
+        if (formData.state) fullAddr += ', ' + formData.state;
+        if (formData.pincode) fullAddr += ' - ' + formData.pincode;
+        
+        document.getElementById('confirmedAddress').innerText = fullAddr;
+
+        // Render formatted courier dispatch label (with PIN code strictly at the end)
+        let courierSlipHtml = `<strong>CONSIGNEE:</strong> ${formData.fullName}<br>`;
+        courierSlipHtml += `<strong>MOBILE:</strong> +91-${formData.phone}`;
+        if (formData.altPhone) courierSlipHtml += ` / Alt: +91-${formData.altPhone}`;
+        courierSlipHtml += `<br><strong>ADDRESS:</strong> ${formData.addressLine1}<br>`;
+        if (formData.addressLine2) courierSlipHtml += `<strong>LANDMARK/CAMPUS:</strong> ${formData.addressLine2}<br>`;
+        courierSlipHtml += `<strong>CITY / DISTRICT:</strong> ${formData.city}<br>`;
+        courierSlipHtml += `<strong>STATE:</strong> ${formData.state}<br>`;
+        courierSlipHtml += `<strong>PIN CODE:</strong> ${formData.pincode}`;
+        if (formData.gps) courierSlipHtml += `<br><span style="color:#00d2a0; font-size:11px;">GPS: ${formData.gps} (±${formData.gpsAccuracy || '10m'})</span>`;
+        document.getElementById('formattedCourierSlip').innerHTML = courierSlipHtml;
+
+        if (formData.gps) {
+          document.getElementById('confirmedGpsRow').style.display = 'block';
+          document.getElementById('confirmedGps').innerText = `${formData.gps} (±${formData.gpsAccuracy || '10m'})`;
+        }
+
+        const shareMsg = encodeURIComponent("Hey! The club is sending out free physical collector cards to early students. Claim your free pack here: " + window.location.href);
+        document.getElementById('waShareBtn').href = `https://wa.me/?text=${shareMsg}`;
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 500);
+    }
+  </script>
+</body>
+</html>
