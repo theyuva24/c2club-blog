@@ -1140,8 +1140,7 @@
         console.error(err);
       }
 
-      // Transition smoothly to confirmation screen
-      setTimeout(() => {
+      function showSuccess(claimId) {
         const hero = document.querySelector('.hero-banner');
         if (hero) hero.style.display = 'none';
         document.getElementById('claimForm').style.display = 'none';
@@ -1171,6 +1170,7 @@
         courierSlipHtml += `<strong>STATE:</strong> ${formData.state}<br>`;
         courierSlipHtml += `<strong>PIN CODE:</strong> ${formData.pincode}`;
         if (formData.gps) courierSlipHtml += `<br><span style="color:#00d2a0; font-size:11px;">GPS: ${formData.gps} (±${formData.gpsAccuracy || '10m'})</span>`;
+        if (claimId) courierSlipHtml += `<br><span style="color:#f59e0b; font-size:11px;">CLAIM ID: ${claimId}</span>`;
         document.getElementById('formattedCourierSlip').innerHTML = courierSlipHtml;
 
         if (formData.gps) {
@@ -1182,7 +1182,23 @@
         document.getElementById('waShareBtn').href = `https://wa.me/?text=${shareMsg}`;
 
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      }, 500);
+      }
+
+      // Submit to backend Cloud Function
+      const FUNCTION_URL = 'https://us-central1-c2club-fd6722.cloudfunctions.net/submitCardClaim';
+      fetch(FUNCTION_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      })
+      .then(res => res.json())
+      .then(data => {
+        showSuccess(data && data.claimId ? data.claimId : '');
+      })
+      .catch(err => {
+        console.warn('Backend sync failed, relying on local backup:', err);
+        showSuccess('');
+      });
     }
   </script>
 </body>
