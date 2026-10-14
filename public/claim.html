@@ -841,12 +841,12 @@
 
           <div class="input-group">
             <label for="phone">Active Mobile Number <span class="req">*</span></label>
-            <input type="tel" id="phone" name="phone" required placeholder="e.g. 9876543210" pattern="[0-9]{10}" inputmode="tel" maxlength="10" autocomplete="tel">
+            <input type="tel" id="phone" name="phone" required placeholder="e.g. 9876543210" pattern="^(\+?91[\-\s]?)?[0-9\s\-]{10,14}$" inputmode="tel" maxlength="16" autocomplete="tel" oninput="sanitizePhoneInput(this)" onchange="sanitizePhoneInput(this)" onblur="sanitizePhoneInput(this)">
           </div>
 
           <div class="input-group col-full">
             <label for="altPhone">Alternate / WhatsApp Number <span style="color:#64748b; font-weight:normal;">(Recommended for delivery calls)</span></label>
-            <input type="tel" id="altPhone" name="altPhone" placeholder="e.g. 9812345678 (Helpful if you're in class)" pattern="[0-9]{10}" inputmode="tel" maxlength="10">
+            <input type="tel" id="altPhone" name="altPhone" placeholder="e.g. 9812345678 (Helpful if you're in class)" pattern="^(\+?91[\-\s]?)?[0-9\s\-]{10,14}$" inputmode="tel" maxlength="16" autocomplete="tel" oninput="sanitizePhoneInput(this)" onchange="sanitizePhoneInput(this)" onblur="sanitizePhoneInput(this)">
           </div>
 
           <!-- Address Line 1 is ALWAYS needed (GPS cannot know room/flat no.) -->
@@ -1124,6 +1124,35 @@
       });
     }
 
+    // Auto-clean Indian phone numbers (handles +91, 0, spaces, dashes from autofill or paste)
+    function sanitizePhoneInput(el) {
+      if (!el) return;
+      let val = el.value;
+      if (!val) return;
+      let digits = val.replace(/\D/g, '');
+      if (digits.length >= 12 && digits.startsWith('91')) {
+        digits = digits.slice(2);
+      } else if (digits.length === 11 && digits.startsWith('0')) {
+        digits = digits.slice(1);
+      }
+      if (digits.length > 10) {
+        digits = digits.slice(-10);
+      }
+      // If user pasted or autofilled with +91, 0, spaces, dashes or reached full 10 digits
+      if (val !== digits && (val.includes('+') || val.includes(' ') || val.includes('-') || val.startsWith('91') || val.startsWith('0') || digits.length === 10)) {
+        el.value = digits;
+      }
+    }
+
+    function clean10DigitPhone(val) {
+      if (!val) return '';
+      let d = String(val).replace(/\D/g, '');
+      if (d.length >= 12 && d.startsWith('91')) d = d.slice(2);
+      else if (d.length === 11 && d.startsWith('0')) d = d.slice(1);
+      if (d.length > 10) d = d.slice(-10);
+      return d;
+    }
+
     // Handle Form Submit
     function handleClaim(e) {
       e.preventDefault();
@@ -1135,8 +1164,8 @@
       const formData = {
         studentId: studentId,
         fullName: document.getElementById('fullName').value.trim(),
-        phone: document.getElementById('phone').value.trim(),
-        altPhone: document.getElementById('altPhone') ? document.getElementById('altPhone').value.trim() : '',
+        phone: clean10DigitPhone(document.getElementById('phone').value),
+        altPhone: clean10DigitPhone(document.getElementById('altPhone') ? document.getElementById('altPhone').value : ''),
         addressLine1: document.getElementById('addressLine1').value.trim(),
         addressLine2: document.getElementById('addressLine2').value.trim(),
         city: document.getElementById('city').value.trim(),
