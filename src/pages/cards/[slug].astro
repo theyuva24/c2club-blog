@@ -127,13 +127,58 @@ const currentArchetype = ARCH.find(a => a.slug === slug) || ARCH[1];
   #pick { justify-content: flex-start; padding-left: 0; padding-right: 0; }
   #pick h1 { padding: 14px 18px 0; font-size: clamp(1.4rem, 6vw, 1.95rem); }
   .back { align-self: flex-start; margin: 8px 12px 0; padding: 10px 14px; }
+  
+  /* Fast horizontal selector pills */
+  .selector-pills {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    width: 100%;
+    padding: 10px 16px 4px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+  }
+  .selector-pills::-webkit-scrollbar { display: none; }
+  .pill-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: rgba(5,46,34,0.18);
+    border: 2px solid var(--ink);
+    color: var(--ink);
+    font-family: var(--body);
+    font-weight: 800;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.15s ease;
+  }
+  .pill-tab:hover, .pill-tab:active {
+    background: #fff;
+    transform: translateY(-1px);
+  }
+  .pill-tab.active {
+    background: var(--sun);
+    color: var(--ink);
+    box-shadow: 0 3px 0 var(--ink);
+    transform: translateY(-1px);
+  }
+  .pill-tab span.emoji {
+    font-size: 1rem;
+    line-height: 1;
+  }
+
   .track {
     display: flex;
     gap: 18px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     width: 100%;
-    padding: 20px calc(50vw - var(--hw, 135px)) 12px;
+    padding: 14px calc(50vw - var(--hw, 135px)) 12px;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     touch-action: pan-x;
@@ -212,8 +257,9 @@ const currentArchetype = ARCH.find(a => a.slug === slug) || ARCH[1];
   <section class="screen" id="pick">
     <button class="btn ghost back" id="back">Back</button>
     <h1>No worries. Swipe till one hits.</h1>
+    <div class="selector-pills" id="selectorPills" role="tablist" aria-label="Select card"></div>
     <div class="track" id="track" tabindex="0" aria-label="Personality cards"></div>
-    <p class="hint">Swipe sideways for more cards</p>
+    <p class="hint">Swipe sideways or tap any card above</p>
   </section>
 </main>
 
@@ -341,11 +387,49 @@ function openJoin(a) {
 function renderPick() {
   const start = ARCH.findIndex(a => a.slug === chosen);
   const order = ARCH.slice(start + 1).concat(ARCH.slice(0, start));
+  
+  // Render fast selector pills
+  const pillsEl = $("selectorPills");
+  if (pillsEl) {
+    pillsEl.innerHTML = order.map((a, idx) => `
+      <button class="pill-tab ${idx === 0 ? 'active' : ''}" data-slug="${a.slug}">
+        <span class="emoji">${a.em}</span>
+        <span>${a.name}</span>
+      </button>
+    `).join("");
+
+    pillsEl.onclick = (e) => {
+      const btn = e.target.closest(".pill-tab");
+      if (!btn) return;
+      const targetSlug = btn.dataset.slug;
+      const targetSlide = document.querySelector(`.slide[data-slug="${targetSlug}"]`);
+      if (targetSlide) {
+        targetSlide.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      }
+      pillsEl.querySelectorAll(".pill-tab").forEach(p => p.classList.toggle("active", p === btn));
+    };
+  }
+
   $("track").innerHTML = order.map(a => `<div class="slide" data-slug="${a.slug}">${cardHTML(a)}<button class="btn pri" data-pick="${a.slug}">This is me</button></div>`).join("");
   const hw = Math.min(window.innerWidth * 0.7, 280) / 2;
   $("track").style.setProperty("--hw", hw + "px");
   $("track").scrollLeft = 0;
-  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) theme(BY[e.target.dataset.slug]); }), { root: $("track"), threshold: 0.6 });
+
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) {
+      const activeSlug = e.target.dataset.slug;
+      theme(BY[activeSlug]);
+      if (pillsEl) {
+        pillsEl.querySelectorAll(".pill-tab").forEach(p => {
+          const isActive = p.dataset.slug === activeSlug;
+          p.classList.toggle("active", isActive);
+          if (isActive) {
+            p.scrollIntoView({ behavior: "smooth", inline: "nearest", block: "nearest" });
+          }
+        });
+      }
+    }
+  }), { root: $("track"), threshold: 0.6 });
   document.querySelectorAll(".slide").forEach(s => io.observe(s));
 }
 
