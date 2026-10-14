@@ -1097,7 +1097,7 @@
         navigator.geolocation.getCurrentPosition(
           onPosSuccess,
           onPosError,
-          { enableHighAccuracy: true, timeout: 10000, maximumAge: 120000 }
+          { enableHighAccuracy: false, timeout: 20000, maximumAge: 300000 }
         );
       } catch (e) {
         console.error("Direct getCurrentPosition exception:", e);
