@@ -816,11 +816,11 @@
             <div class="gps-hero-icon">📍</div>
             <div>
               <div class="gps-hero-title">Auto-Detect Location via GPS</div>
-              <div class="gps-hero-sub" id="gpsSubText">Locks your real GPS and auto-fills PIN, City, State & Area</div>
+              <div class="gps-hero-sub" id="gpsSubText">Click 'Detect Location' to automatically fill your address</div>
             </div>
           </div>
           <button type="button" class="gps-action-btn" id="gpsBtn" onclick="triggerGPSAutoFill()">
-            <span>Auto-Fill GPS</span>
+            <span>Detect Location</span>
           </button>
         </div>
 
@@ -979,7 +979,7 @@
       container.style.display = isHidden ? 'block' : 'none';
     }
 
-    // GPS Auto-Fill & Location Lock (Multi-tier resilient fallback)
+    // GPS Auto-Fill & Location Lock (Direct, unblocked Geolocation call)
     function triggerGPSAutoFill() {
       const btn = document.getElementById('gpsBtn');
       const subText = document.getElementById('gpsSubText');
@@ -988,19 +988,19 @@
       const accuracyTag = document.getElementById('gpsAccuracyTag');
       const manualFields = document.getElementById('manualAddressFields');
 
-      if (!navigator.geolocation) {
-        subText.innerText = "GPS not supported on this browser. Please fill address manually below.";
+      if (!('geolocation' in navigator) || !navigator.geolocation) {
+        if (subText) subText.innerText = "GPS is not supported on this browser. Please type your address below.";
         return;
       }
 
-      btn.innerText = "Locating...";
+      btn.innerText = "Detecting...";
       btn.disabled = true;
-      subText.innerText = "Requesting device location (click 'Allow' in browser popup)...";
+      if (subText) subText.innerText = "Tap 'Allow' on your browser prompt to auto-fill...";
 
       async function onPosSuccess(pos) {
         const lat = pos.coords.latitude;
         const lng = pos.coords.longitude;
-        const acc = Math.round(pos.coords.accuracy);
+        const acc = Math.round(pos.coords.accuracy || 0);
 
         document.getElementById('gpsCoordinates').value = `${lat.toFixed(6)},${lng.toFixed(6)}`;
         document.getElementById('gpsAccuracy').value = `${acc}m`;
@@ -1038,10 +1038,10 @@
             lockedCard.style.display = 'flex';
             manualFields.style.display = 'none';
 
-            btn.innerText = "✓ GPS Attached";
+            btn.innerText = "✓ Location Detected";
             btn.classList.add('attached');
             btn.disabled = false;
-            subText.innerHTML = `<span style="color:#00d2a0; font-weight:600;">Location auto-filled! You only need to enter your Room / Hostel No.</span>`;
+            subText.innerHTML = `<span style="color:#00d2a0; font-weight:600;">Location auto-filled! Just enter your Room No. / Hostel Block.</span>`;
             
             // Focus user right into the only remaining field
             document.getElementById('addressLine1').focus();
@@ -1056,40 +1056,54 @@
         summaryText.innerText = `Coordinates: ${lat.toFixed(5)}, ${lng.toFixed(5)} (±${acc}m)`;
         btn.innerText = "✓ Pinned";
         btn.disabled = false;
+        subText.innerHTML = `<span style="color:#00d2a0; font-weight:600;">Location coordinates pinned! Enter your room & address details below.</span>`;
       }
 
-      // Tier 1: Try High-Accuracy with 15s timeout & 5-minute cached position
-      navigator.geolocation.getCurrentPosition(
-        onPosSuccess,
-        (err) => {
-          console.warn("High accuracy GPS failed (code " + err.code + "): " + err.message);
+      function onPosError(err) {
+        console.warn("Geolocation call failed:", err);
+        btn.disabled = false;
+        btn.innerText = "Detect Location";
 
-          // If user clicked Block/Denied, show clear instructions
-          if (err.code === 1) { // PERMISSION_DENIED
-            subText.innerText = "Location permission blocked or dismissed. Please allow location in your browser bar or enter address below.";
-            btn.innerText = "Retry GPS";
-            btn.disabled = false;
-            return;
-          }
-
-          // Tier 2: Automatic fallback to standard accuracy (Wi-Fi / IP positioning)
-          subText.innerText = "Fine-tuning location via Wi-Fi network...";
+        if (err.code === 1) { // PERMISSION_DENIED
+          subText.innerHTML = `<span style="color:#f87171;">Location permission denied. Please enter your courier address manually below.</span>`;
+        } else if (err.code === 2) { // POSITION_UNAVAILABLE
+          // Fallback with standard accuracy
+          subText.innerText = "Fine-tuning via mobile network...";
           navigator.geolocation.getCurrentPosition(
             onPosSuccess,
-            (fallbackErr) => {
-              console.warn("Standard accuracy fallback failed:", fallbackErr);
-              let msg = "Could not detect location. Please fill your courier address below.";
-              if (fallbackErr.code === 1) msg = "Location permission was denied. Please enter address below.";
-              else if (fallbackErr.code === 3) msg = "Location request timed out. Please enter address manually below.";
-              subText.innerText = msg;
-              btn.innerText = "Retry GPS";
-              btn.disabled = false;
+            (fErr) => {
+              btn.innerText = "Detect Location";
+              subText.innerText = "Location unavailable. Please enter address manually below.";
             },
-            { enableHighAccuracy: false, timeout: 12000, maximumAge: 600000 }
+            { enableHighAccuracy: false, timeout: 15000, maximumAge: 600000 }
           );
-        },
-        { enableHighAccuracy: true, timeout: 15000, maximumAge: 300000 }
-      );
+        } else if (err.code === 3) { // TIMEOUT
+          // Quick retry with lower accuracy requirement
+          navigator.geolocation.getCurrentPosition(
+            onPosSuccess,
+            (fErr) => {
+              btn.innerText = "Detect Location";
+              subText.innerText = "Location timed out. Please enter address manually below.";
+            },
+            { enableHighAccuracy: false, timeout: 15000, maximumAge: 600000 }
+          );
+        } else {
+          subText.innerText = "Could not detect location. Please enter address manually below.";
+        }
+      }
+
+      // Trigger directly on user gesture without any premature permissions.query checks
+      try {
+        navigator.geolocation.getCurrentPosition(
+          onPosSuccess,
+          onPosError,
+          { enableHighAccuracy: true, timeout: 10000, maximumAge: 120000 }
+        );
+      } catch (e) {
+        console.error("Direct getCurrentPosition exception:", e);
+        // Fallback for strict browsers
+        navigator.geolocation.getCurrentPosition(onPosSuccess, onPosError);
+      }
     }
 
     // Copy formatted courier consignee slip to clipboard
