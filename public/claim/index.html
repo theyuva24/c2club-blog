@@ -1065,7 +1065,12 @@
         btn.innerText = "Detect Location";
 
         if (err.code === 1) { // PERMISSION_DENIED
-          subText.innerHTML = `<span style="color:#f87171;">Location permission denied. Please enter your courier address manually below.</span>`;
+          const isInApp = /FBAN|FBAV|Instagram|WhatsApp|Line|Twitter|Snapchat/i.test(navigator.userAgent);
+          if (isInApp) {
+            subText.innerHTML = `<span style="color:#f87171;">In-app browser restricted location. Tap <b>⋮</b> at top right ➔ <b>'Open in Chrome'</b>, or enter address manually below.</span>`;
+          } else {
+            subText.innerHTML = `<span style="color:#f87171;">Permission blocked. Tap 🔒 in browser address bar ➔ <b>Permissions</b> ➔ <b>Allow Location</b>, or enter address manually below.</span>`;
+          }
         } else if (err.code === 2) { // POSITION_UNAVAILABLE
           // Fallback with standard accuracy
           subText.innerText = "Fine-tuning via mobile network...";
