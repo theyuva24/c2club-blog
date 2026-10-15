@@ -808,6 +808,387 @@
         border-radius: 15px;
       }
     }
+
+    /* ══════════════════════════════════════════════════════
+       STAGE 1: THE UNHINGED CAMPUS VIBE CHECK (QUIZ) STYLES
+       ══════════════════════════════════════════════════════ */
+    .quiz-card {
+      background: var(--card-white);
+      border: var(--border-ink);
+      border-radius: 28px;
+      box-shadow: var(--shadow-chunky);
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quiz-header {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .quiz-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .quiz-stage-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--mint);
+      border: 1.5px solid var(--ink);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 11.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--ink);
+    }
+
+    .quiz-counter {
+      font-family: var(--font-display);
+      font-size: 14px;
+      color: var(--ink);
+    }
+
+    .quiz-progress-track {
+      height: 9px;
+      background: #E2FCEF;
+      border: 1.5px solid var(--ink);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .quiz-progress-fill {
+      height: 100%;
+      background: var(--sun);
+      width: 20%;
+      transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .quiz-body {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .quiz-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--deep);
+    }
+
+    .quiz-question {
+      font-family: var(--font-display);
+      font-size: clamp(18px, 4.8vw, 21px);
+      line-height: 1.25;
+      color: var(--ink);
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .quiz-opt-btn {
+      width: 100%;
+      background: #fbfdfc;
+      border: 2px solid var(--ink);
+      border-radius: 16px;
+      padding: 13px 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      text-align: left;
+      font-family: var(--font-body);
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.35;
+      box-shadow: 0 3px 0 var(--ink);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .quiz-opt-btn:hover {
+      background: var(--mint);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 0 var(--ink);
+    }
+
+    .quiz-opt-btn:active {
+      transform: translateY(1px);
+      box-shadow: 0 1px 0 var(--ink);
+      background: var(--sun);
+    }
+
+    .quiz-opt-emoji {
+      font-size: 21px;
+      flex-shrink: 0;
+      line-height: 1;
+      margin-top: 2px;
+    }
+
+    .quiz-nav-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 4px;
+    }
+
+    .quiz-prev-btn {
+      background: none;
+      border: none;
+      font-family: var(--font-body);
+      font-size: 12.5px;
+      font-weight: 800;
+      color: var(--ink);
+      cursor: pointer;
+      padding: 4px 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      opacity: 0.75;
+      transition: opacity 0.2s;
+    }
+    .quiz-prev-btn:hover { opacity: 1; text-decoration: underline; }
+
+    /* Scanning Screen Loader */
+    .quiz-scanning-box {
+      display: none;
+      text-align: center;
+      padding: 40px 16px;
+    }
+
+    .scanning-spinner {
+      width: 52px;
+      height: 52px;
+      border: 4px solid #E2FCEF;
+      border-top-color: var(--sun);
+      border-right-color: var(--ink);
+      border-radius: 50%;
+      margin: 0 auto 18px;
+      animation: quizSpin 0.75s linear infinite;
+    }
+
+    @keyframes quizSpin {
+      to { transform: rotate(360deg); }
+    }
+
+    .scanning-title {
+      font-family: var(--font-display);
+      font-size: 21px;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .scanning-sub {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--deep);
+      min-height: 20px;
+    }
+
+    /* Result Diagnosis Box */
+    .quiz-result-box {
+      display: none;
+      text-align: center;
+      padding: 10px 4px 6px;
+      animation: resultPopIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes resultPopIn {
+      0% { opacity: 0; transform: scale(0.92); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .result-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--sun);
+      border: 2px solid var(--ink);
+      box-shadow: 0 3px 0 var(--ink);
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-family: var(--font-display);
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .result-badge.failed {
+      background: #FFE8E8;
+      color: #991B1B;
+      border-color: #991B1B;
+      box-shadow: 0 3px 0 #991B1B;
+    }
+
+    .result-title {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 5.5vw, 29px);
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .result-card-preview {
+      width: 145px;
+      height: 218px;
+      margin: 14px auto;
+      border-radius: 14px;
+      border: 2.5px solid var(--ink);
+      box-shadow: 0 10px 0 var(--ink), 0 18px 30px rgba(5,46,34,0.3);
+      overflow: hidden;
+      transform: rotate(-2deg);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      cursor: pointer;
+    }
+    .result-card-preview:hover {
+      transform: rotate(0deg) scale(1.08);
+      border-color: var(--sun);
+    }
+    .result-card-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .result-desc {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink);
+      max-width: 440px;
+      margin: 0 auto 16px;
+      line-height: 1.45;
+    }
+
+    .result-cta-btn {
+      width: 100%;
+      background: var(--sun);
+      color: var(--ink);
+      font-family: var(--font-display);
+      font-size: 17px;
+      padding: 14px;
+      border-radius: 16px;
+      border: 2.5px solid var(--ink);
+      box-shadow: var(--shadow-chunky);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+    .result-cta-btn:hover {
+      background: var(--sun-hover);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+    .result-cta-btn:active {
+      transform: translateY(2px);
+      box-shadow: var(--shadow-pressed);
+    }
+
+    .retake-btn {
+      background: #fbfdfc;
+      color: var(--ink);
+      font-family: var(--font-display);
+      font-size: 15px;
+      padding: 12px 20px;
+      border-radius: 14px;
+      border: 2px solid var(--ink);
+      box-shadow: 0 3px 0 var(--ink);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+      transition: all 0.15s ease;
+    }
+    .retake-btn:hover {
+      background: var(--mint);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 0 var(--ink);
+    }
+
+    /* Stage 2 Unlocked Header Banner */
+    .stage2-banner {
+      background: var(--mint);
+      border: 2px solid var(--ink);
+      border-radius: 18px;
+      padding: 15px 16px;
+      text-align: center;
+      margin-bottom: 22px;
+      box-shadow: 0 3px 0 var(--ink);
+    }
+    .stage2-pill {
+      display: inline-block;
+      background: var(--sun);
+      border: 1.5px solid var(--ink);
+      font-family: var(--font-display);
+      font-size: 11.5px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+    .stage2-heading {
+      font-family: var(--font-display);
+      font-size: 20px;
+      color: var(--ink);
+      margin-bottom: 3px;
+    }
+    .stage2-sub {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--deep);
+    }
+
+    /* WhatsApp Viral Challenge Button on Success Screen */
+    .wa-challenge-btn {
+      width: 100%;
+      background: #25D366;
+      color: #052E22;
+      font-family: var(--font-display);
+      font-size: 16.5px;
+      padding: 14px 18px;
+      border-radius: 16px;
+      border: 2.5px solid var(--ink);
+      box-shadow: var(--shadow-chunky);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      margin-top: 14px;
+    }
+    .wa-challenge-btn:hover {
+      background: #22c35e;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+    .wa-challenge-btn:active {
+      transform: translateY(2px);
+      box-shadow: var(--shadow-pressed);
+    }
   </style>
 </head>
 <body>
@@ -818,7 +1199,7 @@
     <header class="hero-header" id="heroHeader">
       <div class="hero-pill">🎁 100% Free Welcome Pack</div>
       <h1 class="hero-title">Claim Your C2 Collector Pack</h1>
-      <p class="hero-sub">11 physical personality cards boxed and shipped to your hostel or campus for free.</p>
+      <p class="hero-sub">Pass the 5-question campus vibe check to diagnose your alter-ego & claim the physical 11-card deck.</p>
       
       <!-- Finalized Front Cards Fan Showcase -->
       <div class="cards-fan" id="cardsFan">
@@ -850,8 +1231,78 @@
       </div>
     </header>
 
-    <!-- Main Claim Card Form -->
-    <form class="claim-card" id="claimForm" onsubmit="handleClaim(event)">
+    <!-- STAGE 1: The Unhinged Campus Vibe Check (Interactive Quiz) -->
+    <section class="quiz-card" id="quizCard">
+      <!-- Quiz Header with Progress Tracker -->
+      <div class="quiz-header" id="quizHeader">
+        <div class="quiz-top-row">
+          <div class="quiz-stage-pill">🧪 Stage 1: The Vibe Check</div>
+          <div class="quiz-counter">Question <span id="qNum">1</span> / 5</div>
+        </div>
+        <div class="quiz-progress-track">
+          <div class="quiz-progress-fill" id="quizProgressFill" style="width: 20%;"></div>
+        </div>
+      </div>
+
+      <!-- Quiz Question & Options (Dynamic) -->
+      <div class="quiz-body" id="quizBody">
+        <div class="quiz-tag" id="quizTag">EXTROVERT TEST</div>
+        <h2 class="quiz-question" id="quizQuestionText">Loading question...</h2>
+        <div class="quiz-options" id="quizOptionsContainer">
+          <!-- Populated by JS -->
+        </div>
+        <div class="quiz-nav-row">
+          <button type="button" class="quiz-prev-btn" id="quizPrevBtn" onclick="prevQuizQuestion()" style="visibility: hidden;">
+            ← Previous Question
+          </button>
+          <span style="font-size: 11.5px; color: var(--deep); font-weight: 700;">Tap any option to advance</span>
+        </div>
+      </div>
+
+      <!-- Fake AI Campus Scanner Loader (Visible for 1.5s after Q5) -->
+      <div class="quiz-scanning-box" id="quizScanningBox">
+        <div class="scanning-spinner"></div>
+        <h3 class="scanning-title">Scanning Campus Energy...</h3>
+        <p class="scanning-sub" id="scanningStatusText">Auditing canteen debts & proxy ethics...</p>
+      </div>
+
+      <!-- Diagnosis Result Box (Visible after scan completes) -->
+      <div class="quiz-result-box" id="quizResultBox">
+        <div class="result-badge" id="resultBadge">🔥 100% Certified Campus Instigator</div>
+        <h2 class="result-title" id="resultTitle">You Passed The Vibe Check!</h2>
+        
+        <div class="result-card-preview" id="resultCardPreview" title="Your Diagnosed Alter-Ego Card">
+          <img id="resultCardImg" src="/cards-deck/03_Canteen_Commander_Front.png" alt="Diagnosed Card">
+        </div>
+        
+        <p class="result-desc" id="resultDesc">
+          You have zero shame, main-character energy, and you actually get stuff done. You're officially qualified to receive the full 11-Card C2 Starter Deck to deal out to your squad!
+        </p>
+
+        <div id="resultPassActions">
+          <button type="button" class="result-cta-btn" onclick="unlockStage2()">
+            <span>🎁 Claim Your 11-Card Deck Below</span>
+            <span>👇</span>
+          </button>
+        </div>
+
+        <div id="resultFailActions" style="display: none;">
+          <button type="button" class="retake-btn" onclick="resetQuiz()">
+            <span>⚡ Retake Quiz (Show Actual Energy)</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Claim Card Form (Stage 2: Shipping Address) -->
+    <form class="claim-card" id="claimForm" onsubmit="handleClaim(event)" style="display: none;">
+
+      <!-- Stage 2 Unlocked Banner -->
+      <div class="stage2-banner">
+        <div class="stage2-pill">🎁 Stage 2: Free Physical Delivery</div>
+        <h3 class="stage2-heading">Where Should We Courier Your Pack?</h3>
+        <p class="stage2-sub">11 physical personality cards boxed and delivered to your hostel / campus room for free.</p>
+      </div>
 
       <!-- Hidden backend compatibility fields -->
       <input type="hidden" id="studentId" name="studentId" value="">
@@ -1032,6 +1483,9 @@
         <div class="fun-prompt">
           🔥 <strong>Ready to tag your gang?</strong> Find out who in your group is the <em>Canteen Commander</em>, the <em>75% Attendance Calculator</em>, and the ultimate <em>Assignment Survivor</em>!
         </div>
+        <a id="shareWaBtn" href="#" target="_blank" class="wa-challenge-btn">
+          💬 Challenge Campus Gang on WhatsApp
+        </a>
       </div>
     </div>
 
@@ -1088,6 +1542,368 @@
       const input = document.getElementById('collegeHeadcount');
       if (input) input.value = value;
     }
+
+    // ══════════════════════════════════════════════════════
+    // STAGE 1: 5 UNHINGED CAMPUS VIBE CHECK QUESTIONS & LOGIC
+    // ══════════════════════════════════════════════════════
+    const QUIZ_QUESTIONS = [
+      {
+        num: 1,
+        tag: "EXTROVERT / STRANGERS TEST",
+        question: "The college canteen is totally packed. Only one table has empty chairs, but 4 serious-looking seniors are sitting there. What do you do?",
+        options: [
+          {
+            emoji: "👑",
+            text: "Pull a chair, sit right with them, and ask: 'Bro, why does the chai taste like hot water today?' like you've known them for 5 years.",
+            points: 3,
+            cardIndex: 3 // Canteen Commander
+          },
+          {
+            emoji: "🤝",
+            text: "Walk up politely: 'Hey bro, is this seat free? Mind if I join?'",
+            points: 2,
+            cardIndex: 0 // Social Butterfly
+          },
+          {
+            emoji: "🚶‍♂️",
+            text: "Stand awkwardly in the corner holding your plate and eat alone.",
+            points: 1,
+            cardIndex: 6 // Silent Genius
+          },
+          {
+            emoji: "🚪",
+            text: "Turn around and leave the canteen hungry.",
+            points: 0,
+            cardIndex: 5 // Assignment Survivor
+          }
+        ]
+      },
+      {
+        num: 2,
+        tag: "ZERO EMBARRASSMENT TEST",
+        question: "College fest open stage. The anchor screams: 'Who has the guts to come on stage and win ₹500?' Dead silence. Nobody is moving. You:",
+        options: [
+          {
+            emoji: "🎤",
+            text: "Run straight up on stage, grab the mic, and do a ridiculous dance or funny speech. Zero shame.",
+            points: 3,
+            cardIndex: 7 // Campus Influencer
+          },
+          {
+            emoji: "🕺",
+            text: "Push your friend on stage and jump up right behind them cheering.",
+            points: 2,
+            cardIndex: 10 // Campus Politician
+          },
+          {
+            emoji: "📱",
+            text: "Sit in the last row and record everyone's awkward faces for your Instagram story.",
+            points: 1,
+            cardIndex: 8 // Last Bench Strategist
+          },
+          {
+            emoji: "🙈",
+            text: "Look down at your shoes and pray the anchor doesn't make eye contact with you.",
+            points: 0,
+            cardIndex: 6 // Silent Genius
+          }
+        ]
+      },
+      {
+        num: 3,
+        tag: "CURIOSITY & WEIRD THINGS",
+        question: "You see a strange, unlabeled box sitting in the college corridor with a handwritten note: 'DO NOT TOUCH'. What do you do?",
+        options: [
+          {
+            emoji: "💥",
+            text: "Open it in 2 seconds flat. Warnings are just suggestions, I need to know what's inside!",
+            points: 3,
+            cardIndex: 2 // All-Rounder
+          },
+          {
+            emoji: "📢",
+            text: "Call 3 friends: 'Bro come here quick, look at this, let's open it together.'",
+            points: 2,
+            cardIndex: 0 // Social Butterfly
+          },
+          {
+            emoji: "🥱",
+            text: "Assume it's some boring college marketing stunt and walk to class.",
+            points: 1,
+            cardIndex: 4 // Attendance Calculator
+          },
+          {
+            emoji: "👮",
+            text: "Go tell the security guard because rules are rules.",
+            points: 0,
+            cardIndex: 9 // Professor's Favorite
+          }
+        ]
+      },
+      {
+        num: 4,
+        tag: "ACTION-ORIENTED TEST",
+        question: "You get a crazy idea at 2 PM to host a mini corridor cricket tournament in the hostel. What actually happens?",
+        options: [
+          {
+            emoji: "🚀",
+            text: "Match starts in 20 minutes. You already found a tennis ball, texted 15 guys, and made the wickets.",
+            points: 3,
+            cardIndex: 8 // Last Bench Strategist
+          },
+          {
+            emoji: "🗣️",
+            text: "You sit and talk about it for 2 hours over tea, but nobody actually gets a bat.",
+            points: 2,
+            cardIndex: 3 // Canteen Commander
+          },
+          {
+            emoji: "📝",
+            text: "Say 'Let's do it after semester exams' and forget about it forever.",
+            points: 1,
+            cardIndex: 5 // Assignment Survivor
+          },
+          {
+            emoji: "🛑",
+            text: "'Bro warden will catch us and fine us ₹500, let's drop it.'",
+            points: 0,
+            cardIndex: 4 // Attendance Calculator
+          }
+        ]
+      },
+      {
+        num: 5,
+        tag: "EFFORT & HYPING SQUAD",
+        question: "It's Sunday. The entire WhatsApp group is acting dead: 'So bored bro, nothing to do...' How do you react?",
+        options: [
+          {
+            emoji: "🚪",
+            text: "You don't wait. You walk to their hostel room, bang on the door until they wake up, and drag them out for a trip.",
+            points: 3,
+            cardIndex: 2 // All-Rounder
+          },
+          {
+            emoji: "📞",
+            text: "Call each guy with a fake emergency ('Bro urgent scene, come to the gate now!') to force them out of bed.",
+            points: 2,
+            cardIndex: 10 // Campus Politician
+          },
+          {
+            emoji: "😴",
+            text: "Send a laughing emoji and go back to sleep for 6 more hours.",
+            points: 1,
+            cardIndex: 5 // Assignment Survivor
+          },
+          {
+            emoji: "👻",
+            text: "Leave it on 'Seen' and wait for someone else to make a plan.",
+            points: 0,
+            cardIndex: 6 // Silent Genius
+          }
+        ]
+      }
+    ];
+
+    let currentQuizIndex = 0;
+    let quizAnswers = [];
+    let diagnosedCardIndex = 2; // Default All-Rounder
+    let quizTotalScore = 0;
+
+    function renderQuizQuestion(index) {
+      if (index < 0 || index >= QUIZ_QUESTIONS.length) return;
+      currentQuizIndex = index;
+
+      const q = QUIZ_QUESTIONS[index];
+      const qNumEl = document.getElementById('qNum');
+      const tagEl = document.getElementById('quizTag');
+      const textEl = document.getElementById('quizQuestionText');
+      const fillEl = document.getElementById('quizProgressFill');
+
+      if (qNumEl) qNumEl.innerText = q.num;
+      if (tagEl) tagEl.innerText = q.tag;
+      if (textEl) textEl.innerText = q.question;
+      
+      const pct = Math.round(((index + 1) / QUIZ_QUESTIONS.length) * 100);
+      if (fillEl) fillEl.style.width = `${pct}%`;
+
+      const prevBtn = document.getElementById('quizPrevBtn');
+      if (prevBtn) {
+        prevBtn.style.visibility = index > 0 ? 'visible' : 'hidden';
+      }
+
+      const container = document.getElementById('quizOptionsContainer');
+      if (!container) return;
+      container.innerHTML = '';
+
+      q.options.forEach((opt, optIdx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'quiz-opt-btn';
+        if (quizAnswers[index] === optIdx) {
+          btn.style.background = 'var(--sun)';
+        }
+        btn.onclick = () => selectQuizOption(optIdx);
+
+        btn.innerHTML = `
+          <span class="quiz-opt-emoji">${opt.emoji}</span>
+          <span style="flex:1;">${opt.text}</span>
+        `;
+        container.appendChild(btn);
+      });
+    }
+
+    function selectQuizOption(optIdx) {
+      quizAnswers[currentQuizIndex] = optIdx;
+
+      if (currentQuizIndex < QUIZ_QUESTIONS.length - 1) {
+        setTimeout(() => {
+          renderQuizQuestion(currentQuizIndex + 1);
+        }, 180);
+      } else {
+        setTimeout(() => {
+          finishQuiz();
+        }, 200);
+      }
+    }
+
+    function prevQuizQuestion() {
+      if (currentQuizIndex > 0) {
+        renderQuizQuestion(currentQuizIndex - 1);
+      }
+    }
+
+    function finishQuiz() {
+      // Calculate score & diagnosed card
+      let score = 0;
+      let cardVoteCounts = {};
+
+      quizAnswers.forEach((optIdx, qIdx) => {
+        const opt = QUIZ_QUESTIONS[qIdx].options[optIdx];
+        if (opt) {
+          score += opt.points;
+          cardVoteCounts[opt.cardIndex] = (cardVoteCounts[opt.cardIndex] || 0) + (opt.points >= 2 ? 2 : 1);
+        }
+      });
+
+      quizTotalScore = score;
+
+      // Find highest voted card
+      let topCardIdx = 2;
+      let maxVotes = -1;
+      for (const [idx, votes] of Object.entries(cardVoteCounts)) {
+        if (votes > maxVotes) {
+          maxVotes = votes;
+          topCardIdx = parseInt(idx, 10);
+        }
+      }
+      diagnosedCardIndex = topCardIdx;
+
+      // Show Fake Scanning screen
+      const qHeader = document.getElementById('quizHeader');
+      const qBody = document.getElementById('quizBody');
+      const scanBox = document.getElementById('quizScanningBox');
+      
+      if (qHeader) qHeader.style.display = 'none';
+      if (qBody) qBody.style.display = 'none';
+      if (scanBox) scanBox.style.display = 'block';
+
+      const scanSteps = [
+        "Auditing canteen debts & chai tabs...",
+        "Scanning 8:30 AM proxy ethics...",
+        "Measuring unhinged main-character energy...",
+        "Matching alter-ego personality deck..."
+      ];
+      let step = 0;
+      const sub = document.getElementById('scanningStatusText');
+      const scanInterval = setInterval(() => {
+        step = (step + 1) % scanSteps.length;
+        if (sub) sub.innerText = scanSteps[step];
+      }, 350);
+
+      setTimeout(() => {
+        clearInterval(scanInterval);
+        if (scanBox) scanBox.style.display = 'none';
+        showQuizResult(score, diagnosedCardIndex);
+      }, 1500);
+    }
+
+    function showQuizResult(score, cardIdx) {
+      const resultBox = document.getElementById('quizResultBox');
+      if (resultBox) resultBox.style.display = 'block';
+
+      const card = DECK_CARDS[cardIdx] || DECK_CARDS[2];
+      const cardImg = document.getElementById('resultCardImg');
+      if (cardImg) cardImg.src = card.file;
+
+      const badge = document.getElementById('resultBadge');
+      const title = document.getElementById('resultTitle');
+      const desc = document.getElementById('resultDesc');
+      const passActions = document.getElementById('resultPassActions');
+      const failActions = document.getElementById('resultFailActions');
+
+      if (score >= 10) {
+        if (badge) {
+          badge.className = 'result-badge';
+          badge.innerText = '🔥 100% Certified Campus Instigator';
+        }
+        if (title) title.innerHTML = `Vibe Check Passed! You're <span style="color:#067A53;">${card.name}</span>!`;
+        if (desc) desc.innerText = `You have zero shame, main-character energy, and you actually make things happen. You're officially qualified to receive the physical 11-Card Collector Deck to deal out to your squad!`;
+        if (passActions) passActions.style.display = 'block';
+        if (failActions) failActions.style.display = 'none';
+      } else if (score >= 7) {
+        if (badge) {
+          badge.className = 'result-badge';
+          badge.innerText = '⚡ Certified Chaos Wingman';
+        }
+        if (title) title.innerHTML = `Vibe Check Passed! You're <span style="color:#067A53;">${card.name}</span>!`;
+        if (desc) desc.innerText = `You have the spark, though you sometimes overthink! We're approving your free 11-card collector deck on one condition: you actually deal these out to your friends and don't hoard them in your hostel cupboard.`;
+        if (passActions) passActions.style.display = 'block';
+        if (failActions) failActions.style.display = 'none';
+      } else {
+        if (badge) {
+          badge.className = 'result-badge failed';
+          badge.innerText = '🪫 Vibe Check Failed: NPC Energy Detected';
+        }
+        if (title) title.innerHTML = `Bro, You're Too Polite For This!`;
+        if (desc) desc.innerText = `You ran away from the canteen, stared at your shoes on stage, and left your squad on read. We only ship physical decks to students who actually cause fun chaos on campus! Show us some spine and retake the test.`;
+        if (passActions) passActions.style.display = 'none';
+        if (failActions) failActions.style.display = 'block';
+      }
+
+      // Pre-focus card in top fan showcase
+      focusCard(cardIdx);
+    }
+
+    function resetQuiz() {
+      quizAnswers = [];
+      const resBox = document.getElementById('quizResultBox');
+      const qHeader = document.getElementById('quizHeader');
+      const qBody = document.getElementById('quizBody');
+      if (resBox) resBox.style.display = 'none';
+      if (qHeader) qHeader.style.display = 'flex';
+      if (qBody) qBody.style.display = 'flex';
+      renderQuizQuestion(0);
+    }
+
+    function unlockStage2() {
+      // Focus diagnosed card
+      focusCard(diagnosedCardIndex);
+      const card = DECK_CARDS[diagnosedCardIndex] || DECK_CARDS[2];
+
+      // Update hidden backend fields
+      const intentInput = document.getElementById('intentPlan');
+      if (intentInput) {
+        intentInput.value = `Diagnosed: ${card.name} (Score: ${quizTotalScore}/15)`;
+      }
+
+      // Reveal Stage 2 Address Form
+      const claimForm = document.getElementById('claimForm');
+      if (claimForm) {
+        claimForm.style.display = 'block';
+        claimForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
 
 
     // URL param extraction for seamless auto-linking
@@ -1396,6 +2212,14 @@
           document.getElementById('confirmedGps').innerText = `${formData.gps} (±${formData.gpsAccuracy || '10m'})`;
         }
 
+        // Configure WhatsApp Viral Challenge link
+        const card = DECK_CARDS[diagnosedCardIndex] || DECK_CARDS[2];
+        const waChallengeText = `Bro, take this campus vibe check quiz 😭 I just got diagnosed as "${card.name}" and unlocked the free physical 11-card collector deck for our campus! Check what card you get: https://c2club.in/claim.html`;
+        const waShareBtn = document.getElementById('shareWaBtn');
+        if (waShareBtn) {
+          waShareBtn.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(waChallengeText)}`;
+        }
+
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
 
@@ -1414,6 +2238,15 @@
         console.warn('Backend sync failed, relying on local backup:', err);
         showSuccess('');
       });
+    }
+
+    // Initialize Stage 1 Quiz on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      renderQuizQuestion(0);
+    });
+    // In case DOM is already ready
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      renderQuizQuestion(0);
     }
   </script>
 </body>
