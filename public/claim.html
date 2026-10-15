@@ -524,6 +524,7 @@
       justify-content: center;
       gap: 10px;
       width: 100%;
+      margin-top: 14px;
       transition: all 0.1s ease;
       touch-action: manipulation;
     }
@@ -1014,87 +1015,108 @@
       100% { opacity: 1; transform: scale(1); }
     }
 
-    .result-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--sun);
-      border: 2px solid var(--ink);
-      box-shadow: 0 3px 0 var(--ink);
-      padding: 6px 16px;
-      border-radius: 999px;
-      font-family: var(--font-display);
-      font-size: 13px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      margin-bottom: 12px;
+    /* Simple Success Result & Choices */
+    .simple-success-box {
+      text-align: center;
+      padding: 10px 4px 6px;
     }
 
-    .result-badge.failed {
-      background: #FFE8E8;
-      color: #991B1B;
-      border-color: #991B1B;
-      box-shadow: 0 3px 0 #991B1B;
+    .choice-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 18px;
     }
 
-    .result-title {
-      font-family: var(--font-display);
-      font-size: clamp(22px, 5.5vw, 29px);
-      line-height: 1.15;
-      color: var(--ink);
-      margin-bottom: 8px;
-    }
-
-    .result-card-preview {
-      width: 145px;
-      height: 218px;
-      margin: 14px auto;
-      border-radius: 14px;
-      border: 2.5px solid var(--ink);
-      box-shadow: 0 10px 0 var(--ink), 0 18px 30px rgba(5,46,34,0.3);
-      overflow: hidden;
-      transform: rotate(-2deg);
-      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-      cursor: pointer;
-    }
-    .result-card-preview:hover {
-      transform: rotate(0deg) scale(1.08);
-      border-color: var(--sun);
-    }
-    .result-card-preview img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .result-desc {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--ink);
-      max-width: 440px;
-      margin: 0 auto 16px;
-      line-height: 1.45;
-    }
-
-    .result-cta-btn {
+    .choice-btn-primary {
       width: 100%;
       background: var(--sun);
       color: var(--ink);
       font-family: var(--font-display);
       font-size: 17px;
-      padding: 14px;
+      padding: 16px 20px;
       border-radius: 16px;
       border: 2.5px solid var(--ink);
       box-shadow: var(--shadow-chunky);
       cursor: pointer;
-      transition: all 0.15s ease;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
+      transition: all 0.15s ease;
+      touch-action: manipulation;
       text-decoration: none;
     }
+    .choice-btn-primary:hover {
+      background: var(--sun-hover);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+    .choice-btn-primary:active {
+      transform: translateY(2px);
+      box-shadow: var(--shadow-pressed);
+    }
+
+    .choice-btn-naah {
+      width: 100%;
+      background: transparent;
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 800;
+      padding: 13px 18px;
+      border-radius: 14px;
+      border: 2px dashed rgba(5,46,34,0.4);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+    }
+    .choice-btn-naah:hover {
+      border-color: var(--ink);
+      background: rgba(5,46,34,0.06);
+      transform: translateY(-1px);
+    }
+
+    /* Naah Fun Exit Screen */
+    .naah-card {
+      display: none;
+      background: var(--card-white);
+      border: var(--border-ink);
+      border-radius: 28px;
+      padding: 40px 24px;
+      box-shadow: var(--shadow-chunky);
+      text-align: center;
+      animation: resultPopIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .naah-icon {
+      font-size: 56px;
+      margin-bottom: 14px;
+    }
+    .naah-title {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 5.5vw, 29px);
+      color: var(--ink);
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .naah-desc {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--deep);
+      line-height: 1.55;
+      max-width: 400px;
+      margin: 0 auto 24px;
+    }
+    .naah-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 340px;
+      margin: 0 auto;
+    }
+
     .result-cta-btn:hover {
       background: var(--sun-hover);
       transform: translateY(-2px);
@@ -1199,7 +1221,7 @@
     <header class="hero-header" id="heroHeader">
       <div class="hero-pill">🎁 100% Free Welcome Pack</div>
       <h1 class="hero-title">Claim Your C2 Collector Pack</h1>
-      <p class="hero-sub">Pass the 5-question campus vibe check to diagnose your alter-ego & claim the physical 11-card deck.</p>
+      <p class="hero-sub">Pass the quick 5-question campus vibe check to unlock your free physical pack.</p>
       
       <!-- Finalized Front Cards Fan Showcase -->
       <div class="cards-fan" id="cardsFan">
@@ -1259,40 +1281,79 @@
         </div>
       </div>
 
-      <!-- Fake AI Campus Scanner Loader (Visible for 1.5s after Q5) -->
+      <!-- Campus Scanner Loader (Visible for 1.5s after Q5) -->
       <div class="quiz-scanning-box" id="quizScanningBox">
         <div class="scanning-spinner"></div>
         <h3 class="scanning-title">Scanning Campus Energy...</h3>
-        <p class="scanning-sub" id="scanningStatusText">Auditing canteen debts & proxy ethics...</p>
+        <p class="scanning-sub" id="scanningStatusText">Checking your campus answers...</p>
       </div>
 
-      <!-- Diagnosis Result Box (Visible after scan completes) -->
+      <!-- Simple Success Result Box (Visible after scan completes) -->
       <div class="quiz-result-box" id="quizResultBox">
-        <div class="result-badge" id="resultBadge">🔥 100% Certified Campus Instigator</div>
-        <h2 class="result-title" id="resultTitle">You Passed The Vibe Check!</h2>
-        
-        <div class="result-card-preview" id="resultCardPreview" title="Your Diagnosed Alter-Ego Card">
-          <img id="resultCardImg" src="/cards-deck/03_Canteen_Commander_Front.png" alt="Diagnosed Card">
-        </div>
-        
-        <p class="result-desc" id="resultDesc">
-          You have zero shame, main-character energy, and you actually get stuff done. You're officially qualified to receive the full 11-Card C2 Starter Deck to deal out to your squad!
-        </p>
+        <div id="resultPassContent" class="simple-success-box">
+          <div style="font-size: 50px; margin-bottom: 10px;">🎉</div>
+          <h2 style="font-family: var(--font-display); font-size: clamp(22px, 5.5vw, 29px); color: var(--ink); margin-bottom: 10px; line-height: 1.2;">
+            You Passed The Vibe Check!
+          </h2>
+          <p style="font-size: 15px; font-weight: 700; color: var(--deep); line-height: 1.5; max-width: 420px; margin: 0 auto 20px;">
+            We've got an 11-card physical collector pack ready for you and your gang. Free delivery straight to your hostel or campus room.
+          </p>
 
-        <div id="resultPassActions">
-          <button type="button" class="result-cta-btn" onclick="unlockStage2()">
-            <span>🎁 Claim Your 11-Card Deck Below</span>
-            <span>👇</span>
-          </button>
+          <div class="choice-actions">
+            <button type="button" class="choice-btn-primary" onclick="goToAddressPage()">
+              <span>Send me the cards, I'm excited!</span>
+              <span>📦</span>
+            </button>
+            <button type="button" class="choice-btn-naah" onclick="goToNaahPage()">
+              <span>Naah... 😴</span>
+            </button>
+          </div>
         </div>
 
-        <div id="resultFailActions" style="display: none;">
-          <button type="button" class="retake-btn" onclick="resetQuiz()">
-            <span>⚡ Retake Quiz (Show Actual Energy)</span>
+        <div id="resultFailContent" style="display: none;" class="simple-success-box">
+          <div style="font-size: 48px; margin-bottom: 10px;">☕</div>
+          <h2 style="font-family: var(--font-display); font-size: clamp(21px, 5.2vw, 26px); color: var(--ink); margin-bottom: 10px; line-height: 1.2;">
+            A bit too relaxed today!
+          </h2>
+          <p style="font-size: 14.5px; font-weight: 700; color: var(--deep); line-height: 1.5; max-width: 380px; margin: 0 auto 20px;">
+            You're keeping things very quiet and safe. We're looking for that loud, fun campus energy.
+          </p>
+          <button type="button" class="choice-btn-primary" onclick="resetQuiz()">
+            <span>⚡ Try Again with More Hype</span>
           </button>
         </div>
       </div>
     </section>
+
+    <!-- Fun "Naah..." Exit Screen -->
+    <div class="naah-card" id="naahCard">
+      <div class="naah-icon">🫡</div>
+      <h2 class="naah-title">Fair enough! Respect the honesty.</h2>
+      <p class="naah-desc">
+        You just saved our startup ₹140 in courier shipping charges. Go back to sleep, or scroll reels in peace.
+      </p>
+      <div class="naah-actions">
+        <button type="button" class="choice-btn-primary" onclick="goToAddressPage()">
+          <span>Wait, actually send them! 🏃‍♂️</span>
+        </button>
+        <a href="/" class="choice-btn-naah">
+          Back to C2 Club Home
+        </a>
+      </div>
+
+      <!-- Viral WhatsApp Challenge on Naah Page -->
+      <div class="naah-challenge-box" style="margin-top: 24px; padding-top: 20px; border-top: 2px dashed rgba(5,46,34,0.2);">
+        <div style="font-family: var(--font-display); font-size: 17px; color: var(--ink); margin-bottom: 6px;">
+          🔥 Think your friends have more energy than you?
+        </div>
+        <p style="font-size: 13.5px; font-weight: 700; color: var(--deep); line-height: 1.5; margin-bottom: 14px;">
+          Challenge your campus friends to take the 1-minute vibe check. Let's see if they're cool enough to pass and claim the free 11-card collector deck!
+        </p>
+        <a id="naahShareWaBtn" href="#" target="_blank" onclick="trackFunnel('naah_wa_shared')" class="wa-challenge-btn" style="margin-top: 0;">
+          💬 Challenge Friends on WhatsApp
+        </a>
+      </div>
+    </div>
 
     <!-- Main Claim Card Form (Stage 2: Shipping Address) -->
     <form class="claim-card" id="claimForm" onsubmit="handleClaim(event)" style="display: none;">
@@ -1481,10 +1542,10 @@
           Get ready to deal them out to your friends! Keep an eye on your phone for courier delivery. When the pack arrives, hand each card to the friend who truly owns that alter-ego!
         </p>
         <div class="fun-prompt">
-          🔥 <strong>Ready to tag your gang?</strong> Find out who in your group is the <em>Canteen Commander</em>, the <em>75% Attendance Calculator</em>, and the ultimate <em>Assignment Survivor</em>!
+          🔥 <strong>Think your friends are as cool as you?</strong> Challenge your campus gang to take the 1-minute vibe check to see if they're cool enough to pass and claim their own free 11-card collector deck!
         </div>
-        <a id="shareWaBtn" href="#" target="_blank" class="wa-challenge-btn">
-          💬 Challenge Campus Gang on WhatsApp
+        <a id="shareWaBtn" href="#" target="_blank" onclick="trackFunnel('success_wa_shared')" class="wa-challenge-btn">
+          💬 Challenge Friends on WhatsApp
         </a>
       </div>
     </div>
@@ -1544,35 +1605,35 @@
     }
 
     // ══════════════════════════════════════════════════════
-    // STAGE 1: 5 UNHINGED CAMPUS VIBE CHECK QUESTIONS & LOGIC
+    // STAGE 1: 5 CAMPUS VIBE CHECK QUESTIONS & LOGIC
     // ══════════════════════════════════════════════════════
     const QUIZ_QUESTIONS = [
       {
         num: 1,
-        tag: "EXTROVERT / STRANGERS TEST",
-        question: "The college canteen is totally packed. Only one table has empty chairs, but 4 serious-looking seniors are sitting there. What do you do?",
+        tag: "MEETING NEW PEOPLE",
+        question: "The canteen is full. Only one table has empty chairs with strangers. You:",
         options: [
           {
             emoji: "👑",
-            text: "Pull a chair, sit right with them, and ask: 'Bro, why does the chai taste like hot water today?' like you've known them for 5 years.",
+            text: "Pull up a chair and start chatting with a smile.",
             points: 3,
             cardIndex: 3 // Canteen Commander
           },
           {
             emoji: "🤝",
-            text: "Walk up politely: 'Hey bro, is this seat free? Mind if I join?'",
+            text: "Ask politely: 'Hey, mind if I join you?'",
             points: 2,
             cardIndex: 0 // Social Butterfly
           },
           {
-            emoji: "🚶‍♂️",
-            text: "Stand awkwardly in the corner holding your plate and eat alone.",
+            emoji: "🥪",
+            text: "Stand nearby and quickly finish your snack.",
             points: 1,
             cardIndex: 6 // Silent Genius
           },
           {
-            emoji: "🚪",
-            text: "Turn around and leave the canteen hungry.",
+            emoji: "🚶",
+            text: "Take your food and sit in the open lawn.",
             points: 0,
             cardIndex: 5 // Assignment Survivor
           }
@@ -1580,30 +1641,30 @@
       },
       {
         num: 2,
-        tag: "ZERO EMBARRASSMENT TEST",
-        question: "College fest open stage. The anchor screams: 'Who has the guts to come on stage and win ₹500?' Dead silence. Nobody is moving. You:",
+        tag: "CONFIDENCE CHECK",
+        question: "Fest open mic. The host asks for a volunteer. Total silence. You:",
         options: [
           {
             emoji: "🎤",
-            text: "Run straight up on stage, grab the mic, and do a ridiculous dance or funny speech. Zero shame.",
+            text: "Walk right up, take the mic, and make everyone laugh!",
             points: 3,
             cardIndex: 7 // Campus Influencer
           },
           {
             emoji: "🕺",
-            text: "Push your friend on stage and jump up right behind them cheering.",
+            text: "Cheer your friend loudly and push them onto stage!",
             points: 2,
             cardIndex: 10 // Campus Politician
           },
           {
             emoji: "📱",
-            text: "Sit in the last row and record everyone's awkward faces for your Instagram story.",
+            text: "Pull out your phone and record the fun scene.",
             points: 1,
             cardIndex: 8 // Last Bench Strategist
           },
           {
-            emoji: "🙈",
-            text: "Look down at your shoes and pray the anchor doesn't make eye contact with you.",
+            emoji: "👏",
+            text: "Clap with the crowd and enjoy from your seat.",
             points: 0,
             cardIndex: 6 // Silent Genius
           }
@@ -1611,30 +1672,30 @@
       },
       {
         num: 3,
-        tag: "CURIOSITY & WEIRD THINGS",
-        question: "You see a strange, unlabeled box sitting in the college corridor with a handwritten note: 'DO NOT TOUCH'. What do you do?",
+        tag: "NATURAL CURIOSITY",
+        question: "You spot a mystery box on campus marked 'DO NOT TOUCH'. You:",
         options: [
           {
             emoji: "💥",
-            text: "Open it in 2 seconds flat. Warnings are just suggestions, I need to know what's inside!",
+            text: "Open it right away! Too curious to walk away.",
             points: 3,
             cardIndex: 2 // All-Rounder
           },
           {
             emoji: "📢",
-            text: "Call 3 friends: 'Bro come here quick, look at this, let's open it together.'",
+            text: "Call your friends: 'Come quick, let's open it together!'",
             points: 2,
             cardIndex: 0 // Social Butterfly
           },
           {
-            emoji: "🥱",
-            text: "Assume it's some boring college marketing stunt and walk to class.",
+            emoji: "🧐",
+            text: "Wonder what's inside, but keep walking to class.",
             points: 1,
             cardIndex: 4 // Attendance Calculator
           },
           {
-            emoji: "👮",
-            text: "Go tell the security guard because rules are rules.",
+            emoji: "📸",
+            text: "Snap a quick photo and send to the group chat.",
             points: 0,
             cardIndex: 9 // Professor's Favorite
           }
@@ -1642,30 +1703,30 @@
       },
       {
         num: 4,
-        tag: "ACTION-ORIENTED TEST",
-        question: "You get a crazy idea at 2 PM to host a mini corridor cricket tournament in the hostel. What actually happens?",
+        tag: "TAKING ACTION",
+        question: "You get a sudden idea to play hostel cricket at 11 PM. You:",
         options: [
           {
             emoji: "🚀",
-            text: "Match starts in 20 minutes. You already found a tennis ball, texted 15 guys, and made the wickets.",
+            text: "Find a ball and start playing in 5 minutes!",
             points: 3,
             cardIndex: 8 // Last Bench Strategist
           },
           {
             emoji: "🗣️",
-            text: "You sit and talk about it for 2 hours over tea, but nobody actually gets a bat.",
+            text: "Talk about it with friends over hot tea.",
             points: 2,
             cardIndex: 3 // Canteen Commander
           },
           {
             emoji: "📝",
-            text: "Say 'Let's do it after semester exams' and forget about it forever.",
+            text: "Plan to play this coming weekend instead.",
             points: 1,
             cardIndex: 5 // Assignment Survivor
           },
           {
-            emoji: "🛑",
-            text: "'Bro warden will catch us and fine us ₹500, let's drop it.'",
+            emoji: "☕",
+            text: "Just relax and watch the others play.",
             points: 0,
             cardIndex: 4 // Attendance Calculator
           }
@@ -1673,30 +1734,30 @@
       },
       {
         num: 5,
-        tag: "EFFORT & HYPING SQUAD",
-        question: "It's Sunday. The entire WhatsApp group is acting dead: 'So bored bro, nothing to do...' How do you react?",
+        tag: "BRINGING THE ENERGY",
+        question: "Sunday afternoon. The college group chat is totally silent. You:",
         options: [
           {
             emoji: "🚪",
-            text: "You don't wait. You walk to their hostel room, bang on the door until they wake up, and drag them out for a trip.",
+            text: "Knock on their hostel doors and pull everyone out!",
             points: 3,
             cardIndex: 2 // All-Rounder
           },
           {
             emoji: "📞",
-            text: "Call each guy with a fake emergency ('Bro urgent scene, come to the gate now!') to force them out of bed.",
+            text: "Call them up: 'Get ready, let's go out together!'",
             points: 2,
             cardIndex: 10 // Campus Politician
           },
           {
-            emoji: "😴",
-            text: "Send a laughing emoji and go back to sleep for 6 more hours.",
+            emoji: "💬",
+            text: "Drop funny memes to wake up the group chat.",
             points: 1,
             cardIndex: 5 // Assignment Survivor
           },
           {
-            emoji: "👻",
-            text: "Leave it on 'Seen' and wait for someone else to make a plan.",
+            emoji: "😴",
+            text: "Enjoy the quiet time and take a relaxed nap.",
             points: 0,
             cardIndex: 6 // Silent Genius
           }
@@ -1754,6 +1815,15 @@
 
     function selectQuizOption(optIdx) {
       quizAnswers[currentQuizIndex] = optIdx;
+      const q = QUIZ_QUESTIONS[currentQuizIndex];
+      const opt = q && q.options ? q.options[optIdx] : null;
+
+      trackFunnel(`q${currentQuizIndex + 1}_answered`, {
+        currentQ: currentQuizIndex + 1,
+        chosenOption: optIdx,
+        optionText: opt ? opt.text : '',
+        points: opt ? opt.points : 0
+      });
 
       if (currentQuizIndex < QUIZ_QUESTIONS.length - 1) {
         setTimeout(() => {
@@ -1808,10 +1878,10 @@
       if (scanBox) scanBox.style.display = 'block';
 
       const scanSteps = [
-        "Auditing canteen debts & chai tabs...",
-        "Scanning 8:30 AM proxy ethics...",
-        "Measuring unhinged main-character energy...",
-        "Matching alter-ego personality deck..."
+        "Checking your campus answers...",
+        "Measuring your group energy...",
+        "Calculating your campus vibe...",
+        "Finalizing your diagnosis..."
       ];
       let step = 0;
       const sub = document.getElementById('scanningStatusText');
@@ -1823,55 +1893,25 @@
       setTimeout(() => {
         clearInterval(scanInterval);
         if (scanBox) scanBox.style.display = 'none';
-        showQuizResult(score, diagnosedCardIndex);
+        showQuizResult(score);
+        trackFunnel('quiz_completed', { score, passed: score >= 7 });
       }, 1500);
     }
 
-    function showQuizResult(score, cardIdx) {
+    function showQuizResult(score) {
       const resultBox = document.getElementById('quizResultBox');
       if (resultBox) resultBox.style.display = 'block';
 
-      const card = DECK_CARDS[cardIdx] || DECK_CARDS[2];
-      const cardImg = document.getElementById('resultCardImg');
-      if (cardImg) cardImg.src = card.file;
+      const passContent = document.getElementById('resultPassContent');
+      const failContent = document.getElementById('resultFailContent');
 
-      const badge = document.getElementById('resultBadge');
-      const title = document.getElementById('resultTitle');
-      const desc = document.getElementById('resultDesc');
-      const passActions = document.getElementById('resultPassActions');
-      const failActions = document.getElementById('resultFailActions');
-
-      if (score >= 10) {
-        if (badge) {
-          badge.className = 'result-badge';
-          badge.innerText = '🔥 100% Certified Campus Instigator';
-        }
-        if (title) title.innerHTML = `Vibe Check Passed! You're <span style="color:#067A53;">${card.name}</span>!`;
-        if (desc) desc.innerText = `You have zero shame, main-character energy, and you actually make things happen. You're officially qualified to receive the physical 11-Card Collector Deck to deal out to your squad!`;
-        if (passActions) passActions.style.display = 'block';
-        if (failActions) failActions.style.display = 'none';
-      } else if (score >= 7) {
-        if (badge) {
-          badge.className = 'result-badge';
-          badge.innerText = '⚡ Certified Chaos Wingman';
-        }
-        if (title) title.innerHTML = `Vibe Check Passed! You're <span style="color:#067A53;">${card.name}</span>!`;
-        if (desc) desc.innerText = `You have the spark, though you sometimes overthink! We're approving your free 11-card collector deck on one condition: you actually deal these out to your friends and don't hoard them in your hostel cupboard.`;
-        if (passActions) passActions.style.display = 'block';
-        if (failActions) failActions.style.display = 'none';
+      if (score >= 7) {
+        if (passContent) passContent.style.display = 'block';
+        if (failContent) failContent.style.display = 'none';
       } else {
-        if (badge) {
-          badge.className = 'result-badge failed';
-          badge.innerText = '🪫 Vibe Check Failed: NPC Energy Detected';
-        }
-        if (title) title.innerHTML = `Bro, You're Too Polite For This!`;
-        if (desc) desc.innerText = `You ran away from the canteen, stared at your shoes on stage, and left your squad on read. We only ship physical decks to students who actually cause fun chaos on campus! Show us some spine and retake the test.`;
-        if (passActions) passActions.style.display = 'none';
-        if (failActions) failActions.style.display = 'block';
+        if (passContent) passContent.style.display = 'none';
+        if (failContent) failContent.style.display = 'block';
       }
-
-      // Pre-focus card in top fan showcase
-      focusCard(cardIdx);
     }
 
     function resetQuiz() {
@@ -1879,46 +1919,203 @@
       const resBox = document.getElementById('quizResultBox');
       const qHeader = document.getElementById('quizHeader');
       const qBody = document.getElementById('quizBody');
+      const naahCard = document.getElementById('naahCard');
       if (resBox) resBox.style.display = 'none';
+      if (naahCard) naahCard.style.display = 'none';
       if (qHeader) qHeader.style.display = 'flex';
       if (qBody) qBody.style.display = 'flex';
+      trackFunnel('quiz_retried');
       renderQuizQuestion(0);
     }
 
-    function unlockStage2() {
-      // Focus diagnosed card
-      focusCard(diagnosedCardIndex);
-      const card = DECK_CARDS[diagnosedCardIndex] || DECK_CARDS[2];
+    function goToAddressPage() {
+      trackFunnel('choice_excited', { choice: 'excited' });
+
+      // Hide quiz and naah screens
+      const quizCard = document.getElementById('quizCard');
+      const naahCard = document.getElementById('naahCard');
+      if (quizCard) quizCard.style.display = 'none';
+      if (naahCard) naahCard.style.display = 'none';
 
       // Update hidden backend fields
       const intentInput = document.getElementById('intentPlan');
       if (intentInput) {
-        intentInput.value = `Diagnosed: ${card.name} (Score: ${quizTotalScore}/15)`;
+        intentInput.value = `Campus Vibe Check Passed (Score: ${quizTotalScore}/15)`;
       }
 
-      // Reveal Stage 2 Address Form
+      // Reveal Dedicated Stage 2 Address Page
       const claimForm = document.getElementById('claimForm');
       if (claimForm) {
-        claimForm.style.display = 'block';
+        claimForm.style.display = 'flex';
         claimForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      if (window.history.pushState) {
+        window.history.pushState(null, null, '#address');
       }
     }
 
+    function goToNaahPage() {
+      trackFunnel('choice_naah', { choice: 'naah', dropoffReason: 'user_chose_naah' });
+      updateWhatsAppShareLinks();
+
+      const quizCard = document.getElementById('quizCard');
+      const claimForm = document.getElementById('claimForm');
+      const naahCard = document.getElementById('naahCard');
+      if (quizCard) quizCard.style.display = 'none';
+      if (claimForm) claimForm.style.display = 'none';
+      if (naahCard) {
+        naahCard.style.display = 'block';
+        naahCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      if (window.history.pushState) {
+        window.history.pushState(null, null, '#naah');
+      }
+    }
+
+    window.addEventListener('popstate', () => {
+      const hash = window.location.hash;
+      const quizCard = document.getElementById('quizCard');
+      const claimForm = document.getElementById('claimForm');
+      const naahCard = document.getElementById('naahCard');
+      if (hash === '#address') {
+        if (quizCard) quizCard.style.display = 'none';
+        if (naahCard) naahCard.style.display = 'none';
+        if (claimForm) claimForm.style.display = 'flex';
+      } else if (hash === '#naah') {
+        if (quizCard) quizCard.style.display = 'none';
+        if (claimForm) claimForm.style.display = 'none';
+        if (naahCard) naahCard.style.display = 'block';
+      } else {
+        if (quizCard) quizCard.style.display = 'flex';
+        if (claimForm) claimForm.style.display = 'none';
+        if (naahCard) naahCard.style.display = 'none';
+      }
+    });
 
 
-    // URL param extraction for seamless auto-linking
+
+    // Session & Tracking Setup
+    function getSessionId() {
+      let sid = sessionStorage.getItem('c2_claim_session_id');
+      if (!sid) {
+        sid = 'sess_' + Date.now() + '_' + Math.random().toString(36).substring(2, 8);
+        sessionStorage.setItem('c2_claim_session_id', sid);
+      }
+      return sid;
+    }
+
+    // URL param extraction for seamless auto-linking & tracking
     const urlParams = new URLSearchParams(window.location.search);
     const studentId = urlParams.get('id') || urlParams.get('ref') || 'member_' + Math.floor(1000 + Math.random() * 9000);
-    const prefillPhone = urlParams.get('phone') || urlParams.get('mobile');
-    const prefillName = urlParams.get('name');
+    const prefillPhone = urlParams.get('phone') || urlParams.get('mobile') || '';
+    const prefillName = urlParams.get('name') || '';
 
-    document.getElementById('studentId').value = studentId;
+    const studentIdField = document.getElementById('studentId');
+    if (studentIdField) studentIdField.value = studentId;
 
     if (prefillPhone) {
-      document.getElementById('phone').value = prefillPhone;
+      const phoneField = document.getElementById('phone');
+      if (phoneField) phoneField.value = prefillPhone;
     }
     if (prefillName) {
-      document.getElementById('fullName').value = prefillName;
+      const nameField = document.getElementById('fullName');
+      if (nameField) nameField.value = prefillName;
+    }
+
+    const FUNCTION_URL = 'https://us-central1-c2club-fd6722.cloudfunctions.net/submitCardClaim';
+
+    function trackFunnel(step, extraDetails = {}) {
+      try {
+        const sIdInput = document.getElementById('studentId');
+        const phoneInput = document.getElementById('phone');
+        const nameInput = document.getElementById('fullName');
+
+        const curStudentId = (sIdInput && sIdInput.value) ? sIdInput.value : studentId;
+        const curPhone = clean10DigitPhone(phoneInput && phoneInput.value ? phoneInput.value : prefillPhone);
+        const curName = nameInput && nameInput.value ? nameInput.value.trim() : prefillName;
+
+        const payload = {
+          action: 'track_funnel',
+          sessionId: getSessionId(),
+          studentId: curStudentId,
+          phone: curPhone,
+          fullName: curName,
+          step: step,
+          answers: quizAnswers.map((optIdx, qIdx) => {
+            const q = QUIZ_QUESTIONS[qIdx];
+            const opt = q && q.options ? q.options[optIdx] : null;
+            return {
+              qNum: qIdx + 1,
+              tag: q ? q.tag : '',
+              optIndex: optIdx,
+              optText: opt ? opt.text : '',
+              points: opt ? opt.points : 0
+            };
+          }),
+          score: quizTotalScore,
+          url: window.location.href,
+          referrer: document.referrer || '',
+          ...extraDetails
+        };
+
+        // Local cache for immediate debugging
+        try {
+          const logs = JSON.parse(sessionStorage.getItem('funnel_events') || '[]');
+          logs.push({ step, at: new Date().toISOString(), payload });
+          sessionStorage.setItem('funnel_events', JSON.stringify(logs));
+        } catch (_) {}
+
+        const bodyStr = JSON.stringify(payload);
+
+        if (navigator.sendBeacon) {
+          const blob = new Blob([bodyStr], { type: 'application/json' });
+          navigator.sendBeacon(FUNCTION_URL, blob);
+        } else {
+          fetch(FUNCTION_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: bodyStr,
+            keepalive: true
+          }).catch(e => console.warn('Funnel track non-fatal error:', e));
+        }
+      } catch (err) {
+        console.warn('Funnel tracking error:', err);
+      }
+    }
+
+    // Dynamic Viral WhatsApp Challenge link configuration
+    function updateWhatsAppShareLinks() {
+      const curStudentId = (document.getElementById('studentId') && document.getElementById('studentId').value) || studentId;
+      const shareUrl = `https://c2club.in/claim.html?ref=${encodeURIComponent(curStudentId)}`;
+      
+      // 1. Success Screen WhatsApp Challenge
+      const successWaText = `Bro, take this 1-minute campus vibe check! 😭 I just passed and unlocked the free C2 11-card collector deck. Let's see if you're cool enough to pass and receive the cards too: ${shareUrl}`;
+      const shareWaBtn = document.getElementById('shareWaBtn');
+      if (shareWaBtn) {
+        shareWaBtn.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(successWaText)}`;
+      }
+
+      // 2. Naah Screen WhatsApp Challenge
+      const naahWaText = `I was too lazy to claim the free C2 11-card campus deck, but let's see if you have more campus energy than me 😂 Take the 1-min vibe check to see if you can receive the cards: ${shareUrl}`;
+      const naahShareWaBtn = document.getElementById('naahShareWaBtn');
+      if (naahShareWaBtn) {
+        naahShareWaBtn.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(naahWaText)}`;
+      }
+    }
+
+    // One-time listener for address form interaction
+    let addressTrackingFired = false;
+    function initAddressTracking() {
+      const form = document.getElementById('claimForm');
+      if (!form) return;
+      form.addEventListener('focusin', () => {
+        if (!addressTrackingFired) {
+          addressTrackingFired = true;
+          trackFunnel('address_started');
+        }
+      }, { once: true });
     }
 
     // Auto-clean Indian phone numbers (handles +91, 0, spaces, dashes from autofill or paste)
@@ -2143,6 +2340,7 @@
       const combinedLine2 = landmarkVal ? `${areaVal} (Landmark: ${landmarkVal})` : areaVal;
 
       const formData = {
+        sessionId: getSessionId(),
         studentId: document.getElementById('studentId').value,
         fullName: document.getElementById('fullName').value.trim(),
         phone: clean10DigitPhone(document.getElementById('phone').value),
@@ -2163,6 +2361,14 @@
         campusReality: document.getElementById('campusReality').value,
         timestamp: new Date().toISOString()
       };
+
+      // Funnel tracking for submit attempt
+      trackFunnel('claim_submitted', {
+        consignee: formData.fullName,
+        phone: formData.phone,
+        city: formData.city,
+        pincode: formData.pincode
+      });
 
       // Store in browser storage for instant local verification
       try {
@@ -2213,18 +2419,12 @@
         }
 
         // Configure WhatsApp Viral Challenge link
-        const card = DECK_CARDS[diagnosedCardIndex] || DECK_CARDS[2];
-        const waChallengeText = `Bro, take this campus vibe check quiz 😭 I just got diagnosed as "${card.name}" and unlocked the free physical 11-card collector deck for our campus! Check what card you get: https://c2club.in/claim.html`;
-        const waShareBtn = document.getElementById('shareWaBtn');
-        if (waShareBtn) {
-          waShareBtn.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(waChallengeText)}`;
-        }
+        updateWhatsAppShareLinks();
 
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
 
       // Submit to backend Cloud Function
-      const FUNCTION_URL = 'https://us-central1-c2club-fd6722.cloudfunctions.net/submitCardClaim';
       fetch(FUNCTION_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -2240,13 +2440,25 @@
       });
     }
 
-    // Initialize Stage 1 Quiz on page load
-    document.addEventListener('DOMContentLoaded', () => {
+    // Initialize Stage 1 Quiz & tracking on page load
+    let appInitialized = false;
+    function initClaimApp() {
+      if (appInitialized) return;
+      appInitialized = true;
       renderQuizQuestion(0);
-    });
-    // In case DOM is already ready
+      updateWhatsAppShareLinks();
+      initAddressTracking();
+      trackFunnel('page_landed', {
+        studentId: studentId,
+        prefillPhone: prefillPhone || null,
+        prefillName: prefillName || null,
+        search: window.location.search
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', initClaimApp);
     if (document.readyState === 'complete' || document.readyState === 'interactive') {
-      renderQuizQuestion(0);
+      initClaimApp();
     }
   </script>
 </body>
