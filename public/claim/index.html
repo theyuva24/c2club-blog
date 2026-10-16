@@ -2,26 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to the Club! Claim Your Free Welcome Pack 🎁</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Claim Your Free C2 Welcome Pack 🎁 | C2 Club</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Lilita+One&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Figtree:wght@500;600;700;800&family=Lilita+One&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-dark: #0d0f17;
-      --bg-card: #161824;
-      --bg-card-hover: #1f2233;
-      --accent-yellow: #ffd000;
-      --accent-teal: #00d2a0;
-      --accent-coral: #ff5263;
-      --accent-blue: #3b82f6;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --border-dark: #2a2e45;
-      --font-display: 'Lilita One', cursive, sans-serif;
-      --font-sub: 'Fredoka', cursive, sans-serif;
-      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --bg: #0A9F6C;        /* Signature C2 Emerald */
+      --deep: #067A53;      /* Deep Emerald dots */
+      --ink: #052E22;       /* Forest Ink */
+      --mint: #E2FCEF;      /* Fresh Mint Surface */
+      --mint-light: #F0FDF6;
+      --sun: #FFC83D;       /* Warm Marigold Yellow */
+      --sun-hover: #FFBE26;
+      --card-white: #FFFFFF;
+      --border-ink: 3px solid #052E22;
+      --border-thin: 1.5px solid #052E22;
+      --shadow-chunky: 0 6px 0 #052E22;
+      --shadow-hover: 0 8px 0 #052E22;
+      --shadow-pressed: 0 2px 0 #052E22;
+      --font-display: 'Lilita One', 'Bowlby One', cursive, sans-serif;
+      --font-body: 'Figtree', system-ui, -apple-system, sans-serif;
     }
 
     * {
@@ -31,102 +33,99 @@
     }
 
     body {
-      background-color: var(--bg-dark);
-      background-image: 
-        radial-gradient(circle at 10% 15%, rgba(255, 208, 0, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 90% 50%, rgba(0, 210, 160, 0.08) 0%, transparent 45%),
-        radial-gradient(circle at 50% 90%, rgba(59, 130, 246, 0.07) 0%, transparent 40%);
-      color: var(--text-main);
+      background-color: var(--bg);
+      background-image: radial-gradient(var(--deep) 1.8px, transparent 2px);
+      background-size: 24px 24px;
+      color: var(--ink);
       font-family: var(--font-body);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px 14px 60px 14px;
+      padding: 24px 16px 64px;
       line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
     }
 
     .container {
       width: 100%;
-      max-width: 640px;
+      max-width: 560px;
       display: flex;
       flex-direction: column;
       gap: 20px;
     }
 
-    /* Hero / Welcome Banner */
-    .hero-banner {
-      background: linear-gradient(145deg, #1c1f30, #131420);
-      border: 3px solid #333852;
-      border-radius: 24px;
-      padding: 26px 20px;
+    /* Top Hero Header */
+    .hero-header {
       text-align: center;
-      position: relative;
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45), 0 4px 0 #000;
-      overflow: hidden;
+      padding: 8px 6px 2px;
     }
 
-    .club-pill {
+    .hero-pill {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: #ffd000;
-      color: #111;
+      background: var(--sun);
+      color: var(--ink);
       font-family: var(--font-display);
-      font-size: 13px;
+      font-size: 12.5px;
       letter-spacing: 0.5px;
       text-transform: uppercase;
-      padding: 6px 16px;
+      padding: 5px 15px;
       border-radius: 999px;
-      border: 2px solid #111;
-      box-shadow: 0 3px 0 #111;
-      margin-bottom: 14px;
+      border: 2px solid var(--ink);
+      box-shadow: 0 2.5px 0 var(--ink);
+      margin-bottom: 10px;
     }
 
     .hero-title {
       font-family: var(--font-display);
-      font-size: clamp(26px, 5.5vw, 34px);
-      line-height: 1.15;
+      font-size: clamp(25px, 6.5vw, 36px);
+      line-height: 1.12;
+      letter-spacing: 0.3px;
       color: #fff;
-      text-shadow: 2px 2px 0 #111;
-      margin-bottom: 10px;
+      text-wrap: balance;
+      text-shadow: 
+        -1.5px -1.5px 0 var(--ink),
+         1.5px -1.5px 0 var(--ink),
+        -1.5px  1.5px 0 var(--ink),
+         1.5px  1.5px 0 var(--ink),
+         0px  3.5px 0 var(--ink);
+      margin-bottom: 8px;
     }
 
-    .hero-title span {
-      color: var(--accent-yellow);
-      display: inline-block;
-    }
-
-    .hero-desc {
+    .hero-sub {
+      color: #fff;
+      font-weight: 700;
       font-size: 14.5px;
-      color: #cbd5e1;
-      max-width: 520px;
-      margin: 0 auto 18px auto;
-      line-height: 1.55;
+      max-width: 420px;
+      margin: 0 auto 12px;
+      line-height: 1.45;
+      text-wrap: balance;
+      text-shadow: 0 1px 3px rgba(5,46,34,0.4);
     }
 
-    /* Cards Fan Preview */
-    .cards-fan-container {
-      margin: 8px auto 16px auto;
+    /* Cards Fan Showcase */
+    .cards-fan {
       position: relative;
-      width: 100%;
-      height: 200px;
+      height: 205px;
       display: flex;
       justify-content: center;
       align-items: center;
+      margin: 10px 0 8px;
     }
 
     .fan-card {
       position: absolute;
-      width: 120px;
-      height: 170px;
+      width: 122px;
+      height: 183px;
       border-radius: 12px;
-      border: 3px solid #111;
-      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.5), 0 3px 0 #111;
+      border: 2px solid var(--ink);
+      box-shadow: 0 8px 18px rgba(5,46,34,0.32), 0 3px 0 var(--ink);
       overflow: hidden;
-      background: #222;
-      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      background: #fff;
       cursor: pointer;
+      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     .fan-card img {
@@ -136,551 +135,1081 @@
       display: block;
     }
 
-    .fan-card:nth-child(1) { transform: translateX(-95px) rotate(-14deg); z-index: 1; }
-    .fan-card:nth-child(2) { transform: translateX(-45px) rotate(-6deg); z-index: 2; }
-    .fan-card:nth-child(3) { transform: translateX(0px) rotate(0deg) scale(1.06); z-index: 3; border-color: #ffd000; box-shadow: 0 14px 28px rgba(0, 0, 0, 0.6), 0 4px 0 #ffd000; }
-    .fan-card:nth-child(4) { transform: translateX(45px) rotate(6deg); z-index: 2; }
-    .fan-card:nth-child(5) { transform: translateX(95px) rotate(14deg); z-index: 1; }
+    .fan-card:nth-child(1) { transform: translateX(-94px) rotate(-14deg); z-index: 1; }
+    .fan-card:nth-child(2) { transform: translateX(-47px) rotate(-7deg); z-index: 2; }
+    .fan-card:nth-child(3) { 
+      transform: translateX(0px) rotate(0deg) scale(1.08); 
+      z-index: 5; 
+      border-color: var(--sun); 
+      box-shadow: 0 10px 0 var(--ink), 0 18px 30px rgba(5,46,34,0.38); 
+    }
+    .fan-card:nth-child(4) { transform: translateX(47px) rotate(7deg); z-index: 2; }
+    .fan-card:nth-child(5) { transform: translateX(94px) rotate(14deg); z-index: 1; }
 
-    .fan-card:hover {
-      transform: translateY(-14px) scale(1.15) !important;
-      z-index: 10 !important;
-      box-shadow: 0 20px 32px rgba(0, 0, 0, 0.7), 0 6px 0 #ffd000;
+    .fan-card:hover, .fan-card.active-preview {
+      transform: translateY(-16px) scale(1.22) rotate(0deg) !important;
+      z-index: 12 !important;
+      border-color: var(--sun) !important;
+      box-shadow: 0 18px 32px rgba(5,46,34,0.48), 0 6px 0 var(--ink) !important;
     }
 
-    .fan-badge {
-      display: inline-flex;
+    /* Deck Quick Peek Chips */
+    .deck-peek-strip {
+      display: flex;
+      flex-direction: column;
       align-items: center;
       gap: 6px;
-      background: rgba(0, 210, 160, 0.14);
-      border: 1.5px solid var(--accent-teal);
-      color: #34d399;
-      font-family: var(--font-sub);
-      font-size: 13px;
-      font-weight: 600;
-      padding: 6px 14px;
-      border-radius: 20px;
+      margin-bottom: 6px;
+      width: 100%;
     }
 
-    /* Form Card */
-    .form-section {
-      background: var(--bg-card);
-      border: 2px solid var(--border-dark);
-      border-radius: 20px;
-      padding: 22px 18px;
-      box-shadow: 0 6px 0 #000;
+    .peek-label {
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #fff;
+      text-shadow: 0 1px 2px rgba(5,46,34,0.4);
+      letter-spacing: 0.3px;
     }
 
-    .section-header {
+    .peek-chips-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .peek-chips {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      max-width: 100%;
+      padding: 4px 12px 8px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      mask-image: linear-gradient(to right, transparent, black 12px, black calc(100% - 12px), transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 12px, black calc(100% - 12px), transparent);
+    }
+    .peek-chips::-webkit-scrollbar { display: none; }
+
+    .peek-chip {
+      background: var(--card-white);
+      color: var(--ink);
+      border: 1.5px solid var(--ink);
+      border-radius: 999px;
+      padding: 5px 12px;
+      font-family: var(--font-body);
+      font-weight: 800;
+      font-size: 12px;
+      cursor: pointer;
+      white-space: nowrap;
+      box-shadow: 0 2px 0 var(--ink);
+      transition: all 0.1s ease;
+      flex-shrink: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .peek-chip:hover {
+      background: var(--mint);
+      transform: translateY(-1px);
+    }
+
+    .peek-chip.active {
+      background: var(--sun);
+      box-shadow: 0 3px 0 var(--ink);
+      transform: translateY(-1px);
+    }
+
+    /* Main Form Card */
+    .claim-card {
+      background: var(--card-white);
+      border: var(--border-ink);
+      border-radius: 28px;
+      padding: 28px 24px;
+      box-shadow: 0 8px 0 var(--ink), 0 18px 30px rgba(5,46,34,0.25);
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    /* Form Section Block */
+    .section-block {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .section-title-row {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 16px;
+      gap: 10px;
     }
 
-    .step-num {
-      width: 32px;
-      height: 32px;
-      border-radius: 10px;
-      background: var(--accent-yellow);
-      color: #111;
+    .step-badge {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: var(--sun);
+      color: var(--ink);
       font-family: var(--font-display);
-      font-size: 16px;
+      font-size: 15px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 2px solid #111;
-      box-shadow: 0 2px 0 #111;
+      border: 2px solid var(--ink);
+      box-shadow: 0 2px 0 var(--ink);
       flex-shrink: 0;
     }
 
-    .section-title {
-      font-family: var(--font-sub);
-      font-size: 18px;
-      font-weight: 700;
+    .section-heading {
+      font-family: var(--font-display);
+      font-size: 19px;
+      letter-spacing: 0.3px;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+
+    /* 1-Tap GPS Banner */
+    .gps-box {
+      background: var(--mint);
+      border: 2px solid var(--ink);
+      border-radius: 16px;
+      padding: 13px 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      box-shadow: 0 3px 0 var(--ink);
+    }
+
+    .gps-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .gps-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .gps-title {
+      font-weight: 800;
+      font-size: 13.5px;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+
+    .gps-sub {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #067a53;
+      margin-top: 2px;
+      line-height: 1.25;
+    }
+
+    .gps-btn {
+      background: var(--sun);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-weight: 800;
+      font-size: 12px;
+      padding: 9px 13px;
+      border-radius: 11px;
+      border: 2px solid var(--ink);
+      box-shadow: 0 2.5px 0 var(--ink);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.1s ease;
+      white-space: nowrap;
+      flex-shrink: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .gps-btn:hover {
+      background: var(--sun-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 0 var(--ink);
+    }
+
+    .gps-btn:active {
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 var(--ink);
+    }
+
+    .gps-btn.attached {
+      background: #0A9F6C;
       color: #fff;
     }
 
-    .section-desc {
-      font-size: 13px;
-      color: #94a3b8;
-      margin-top: 2px;
-    }
-
-    .input-grid {
+    /* Form Fields Grid */
+    .form-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
+      gap: 14px 12px;
     }
 
     .col-full {
       grid-column: 1 / -1;
     }
 
-    .input-group {
+    .col-phone-half {
+      grid-column: span 1;
+    }
+
+    .city-state-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      grid-column: 1 / -1;
+    }
+
+    .field-group {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 5px;
     }
 
     label {
+      font-weight: 700;
       font-size: 12.5px;
-      font-weight: 600;
-      color: #94a3b8;
+      color: var(--ink);
       display: flex;
+      align-items: center;
       justify-content: space-between;
+      letter-spacing: 0.1px;
+      line-height: 1.3;
     }
 
     .req {
-      color: var(--accent-coral);
+      color: #dc2626;
+      font-weight: 800;
+      margin-left: 2px;
     }
 
-    input, textarea, select {
+    .hint-label {
+      font-weight: 600;
+      color: #067a53;
+      font-size: 11px;
+    }
+
+    input {
       width: 100%;
-      background: #0d0f17;
-      border: 2px solid #2a2e45;
+      background: #fbfdfc;
+      border: 2px solid var(--ink);
       border-radius: 12px;
-      padding: 12px 14px;
-      color: #fff;
+      padding: 13px 14px;
+      color: var(--ink);
       font-family: var(--font-body);
-      font-size: 14px;
-      transition: all 0.2s ease;
-      outline: none;
-    }
-
-    input:focus, textarea:focus, select:focus {
-      border-color: var(--accent-yellow);
-      box-shadow: 0 0 0 3px rgba(255, 208, 0, 0.18);
-      background: #141724;
-    }
-
-    input::placeholder, textarea::placeholder {
-      color: #4b5563;
-    }
-
-    /* GPS Auto-Fill Card */
-    .gps-hero-card {
-      background: linear-gradient(135deg, rgba(0, 210, 160, 0.12), rgba(22, 27, 46, 0.6));
-      border: 2px solid var(--accent-teal);
-      border-radius: 16px;
-      padding: 14px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 14px;
-      box-shadow: 0 4px 12px rgba(0, 210, 160, 0.1);
-    }
-
-    .gps-hero-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .gps-hero-icon {
-      font-size: 24px;
-      line-height: 1;
-    }
-
-    .gps-hero-title {
-      font-family: var(--font-sub);
-      font-size: 14px;
-      font-weight: 700;
-      color: #fff;
-    }
-
-    .gps-hero-sub {
-      font-size: 12px;
-      color: #94a3b8;
-      margin-top: 1px;
-    }
-
-    .gps-action-btn {
-      background: var(--accent-teal);
-      color: #032e23;
-      font-family: var(--font-sub);
-      font-weight: 700;
-      font-size: 13px;
-      padding: 9px 16px;
-      border-radius: 10px;
-      border: 2px solid #111;
-      box-shadow: 0 3px 0 #111;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+      font-size: 16px; /* Exactly 16px prevents iOS Safari from auto-zooming viewport */
+      font-weight: 600;
       transition: all 0.15s ease;
-      white-space: nowrap;
-      flex-shrink: 0;
+      outline: none;
+      box-shadow: 0 2px 0 rgba(5,46,34,0.1);
+      -webkit-appearance: none;
+      appearance: none;
     }
 
-    .gps-action-btn:hover {
-      background: #00e6af;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 0 #111;
+    input:focus {
+      background: #fff;
+      border-color: #0A9F6C;
+      box-shadow: 0 0 0 3px rgba(10, 159, 108, 0.22), 0 2px 0 var(--ink);
     }
 
-    .gps-action-btn:active {
-      transform: translateY(2px);
-      box-shadow: 0 1px 0 #111;
+    input::placeholder {
+      color: #8fa099;
+      font-weight: 500;
     }
 
-    /* GPS Locked Verified Card */
-    .gps-locked-card {
-      background: #0d0f17;
-      border: 1.5px solid var(--accent-teal);
-      border-radius: 14px;
-      padding: 12px 14px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 8px;
+    input.field-autofilled {
+      border-color: #0A9F6C !important;
+      background: var(--mint-light) !important;
+      box-shadow: 0 0 0 3px rgba(10, 159, 108, 0.25) !important;
     }
 
-    .gps-locked-text {
-      font-size: 13px;
-      color: #e2e8f0;
+    /* Divider */
+    .form-divider {
+      height: 2px;
+      background: rgba(5,46,34,0.12);
+      border-radius: 2px;
+      margin: 2px 0;
+    }
+
+    /* Campus Strength Question */
+    .crowd-section {
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 10px;
     }
 
-    .gps-badge-tag {
+    .crowd-label {
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      letter-spacing: 0.1px;
+    }
+
+    .crowd-chips {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .crowd-chip {
+      background: #fbfdfc;
+      border: 2px solid var(--ink);
+      border-radius: 14px;
+      padding: 10px 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      cursor: pointer;
+      box-shadow: 0 2px 0 rgba(5,46,34,0.12);
+      transition: all 0.15s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .crowd-chip:hover {
+      background: var(--mint);
+      transform: translateY(-1px);
+    }
+
+    .crowd-chip.active {
+      background: var(--sun);
+      border-color: var(--ink);
+      box-shadow: 0 3px 0 var(--ink);
+      transform: translateY(-1px);
+    }
+
+    .chip-main {
+      font-family: var(--font-display);
+      font-size: 14px;
+      color: var(--ink);
+      line-height: 1.1;
+    }
+
+    .chip-sub {
+      font-family: var(--font-body);
       font-size: 11px;
       font-weight: 700;
-      color: var(--accent-teal);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      color: #067a53;
+      line-height: 1.1;
     }
 
-    .gps-edit-btn {
-      background: none;
-      border: 1px solid #475569;
-      color: #94a3b8;
-      font-size: 11.5px;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.15s ease;
-      white-space: nowrap;
+    .crowd-chip.active .chip-sub {
+      color: var(--ink);
     }
 
-    .gps-edit-btn:hover {
-      color: #fff;
-      border-color: #cbd5e1;
-    }
-
-    /* Question Pill Blocks */
-    .question-block {
-      margin-bottom: 18px;
-    }
-
-    .question-label {
-      font-family: var(--font-sub);
-      font-size: 14px;
-      font-weight: 600;
-      color: #f1f5f9;
-      margin-bottom: 8px;
-      display: block;
-    }
-
-    .pill-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .vibe-pill {
-      background: #0d0f17;
-      border: 1.5px solid #2a2e45;
-      border-radius: 12px;
-      padding: 11px 14px;
-      font-size: 13.5px;
-      color: #cbd5e1;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      transition: all 0.15s ease;
-      user-select: none;
-    }
-
-    .vibe-pill:hover {
-      border-color: #4b5578;
-      background: #141724;
-    }
-
-    .vibe-pill.active {
-      border-color: var(--accent-teal);
-      background: rgba(0, 210, 160, 0.1);
-      color: #fff;
-      font-weight: 600;
-      box-shadow: 0 2px 0 var(--accent-teal);
-    }
-
-    .vibe-icon {
-      font-size: 16px;
-      flex-shrink: 0;
-    }
-
-    /* College Headcount Chips */
-    .chips-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .size-chip {
-      background: #0d0f17;
-      border: 1.5px solid #2a2e45;
-      border-radius: 999px;
-      padding: 9px 16px;
-      font-size: 13.5px;
-      color: #cbd5e1;
-      cursor: pointer;
-      transition: all 0.15s ease;
-      user-select: none;
-      font-family: var(--font-sub);
-      font-weight: 600;
-    }
-
-    .size-chip:hover {
-      border-color: #4b5578;
-      background: #141724;
-    }
-
-    .size-chip.active {
-      border-color: var(--accent-yellow);
-      background: rgba(255, 208, 0, 0.12);
-      color: var(--accent-yellow);
-      box-shadow: 0 2px 0 var(--accent-yellow);
-    }
-
-    /* Trust Box */
-    .trust-box {
-      background: rgba(22, 27, 46, 0.5);
-      border: 1.5px dashed #2d3752;
-      border-radius: 14px;
-      padding: 14px 16px;
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      font-size: 12.5px;
-      color: #94a3b8;
-      line-height: 1.5;
-    }
-
-    .trust-icon {
-      font-size: 20px;
-      line-height: 1;
-    }
-
-    .trust-box strong {
-      color: #f1f5f9;
-    }
-
-    /* Submit Button */
-    .submit-btn {
-      background: var(--accent-yellow);
-      color: #111;
+    /* Primary Submit Button */
+    .submit-cta {
+      background: var(--sun);
+      color: var(--ink);
       font-family: var(--font-display);
-      font-size: 20px;
+      font-size: 18px;
       padding: 18px 24px;
-      border-radius: 16px;
-      border: 3px solid #111;
-      box-shadow: 0 6px 0 #111;
+      border-radius: 18px;
+      border: var(--border-ink);
+      box-shadow: var(--shadow-chunky);
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      transition: all 0.15s ease;
       width: 100%;
+      margin-top: 14px;
+      transition: all 0.1s ease;
+      touch-action: manipulation;
     }
 
-    .submit-btn:hover {
+    .submit-cta:hover {
+      background: var(--sun-hover);
       transform: translateY(-2px);
-      box-shadow: 0 8px 0 #111;
-      background: #ffe033;
+      box-shadow: var(--shadow-hover);
     }
 
-    .submit-btn:active {
-      transform: translateY(3px);
-      box-shadow: 0 2px 0 #111;
+    .submit-cta:active {
+      transform: translateY(4px);
+      box-shadow: var(--shadow-pressed);
+    }
+
+    .submit-cta:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
     }
 
     /* Success Screen */
     .success-screen {
       display: none;
-      background: var(--bg-card);
-      border: 3px solid var(--accent-teal);
-      border-radius: 24px;
-      padding: 36px 20px;
+      background: var(--card-white);
+      border: var(--border-ink);
+      border-radius: 28px;
+      padding: 32px 24px;
+      box-shadow: 0 8px 0 var(--ink), 0 18px 30px rgba(5,46,34,0.25);
       text-align: center;
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 4px 0 #000;
-      animation: popIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    @keyframes popIn {
-      0% { opacity: 0; transform: scale(0.92); }
-      100% { opacity: 1; transform: scale(1); }
     }
 
     .success-icon {
-      font-size: 56px;
-      margin-bottom: 14px;
-      animation: bounce 1s infinite alternate ease-in-out;
-    }
-
-    @keyframes bounce {
-      from { transform: translateY(0); }
-      to { transform: translateY(-8px); }
+      font-size: 52px;
+      margin-bottom: 8px;
     }
 
     .success-title {
       font-family: var(--font-display);
-      font-size: 32px;
-      color: #fff;
+      font-size: 26px;
+      color: var(--ink);
+      line-height: 1.15;
       margin-bottom: 8px;
-    }
-
-    .success-title span {
-      color: var(--accent-teal);
     }
 
     .success-subtitle {
       font-size: 14.5px;
-      color: #cbd5e1;
-      max-width: 480px;
-      margin: 0 auto 20px auto;
-      line-height: 1.6;
+      color: #3b534a;
+      line-height: 1.5;
+      margin-bottom: 18px;
     }
 
-    .dispatch-badge {
-      background: rgba(0, 210, 160, 0.15);
-      border: 1.5px solid var(--accent-teal);
-      color: var(--accent-teal);
-      font-family: var(--font-sub);
-      font-weight: 700;
-      font-size: 13.5px;
-      padding: 8px 16px;
-      border-radius: 30px;
+    .dispatch-pill {
       display: inline-block;
-      margin-bottom: 22px;
-    }
-
-    .summary-card {
-      background: #0d0f17;
-      border: 2px solid #2a2e45;
-      border-radius: 16px;
-      padding: 16px;
-      text-align: left;
-      font-size: 13.5px;
-      margin-bottom: 22px;
-      color: #94a3b8;
-    }
-
-    .summary-card div {
-      margin-bottom: 7px;
-    }
-    .summary-card strong {
-      color: #fff;
-    }
-
-    /* Courier Label Preview Box (Format strictly for Blue Dart / Speed Post) */
-    .courier-label-box {
-      background: #0d0f17;
-      border: 2px dashed #3b82f6;
-      border-radius: 14px;
-      padding: 16px;
-      text-align: left;
-      font-family: monospace;
+      background: var(--mint);
+      border: 2px solid var(--ink);
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-weight: 800;
       font-size: 13px;
-      color: #e2e8f0;
-      margin-bottom: 22px;
+      color: var(--ink);
+      box-shadow: 0 2px 0 var(--ink);
+      margin-bottom: 20px;
+    }
+
+    .courier-label-box {
+      background: var(--mint-light);
+      border: 2px dashed #067A53;
+      border-radius: 16px;
+      padding: 16px 18px;
+      text-align: left;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 13px;
       line-height: 1.6;
+      color: var(--ink);
+      position: relative;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 0 rgba(5,46,34,0.08);
     }
 
     .courier-label-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 10px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid #2a2e45;
-      font-family: var(--font-sub);
-      color: #93c5fd;
+      font-family: var(--font-body);
+      font-weight: 800;
       font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #067a53;
+      border-bottom: 1.5px solid rgba(5,46,34,0.12);
+      padding-bottom: 8px;
+      margin-bottom: 10px;
+    }
+
+    .copy-label-btn {
+      background: var(--card-white);
+      color: var(--ink);
+      border: 1.5px solid var(--ink);
+      border-radius: 8px;
+      padding: 4px 10px;
       font-weight: 700;
+      font-size: 11px;
+      cursor: pointer;
+      box-shadow: 0 2px 0 var(--ink);
+      transition: all 0.1s;
+    }
+
+    .copy-label-btn:hover {
+      background: var(--mint);
+    }
+
+    .summary-card {
+      background: #fbfdfc;
+      border: 2px solid var(--ink);
+      border-radius: 16px;
+      padding: 14px 16px;
+      text-align: left;
+      font-size: 13.5px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 20px;
+      box-shadow: 0 3px 0 var(--ink);
+    }
+
+    .fun-delivery-box {
+      background: var(--mint);
+      border: 2.5px solid var(--ink);
+      border-radius: 20px;
+      padding: 22px 18px;
+      text-align: center;
+      box-shadow: 0 4px 0 var(--ink);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .fun-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--sun);
+      color: var(--ink);
+      font-family: var(--font-display);
+      font-size: 13px;
+      padding: 5px 14px;
+      border-radius: 999px;
+      border: 2px solid var(--ink);
+      box-shadow: 0 2px 0 var(--ink);
+      align-self: center;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
 
-    .copy-label-btn {
-      background: #1e293b;
-      border: 1.5px solid #475569;
-      color: #cbd5e1;
-      padding: 5px 12px;
-      border-radius: 8px;
-      font-size: 11.5px;
-      font-weight: 600;
-      cursor: pointer;
-      font-family: var(--font-body);
-      transition: all 0.15s ease;
+    .fun-title {
+      font-family: var(--font-display);
+      font-size: 21px;
+      color: var(--ink);
+      line-height: 1.25;
     }
 
-    .copy-label-btn:hover {
-      background: #334155;
-      color: #fff;
-      border-color: #94a3b8;
-    }
-
-    .invite-box {
-      background: #1c1f30;
-      border: 2px solid #333852;
-      border-radius: 16px;
-      padding: 18px;
-    }
-
-    .invite-btn {
-      background: #25d366;
-      color: #fff;
-      font-family: var(--font-sub);
-      font-weight: 700;
+    .fun-desc {
       font-size: 14.5px;
-      padding: 12px 20px;
-      border-radius: 12px;
-      border: 2px solid #111;
-      box-shadow: 0 4px 0 #111;
+      font-weight: 600;
+      color: #067A53;
+      line-height: 1.55;
+    }
+
+    .fun-prompt {
+      background: #fff;
+      border: 2px dashed var(--ink);
+      border-radius: 14px;
+      padding: 12px 16px;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.45;
+      text-align: center;
+    }
+
+    /* Trust Footer */
+    .trust-footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 1px 2px rgba(5,46,34,0.4);
+      text-align: center;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 14px 12px 48px;
+      }
+      .container {
+        gap: 16px;
+      }
+      .hero-header {
+        padding: 4px 4px 0;
+      }
+      .hero-pill {
+        font-size: 11.5px;
+        padding: 5px 13px;
+        margin-bottom: 8px;
+      }
+      .hero-title {
+        font-size: clamp(23px, 7.2vw, 30px);
+        margin-bottom: 6px;
+      }
+      .hero-sub {
+        font-size: 13.5px;
+        margin-bottom: 8px;
+        max-width: 320px;
+      }
+      .cards-fan {
+        height: 182px;
+        margin: 6px 0 4px;
+      }
+      .fan-card {
+        width: 104px;
+        height: 156px;
+        border-radius: 10px;
+      }
+      .fan-card:nth-child(1) { transform: translateX(-78px) rotate(-14deg); }
+      .fan-card:nth-child(2) { transform: translateX(-39px) rotate(-7deg); }
+      .fan-card:nth-child(3) { transform: translateX(0px) rotate(0deg) scale(1.06); }
+      .fan-card:nth-child(4) { transform: translateX(39px) rotate(7deg); }
+      .fan-card:nth-child(5) { transform: translateX(78px) rotate(14deg); }
+
+      .fan-card:hover, .fan-card.active-preview {
+        transform: translateY(-12px) scale(1.16) rotate(0deg) !important;
+      }
+
+      .peek-chip {
+        padding: 4px 10px;
+        font-size: 11px;
+      }
+
+      .claim-card, .success-screen {
+        padding: 20px 14px;
+        border-radius: 22px;
+        gap: 16px;
+      }
+      .section-heading {
+        font-size: 17.5px;
+      }
+      .form-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .col-phone-half {
+        grid-column: 1 / -1 !important;
+      }
+      .city-state-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        grid-column: 1 / -1;
+      }
+      .crowd-chips {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+      .crowd-chip {
+        padding: 10px 8px;
+      }
+      .chip-main {
+        font-size: 14.5px;
+      }
+      .chip-sub {
+        font-size: 11.5px;
+      }
+      .submit-cta {
+        font-size: 16.5px;
+        padding: 15px 18px;
+        border-radius: 15px;
+      }
+    }
+
+    /* ══════════════════════════════════════════════════════
+       STAGE 1: THE UNHINGED CAMPUS VIBE CHECK (QUIZ) STYLES
+       ══════════════════════════════════════════════════════ */
+    .quiz-card {
+      background: var(--card-white);
+      border: var(--border-ink);
+      border-radius: 28px;
+      box-shadow: var(--shadow-chunky);
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quiz-header {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .quiz-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .quiz-stage-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--mint);
+      border: 1.5px solid var(--ink);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 11.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--ink);
+    }
+
+    .quiz-counter {
+      font-family: var(--font-display);
+      font-size: 14px;
+      color: var(--ink);
+    }
+
+    .quiz-progress-track {
+      height: 9px;
+      background: #E2FCEF;
+      border: 1.5px solid var(--ink);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .quiz-progress-fill {
+      height: 100%;
+      background: var(--sun);
+      width: 20%;
+      transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .quiz-body {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .quiz-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--deep);
+    }
+
+    .quiz-question {
+      font-family: var(--font-display);
+      font-size: clamp(18px, 4.8vw, 21px);
+      line-height: 1.25;
+      color: var(--ink);
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .quiz-opt-btn {
+      width: 100%;
+      background: #fbfdfc;
+      border: 2px solid var(--ink);
+      border-radius: 16px;
+      padding: 13px 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      text-align: left;
+      font-family: var(--font-body);
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.35;
+      box-shadow: 0 3px 0 var(--ink);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .quiz-opt-btn:hover {
+      background: var(--mint);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 0 var(--ink);
+    }
+
+    .quiz-opt-btn:active {
+      transform: translateY(1px);
+      box-shadow: 0 1px 0 var(--ink);
+      background: var(--sun);
+    }
+
+    .quiz-opt-emoji {
+      font-size: 21px;
+      flex-shrink: 0;
+      line-height: 1;
+      margin-top: 2px;
+    }
+
+    .quiz-nav-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 4px;
+    }
+
+    .quiz-prev-btn {
+      background: none;
+      border: none;
+      font-family: var(--font-body);
+      font-size: 12.5px;
+      font-weight: 800;
+      color: var(--ink);
+      cursor: pointer;
+      padding: 4px 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      opacity: 0.75;
+      transition: opacity 0.2s;
+    }
+    .quiz-prev-btn:hover { opacity: 1; text-decoration: underline; }
+
+    /* Scanning Screen Loader */
+    .quiz-scanning-box {
+      display: none;
+      text-align: center;
+      padding: 40px 16px;
+    }
+
+    .scanning-spinner {
+      width: 52px;
+      height: 52px;
+      border: 4px solid #E2FCEF;
+      border-top-color: var(--sun);
+      border-right-color: var(--ink);
+      border-radius: 50%;
+      margin: 0 auto 18px;
+      animation: quizSpin 0.75s linear infinite;
+    }
+
+    @keyframes quizSpin {
+      to { transform: rotate(360deg); }
+    }
+
+    .scanning-title {
+      font-family: var(--font-display);
+      font-size: 21px;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .scanning-sub {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--deep);
+      min-height: 20px;
+    }
+
+    /* Result Diagnosis Box */
+    .quiz-result-box {
+      display: none;
+      text-align: center;
+      padding: 10px 4px 6px;
+      animation: resultPopIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes resultPopIn {
+      0% { opacity: 0; transform: scale(0.92); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    /* Simple Success Result & Choices */
+    .simple-success-box {
+      text-align: center;
+      padding: 10px 4px 6px;
+    }
+
+    .choice-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .choice-btn-primary {
+      width: 100%;
+      background: var(--sun);
+      color: var(--ink);
+      font-family: var(--font-display);
+      font-size: 17px;
+      padding: 16px 20px;
+      border-radius: 16px;
+      border: 2.5px solid var(--ink);
+      box-shadow: var(--shadow-chunky);
       cursor: pointer;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
+      transition: all 0.15s ease;
+      touch-action: manipulation;
       text-decoration: none;
-      margin-top: 10px;
+    }
+    .choice-btn-primary:hover {
+      background: var(--sun-hover);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+    .choice-btn-primary:active {
+      transform: translateY(2px);
+      box-shadow: var(--shadow-pressed);
     }
 
-    @media (max-width: 520px) {
-      .input-grid {
-        grid-template-columns: 1fr;
-      }
-      .crowd-grid {
-        grid-template-columns: 1fr;
-      }
-      .cards-fan-container {
-        height: 170px;
-      }
-      .fan-card {
-        width: 100px;
-        height: 140px;
-      }
-      .fan-card:nth-child(1) { transform: translateX(-75px) rotate(-14deg); }
-      .fan-card:nth-child(2) { transform: translateX(-35px) rotate(-6deg); }
-      .fan-card:nth-child(4) { transform: translateX(35px) rotate(6deg); }
-      .fan-card:nth-child(5) { transform: translateX(75px) rotate(14deg); }
+    .choice-btn-naah {
+      width: 100%;
+      background: transparent;
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 800;
+      padding: 13px 18px;
+      border-radius: 14px;
+      border: 2px dashed rgba(5,46,34,0.4);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+    }
+    .choice-btn-naah:hover {
+      border-color: var(--ink);
+      background: rgba(5,46,34,0.06);
+      transform: translateY(-1px);
+    }
+
+    /* Naah Fun Exit Screen */
+    .naah-card {
+      display: none;
+      background: var(--card-white);
+      border: var(--border-ink);
+      border-radius: 28px;
+      padding: 40px 24px;
+      box-shadow: var(--shadow-chunky);
+      text-align: center;
+      animation: resultPopIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .naah-icon {
+      font-size: 56px;
+      margin-bottom: 14px;
+    }
+    .naah-title {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 5.5vw, 29px);
+      color: var(--ink);
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .naah-desc {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--deep);
+      line-height: 1.55;
+      max-width: 400px;
+      margin: 0 auto 24px;
+    }
+    .naah-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 340px;
+      margin: 0 auto;
+    }
+
+    .result-cta-btn:hover {
+      background: var(--sun-hover);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+    .result-cta-btn:active {
+      transform: translateY(2px);
+      box-shadow: var(--shadow-pressed);
+    }
+
+    .retake-btn {
+      background: #fbfdfc;
+      color: var(--ink);
+      font-family: var(--font-display);
+      font-size: 15px;
+      padding: 12px 20px;
+      border-radius: 14px;
+      border: 2px solid var(--ink);
+      box-shadow: 0 3px 0 var(--ink);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+      transition: all 0.15s ease;
+    }
+    .retake-btn:hover {
+      background: var(--mint);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 0 var(--ink);
+    }
+
+    /* Stage 2 Unlocked Header Banner */
+    .stage2-banner {
+      background: var(--mint);
+      border: 2px solid var(--ink);
+      border-radius: 18px;
+      padding: 15px 16px;
+      text-align: center;
+      margin-bottom: 22px;
+      box-shadow: 0 3px 0 var(--ink);
+    }
+    .stage2-pill {
+      display: inline-block;
+      background: var(--sun);
+      border: 1.5px solid var(--ink);
+      font-family: var(--font-display);
+      font-size: 11.5px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+    .stage2-heading {
+      font-family: var(--font-display);
+      font-size: 20px;
+      color: var(--ink);
+      margin-bottom: 3px;
+    }
+    .stage2-sub {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--deep);
+    }
+
+    /* WhatsApp Viral Challenge Button on Success Screen */
+    .wa-challenge-btn {
+      width: 100%;
+      background: #25D366;
+      color: #052E22;
+      font-family: var(--font-display);
+      font-size: 16.5px;
+      padding: 14px 18px;
+      border-radius: 16px;
+      border: 2.5px solid var(--ink);
+      box-shadow: var(--shadow-chunky);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      margin-top: 14px;
+    }
+    .wa-challenge-btn:hover {
+      background: #22c35e;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+    .wa-challenge-btn:active {
+      transform: translateY(2px);
+      box-shadow: var(--shadow-pressed);
     }
   </style>
 </head>
@@ -688,217 +1217,291 @@
 
   <div class="container">
     
-    <!-- Hero / Welcome Header -->
-    <header class="hero-banner">
-      <div class="club-pill">🎁 Limited Edition Personality Card Pack</div>
-      <h1 class="hero-title">Every Friend in Your Gang is One of These Cards. <br><span>We’re Sending You a Pack to Tag Them.</span></h1>
-      <p class="hero-desc">
-        From the guy who calculates 75% attendance down to the minute, to the one scribbling assignments at 8:59 AM. We printed limited physical college personality cards for you to hand out to the exact friends who match them. Claim your welcome pack below:
-      </p>
-
-      <!-- Tactile Card Fan Showcase -->
-      <div class="cards-fan-container">
-        <div class="fan-card" title="The Canteen Commander">
-          <img src="card3_canteen_final.jpg" alt="Canteen Commander">
-        </div>
-        <div class="fan-card" title="The Assignment Survivor">
-          <img src="card9_survivor_final.jpg" alt="Assignment Survivor">
-        </div>
-        <div class="fan-card" title="The All-Rounder">
-          <img src="card11_rounder_final.jpg" alt="The All-Rounder">
-        </div>
-        <div class="fan-card" title="The Attendance Calculator">
-          <img src="card7_calculator_final.jpg" alt="Attendance Calculator">
-        </div>
-        <div class="fan-card" title="The Campus Influencer">
-          <img src="card10_influencer_final.jpg" alt="Campus Influencer">
-        </div>
+    <!-- Top Hero Header -->
+    <header class="hero-header" id="heroHeader">
+      <div class="hero-pill">🎁 100% Free Welcome Pack</div>
+      <h1 class="hero-title">Claim Your C2 Collector Pack</h1>
+      <p class="hero-sub">Pass the quick 5-question campus vibe check to unlock your free physical pack.</p>
+      
+      <!-- Finalized Front Cards Fan Showcase -->
+      <div class="cards-fan" id="cardsFan">
+        <div class="fan-card" onclick="focusCard(0)" title="Social Butterfly"><img src="/cards-deck/01_Social_Butterfly_Front.png" alt="Social Butterfly"></div>
+        <div class="fan-card" onclick="focusCard(1)" title="Topper"><img src="/cards-deck/02_Topper_Front.png" alt="Topper"></div>
+        <div class="fan-card" onclick="focusCard(2)" title="All-Rounder"><img id="heroCardImg" src="/cards-deck/11_All_Rounder_Front.png" alt="All-Rounder"></div>
+        <div class="fan-card" onclick="focusCard(3)" title="Canteen Commander"><img src="/cards-deck/03_Canteen_Commander_Front.png" alt="Canteen Commander"></div>
+        <div class="fan-card" onclick="focusCard(4)" title="Attendance Calculator"><img src="/cards-deck/07_Attendance_Calculator_Front.png" alt="Attendance Calculator"></div>
       </div>
 
-      <div class="fan-badge">
-        ✨ 100% Free Physical Pack • Hand Them Out Across Your Campus
+      <!-- Quick Interactive 11-Card Peek Strip -->
+      <div class="deck-peek-strip">
+        <div class="peek-label">✨ Tap any card to peek front:</div>
+        <div class="peek-chips-wrapper">
+          <div class="peek-chips">
+            <button type="button" class="peek-chip" onclick="focusCard(0)">🦋 Social Butterfly</button>
+            <button type="button" class="peek-chip" onclick="focusCard(1)">🏆 Topper</button>
+            <button type="button" class="peek-chip active" onclick="focusCard(2)">⭐ All-Rounder</button>
+            <button type="button" class="peek-chip" onclick="focusCard(3)">☕ Canteen Commander</button>
+            <button type="button" class="peek-chip" onclick="focusCard(4)">📊 75% Attendance</button>
+            <button type="button" class="peek-chip" onclick="focusCard(5)">📝 Survivor</button>
+            <button type="button" class="peek-chip" onclick="focusCard(6)">🧠 Silent Genius</button>
+            <button type="button" class="peek-chip" onclick="focusCard(7)">📸 Influencer</button>
+            <button type="button" class="peek-chip" onclick="focusCard(8)">🎯 Strategist</button>
+            <button type="button" class="peek-chip" onclick="focusCard(9)">🍎 Prof's Fav</button>
+            <button type="button" class="peek-chip" onclick="focusCard(10)">🎤 Politician</button>
+          </div>
+        </div>
       </div>
     </header>
 
-    <!-- The Claim Form -->
-    <form class="claim-form" id="claimForm" onsubmit="handleClaim(event)">
-
-      <!-- Section 1: Who Are You Tagging in Your Gang? (Step 1 - High Fun, Zero Friction) -->
-      <div class="form-section">
-        <div class="section-header">
-          <div class="step-num">1</div>
-          <div>
-            <h2 class="section-title">Who Are You Tagging in Your Gang?</h2>
-            <div class="section-desc">Helps us curate the exact personality cards for your circle</div>
-          </div>
+    <!-- STAGE 1: The Unhinged Campus Vibe Check (Interactive Quiz) -->
+    <section class="quiz-card" id="quizCard">
+      <!-- Quiz Header with Progress Tracker -->
+      <div class="quiz-header" id="quizHeader">
+        <div class="quiz-top-row">
+          <div class="quiz-stage-pill">🧪 Stage 1: The Vibe Check</div>
+          <div class="quiz-counter">Question <span id="qNum">1</span> / 5</div>
         </div>
-
-        <!-- 1. The First Personality Tag -->
-        <div class="question-block">
-          <label class="question-label">Which friend in your gang gets their card first?</label>
-          <div class="pill-stack" id="intentPills">
-            <div class="vibe-pill active" onclick="selectStackPill(this, 'intentPlan')">
-              <span class="vibe-icon">🧮</span>
-              <span>The Attendance Calculator: The friend always hanging at 75.1%</span>
-            </div>
-            <div class="vibe-pill" onclick="selectStackPill(this, 'intentPlan')">
-              <span class="vibe-icon">⚡</span>
-              <span>The Assignment Survivor: The 8:59 AM speed-scribbler</span>
-            </div>
-            <div class="vibe-pill" onclick="selectStackPill(this, 'intentPlan')">
-              <span class="vibe-icon">🏆</span>
-              <span>The All-Rounder: Manages 4 clubs, sports & somehow still passes</span>
-            </div>
-            <div class="vibe-pill" onclick="selectStackPill(this, 'intentPlan')">
-              <span class="vibe-icon">☕</span>
-              <span>The Canteen Boss: Never found in class, always at the chai tapri</span>
-            </div>
-            <div class="vibe-pill" onclick="selectStackPill(this, 'intentPlan')">
-              <span class="vibe-icon">📱</span>
-              <span>The Campus Influencer: Making reels in every college corridor</span>
-            </div>
-          </div>
-          <input type="hidden" id="intentPlan" name="intentPlan" value="The Attendance Calculator: The friend always hanging at 75.1%">
+        <div class="quiz-progress-track">
+          <div class="quiz-progress-fill" id="quizProgressFill" style="width: 20%;"></div>
         </div>
-
-        <!-- 2. College Headcount (Size of the Pond) -->
-        <div class="question-block">
-          <label class="question-label">Roughly how many students are in your college?</label>
-          <div class="chips-container" id="collegeSizeChips">
-            <div class="size-chip" onclick="selectCollegeChip(this, 'under 500')">under 500</div>
-            <div class="size-chip active" onclick="selectCollegeChip(this, '500–1,500')">500–1,500</div>
-            <div class="size-chip" onclick="selectCollegeChip(this, '1,500–3,000')">1,500–3,000</div>
-            <div class="size-chip" onclick="selectCollegeChip(this, '3,000+')">3,000+</div>
-            <div class="size-chip" onclick="selectCollegeChip(this, 'not sure')">not sure</div>
-          </div>
-          <input type="hidden" id="collegeHeadcount" name="collegeHeadcount" value="500–1,500">
-        </div>
-
-        <!-- 3. What happens when they get it -->
-        <div class="question-block" style="margin-bottom: 4px;">
-          <label class="question-label">What's going to happen when you hand these cards to them?</label>
-          <div class="pill-stack" id="realityPills">
-            <div class="vibe-pill active" onclick="selectStackPill(this, 'campusReality')">
-              <span class="vibe-icon">🤣</span>
-              <span>Non-stop roasting in the hostel room & WhatsApp group</span>
-            </div>
-            <div class="vibe-pill" onclick="selectStackPill(this, 'campusReality')">
-              <span class="vibe-icon">🚪</span>
-              <span>Sticking their personality card on their hostel door / desk</span>
-            </div>
-            <div class="vibe-pill" onclick="selectStackPill(this, 'campusReality')">
-              <span class="vibe-icon">📸</span>
-              <span>Taking photos of them holding their matching card for stories</span>
-            </div>
-            <div class="vibe-pill" onclick="selectStackPill(this, 'campusReality')">
-              <span class="vibe-icon">🔄</span>
-              <span>Passing the cards around the entire class during boring lectures</span>
-            </div>
-          </div>
-          <input type="hidden" id="campusReality" name="campusReality" value="Non-stop roasting in the hostel room & WhatsApp group">
-        </div>
-
       </div>
 
-      <!-- Section 2: Courier Delivery Address (At the End - Required for Speed Post / Blue Dart) -->
-      <div class="form-section">
-        <div class="section-header">
-          <div class="step-num">2</div>
-          <div>
-            <h2 class="section-title">Delivery & Shipping Address</h2>
-            <div class="section-desc">Strict courier consignee format (Speed Post / Blue Dart dispatch)</div>
+      <!-- Quiz Question & Options (Dynamic) -->
+      <div class="quiz-body" id="quizBody">
+        <div class="quiz-tag" id="quizTag">EXTROVERT TEST</div>
+        <h2 class="quiz-question" id="quizQuestionText">Loading question...</h2>
+        <div class="quiz-options" id="quizOptionsContainer">
+          <!-- Populated by JS -->
+        </div>
+        <div class="quiz-nav-row">
+          <button type="button" class="quiz-prev-btn" id="quizPrevBtn" onclick="prevQuizQuestion()" style="visibility: hidden;">
+            ← Previous Question
+          </button>
+          <span style="font-size: 11.5px; color: var(--deep); font-weight: 700;">Tap any option to advance</span>
+        </div>
+      </div>
+
+      <!-- Campus Scanner Loader (Visible for 1.5s after Q5) -->
+      <div class="quiz-scanning-box" id="quizScanningBox">
+        <div class="scanning-spinner"></div>
+        <h3 class="scanning-title">Scanning Campus Energy...</h3>
+        <p class="scanning-sub" id="scanningStatusText">Checking your campus answers...</p>
+      </div>
+
+      <!-- Simple Success Result Box (Visible after scan completes) -->
+      <div class="quiz-result-box" id="quizResultBox">
+        <div id="resultPassContent" class="simple-success-box">
+          <div style="font-size: 50px; margin-bottom: 10px;">🎉</div>
+          <h2 style="font-family: var(--font-display); font-size: clamp(22px, 5.5vw, 29px); color: var(--ink); margin-bottom: 10px; line-height: 1.2;">
+            You Passed The Vibe Check!
+          </h2>
+          <p style="font-size: 15px; font-weight: 700; color: var(--deep); line-height: 1.5; max-width: 420px; margin: 0 auto 20px;">
+            We've got an 11-card physical collector pack ready for you and your gang. Free delivery straight to your hostel or campus room.
+          </p>
+
+          <div class="choice-actions">
+            <button type="button" class="choice-btn-primary" onclick="goToAddressPage()">
+              <span>Send me the cards, I'm excited!</span>
+              <span>📦</span>
+            </button>
+            <button type="button" class="choice-btn-naah" onclick="goToNaahPage()">
+              <span>Naah... 😴</span>
+            </button>
           </div>
         </div>
 
-        <!-- 1-Tap GPS Auto-Fill Hero -->
-        <div class="gps-hero-card" id="gpsHeroCard">
-          <div class="gps-hero-left">
-            <div class="gps-hero-icon">📍</div>
+        <div id="resultFailContent" style="display: none;" class="simple-success-box">
+          <div style="font-size: 48px; margin-bottom: 10px;">☕</div>
+          <h2 style="font-family: var(--font-display); font-size: clamp(21px, 5.2vw, 26px); color: var(--ink); margin-bottom: 10px; line-height: 1.2;">
+            A bit too relaxed today!
+          </h2>
+          <p style="font-size: 14.5px; font-weight: 700; color: var(--deep); line-height: 1.5; max-width: 380px; margin: 0 auto 20px;">
+            You're keeping things very quiet and safe. We're looking for that loud, fun campus energy.
+          </p>
+          <button type="button" class="choice-btn-primary" onclick="resetQuiz()">
+            <span>⚡ Try Again with More Hype</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fun "Naah..." Exit Screen -->
+    <div class="naah-card" id="naahCard">
+      <div class="naah-icon">🫡</div>
+      <h2 class="naah-title">Fair enough! Respect the honesty.</h2>
+      <p class="naah-desc">
+        You just saved our startup ₹140 in courier shipping charges. Go back to sleep, or scroll reels in peace.
+      </p>
+      <div class="naah-actions">
+        <button type="button" class="choice-btn-primary" onclick="goToAddressPage()">
+          <span>Wait, actually send them! 🏃‍♂️</span>
+        </button>
+        <a href="/" class="choice-btn-naah">
+          Back to C2 Club Home
+        </a>
+      </div>
+
+      <!-- Viral WhatsApp Challenge on Naah Page -->
+      <div class="naah-challenge-box" style="margin-top: 24px; padding-top: 20px; border-top: 2px dashed rgba(5,46,34,0.2);">
+        <div style="font-family: var(--font-display); font-size: 17px; color: var(--ink); margin-bottom: 6px;">
+          🔥 Think your friends have more energy than you?
+        </div>
+        <p style="font-size: 13.5px; font-weight: 700; color: var(--deep); line-height: 1.5; margin-bottom: 14px;">
+          Challenge your campus friends to take the 1-minute vibe check. Let's see if they're cool enough to pass and claim the free 11-card collector deck!
+        </p>
+        <a id="naahShareWaBtn" href="#" target="_blank" onclick="trackFunnel('naah_wa_shared')" class="wa-challenge-btn" style="margin-top: 0;">
+          💬 Challenge Friends on WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- Main Claim Card Form (Stage 2: Shipping Address) -->
+    <form class="claim-card" id="claimForm" onsubmit="handleClaim(event)" style="display: none;">
+
+      <!-- Stage 2 Unlocked Banner -->
+      <div class="stage2-banner">
+        <div class="stage2-pill">🎁 Stage 2: Free Physical Delivery</div>
+        <h3 class="stage2-heading">Where Should We Courier Your Pack?</h3>
+        <p class="stage2-sub">11 physical personality cards boxed and delivered to your hostel / campus room for free.</p>
+      </div>
+
+      <!-- Hidden backend compatibility fields -->
+      <input type="hidden" id="studentId" name="studentId" value="">
+      <input type="hidden" id="intentPlan" name="intentPlan" value="Tag friends & build deck">
+      <input type="hidden" id="collegeHeadcount" name="collegeHeadcount" value="300 - 800 (Decent buzz)">
+      <input type="hidden" id="campusReality" name="campusReality" value="Hostel / Day Scholar">
+      <input type="hidden" id="addressLine1" name="addressLine1" value="">
+      <input type="hidden" id="addressLine2" name="addressLine2" value="">
+      <input type="hidden" id="gpsCoordinates" name="gpsCoordinates" value="">
+      <input type="hidden" id="gpsAccuracy" name="gpsAccuracy" value="">
+
+      <!-- Section 1: Recipient -->
+      <section class="section-block">
+        <div class="section-title-row">
+          <div class="step-badge">1</div>
+          <h2 class="section-heading">Recipient Details</h2>
+        </div>
+
+        <div class="form-grid">
+          <div class="field-group col-full">
+            <label for="fullName">Full Name / Consignee <span class="req">*</span></label>
+            <input type="text" id="fullName" name="fullName" placeholder="e.g. Rahul Sharma" autocomplete="name" required>
+          </div>
+
+          <div class="field-group col-phone-half">
+            <label for="phone">Active Mobile <span class="req">*</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="e.g. 9876543210" maxlength="15" autocomplete="tel" oninput="sanitizePhoneInput(this)" onchange="sanitizePhoneInput(this)" required>
+          </div>
+
+          <div class="field-group col-phone-half">
+            <label for="altPhone">WhatsApp / Alt Phone <span class="hint-label">(Optional)</span></label>
+            <input type="tel" id="altPhone" name="altPhone" placeholder="e.g. 9812345678" maxlength="15" autocomplete="tel" oninput="sanitizePhoneInput(this)" onchange="sanitizePhoneInput(this)">
+          </div>
+        </div>
+      </section>
+
+      <div class="form-divider"></div>
+
+      <!-- Section 2: Shipping Address -->
+      <section class="section-block">
+        <div class="section-title-row">
+          <div class="step-badge">2</div>
+          <h2 class="section-heading">Courier Shipping Address</h2>
+        </div>
+
+        <!-- 1-Tap GPS Auto-Fill Banner -->
+        <div class="gps-box">
+          <div class="gps-info">
+            <span class="gps-icon">📍</span>
             <div>
-              <div class="gps-hero-title">Auto-Detect Location via GPS</div>
-              <div class="gps-hero-sub" id="gpsSubText">Click 'Detect Location' to automatically fill your address</div>
+              <div class="gps-title">Auto-Detect Location (GPS)</div>
+              <div class="gps-sub" id="gpsSubText">Fills Area, City & PIN automatically</div>
             </div>
           </div>
-          <button type="button" class="gps-action-btn" id="gpsBtn" onclick="triggerGPSAutoFill()">
+          <button type="button" class="gps-btn" id="gpsBtn" onclick="triggerGPSAutoFill()">
             <span>Detect Location</span>
           </button>
         </div>
 
-        <!-- GPS Verified Summary Chip (Visible after GPS lock) -->
-        <div class="gps-locked-card" id="gpsLockedCard" style="display: none;">
-          <div class="gps-locked-text">
-            <span class="gps-badge-tag" id="gpsAccuracyTag">✓ GPS Location Verified</span>
-            <span id="gpsLockedSummaryText">Detecting location...</span>
-          </div>
-          <button type="button" class="gps-edit-btn" onclick="toggleManualAddress()">Edit Manually</button>
-        </div>
-
-        <div class="input-grid">
-          <div class="input-group">
-            <label for="fullName">Full Name / Consignee Name <span class="req">*</span></label>
-            <input type="text" id="fullName" name="fullName" required placeholder="e.g. Rahul Sharma" autocomplete="name">
+        <div class="form-grid">
+          <!-- 1. House / Flat / Room / Building -->
+          <div class="field-group col-full">
+            <label for="house">House No. / Flat / Room / Building Name <span class="req">*</span></label>
+            <input type="text" id="house" name="house" placeholder="e.g. Cauvery Boys Hostel, Room 304, Block B" autocomplete="address-line1" required>
           </div>
 
-          <div class="input-group">
-            <label for="phone">Active Mobile Number <span class="req">*</span></label>
-            <input type="tel" id="phone" name="phone" required placeholder="e.g. 9876543210" pattern="^(\+?91[\-\s]?)?[0-9\s\-]{10,14}$" inputmode="tel" maxlength="16" autocomplete="tel" oninput="sanitizePhoneInput(this)" onchange="sanitizePhoneInput(this)" onblur="sanitizePhoneInput(this)">
+          <!-- 2. Street / Road / College Campus -->
+          <div class="field-group col-full">
+            <label for="street">Street / Road / College Campus <span class="req">*</span></label>
+            <input type="text" id="street" name="street" placeholder="e.g. RVCE Campus, 8th Mile Mysore Road" autocomplete="address-line2" required>
           </div>
 
-          <div class="input-group col-full">
-            <label for="altPhone">Alternate / WhatsApp Number <span style="color:#64748b; font-weight:normal;">(Recommended for delivery calls)</span></label>
-            <input type="tel" id="altPhone" name="altPhone" placeholder="e.g. 9812345678 (Helpful if you're in class)" pattern="^(\+?91[\-\s]?)?[0-9\s\-]{10,14}$" inputmode="tel" maxlength="16" autocomplete="tel" oninput="sanitizePhoneInput(this)" onchange="sanitizePhoneInput(this)" onblur="sanitizePhoneInput(this)">
+          <!-- 3. Area / Locality / Sector -->
+          <div class="field-group col-full">
+            <label for="area">Area / Locality / Sector <span class="req">*</span></label>
+            <input type="text" id="area" name="area" placeholder="e.g. Kengeri Satellite Town" autocomplete="address-level3" required>
           </div>
 
-          <!-- Address Line 1 is ALWAYS needed (GPS cannot know room/flat no.) -->
-          <div class="input-group col-full">
-            <label for="addressLine1">Room No. / Hostel Block / Flat / Building <span class="req">*</span></label>
-            <input type="text" id="addressLine1" name="addressLine1" required placeholder="e.g. Cauvery Boys Hostel, Room 304, Block B" autocomplete="address-line1">
+          <!-- 4. Nearby Landmark -->
+          <div class="field-group col-full">
+            <label for="landmark">Nearby Landmark <span class="hint-label">(For delivery boy call)</span> <span class="req">*</span></label>
+            <input type="text" id="landmark" name="landmark" placeholder="e.g. Near Gate No. 2, Opposite Central Library" required>
           </div>
 
-          <!-- Remaining Address Fields (Auto-filled & collapsed when GPS is used) -->
-          <div class="col-full" id="manualAddressFields">
-            <div class="input-grid">
-              <div class="input-group col-full">
-                <label for="addressLine2">Campus / Street / Nearby Landmark <span class="req">*</span></label>
-                <input type="text" id="addressLine2" name="addressLine2" required placeholder="e.g. Near Gate No. 2, Opposite Central Library" autocomplete="address-line2">
-              </div>
+          <!-- 5. City and State -->
+          <div class="city-state-row">
+            <div class="field-group">
+              <label for="city">City / District <span class="req">*</span></label>
+              <input type="text" id="city" name="city" placeholder="e.g. Bengaluru" autocomplete="address-level2" required>
+            </div>
 
-              <div class="input-group">
-                <label for="city">City / District <span class="req">*</span></label>
-                <input type="text" id="city" name="city" required placeholder="e.g. Bengaluru" autocomplete="address-level2">
-              </div>
-
-              <div class="input-group">
-                <label for="state">State <span class="req">*</span></label>
-                <input type="text" id="state" name="state" required placeholder="e.g. Karnataka" autocomplete="address-level1">
-              </div>
-
-              <!-- PIN Code placed at the end of the address block as required by Indian couriers -->
-              <div class="input-group col-full">
-                <label for="pincode">PIN Code (6 Digits) <span class="req">*</span></label>
-                <input type="text" id="pincode" name="pincode" required placeholder="e.g. 560059" pattern="[0-9]{6}" inputmode="numeric" maxlength="6" autocomplete="postal-code">
-              </div>
+            <div class="field-group">
+              <label for="state">State <span class="req">*</span></label>
+              <input type="text" id="state" name="state" placeholder="e.g. Karnataka" autocomplete="address-level1" required>
             </div>
           </div>
 
-          <input type="hidden" id="gpsCoordinates" name="gpsCoordinates" value="">
-          <input type="hidden" id="gpsAccuracy" name="gpsAccuracy" value="">
+          <!-- 6. PIN Code placed at the end as required by Indian couriers -->
+          <div class="field-group col-full">
+            <label for="pincode">PIN Code (6 Digits) <span class="req">*</span></label>
+            <input type="text" id="pincode" name="pincode" placeholder="e.g. 560059" pattern="[0-9]{6}" maxlength="6" inputmode="numeric" autocomplete="postal-code" required>
+          </div>
+        </div>
+      </section>
+
+      <div class="form-divider"></div>
+
+      <!-- Quick Campus Crowd Pulse -->
+      <div class="crowd-section">
+        <label class="crowd-label">
+          <span>👥 How crowded is your campus?</span>
+          <span class="hint-label">(Rough guess is fine)</span>
+        </label>
+        <div class="crowd-chips" id="crowdChips">
+          <button type="button" class="crowd-chip" onclick="selectCrowd(this, 'Under 300 (Close-knit gang)')">
+            <span class="chip-main">🌱 &lt; 300</span>
+            <span class="chip-sub">Close-knit gang</span>
+          </button>
+          <button type="button" class="crowd-chip active" onclick="selectCrowd(this, '300 - 800 (Decent buzz)')">
+            <span class="chip-main">⚡ 300 – 800</span>
+            <span class="chip-sub">Decent buzz</span>
+          </button>
+          <button type="button" class="crowd-chip" onclick="selectCrowd(this, '800 - 2,000 (Packed halls)')">
+            <span class="chip-main">🔥 800 – 2,000</span>
+            <span class="chip-sub">Packed halls</span>
+          </button>
+          <button type="button" class="crowd-chip" onclick="selectCrowd(this, '2,000+ (Mega campus)')">
+            <span class="chip-main">🚀 2,000+</span>
+            <span class="chip-sub">Mega campus</span>
+          </button>
         </div>
       </div>
 
-      <!-- Trust Notice -->
-      <div class="trust-box">
-        <div class="trust-icon">🔒</div>
-        <div>
-          <strong>100% Student-First & Safe:</strong>
-          We never make sales calls, and your details are never shared. Your phone number is strictly required by the delivery courier (Speed Post / Blue Dart) for SMS tracking and delivery calling.
-        </div>
-      </div>
-
-      <!-- Submit Button -->
-      <button type="submit" class="submit-btn" id="submitBtn">
-        🎁 Send My Free Welcome Pack
+      <!-- Submit CTA Button -->
+      <button type="submit" class="submit-cta" id="submitBtn">
+        <span>🎁 Send My Free Welcome Pack</span>
       </button>
+
     </form>
 
     <!-- Success Screen (Revealed on Submit) -->
@@ -906,10 +1509,10 @@
       <div class="success-icon">📬</div>
       <h2 class="success-title">Pack Queued, <span id="confirmedName">Friend</span>!</h2>
       <p class="success-subtitle">
-        Your free physical personality card pack is being boxed for your gang. Get ready to hand them out and tag everyone!
+        Your free physical personality card pack is being boxed for your gang. Get ready to hand them out!
       </p>
 
-      <div class="dispatch-badge">
+      <div class="dispatch-pill">
         🚀 Delivery Courier Dispatch in 24–48 Hours
       </div>
 
@@ -917,7 +1520,7 @@
       <div class="courier-label-box" id="courierLabelBox">
         <div class="courier-label-header">
           <span>📦 Courier Dispatch Consignee Slip</span>
-          <button type="button" class="copy-label-btn" onclick="copyCourierSlip()">📋 Copy Label</button>
+          <button type="button" class="copy-label-btn" onclick="copyCourierSlip()">📋 Copy Slip</button>
         </div>
         <div id="formattedCourierSlip">
           <!-- Populated by JS -->
@@ -925,68 +1528,628 @@
       </div>
 
       <div class="summary-card">
-        <div>📦 <strong>Item:</strong> Personality Card Pack (Ready to Tag Your Friends)</div>
+        <div>📦 <strong>Item:</strong> C2 Personality Card Pack (11 Collector Cards)</div>
         <div>📱 <strong>Courier Contact:</strong> <span id="confirmedPhone">+91-XXXXXXXXXX</span></div>
         <div>📍 <strong>Shipping To:</strong> <span id="confirmedAddress">Address</span></div>
         <div id="confirmedGpsRow" style="display:none;">🌐 <strong>GPS Pin:</strong> <span id="confirmedGps">Lat, Lng</span></div>
       </div>
 
-      <div class="invite-box">
-        <p style="font-size: 14px; color: #cbd5e1; margin-bottom: 6px;">
-          Want to warn your hostel gang that their personality cards are coming?
+      <!-- Fun Cards Delivery & Sharing Success Message -->
+      <div class="fun-delivery-box">
+        <div class="fun-badge">🃏 Deck On The Way!</div>
+        <h3 class="fun-title">Your cards will be delivered soon!</h3>
+        <p class="fun-desc">
+          Get ready to deal them out to your friends! Keep an eye on your phone for courier delivery. When the pack arrives, hand each card to the friend who truly owns that alter-ego!
         </p>
-        <a href="#" id="waShareBtn" class="invite-btn" target="_blank">
-          📲 Tell the Gang on WhatsApp
+        <div class="fun-prompt">
+          🔥 <strong>Think your friends are as cool as you?</strong> Challenge your campus gang to take the 1-minute vibe check to see if they're cool enough to pass and claim their own free 11-card collector deck!
+        </div>
+        <a id="shareWaBtn" href="#" target="_blank" onclick="trackFunnel('success_wa_shared')" class="wa-challenge-btn">
+          💬 Challenge Friends on WhatsApp
         </a>
       </div>
     </div>
 
+    <!-- Trust Footer -->
+    <footer class="trust-footer">
+      <span>🔒 100% Student-First</span>
+      <span>•</span>
+      <span>Dispatched via Speed Post / Blue Dart</span>
+    </footer>
+
   </div>
 
   <script>
-    // URL param extraction for seamless auto-linking
+    // 11 Finalized Front Trading Cards
+    const DECK_CARDS = [
+      { name: "Social Butterfly", file: "/cards-deck/01_Social_Butterfly_Front.png" },
+      { name: "Topper", file: "/cards-deck/02_Topper_Front.png" },
+      { name: "All-Rounder", file: "/cards-deck/11_All_Rounder_Front.png" },
+      { name: "Canteen Commander", file: "/cards-deck/03_Canteen_Commander_Front.png" },
+      { name: "Attendance Calculator", file: "/cards-deck/07_Attendance_Calculator_Front.png" },
+      { name: "Assignment Survivor", file: "/cards-deck/09_Assignment_Survivor_Front.png" },
+      { name: "Silent Genius", file: "/cards-deck/08_Silent_Genius_Front.png" },
+      { name: "Campus Influencer", file: "/cards-deck/10_Campus_Influencer_Front.png" },
+      { name: "Last Bench Strategist", file: "/cards-deck/05_Last_Bench_Strategist_Front.png" },
+      { name: "Professor's Favorite", file: "/cards-deck/04_Professors_Favorite_Front.png" },
+      { name: "Campus Politician", file: "/cards-deck/06_Campus_Politician_Front.png" }
+    ];
+
+    function focusCard(index) {
+      if (index < 0 || index >= DECK_CARDS.length) return;
+      
+      // Update peek chips
+      document.querySelectorAll('.peek-chip').forEach((chip, i) => {
+        chip.classList.toggle('active', i === index);
+      });
+
+      // Update center hero card with quick pulse
+      const heroImg = document.getElementById('heroCardImg');
+      if (heroImg) {
+        heroImg.src = DECK_CARDS[index].file;
+        const centerCard = heroImg.closest('.fan-card');
+        if (centerCard) {
+          centerCard.classList.remove('active-preview');
+          void centerCard.offsetWidth; // trigger reflow
+          centerCard.classList.add('active-preview');
+        }
+      }
+    }
+
+    // Toggle crowd headcount chip selection
+    function selectCrowd(el, value) {
+      document.querySelectorAll('.crowd-chip').forEach(chip => chip.classList.remove('active'));
+      if (el) el.classList.add('active');
+      const input = document.getElementById('collegeHeadcount');
+      if (input) input.value = value;
+    }
+
+    // ══════════════════════════════════════════════════════
+    // STAGE 1: 5 CAMPUS VIBE CHECK QUESTIONS & LOGIC
+    // ══════════════════════════════════════════════════════
+    const QUIZ_QUESTIONS = [
+      {
+        num: 1,
+        tag: "MEETING NEW PEOPLE",
+        question: "The canteen is full. Only one table has empty chairs with strangers. You:",
+        options: [
+          {
+            emoji: "👑",
+            text: "Pull up a chair and start chatting with a smile.",
+            points: 3,
+            cardIndex: 3 // Canteen Commander
+          },
+          {
+            emoji: "🤝",
+            text: "Ask politely: 'Hey, mind if I join you?'",
+            points: 2,
+            cardIndex: 0 // Social Butterfly
+          },
+          {
+            emoji: "🥪",
+            text: "Stand nearby and quickly finish your snack.",
+            points: 1,
+            cardIndex: 6 // Silent Genius
+          },
+          {
+            emoji: "🚶",
+            text: "Take your food and sit in the open lawn.",
+            points: 0,
+            cardIndex: 5 // Assignment Survivor
+          }
+        ]
+      },
+      {
+        num: 2,
+        tag: "CONFIDENCE CHECK",
+        question: "Fest open mic. The host asks for a volunteer. Total silence. You:",
+        options: [
+          {
+            emoji: "🎤",
+            text: "Walk right up, take the mic, and make everyone laugh!",
+            points: 3,
+            cardIndex: 7 // Campus Influencer
+          },
+          {
+            emoji: "🕺",
+            text: "Cheer your friend loudly and push them onto stage!",
+            points: 2,
+            cardIndex: 10 // Campus Politician
+          },
+          {
+            emoji: "📱",
+            text: "Pull out your phone and record the fun scene.",
+            points: 1,
+            cardIndex: 8 // Last Bench Strategist
+          },
+          {
+            emoji: "👏",
+            text: "Clap with the crowd and enjoy from your seat.",
+            points: 0,
+            cardIndex: 6 // Silent Genius
+          }
+        ]
+      },
+      {
+        num: 3,
+        tag: "NATURAL CURIOSITY",
+        question: "You spot a mystery box on campus marked 'DO NOT TOUCH'. You:",
+        options: [
+          {
+            emoji: "💥",
+            text: "Open it right away! Too curious to walk away.",
+            points: 3,
+            cardIndex: 2 // All-Rounder
+          },
+          {
+            emoji: "📢",
+            text: "Call your friends: 'Come quick, let's open it together!'",
+            points: 2,
+            cardIndex: 0 // Social Butterfly
+          },
+          {
+            emoji: "🧐",
+            text: "Wonder what's inside, but keep walking to class.",
+            points: 1,
+            cardIndex: 4 // Attendance Calculator
+          },
+          {
+            emoji: "📸",
+            text: "Snap a quick photo and send to the group chat.",
+            points: 0,
+            cardIndex: 9 // Professor's Favorite
+          }
+        ]
+      },
+      {
+        num: 4,
+        tag: "TAKING ACTION",
+        question: "You get a sudden idea to play hostel cricket at 11 PM. You:",
+        options: [
+          {
+            emoji: "🚀",
+            text: "Find a ball and start playing in 5 minutes!",
+            points: 3,
+            cardIndex: 8 // Last Bench Strategist
+          },
+          {
+            emoji: "🗣️",
+            text: "Talk about it with friends over hot tea.",
+            points: 2,
+            cardIndex: 3 // Canteen Commander
+          },
+          {
+            emoji: "📝",
+            text: "Plan to play this coming weekend instead.",
+            points: 1,
+            cardIndex: 5 // Assignment Survivor
+          },
+          {
+            emoji: "☕",
+            text: "Just relax and watch the others play.",
+            points: 0,
+            cardIndex: 4 // Attendance Calculator
+          }
+        ]
+      },
+      {
+        num: 5,
+        tag: "BRINGING THE ENERGY",
+        question: "Sunday afternoon. The college group chat is totally silent. You:",
+        options: [
+          {
+            emoji: "🚪",
+            text: "Knock on their hostel doors and pull everyone out!",
+            points: 3,
+            cardIndex: 2 // All-Rounder
+          },
+          {
+            emoji: "📞",
+            text: "Call them up: 'Get ready, let's go out together!'",
+            points: 2,
+            cardIndex: 10 // Campus Politician
+          },
+          {
+            emoji: "💬",
+            text: "Drop funny memes to wake up the group chat.",
+            points: 1,
+            cardIndex: 5 // Assignment Survivor
+          },
+          {
+            emoji: "😴",
+            text: "Enjoy the quiet time and take a relaxed nap.",
+            points: 0,
+            cardIndex: 6 // Silent Genius
+          }
+        ]
+      }
+    ];
+
+    let currentQuizIndex = 0;
+    let quizAnswers = [];
+    let diagnosedCardIndex = 2; // Default All-Rounder
+    let quizTotalScore = 0;
+
+    function renderQuizQuestion(index) {
+      if (index < 0 || index >= QUIZ_QUESTIONS.length) return;
+      currentQuizIndex = index;
+
+      const q = QUIZ_QUESTIONS[index];
+      const qNumEl = document.getElementById('qNum');
+      const tagEl = document.getElementById('quizTag');
+      const textEl = document.getElementById('quizQuestionText');
+      const fillEl = document.getElementById('quizProgressFill');
+
+      if (qNumEl) qNumEl.innerText = q.num;
+      if (tagEl) tagEl.innerText = q.tag;
+      if (textEl) textEl.innerText = q.question;
+      
+      const pct = Math.round(((index + 1) / QUIZ_QUESTIONS.length) * 100);
+      if (fillEl) fillEl.style.width = `${pct}%`;
+
+      const prevBtn = document.getElementById('quizPrevBtn');
+      if (prevBtn) {
+        prevBtn.style.visibility = index > 0 ? 'visible' : 'hidden';
+      }
+
+      const container = document.getElementById('quizOptionsContainer');
+      if (!container) return;
+      container.innerHTML = '';
+
+      q.options.forEach((opt, optIdx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'quiz-opt-btn';
+        if (quizAnswers[index] === optIdx) {
+          btn.style.background = 'var(--sun)';
+        }
+        btn.onclick = () => selectQuizOption(optIdx);
+
+        btn.innerHTML = `
+          <span class="quiz-opt-emoji">${opt.emoji}</span>
+          <span style="flex:1;">${opt.text}</span>
+        `;
+        container.appendChild(btn);
+      });
+    }
+
+    function selectQuizOption(optIdx) {
+      quizAnswers[currentQuizIndex] = optIdx;
+      const q = QUIZ_QUESTIONS[currentQuizIndex];
+      const opt = q && q.options ? q.options[optIdx] : null;
+
+      trackFunnel(`q${currentQuizIndex + 1}_answered`, {
+        currentQ: currentQuizIndex + 1,
+        chosenOption: optIdx,
+        optionText: opt ? opt.text : '',
+        points: opt ? opt.points : 0
+      });
+
+      if (currentQuizIndex < QUIZ_QUESTIONS.length - 1) {
+        setTimeout(() => {
+          renderQuizQuestion(currentQuizIndex + 1);
+        }, 180);
+      } else {
+        setTimeout(() => {
+          finishQuiz();
+        }, 200);
+      }
+    }
+
+    function prevQuizQuestion() {
+      if (currentQuizIndex > 0) {
+        renderQuizQuestion(currentQuizIndex - 1);
+      }
+    }
+
+    function finishQuiz() {
+      // Calculate score & diagnosed card
+      let score = 0;
+      let cardVoteCounts = {};
+
+      quizAnswers.forEach((optIdx, qIdx) => {
+        const opt = QUIZ_QUESTIONS[qIdx].options[optIdx];
+        if (opt) {
+          score += opt.points;
+          cardVoteCounts[opt.cardIndex] = (cardVoteCounts[opt.cardIndex] || 0) + (opt.points >= 2 ? 2 : 1);
+        }
+      });
+
+      quizTotalScore = score;
+
+      // Find highest voted card
+      let topCardIdx = 2;
+      let maxVotes = -1;
+      for (const [idx, votes] of Object.entries(cardVoteCounts)) {
+        if (votes > maxVotes) {
+          maxVotes = votes;
+          topCardIdx = parseInt(idx, 10);
+        }
+      }
+      diagnosedCardIndex = topCardIdx;
+
+      // Show Fake Scanning screen
+      const qHeader = document.getElementById('quizHeader');
+      const qBody = document.getElementById('quizBody');
+      const scanBox = document.getElementById('quizScanningBox');
+      
+      if (qHeader) qHeader.style.display = 'none';
+      if (qBody) qBody.style.display = 'none';
+      if (scanBox) scanBox.style.display = 'block';
+
+      const scanSteps = [
+        "Checking your campus answers...",
+        "Measuring your group energy...",
+        "Calculating your campus vibe...",
+        "Finalizing your diagnosis..."
+      ];
+      let step = 0;
+      const sub = document.getElementById('scanningStatusText');
+      const scanInterval = setInterval(() => {
+        step = (step + 1) % scanSteps.length;
+        if (sub) sub.innerText = scanSteps[step];
+      }, 350);
+
+      setTimeout(() => {
+        clearInterval(scanInterval);
+        if (scanBox) scanBox.style.display = 'none';
+        showQuizResult(score);
+        trackFunnel('quiz_completed', { score, passed: score >= 7 });
+      }, 1500);
+    }
+
+    function showQuizResult(score) {
+      const resultBox = document.getElementById('quizResultBox');
+      if (resultBox) resultBox.style.display = 'block';
+
+      const passContent = document.getElementById('resultPassContent');
+      const failContent = document.getElementById('resultFailContent');
+
+      if (score >= 7) {
+        if (passContent) passContent.style.display = 'block';
+        if (failContent) failContent.style.display = 'none';
+      } else {
+        if (passContent) passContent.style.display = 'none';
+        if (failContent) failContent.style.display = 'block';
+      }
+    }
+
+    function resetQuiz() {
+      quizAnswers = [];
+      const resBox = document.getElementById('quizResultBox');
+      const qHeader = document.getElementById('quizHeader');
+      const qBody = document.getElementById('quizBody');
+      const naahCard = document.getElementById('naahCard');
+      if (resBox) resBox.style.display = 'none';
+      if (naahCard) naahCard.style.display = 'none';
+      if (qHeader) qHeader.style.display = 'flex';
+      if (qBody) qBody.style.display = 'flex';
+      trackFunnel('quiz_retried');
+      renderQuizQuestion(0);
+    }
+
+    function goToAddressPage() {
+      trackFunnel('choice_excited', { choice: 'excited' });
+
+      // Hide quiz and naah screens
+      const quizCard = document.getElementById('quizCard');
+      const naahCard = document.getElementById('naahCard');
+      if (quizCard) quizCard.style.display = 'none';
+      if (naahCard) naahCard.style.display = 'none';
+
+      // Update hidden backend fields
+      const intentInput = document.getElementById('intentPlan');
+      if (intentInput) {
+        intentInput.value = `Campus Vibe Check Passed (Score: ${quizTotalScore}/15)`;
+      }
+
+      // Reveal Dedicated Stage 2 Address Page
+      const claimForm = document.getElementById('claimForm');
+      if (claimForm) {
+        claimForm.style.display = 'flex';
+        claimForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      if (window.history.pushState) {
+        window.history.pushState(null, null, '#address');
+      }
+    }
+
+    function goToNaahPage() {
+      trackFunnel('choice_naah', { choice: 'naah', dropoffReason: 'user_chose_naah' });
+      updateWhatsAppShareLinks();
+
+      const quizCard = document.getElementById('quizCard');
+      const claimForm = document.getElementById('claimForm');
+      const naahCard = document.getElementById('naahCard');
+      if (quizCard) quizCard.style.display = 'none';
+      if (claimForm) claimForm.style.display = 'none';
+      if (naahCard) {
+        naahCard.style.display = 'block';
+        naahCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      if (window.history.pushState) {
+        window.history.pushState(null, null, '#naah');
+      }
+    }
+
+    window.addEventListener('popstate', () => {
+      const hash = window.location.hash;
+      const quizCard = document.getElementById('quizCard');
+      const claimForm = document.getElementById('claimForm');
+      const naahCard = document.getElementById('naahCard');
+      if (hash === '#address') {
+        if (quizCard) quizCard.style.display = 'none';
+        if (naahCard) naahCard.style.display = 'none';
+        if (claimForm) claimForm.style.display = 'flex';
+      } else if (hash === '#naah') {
+        if (quizCard) quizCard.style.display = 'none';
+        if (claimForm) claimForm.style.display = 'none';
+        if (naahCard) naahCard.style.display = 'block';
+      } else {
+        if (quizCard) quizCard.style.display = 'flex';
+        if (claimForm) claimForm.style.display = 'none';
+        if (naahCard) naahCard.style.display = 'none';
+      }
+    });
+
+
+
+    // Session & Tracking Setup
+    function getSessionId() {
+      let sid = sessionStorage.getItem('c2_claim_session_id');
+      if (!sid) {
+        sid = 'sess_' + Date.now() + '_' + Math.random().toString(36).substring(2, 8);
+        sessionStorage.setItem('c2_claim_session_id', sid);
+      }
+      return sid;
+    }
+
+    // URL param extraction for seamless auto-linking & tracking
     const urlParams = new URLSearchParams(window.location.search);
     const studentId = urlParams.get('id') || urlParams.get('ref') || 'member_' + Math.floor(1000 + Math.random() * 9000);
-    const prefillPhone = urlParams.get('phone') || urlParams.get('mobile');
-    const prefillName = urlParams.get('name');
+    const prefillPhone = urlParams.get('phone') || urlParams.get('mobile') || '';
+    const prefillName = urlParams.get('name') || '';
+
+    const studentIdField = document.getElementById('studentId');
+    if (studentIdField) studentIdField.value = studentId;
 
     if (prefillPhone) {
-      document.getElementById('phone').value = prefillPhone;
+      const phoneField = document.getElementById('phone');
+      if (phoneField) phoneField.value = prefillPhone;
     }
     if (prefillName) {
-      document.getElementById('fullName').value = prefillName;
+      const nameField = document.getElementById('fullName');
+      if (nameField) nameField.value = prefillName;
     }
 
-    // Pill stack selector
-    function selectStackPill(el, hiddenId) {
-      const container = el.parentElement;
-      container.querySelectorAll('.vibe-pill').forEach(p => p.classList.remove('active'));
-      el.classList.add('active');
-      document.getElementById(hiddenId).value = el.querySelector('span:last-child').innerText.trim();
+    const FUNCTION_URL = 'https://us-central1-c2club-fd6722.cloudfunctions.net/submitCardClaim';
+
+    function trackFunnel(step, extraDetails = {}) {
+      try {
+        const sIdInput = document.getElementById('studentId');
+        const phoneInput = document.getElementById('phone');
+        const nameInput = document.getElementById('fullName');
+
+        const curStudentId = (sIdInput && sIdInput.value) ? sIdInput.value : studentId;
+        const curPhone = clean10DigitPhone(phoneInput && phoneInput.value ? phoneInput.value : prefillPhone);
+        const curName = nameInput && nameInput.value ? nameInput.value.trim() : prefillName;
+
+        const payload = {
+          action: 'track_funnel',
+          sessionId: getSessionId(),
+          studentId: curStudentId,
+          phone: curPhone,
+          fullName: curName,
+          step: step,
+          answers: quizAnswers.map((optIdx, qIdx) => {
+            const q = QUIZ_QUESTIONS[qIdx];
+            const opt = q && q.options ? q.options[optIdx] : null;
+            return {
+              qNum: qIdx + 1,
+              tag: q ? q.tag : '',
+              optIndex: optIdx,
+              optText: opt ? opt.text : '',
+              points: opt ? opt.points : 0
+            };
+          }),
+          score: quizTotalScore,
+          url: window.location.href,
+          referrer: document.referrer || '',
+          ...extraDetails
+        };
+
+        // Local cache for immediate debugging
+        try {
+          const logs = JSON.parse(sessionStorage.getItem('funnel_events') || '[]');
+          logs.push({ step, at: new Date().toISOString(), payload });
+          sessionStorage.setItem('funnel_events', JSON.stringify(logs));
+        } catch (_) {}
+
+        const bodyStr = JSON.stringify(payload);
+
+        if (navigator.sendBeacon) {
+          const blob = new Blob([bodyStr], { type: 'application/json' });
+          navigator.sendBeacon(FUNCTION_URL, blob);
+        } else {
+          fetch(FUNCTION_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: bodyStr,
+            keepalive: true
+          }).catch(e => console.warn('Funnel track non-fatal error:', e));
+        }
+      } catch (err) {
+        console.warn('Funnel tracking error:', err);
+      }
     }
 
-    // College size chip selector
-    function selectCollegeChip(el, value) {
-      document.querySelectorAll('#collegeSizeChips .size-chip').forEach(c => c.classList.remove('active'));
-      el.classList.add('active');
-      document.getElementById('collegeHeadcount').value = value;
+    // Dynamic Viral WhatsApp Challenge link configuration
+    function updateWhatsAppShareLinks() {
+      const curStudentId = (document.getElementById('studentId') && document.getElementById('studentId').value) || studentId;
+      const shareUrl = `https://c2club.in/claim.html?ref=${encodeURIComponent(curStudentId)}`;
+      
+      // 1. Success Screen WhatsApp Challenge
+      const successWaText = `Bro, take this 1-minute campus vibe check! 😭 I just passed and unlocked the free C2 11-card collector deck. Let's see if you're cool enough to pass and receive the cards too: ${shareUrl}`;
+      const shareWaBtn = document.getElementById('shareWaBtn');
+      if (shareWaBtn) {
+        shareWaBtn.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(successWaText)}`;
+      }
+
+      // 2. Naah Screen WhatsApp Challenge
+      const naahWaText = `I was too lazy to claim the free C2 11-card campus deck, but let's see if you have more campus energy than me 😂 Take the 1-min vibe check to see if you can receive the cards: ${shareUrl}`;
+      const naahShareWaBtn = document.getElementById('naahShareWaBtn');
+      if (naahShareWaBtn) {
+        naahShareWaBtn.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(naahWaText)}`;
+      }
     }
 
-    // Toggle manual address fields if user wants to inspect/modify
-    function toggleManualAddress() {
-      const container = document.getElementById('manualAddressFields');
-      const isHidden = container.style.display === 'none';
-      container.style.display = isHidden ? 'block' : 'none';
+    // One-time listener for address form interaction
+    let addressTrackingFired = false;
+    function initAddressTracking() {
+      const form = document.getElementById('claimForm');
+      if (!form) return;
+      form.addEventListener('focusin', () => {
+        if (!addressTrackingFired) {
+          addressTrackingFired = true;
+          trackFunnel('address_started');
+        }
+      }, { once: true });
     }
 
-    // GPS Auto-Fill & Location Lock (Direct, unblocked Geolocation call)
+    // Auto-clean Indian phone numbers (handles +91, 0, spaces, dashes from autofill or paste)
+    function sanitizePhoneInput(el) {
+      if (!el) return;
+      let val = el.value;
+      if (!val) return;
+      let digits = val.replace(/\D/g, '');
+      if (digits.length >= 12 && digits.startsWith('91')) {
+        digits = digits.slice(2);
+      } else if (digits.length === 11 && digits.startsWith('0')) {
+        digits = digits.slice(1);
+      }
+      if (digits.length > 10) {
+        digits = digits.slice(-10);
+      }
+      if (val !== digits && (val.includes('+') || val.includes(' ') || val.includes('-') || val.startsWith('91') || val.startsWith('0') || digits.length === 10)) {
+        el.value = digits;
+      }
+    }
+
+    function clean10DigitPhone(val) {
+      if (!val) return '';
+      let d = String(val).replace(/\D/g, '');
+      if (d.length >= 12 && d.startsWith('91')) d = d.slice(2);
+      else if (d.length === 11 && d.startsWith('0')) d = d.slice(1);
+      if (d.length > 10) d = d.slice(-10);
+      return d;
+    }
+
+    // GPS Auto-Fill & Location Lock (Direct Geolocation call)
     function triggerGPSAutoFill() {
       const btn = document.getElementById('gpsBtn');
       const subText = document.getElementById('gpsSubText');
-      const lockedCard = document.getElementById('gpsLockedCard');
-      const summaryText = document.getElementById('gpsLockedSummaryText');
-      const accuracyTag = document.getElementById('gpsAccuracyTag');
-      const manualFields = document.getElementById('manualAddressFields');
 
       if (!('geolocation' in navigator) || !navigator.geolocation) {
         if (subText) subText.innerText = "GPS is not supported on this browser. Please type your address below.";
@@ -1005,58 +2168,114 @@
         document.getElementById('gpsCoordinates').value = `${lat.toFixed(6)},${lng.toFixed(6)}`;
         document.getElementById('gpsAccuracy').value = `${acc}m`;
 
-        // Accuracy badge assessment
-        if (acc <= 150) {
-          accuracyTag.innerText = `✓ High-Precision GPS Locked (±${acc}m)`;
-          accuracyTag.style.color = '#00d2a0';
-        } else {
-          accuracyTag.innerText = `📍 Location Detected (±${acc}m accuracy)`;
-          accuracyTag.style.color = '#ffd000';
-        }
+        subText.innerText = `Coordinates locked (${lat.toFixed(4)}, ${lng.toFixed(4)}). Auto-filling...`;
 
-        subText.innerText = `Coordinates locked (${lat.toFixed(4)}, ${lng.toFixed(4)}). Resolving PIN & City...`;
+        let resolved = false;
+        const fieldsToHighlight = [];
 
-        // Reverse Geocoding via BigDataCloud (Client-side CORS enabled, high accuracy in India)
+        // 1. Try OpenStreetMap Nominatim for street/neighbourhood granularity
         try {
-          const res = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=en`);
-          if (res.ok) {
-            const data = await res.json();
+          const nomRes = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=18&addressdetails=1`, {
+            headers: { 'Accept': 'application/json' }
+          });
+          if (nomRes.ok) {
+            const nomData = await nomRes.json();
+            const addr = nomData.address || {};
             
-            if (data.postcode) document.getElementById('pincode').value = data.postcode;
-            if (data.city || data.locality) document.getElementById('city').value = data.city || data.locality;
-            if (data.principalSubdivision) document.getElementById('state').value = data.principalSubdivision;
-            
-            const landmarkArea = data.localityInfo?.administrative?.[3]?.name || data.locality || "";
-            if (landmarkArea && !document.getElementById('addressLine2').value) {
-              document.getElementById('addressLine2').value = landmarkArea;
+            if (addr.postcode) {
+              const el = document.getElementById('pincode');
+              el.value = addr.postcode.replace(/\D/g, '').slice(0, 6);
+              fieldsToHighlight.push(el);
             }
-
-            const resolvedSummary = `${document.getElementById('city').value || ''}, ${document.getElementById('state').value || ''} - ${document.getElementById('pincode').value || ''}`;
-            summaryText.innerText = resolvedSummary;
-
-            // Reduce friction: Collapse manual fields and present clean verified chip!
-            lockedCard.style.display = 'flex';
-            manualFields.style.display = 'none';
-
-            btn.innerText = "✓ Location Detected";
-            btn.classList.add('attached');
-            btn.disabled = false;
-            subText.innerHTML = `<span style="color:#00d2a0; font-weight:600;">Location auto-filled! Just enter your Room No. / Hostel Block.</span>`;
-            
-            // Focus user right into the only remaining field
-            document.getElementById('addressLine1').focus();
-            return;
+            if (addr.city || addr.town || addr.county) {
+              const el = document.getElementById('city');
+              el.value = addr.city || addr.town || addr.county;
+              fieldsToHighlight.push(el);
+            }
+            if (addr.state) {
+              const el = document.getElementById('state');
+              el.value = addr.state;
+              fieldsToHighlight.push(el);
+            }
+            const areaVal = addr.neighbourhood || addr.suburb || addr.residential || addr.city_district || "";
+            if (areaVal) {
+              const el = document.getElementById('area');
+              el.value = areaVal;
+              fieldsToHighlight.push(el);
+            }
+            if (addr.road) {
+              const el = document.getElementById('street');
+              if (!el.value) {
+                el.value = addr.road;
+                fieldsToHighlight.push(el);
+              }
+            }
+            if (addr.house_number) {
+              const el = document.getElementById('house');
+              if (!el.value) {
+                el.value = addr.house_number;
+                fieldsToHighlight.push(el);
+              }
+            }
+            resolved = true;
           }
-        } catch (apiErr) {
-          console.warn("Reverse geocode network error:", apiErr);
+        } catch (nomErr) {
+          console.warn("Nominatim geocode failed, falling back to BigDataCloud:", nomErr);
         }
 
-        // Fallback if reverse geocoding was slow: show coordinates
-        lockedCard.style.display = 'flex';
-        summaryText.innerText = `Coordinates: ${lat.toFixed(5)}, ${lng.toFixed(5)} (±${acc}m)`;
+        // 2. Fallback to BigDataCloud
+        if (!resolved) {
+          try {
+            const res = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=en`);
+            if (res.ok) {
+              const data = await res.json();
+              if (data.postcode) {
+                const el = document.getElementById('pincode');
+                el.value = data.postcode;
+                fieldsToHighlight.push(el);
+              }
+              if (data.city || data.locality) {
+                const el = document.getElementById('city');
+                el.value = data.city || data.locality;
+                fieldsToHighlight.push(el);
+              }
+              if (data.principalSubdivision) {
+                const el = document.getElementById('state');
+                el.value = data.principalSubdivision;
+                fieldsToHighlight.push(el);
+              }
+              const areaVal = data.localityInfo?.administrative?.[3]?.name || data.locality || "";
+              if (areaVal) {
+                const el = document.getElementById('area');
+                el.value = areaVal;
+                fieldsToHighlight.push(el);
+              }
+              resolved = true;
+            }
+          } catch (bdcErr) {
+            console.warn("BigDataCloud geocode failed:", bdcErr);
+          }
+        }
+
+        if (fieldsToHighlight.length > 0) {
+          fieldsToHighlight.forEach(el => {
+            el.classList.add('field-autofilled');
+            el.addEventListener('input', () => el.classList.remove('field-autofilled'), { once: true });
+            el.addEventListener('focus', () => el.classList.remove('field-autofilled'), { once: true });
+          });
+
+          btn.innerText = "✓ Auto-Filled";
+          btn.classList.add('attached');
+          btn.disabled = false;
+          subText.innerHTML = `<span style="color:#052E22; font-weight:700;">✓ Area, City & PIN auto-filled! Review or edit anytime.</span>`;
+          
+          document.getElementById('house').focus();
+          return;
+        }
+
         btn.innerText = "✓ Pinned";
         btn.disabled = false;
-        subText.innerHTML = `<span style="color:#00d2a0; font-weight:600;">Location coordinates pinned! Enter your room & address details below.</span>`;
+        subText.innerHTML = `<span style="color:#052E22; font-weight:700;">✓ Coordinates pinned! Please type your address details below.</span>`;
       }
 
       function onPosError(err) {
@@ -1067,46 +2286,23 @@
         if (err.code === 1) { // PERMISSION_DENIED
           const isInApp = /FBAN|FBAV|Instagram|WhatsApp|Line|Twitter|Snapchat/i.test(navigator.userAgent);
           if (isInApp) {
-            subText.innerHTML = `<span style="color:#f87171;">In-app browser restricted location. Tap <b>⋮</b> at top right ➔ <b>'Open in Chrome'</b>, or enter address manually below.</span>`;
+            subText.innerHTML = `<span style="color:#dc2626;">In-app browser restricted location. Tap <b>⋮</b> ➔ <b>'Open in Chrome'</b>, or enter address below.</span>`;
           } else {
-            subText.innerHTML = `<span style="color:#f87171;">Permission blocked. Tap 🔒 in browser address bar ➔ <b>Permissions</b> ➔ <b>Allow Location</b>, or enter address manually below.</span>`;
+            subText.innerHTML = `<span style="color:#dc2626;">Permission denied. Please enter address manually below.</span>`;
           }
-        } else if (err.code === 2) { // POSITION_UNAVAILABLE
-          // Fallback with standard accuracy
-          subText.innerText = "Fine-tuning via mobile network...";
-          navigator.geolocation.getCurrentPosition(
-            onPosSuccess,
-            (fErr) => {
-              btn.innerText = "Detect Location";
-              subText.innerText = "Location unavailable. Please enter address manually below.";
-            },
-            { enableHighAccuracy: false, timeout: 15000, maximumAge: 600000 }
-          );
-        } else if (err.code === 3) { // TIMEOUT
-          // Quick retry with lower accuracy requirement
-          navigator.geolocation.getCurrentPosition(
-            onPosSuccess,
-            (fErr) => {
-              btn.innerText = "Detect Location";
-              subText.innerText = "Location timed out. Please enter address manually below.";
-            },
-            { enableHighAccuracy: false, timeout: 15000, maximumAge: 600000 }
-          );
         } else {
           subText.innerText = "Could not detect location. Please enter address manually below.";
         }
       }
 
-      // Trigger directly on user gesture without any premature permissions.query checks
       try {
         navigator.geolocation.getCurrentPosition(
           onPosSuccess,
           onPosError,
-          { enableHighAccuracy: false, timeout: 20000, maximumAge: 300000 }
+          { enableHighAccuracy: false, timeout: 15000, maximumAge: 300000 }
         );
       } catch (e) {
         console.error("Direct getCurrentPosition exception:", e);
-        // Fallback for strict browsers
         navigator.geolocation.getCurrentPosition(onPosSuccess, onPosError);
       }
     }
@@ -1124,35 +2320,6 @@
       });
     }
 
-    // Auto-clean Indian phone numbers (handles +91, 0, spaces, dashes from autofill or paste)
-    function sanitizePhoneInput(el) {
-      if (!el) return;
-      let val = el.value;
-      if (!val) return;
-      let digits = val.replace(/\D/g, '');
-      if (digits.length >= 12 && digits.startsWith('91')) {
-        digits = digits.slice(2);
-      } else if (digits.length === 11 && digits.startsWith('0')) {
-        digits = digits.slice(1);
-      }
-      if (digits.length > 10) {
-        digits = digits.slice(-10);
-      }
-      // If user pasted or autofilled with +91, 0, spaces, dashes or reached full 10 digits
-      if (val !== digits && (val.includes('+') || val.includes(' ') || val.includes('-') || val.startsWith('91') || val.startsWith('0') || digits.length === 10)) {
-        el.value = digits;
-      }
-    }
-
-    function clean10DigitPhone(val) {
-      if (!val) return '';
-      let d = String(val).replace(/\D/g, '');
-      if (d.length >= 12 && d.startsWith('91')) d = d.slice(2);
-      else if (d.length === 11 && d.startsWith('0')) d = d.slice(1);
-      if (d.length > 10) d = d.slice(-10);
-      return d;
-    }
-
     // Handle Form Submit
     function handleClaim(e) {
       e.preventDefault();
@@ -1161,16 +2328,32 @@
       btn.innerText = '⏳ Securing your pack...';
       btn.disabled = true;
 
+      const houseVal = document.getElementById('house').value.trim();
+      const streetVal = document.getElementById('street').value.trim();
+      const areaVal = document.getElementById('area').value.trim();
+      const landmarkVal = document.getElementById('landmark').value.trim();
+      const cityVal = document.getElementById('city').value.trim();
+      const stateVal = document.getElementById('state').value.trim();
+      const pincodeVal = document.getElementById('pincode').value.trim();
+
+      const combinedLine1 = streetVal ? `${houseVal}, ${streetVal}` : houseVal;
+      const combinedLine2 = landmarkVal ? `${areaVal} (Landmark: ${landmarkVal})` : areaVal;
+
       const formData = {
-        studentId: studentId,
+        sessionId: getSessionId(),
+        studentId: document.getElementById('studentId').value,
         fullName: document.getElementById('fullName').value.trim(),
         phone: clean10DigitPhone(document.getElementById('phone').value),
         altPhone: clean10DigitPhone(document.getElementById('altPhone') ? document.getElementById('altPhone').value : ''),
-        addressLine1: document.getElementById('addressLine1').value.trim(),
-        addressLine2: document.getElementById('addressLine2').value.trim(),
-        city: document.getElementById('city').value.trim(),
-        state: document.getElementById('state').value.trim(),
-        pincode: document.getElementById('pincode').value.trim(),
+        house: houseVal,
+        street: streetVal,
+        area: areaVal,
+        landmark: landmarkVal,
+        addressLine1: combinedLine1,
+        addressLine2: combinedLine2,
+        city: cityVal,
+        state: stateVal,
+        pincode: pincodeVal,
         gps: document.getElementById('gpsCoordinates').value,
         gpsAccuracy: document.getElementById('gpsAccuracy').value,
         intentPlan: document.getElementById('intentPlan').value,
@@ -1178,6 +2361,14 @@
         campusReality: document.getElementById('campusReality').value,
         timestamp: new Date().toISOString()
       };
+
+      // Funnel tracking for submit attempt
+      trackFunnel('claim_submitted', {
+        consignee: formData.fullName,
+        phone: formData.phone,
+        city: formData.city,
+        pincode: formData.pincode
+      });
 
       // Store in browser storage for instant local verification
       try {
@@ -1189,7 +2380,7 @@
       }
 
       function showSuccess(claimId) {
-        const hero = document.querySelector('.hero-banner');
+        const hero = document.getElementById('heroHeader');
         if (hero) hero.style.display = 'none';
         document.getElementById('claimForm').style.display = 'none';
         document.getElementById('successScreen').style.display = 'block';
@@ -1200,11 +2391,10 @@
         if (formData.altPhone) phoneDisplay += ` (Alt: ${formData.altPhone})`;
         document.getElementById('confirmedPhone').innerText = phoneDisplay;
         
-        let fullAddr = formData.addressLine1;
-        if (formData.addressLine2) fullAddr += ', ' + formData.addressLine2;
-        if (formData.city) fullAddr += ', ' + formData.city;
-        if (formData.state) fullAddr += ', ' + formData.state;
-        if (formData.pincode) fullAddr += ' - ' + formData.pincode;
+        let fullAddrParts = [formData.house, formData.street, formData.area].filter(Boolean);
+        if (formData.landmark) fullAddrParts.push(`Landmark: ${formData.landmark}`);
+        fullAddrParts.push(formData.city, formData.state);
+        let fullAddr = fullAddrParts.join(', ') + ' - ' + formData.pincode;
         
         document.getElementById('confirmedAddress').innerText = fullAddr;
 
@@ -1212,13 +2402,15 @@
         let courierSlipHtml = `<strong>CONSIGNEE:</strong> ${formData.fullName}<br>`;
         courierSlipHtml += `<strong>MOBILE:</strong> +91-${formData.phone}`;
         if (formData.altPhone) courierSlipHtml += ` / Alt: +91-${formData.altPhone}`;
-        courierSlipHtml += `<br><strong>ADDRESS:</strong> ${formData.addressLine1}<br>`;
-        if (formData.addressLine2) courierSlipHtml += `<strong>LANDMARK/CAMPUS:</strong> ${formData.addressLine2}<br>`;
+        courierSlipHtml += `<br><strong>HOUSE/ROOM:</strong> ${formData.house}<br>`;
+        if (formData.street) courierSlipHtml += `<strong>STREET/CAMPUS:</strong> ${formData.street}<br>`;
+        if (formData.area) courierSlipHtml += `<strong>AREA/LOCALITY:</strong> ${formData.area}<br>`;
+        if (formData.landmark) courierSlipHtml += `<strong>LANDMARK:</strong> ${formData.landmark}<br>`;
         courierSlipHtml += `<strong>CITY / DISTRICT:</strong> ${formData.city}<br>`;
         courierSlipHtml += `<strong>STATE:</strong> ${formData.state}<br>`;
         courierSlipHtml += `<strong>PIN CODE:</strong> ${formData.pincode}`;
-        if (formData.gps) courierSlipHtml += `<br><span style="color:#00d2a0; font-size:11px;">GPS: ${formData.gps} (±${formData.gpsAccuracy || '10m'})</span>`;
-        if (claimId) courierSlipHtml += `<br><span style="color:#f59e0b; font-size:11px;">CLAIM ID: ${claimId}</span>`;
+        if (formData.gps) courierSlipHtml += `<br><span style="color:#0A9F6C; font-size:11px;">GPS: ${formData.gps} (±${formData.gpsAccuracy || '10m'})</span>`;
+        if (claimId) courierSlipHtml += `<br><span style="color:#067A53; font-size:11px;">CLAIM ID: ${claimId}</span>`;
         document.getElementById('formattedCourierSlip').innerHTML = courierSlipHtml;
 
         if (formData.gps) {
@@ -1226,14 +2418,13 @@
           document.getElementById('confirmedGps').innerText = `${formData.gps} (±${formData.gpsAccuracy || '10m'})`;
         }
 
-        const shareMsg = encodeURIComponent("Hey! The club is sending out free physical collector cards to early students. Claim your free pack here: " + window.location.href);
-        document.getElementById('waShareBtn').href = `https://wa.me/?text=${shareMsg}`;
+        // Configure WhatsApp Viral Challenge link
+        updateWhatsAppShareLinks();
 
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
 
       // Submit to backend Cloud Function
-      const FUNCTION_URL = 'https://us-central1-c2club-fd6722.cloudfunctions.net/submitCardClaim';
       fetch(FUNCTION_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -1247,6 +2438,27 @@
         console.warn('Backend sync failed, relying on local backup:', err);
         showSuccess('');
       });
+    }
+
+    // Initialize Stage 1 Quiz & tracking on page load
+    let appInitialized = false;
+    function initClaimApp() {
+      if (appInitialized) return;
+      appInitialized = true;
+      renderQuizQuestion(0);
+      updateWhatsAppShareLinks();
+      initAddressTracking();
+      trackFunnel('page_landed', {
+        studentId: studentId,
+        prefillPhone: prefillPhone || null,
+        prefillName: prefillName || null,
+        search: window.location.search
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', initClaimApp);
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      initClaimApp();
     }
   </script>
 </body>
