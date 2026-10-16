@@ -520,6 +520,21 @@
       color: var(--ink);
     }
 
+    .crowd-chips.chips-error .crowd-chip {
+      border-color: #dc2626 !important;
+      background: #fff5f5;
+      box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.28) !important;
+      animation: chipShake 0.35s ease;
+    }
+
+    @keyframes chipShake {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-5px); }
+      40% { transform: translateX(5px); }
+      60% { transform: translateX(-3px); }
+      80% { transform: translateX(3px); }
+    }
+
     /* Primary Submit Button */
     .submit-cta {
       background: var(--sun);
@@ -1405,7 +1420,7 @@
       <!-- Hidden backend compatibility fields -->
       <input type="hidden" id="studentId" name="studentId" value="">
       <input type="hidden" id="intentPlan" name="intentPlan" value="Tag friends & build deck">
-      <input type="hidden" id="collegeHeadcount" name="collegeHeadcount" value="300 - 800 (Decent buzz)">
+      <input type="hidden" id="collegeHeadcount" name="collegeHeadcount" value="">
       <input type="hidden" id="campusReality" name="campusReality" value="Hostel / Day Scholar">
       <input type="hidden" id="addressLine1" name="addressLine1" value="">
       <input type="hidden" id="addressLine2" name="addressLine2" value="">
@@ -1509,17 +1524,17 @@
       <div class="form-divider"></div>
 
       <!-- Quick Campus Crowd Pulse -->
-      <div class="crowd-section">
-        <label class="crowd-label">
-          <span>👥 How crowded is your campus?</span>
-          <span class="hint-label">(Rough guess is fine)</span>
+      <div class="crowd-section" id="crowdSection">
+        <label class="crowd-label" for="crowdChips">
+          <span>👥 How crowded is your campus? <span class="req">*</span></span>
+          <span class="hint-label">(Please select one)</span>
         </label>
         <div class="crowd-chips" id="crowdChips">
           <button type="button" class="crowd-chip" onclick="selectCrowd(this, 'Under 300 (Close-knit gang)')">
             <span class="chip-main">🌱 &lt; 300</span>
             <span class="chip-sub">Close-knit gang</span>
           </button>
-          <button type="button" class="crowd-chip active" onclick="selectCrowd(this, '300 - 800 (Decent buzz)')">
+          <button type="button" class="crowd-chip" onclick="selectCrowd(this, '300 - 800 (Decent buzz)')">
             <span class="chip-main">⚡ 300 – 800</span>
             <span class="chip-sub">Decent buzz</span>
           </button>
@@ -1531,6 +1546,9 @@
             <span class="chip-main">🚀 2,000+</span>
             <span class="chip-sub">Mega campus</span>
           </button>
+        </div>
+        <div id="crowdError" style="display:none; color: #dc2626; font-size: 13px; font-weight: 700; margin-top: 4px; text-align: left;">
+          ⚠️ Please choose how crowded your campus is to continue.
         </div>
       </div>
 
@@ -1662,12 +1680,19 @@
       }
     }
 
-    // Toggle crowd headcount chip selection
+    // Toggle crowd headcount chip selection (Compulsory, No default)
     function selectCrowd(el, value) {
       document.querySelectorAll('.crowd-chip').forEach(chip => chip.classList.remove('active'));
       if (el) el.classList.add('active');
       const input = document.getElementById('collegeHeadcount');
       if (input) input.value = value;
+
+      const err = document.getElementById('crowdError');
+      if (err) err.style.display = 'none';
+      const container = document.getElementById('crowdChips');
+      if (container) container.classList.remove('chips-error');
+
+      trackFunnel('crowd_selected', { headcount: value });
     }
 
     // ══════════════════════════════════════════════════════
@@ -2389,6 +2414,22 @@
     // Handle Form Submit
     function handleClaim(e) {
       e.preventDefault();
+
+      // Compulsory Campus Crowd Validation
+      const headcountInput = document.getElementById('collegeHeadcount');
+      const headcountVal = headcountInput ? headcountInput.value.trim() : '';
+      if (!headcountVal) {
+        const err = document.getElementById('crowdError');
+        if (err) err.style.display = 'block';
+        const container = document.getElementById('crowdChips');
+        if (container) {
+          container.classList.remove('chips-error');
+          void container.offsetWidth; // trigger reflow to replay shake animation
+          container.classList.add('chips-error');
+          container.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        return;
+      }
 
       const btn = document.getElementById('submitBtn');
       btn.innerText = '⏳ Securing your pack...';
