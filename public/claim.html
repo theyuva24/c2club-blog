@@ -7,6 +7,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Figtree:wght@500;600;700;800&family=Lilita+One&display=swap" rel="stylesheet">
+  
+  <!-- Preload Critical Mobile Hero Cards (WebP Ultra-fast ~80KB) -->
+  <link rel="preload" as="image" href="/cards-deck/01_Social_Butterfly_Front.webp" type="image/webp">
+  <link rel="preload" as="image" href="/cards-deck/02_Topper_Front.webp" type="image/webp">
+  <link rel="preload" as="image" href="/cards-deck/11_All_Rounder_Front.webp" type="image/webp">
+  <link rel="preload" as="image" href="/cards-deck/03_Canteen_Commander_Front.webp" type="image/webp">
+  <link rel="preload" as="image" href="/cards-deck/07_Attendance_Calculator_Front.webp" type="image/webp">
   <style>
     :root {
       --bg: #0A9F6C;        /* Signature C2 Emerald */
@@ -123,16 +130,21 @@
       border: 2px solid var(--ink);
       box-shadow: 0 8px 18px rgba(5,46,34,0.32), 0 3px 0 var(--ink);
       overflow: hidden;
-      background: #fff;
+      background: #0d3b2e linear-gradient(145deg, #134e3f 0%, #06231a 100%);
       cursor: pointer;
       transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
+    .fan-card picture,
     .fan-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
+      background: transparent;
     }
 
     .fan-card:nth-child(1) { transform: translateX(-94px) rotate(-14deg); z-index: 1; }
@@ -746,22 +758,22 @@
         max-width: 320px;
       }
       .cards-fan {
-        height: 182px;
-        margin: 6px 0 4px;
+        height: 175px;
+        margin: 6px 0 6px;
       }
       .fan-card {
-        width: 104px;
-        height: 156px;
+        width: 100px;
+        height: 150px;
         border-radius: 10px;
       }
-      .fan-card:nth-child(1) { transform: translateX(-78px) rotate(-14deg); }
-      .fan-card:nth-child(2) { transform: translateX(-39px) rotate(-7deg); }
-      .fan-card:nth-child(3) { transform: translateX(0px) rotate(0deg) scale(1.06); }
-      .fan-card:nth-child(4) { transform: translateX(39px) rotate(7deg); }
-      .fan-card:nth-child(5) { transform: translateX(78px) rotate(14deg); }
+      .fan-card:nth-child(1) { transform: translateX(-72px) rotate(-13deg); }
+      .fan-card:nth-child(2) { transform: translateX(-36px) rotate(-6.5deg); }
+      .fan-card:nth-child(3) { transform: translateX(0px) rotate(0deg) scale(1.08); z-index: 5; }
+      .fan-card:nth-child(4) { transform: translateX(36px) rotate(6.5deg); }
+      .fan-card:nth-child(5) { transform: translateX(72px) rotate(13deg); }
 
       .fan-card:hover, .fan-card.active-preview {
-        transform: translateY(-12px) scale(1.16) rotate(0deg) !important;
+        transform: translateY(-10px) scale(1.15) rotate(0deg) !important;
       }
 
       .peek-chip {
@@ -1225,11 +1237,36 @@
       
       <!-- Finalized Front Cards Fan Showcase -->
       <div class="cards-fan" id="cardsFan">
-        <div class="fan-card" onclick="focusCard(0)" title="Social Butterfly"><img src="/cards-deck/01_Social_Butterfly_Front.png" alt="Social Butterfly"></div>
-        <div class="fan-card" onclick="focusCard(1)" title="Topper"><img src="/cards-deck/02_Topper_Front.png" alt="Topper"></div>
-        <div class="fan-card" onclick="focusCard(2)" title="All-Rounder"><img id="heroCardImg" src="/cards-deck/11_All_Rounder_Front.png" alt="All-Rounder"></div>
-        <div class="fan-card" onclick="focusCard(3)" title="Canteen Commander"><img src="/cards-deck/03_Canteen_Commander_Front.png" alt="Canteen Commander"></div>
-        <div class="fan-card" onclick="focusCard(4)" title="Attendance Calculator"><img src="/cards-deck/07_Attendance_Calculator_Front.png" alt="Attendance Calculator"></div>
+        <div class="fan-card" onclick="focusCard(0)" title="Social Butterfly">
+          <picture>
+            <source srcset="/cards-deck/01_Social_Butterfly_Front.webp" type="image/webp">
+            <img src="/cards-deck/01_Social_Butterfly_Front.png" alt="Social Butterfly" width="122" height="183" loading="eager" decoding="async" onerror="handleCardImgError(this)">
+          </picture>
+        </div>
+        <div class="fan-card" onclick="focusCard(1)" title="Topper">
+          <picture>
+            <source srcset="/cards-deck/02_Topper_Front.webp" type="image/webp">
+            <img src="/cards-deck/02_Topper_Front.png" alt="Topper" width="122" height="183" loading="eager" decoding="async" onerror="handleCardImgError(this)">
+          </picture>
+        </div>
+        <div class="fan-card" onclick="focusCard(2)" title="All-Rounder">
+          <picture id="heroCardPicture">
+            <source id="heroCardSource" srcset="/cards-deck/11_All_Rounder_Front.webp" type="image/webp">
+            <img id="heroCardImg" src="/cards-deck/11_All_Rounder_Front.png" alt="All-Rounder" width="122" height="183" loading="eager" decoding="async" onerror="handleCardImgError(this)">
+          </picture>
+        </div>
+        <div class="fan-card" onclick="focusCard(3)" title="Canteen Commander">
+          <picture>
+            <source srcset="/cards-deck/03_Canteen_Commander_Front.webp" type="image/webp">
+            <img src="/cards-deck/03_Canteen_Commander_Front.png" alt="Canteen Commander" width="122" height="183" loading="eager" decoding="async" onerror="handleCardImgError(this)">
+          </picture>
+        </div>
+        <div class="fan-card" onclick="focusCard(4)" title="Attendance Calculator">
+          <picture>
+            <source srcset="/cards-deck/07_Attendance_Calculator_Front.webp" type="image/webp">
+            <img src="/cards-deck/07_Attendance_Calculator_Front.png" alt="Attendance Calculator" width="122" height="183" loading="eager" decoding="async" onerror="handleCardImgError(this)">
+          </picture>
+        </div>
       </div>
 
       <!-- Quick Interactive 11-Card Peek Strip -->
@@ -1560,31 +1597,60 @@
   </div>
 
   <script>
-    // 11 Finalized Front Trading Cards
+    // Robust Mobile-First Card Image Error Handling & Auto-Retry
+    function handleCardImgError(img) {
+      if (!img) return;
+      const count = parseInt(img.dataset.retried || '0', 10);
+      if (count < 2) {
+        img.dataset.retried = (count + 1).toString();
+        setTimeout(() => {
+          const raw = img.getAttribute('src') || img.src;
+          const clean = raw.split('?')[0];
+          // If webp fails on older mobile browsers, fallback to png
+          if (clean.endsWith('.webp')) {
+            img.src = clean.replace('.webp', '.png') + '?v=' + Date.now();
+          } else {
+            img.src = clean + '?v=' + Date.now();
+          }
+        }, 300);
+      }
+    }
+
+    // 11 Finalized Front Trading Cards (WebP with PNG fallback)
     const DECK_CARDS = [
-      { name: "Social Butterfly", file: "/cards-deck/01_Social_Butterfly_Front.png" },
-      { name: "Topper", file: "/cards-deck/02_Topper_Front.png" },
-      { name: "All-Rounder", file: "/cards-deck/11_All_Rounder_Front.png" },
-      { name: "Canteen Commander", file: "/cards-deck/03_Canteen_Commander_Front.png" },
-      { name: "Attendance Calculator", file: "/cards-deck/07_Attendance_Calculator_Front.png" },
-      { name: "Assignment Survivor", file: "/cards-deck/09_Assignment_Survivor_Front.png" },
-      { name: "Silent Genius", file: "/cards-deck/08_Silent_Genius_Front.png" },
-      { name: "Campus Influencer", file: "/cards-deck/10_Campus_Influencer_Front.png" },
-      { name: "Last Bench Strategist", file: "/cards-deck/05_Last_Bench_Strategist_Front.png" },
-      { name: "Professor's Favorite", file: "/cards-deck/04_Professors_Favorite_Front.png" },
-      { name: "Campus Politician", file: "/cards-deck/06_Campus_Politician_Front.png" }
+      { name: "Social Butterfly", file: "/cards-deck/01_Social_Butterfly_Front.webp", png: "/cards-deck/01_Social_Butterfly_Front.png" },
+      { name: "Topper", file: "/cards-deck/02_Topper_Front.webp", png: "/cards-deck/02_Topper_Front.png" },
+      { name: "All-Rounder", file: "/cards-deck/11_All_Rounder_Front.webp", png: "/cards-deck/11_All_Rounder_Front.png" },
+      { name: "Canteen Commander", file: "/cards-deck/03_Canteen_Commander_Front.webp", png: "/cards-deck/03_Canteen_Commander_Front.png" },
+      { name: "Attendance Calculator", file: "/cards-deck/07_Attendance_Calculator_Front.webp", png: "/cards-deck/07_Attendance_Calculator_Front.png" },
+      { name: "Assignment Survivor", file: "/cards-deck/09_Assignment_Survivor_Front.webp", png: "/cards-deck/09_Assignment_Survivor_Front.png" },
+      { name: "Silent Genius", file: "/cards-deck/08_Silent_Genius_Front.webp", png: "/cards-deck/08_Silent_Genius_Front.png" },
+      { name: "Campus Influencer", file: "/cards-deck/10_Campus_Influencer_Front.webp", png: "/cards-deck/10_Campus_Influencer_Front.png" },
+      { name: "Last Bench Strategist", file: "/cards-deck/05_Last_Bench_Strategist_Front.webp", png: "/cards-deck/05_Last_Bench_Strategist_Front.png" },
+      { name: "Professor's Favorite", file: "/cards-deck/04_Professors_Favorite_Front.webp", png: "/cards-deck/04_Professors_Favorite_Front.png" },
+      { name: "Campus Politician", file: "/cards-deck/06_Campus_Politician_Front.webp", png: "/cards-deck/06_Campus_Politician_Front.png" }
     ];
 
     function focusCard(index) {
       if (index < 0 || index >= DECK_CARDS.length) return;
       
-      // Update peek chips
+      // Update peek chips and auto-scroll active chip into view on mobile
       document.querySelectorAll('.peek-chip').forEach((chip, i) => {
-        chip.classList.toggle('active', i === index);
+        const isActive = i === index;
+        chip.classList.toggle('active', isActive);
+        if (isActive) {
+          try {
+            chip.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+          } catch (_) {}
+        }
       });
 
       // Update center hero card with quick pulse
+      const heroSource = document.getElementById('heroCardSource');
       const heroImg = document.getElementById('heroCardImg');
+      if (heroSource) {
+        heroSource.srcset = DECK_CARDS[index].file;
+      }
       if (heroImg) {
         heroImg.src = DECK_CARDS[index].file;
         const centerCard = heroImg.closest('.fan-card');
