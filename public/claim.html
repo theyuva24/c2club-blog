@@ -231,6 +231,81 @@
       transform: translateY(-1px);
     }
 
+    /* EMF Character Cards Mission & How It Works */
+    .emf-mission-card {
+      background: var(--card-white);
+      border: var(--border-ink);
+      border-radius: 22px;
+      padding: 16px 16px 14px;
+      box-shadow: 0 6px 0 var(--ink);
+      margin-top: 14px;
+      text-align: left;
+    }
+
+    .emf-mission-header {
+      margin-bottom: 10px;
+    }
+
+    .emf-mission-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      background: var(--sun);
+      border: 1.5px solid var(--ink);
+      padding: 2px 10px;
+      border-radius: 999px;
+      box-shadow: 0 2px 0 var(--ink);
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .emf-mission-title {
+      font-family: var(--font-display);
+      font-size: 16.5px;
+      color: var(--ink);
+      line-height: 1.25;
+    }
+
+    .emf-steps-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .emf-step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: var(--mint-light);
+      border: 1.5px solid #067A53;
+      border-radius: 14px;
+      padding: 9px 12px;
+    }
+
+    .emf-step-icon {
+      font-size: 20px;
+      line-height: 1;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+
+    .emf-step-body h4 {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 2px;
+      line-height: 1.3;
+    }
+
+    .emf-step-body p {
+      font-size: 12px;
+      font-weight: 600;
+      color: #065F46;
+      line-height: 1.4;
+    }
+
     /* Main Form Card */
     .claim-card {
       background: var(--card-white);
@@ -440,6 +515,361 @@
       border-color: #0A9F6C !important;
       background: var(--mint-light) !important;
       box-shadow: 0 0 0 3px rgba(10, 159, 108, 0.25) !important;
+    }
+
+    /* App Download Gate & Verification Styles */
+    .app-gate-box {
+      background: #FFFBEB;
+      border: 2px solid #F59E0B;
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: 0 3px 0 #D97706;
+      margin-top: 10px;
+      grid-column: 1 / -1;
+      animation: fadeInGate 0.25s ease;
+    }
+
+    @keyframes fadeInGate {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .app-gate-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .app-gate-icon {
+      font-size: 26px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .app-gate-title {
+      font-family: var(--font-display);
+      font-size: 15.5px;
+      color: #92400E;
+      line-height: 1.25;
+      margin-bottom: 4px;
+    }
+
+    .app-gate-desc {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #78350F;
+      line-height: 1.45;
+    }
+
+    .app-gate-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .app-gate-play-btn {
+      background: var(--ink);
+      color: #fff !important;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 12.5px;
+      padding: 9px 15px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 2px solid var(--ink);
+      box-shadow: 0 2.5px 0 #000;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+
+    .app-gate-play-btn:hover {
+      background: #067A53;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 0 #000;
+    }
+
+    .app-gate-verify-btn {
+      background: var(--sun);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-weight: 800;
+      font-size: 12.5px;
+      padding: 9px 14px;
+      border-radius: 10px;
+      border: 2px solid var(--ink);
+      box-shadow: 0 2.5px 0 var(--ink);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .app-gate-verify-btn:hover {
+      background: var(--sun-hover);
+      transform: translateY(-1px);
+    }
+
+    .app-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: 11.5px;
+      font-weight: 800;
+      margin-top: 6px;
+      width: fit-content;
+    }
+
+    .app-status-badge.verified {
+      background: var(--mint);
+      border: 1.5px solid var(--deep);
+      color: var(--deep);
+    }
+
+    .app-status-badge.checking {
+      background: #F3F4F6;
+      border: 1.5px solid #9CA3AF;
+      color: #4B5563;
+    }
+
+    .app-status-badge.unregistered {
+      background: #FEF3C7;
+      border: 1.5px solid #F59E0B;
+      color: #B45309;
+    }
+
+    /* In-App College Autocomplete Styles */
+    .college-search-container {
+      position: relative;
+      width: 100%;
+    }
+
+    .college-input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .college-input-icon {
+      position: absolute;
+      left: 14px;
+      font-size: 18px;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .college-search-input {
+      padding-left: 42px !important;
+      padding-right: 40px !important;
+    }
+
+    .college-clear-btn {
+      position: absolute;
+      right: 12px;
+      background: #E5E7EB;
+      border: 1.5px solid var(--ink);
+      border-radius: 999px;
+      width: 22px;
+      height: 22px;
+      font-size: 14px;
+      color: var(--ink);
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      font-weight: 800;
+      z-index: 2;
+    }
+
+    .college-dropdown {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      background: #FFFFFF;
+      border: 2px solid var(--ink);
+      border-radius: 16px;
+      box-shadow: 0 10px 24px rgba(5,46,34,0.18), 0 4px 0 var(--ink);
+      max-height: 260px;
+      overflow-y: auto;
+      z-index: 50;
+      display: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .college-dropdown.active {
+      display: block;
+    }
+
+    .college-item {
+      padding: 11px 14px;
+      border-bottom: 1px solid rgba(5,46,34,0.08);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      transition: background 0.1s ease;
+      text-align: left;
+    }
+
+    .college-item:last-child {
+      border-bottom: none;
+    }
+
+    .college-item:hover, .college-item.highlighted {
+      background: var(--mint-light);
+    }
+
+    .college-item-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .college-item-name {
+      font-weight: 700;
+      font-size: 13.5px;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+
+    .college-item-sub {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #067A53;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .college-item-tag {
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2.5px 7px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      flex-shrink: 0;
+    }
+
+    .college-item-tag.claimed {
+      background: #FEE2E2;
+      color: #991B1B;
+      border: 1px solid #F87171;
+    }
+
+    .college-item-tag.available {
+      background: var(--mint);
+      color: #065F46;
+      border: 1px solid #34D399;
+    }
+
+    .college-item.add-custom {
+      background: var(--mint-light);
+      border-top: 1.5px dashed var(--deep);
+    }
+
+    .college-status-banner {
+      border-radius: 16px;
+      padding: 13px 15px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-top: 10px;
+      border: 2px solid transparent;
+      animation: fadeInStatus 0.25s ease;
+    }
+
+    @keyframes fadeInStatus {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .college-status-banner.available {
+      background: var(--mint-light);
+      border-color: #0A9F6C;
+      box-shadow: 0 3px 0 #067A53;
+    }
+
+    .college-status-banner.repeat-notice {
+      background: #FEFCE8;
+      border-color: #EAB308;
+      box-shadow: 0 3px 0 #CA8A04;
+    }
+
+    .college-status-banner.claimed {
+      background: #FEF2F2;
+      border-color: #DC2626;
+      box-shadow: 0 3px 0 #991B1B;
+    }
+
+    .status-banner-icon {
+      font-size: 24px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .status-banner-content h4 {
+      font-family: var(--font-display);
+      font-size: 15px;
+      line-height: 1.25;
+      margin-bottom: 3px;
+    }
+
+    .college-status-banner.available .status-banner-content h4 {
+      color: #065F46;
+    }
+
+    .college-status-banner.repeat-notice .status-banner-content h4 {
+      color: #854D0E;
+    }
+
+    .college-status-banner.claimed .status-banner-content h4 {
+      color: #991B1B;
+    }
+
+    .status-banner-content p {
+      font-size: 12.5px;
+      font-weight: 600;
+      line-height: 1.45;
+    }
+
+    .college-status-banner.available .status-banner-content p {
+      color: #047857;
+    }
+
+    .college-status-banner.repeat-notice .status-banner-content p {
+      color: #713F12;
+    }
+
+    .college-status-banner.claimed .status-banner-content p {
+      color: #7F1D1D;
+    }
+
+    .college-item-tag.repeat-tag {
+      background: #FEFCE8;
+      color: #854D0E;
+      border-color: #EAB308;
+    }
+
+    .change-college-btn {
+      background: transparent;
+      border: none;
+      color: #067A53;
+      font-size: 11.5px;
+      font-weight: 800;
+      cursor: pointer;
+      text-decoration: underline;
+      padding: 0;
+      margin-top: 4px;
+      display: inline-block;
     }
 
     /* Divider */
@@ -1285,8 +1715,8 @@
     <!-- Top Hero Header -->
     <header class="hero-header" id="heroHeader">
       <div class="hero-pill">🎁 100% Free Welcome Pack</div>
-      <h1 class="hero-title">Claim Your C2 Collector Pack</h1>
-      <p class="hero-sub">Pass the quick 5-question campus vibe check to unlock your free physical pack.</p>
+      <h1 class="hero-title">Claim Your C2 Character Pack</h1>
+      <p class="hero-sub">11 physical EMF character cards for your college. Deal them out, unlock clubs & connect with peers.</p>
       
       <!-- Finalized Front Cards Fan Showcase -->
       <div class="cards-fan" id="cardsFan">
@@ -1338,6 +1768,43 @@
             <button type="button" class="peek-chip" onclick="focusCard(8)">🎯 Strategist</button>
             <button type="button" class="peek-chip" onclick="focusCard(9)">🍎 Prof's Fav</button>
             <button type="button" class="peek-chip" onclick="focusCard(10)">🎤 Politician</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- EMF Character Cards Mission & How It Works -->
+      <div class="emf-mission-card">
+        <div class="emf-mission-header">
+          <span class="emf-mission-badge">🃏 THE EMF CARDS MISSION</span>
+          <h3 class="emf-mission-title">Share Character Cards. Connect Your College.</h3>
+        </div>
+        
+        <div class="emf-steps-grid">
+          <!-- Step 1 -->
+          <div class="emf-step-item">
+            <div class="emf-step-icon">🎴</div>
+            <div class="emf-step-body">
+              <h4>1. Deal Cards Across College</h4>
+              <p>Hand each character card (Social Butterfly, Topper, Canteen Commander) to friends who fit the alter-ego.</p>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="emf-step-item">
+            <div class="emf-step-icon">📲</div>
+            <div class="emf-step-body">
+              <h4>2. Scan QR & Download C2 Club</h4>
+              <p>Scanning the card’s QR code lets your friends download the C2 Club app and instantly unlocks that specific club.</p>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="emf-step-item">
+            <div class="emf-step-icon">🤝</div>
+            <div class="emf-step-body">
+              <h4>3. Connect, Network & Ride Match</h4>
+              <p>Interact with students inside those clubs for cross-campus networking, meetups, project collabs & daily ride sharing!</p>
+            </div>
           </div>
         </div>
       </div>
@@ -1451,12 +1918,14 @@
       <!-- Stage 2 Unlocked Banner -->
       <div class="stage2-banner">
         <div class="stage2-pill">🎁 Stage 2: Free Physical Delivery</div>
-        <h3 class="stage2-heading">Where Should We Courier Your Pack?</h3>
-        <p class="stage2-sub">11 physical personality cards boxed and delivered to your hostel / campus room for free.</p>
+        <h3 class="stage2-heading">Where Should We Deliver Your Pack?</h3>
+        <p class="stage2-sub">11 physical EMF character cards to deal out across your college & connect with peers.</p>
       </div>
 
       <!-- Hidden backend compatibility fields -->
       <input type="hidden" id="studentId" name="studentId" value="">
+      <input type="hidden" id="collegeId" name="collegeId" value="">
+      <input type="hidden" id="collegeName" name="collegeName" value="">
       <input type="hidden" id="intentPlan" name="intentPlan" value="Tag friends & build deck">
       <input type="hidden" id="collegeHeadcount" name="collegeHeadcount" value="">
       <input type="hidden" id="campusReality" name="campusReality" value="Hostel / Day Scholar">
@@ -1465,37 +1934,103 @@
       <input type="hidden" id="gpsCoordinates" name="gpsCoordinates" value="">
       <input type="hidden" id="gpsAccuracy" name="gpsAccuracy" value="">
 
-      <!-- Section 1: Recipient -->
+      <!-- Section 1: Recipient & C2 App Account Verification -->
       <section class="section-block">
         <div class="section-title-row">
           <div class="step-badge">1</div>
-          <h2 class="section-heading">Recipient Details</h2>
+          <h2 class="section-heading">Recipient & C2 App Account</h2>
         </div>
 
         <div class="form-grid">
           <div class="field-group col-full">
             <label for="fullName">Full Name / Consignee <span class="req">*</span></label>
-            <input type="text" id="fullName" name="fullName" placeholder="e.g. Rahul Sharma" autocomplete="name" required>
+            <input type="text" id="fullName" name="fullName" placeholder="e.g. Rahul Sharma" autocomplete="name" required oninput="saveCurrentState()">
           </div>
 
           <div class="field-group col-phone-half">
-            <label for="phone">Active Mobile <span class="req">*</span></label>
-            <input type="tel" id="phone" name="phone" placeholder="e.g. 9876543210" maxlength="15" autocomplete="tel" oninput="sanitizePhoneInput(this)" onchange="sanitizePhoneInput(this)" required>
+            <label for="phone">
+              <span>Active Mobile <span class="req">*</span></span>
+              <span class="hint-label">(Linked to App)</span>
+            </label>
+            <input type="tel" id="phone" name="phone" placeholder="e.g. 9876543210" maxlength="15" autocomplete="tel" oninput="onPhoneInput(this)" onchange="onPhoneInput(this)" required>
+            <div id="phoneStatusBadge"></div>
           </div>
 
           <div class="field-group col-phone-half">
             <label for="altPhone">WhatsApp / Alt Phone <span class="hint-label">(Optional)</span></label>
-            <input type="tel" id="altPhone" name="altPhone" placeholder="e.g. 9812345678" maxlength="15" autocomplete="tel" oninput="sanitizePhoneInput(this)" onchange="sanitizePhoneInput(this)">
+            <input type="tel" id="altPhone" name="altPhone" placeholder="e.g. 9812345678" maxlength="15" autocomplete="tel" oninput="sanitizePhoneInput(this); saveCurrentState();">
+          </div>
+
+          <!-- App Download Gate (appears if user phone not registered on app) -->
+          <div class="app-gate-box" id="appGateBox" style="display: none;">
+            <div class="app-gate-header">
+              <span class="app-gate-icon">📱</span>
+              <div>
+                <div class="app-gate-title">Download C2 Club App to Request Deck</div>
+                <div class="app-gate-desc">
+                  Physical collector decks are free for active C2 Club app members.
+                  Download the app (takes ~1 min), create your account with this phone number, and come right back here to instantly unlock your deck!
+                </div>
+              </div>
+            </div>
+            <div class="app-gate-actions">
+              <a href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp&referrer=deck_claim" 
+                 target="_blank" 
+                 class="app-gate-play-btn"
+                 onclick="saveCurrentState()">
+                📥 Download C2 Club on Google Play ↗
+              </a>
+              <button type="button" class="app-gate-verify-btn" onclick="checkAppStatus(true)">
+                🔄 I've Signed Up — Verify
+              </button>
+            </div>
           </div>
         </div>
       </section>
 
       <div class="form-divider"></div>
 
-      <!-- Section 2: Shipping Address -->
+      <!-- Section 2: College Name -->
       <section class="section-block">
         <div class="section-title-row">
           <div class="step-badge">2</div>
+          <h2 class="section-heading">College Name</h2>
+        </div>
+
+        <div class="field-group col-full">
+          <label for="collegeSearchInput">
+            <span>College Name <span class="req">*</span></span>
+            <span class="hint-label">(Search or type your full college name)</span>
+          </label>
+          <div class="college-search-container">
+            <div class="college-input-wrapper">
+              <span class="college-input-icon">🏛️</span>
+              <input type="text" 
+                     id="collegeSearchInput" 
+                     class="college-search-input" 
+                     placeholder="Search or enter your college name (e.g. PES University, RVCE, BMS)..." 
+                     autocomplete="off"
+                     oninput="onCollegeInput(this.value)"
+                     onfocus="onCollegeFocus()"
+                     required>
+              <button type="button" class="college-clear-btn" id="collegeClearBtn" onclick="clearSelectedCollege()">×</button>
+            </div>
+            <div class="college-dropdown" id="collegeDropdown">
+              <!-- Populated by matching engine -->
+            </div>
+          </div>
+
+          <!-- Dynamic College Status Banner -->
+          <div id="collegeStatusBanner"></div>
+        </div>
+      </section>
+
+      <div class="form-divider"></div>
+
+      <!-- Section 3: Courier Shipping Address -->
+      <section class="section-block">
+        <div class="section-title-row">
+          <div class="step-badge">3</div>
           <h2 class="section-heading">Courier Shipping Address</h2>
         </div>
 
@@ -1594,6 +2129,7 @@
       <button type="submit" class="submit-cta" id="submitBtn">
         <span>🎁 Send My Free Welcome Pack</span>
       </button>
+      <div id="claimFormError" style="display:none; color: #dc2626; font-size: 13.5px; font-weight: 700; margin-top: 8px; text-align: center; padding: 10px; background: #FEF2F2; border-radius: 12px; border: 1.5px solid #FCA5A5;"></div>
 
     </form>
 
@@ -1622,32 +2158,49 @@
 
       <div class="summary-card">
         <div>📦 <strong>Item:</strong> C2 Personality Card Pack (11 Collector Cards)</div>
+        <div id="confirmedCollegeRow">🏛️ <strong>College:</strong> <span id="confirmedCollege">College</span></div>
         <div>📱 <strong>Courier Contact:</strong> <span id="confirmedPhone">+91-XXXXXXXXXX</span></div>
         <div>📍 <strong>Shipping To:</strong> <span id="confirmedAddress">Address</span></div>
         <div id="confirmedGpsRow" style="display:none;">🌐 <strong>GPS Pin:</strong> <span id="confirmedGps">Lat, Lng</span></div>
       </div>
 
-      <!-- Fun Cards Delivery & Sharing Success Message -->
+      <!-- Fun Cards Delivery & Spreading Guide -->
       <div class="fun-delivery-box">
-        <div class="fun-badge">🃏 Deck On The Way!</div>
-        <h3 class="fun-title">Your cards will be delivered soon!</h3>
+        <div class="fun-badge">🃏 11 EMF Cards On The Way!</div>
+        <h3 class="fun-title">What To Do When Your Pack Arrives</h3>
         <p class="fun-desc">
-          Get ready to deal them out to your friends! Keep an eye on your phone for courier delivery. When the pack arrives, hand each card to the friend who truly owns that alter-ego!
+          Get ready to deal them out! Hand each character card to friends across college who match the personality.
         </p>
-        <!-- Important Campus Rule Note -->
-        <div class="campus-rule-note">
-          <div class="rule-badge">📌 CAMPUS RULE & OTHER COLLEGES</div>
-          <p class="rule-text">
-            <strong>Have friends in other colleges?</strong> Challenge them to see if their campus qualifies for its own deck!<br><br>
-            <strong>Note for same-college friends:</strong> Only <strong>1 official deck</strong> is dispatched per campus. If you share with friends from your same college, the person with the <strong>highest vibe score</strong> will receive the physical deck, and you can receive your persona card directly from them once it arrives!
-          </p>
+
+        <div class="emf-steps-grid" style="margin: 14px 0 16px;">
+          <div class="emf-step-item">
+            <div class="emf-step-icon">🎴</div>
+            <div class="emf-step-body">
+              <h4>1. Deal Out Character Cards</h4>
+              <p>Hand each card to the friend or classmate across college who truly owns that alter-ego.</p>
+            </div>
+          </div>
+          <div class="emf-step-item">
+            <div class="emf-step-icon">📲</div>
+            <div class="emf-step-body">
+              <h4>2. Have Them Scan the QR</h4>
+              <p>Scanning the card downloads the C2 Club app and instantly admits them into that specific club.</p>
+            </div>
+          </div>
+          <div class="emf-step-item">
+            <div class="emf-step-icon">🤝</div>
+            <div class="emf-step-body">
+              <h4>3. Connect & Ride Match</h4>
+              <p>Network with fellow club members, share daily rides, collaborate on projects, and build your campus circle!</p>
+            </div>
+          </div>
         </div>
 
         <div class="fun-prompt">
-          🔥 <strong>Challenge Friends in Other Colleges & Campus Gang:</strong>
+          🔥 <strong>Tell Your Gang on WhatsApp:</strong>
         </div>
         <a id="shareWaBtn" href="#" target="_blank" onclick="trackFunnel('success_wa_shared')" class="wa-challenge-btn">
-          💬 Challenge Friends on WhatsApp
+          💬 Share with Friends on WhatsApp
         </a>
       </div>
     </div>
@@ -2046,6 +2599,7 @@
       if (score >= 7) {
         if (passContent) passContent.style.display = 'block';
         if (failContent) failContent.style.display = 'none';
+        saveCurrentState();
       } else {
         if (passContent) passContent.style.display = 'none';
         if (failContent) failContent.style.display = 'block';
@@ -2054,6 +2608,9 @@
 
     function resetQuiz() {
       quizAnswers = [];
+      quizTotalScore = 0;
+      diagnosedCardIndex = null;
+      try { localStorage.removeItem(CLAIM_STORAGE_KEY); } catch (_) {}
       const resBox = document.getElementById('quizResultBox');
       const qHeader = document.getElementById('quizHeader');
       const qBody = document.getElementById('quizBody');
@@ -2066,8 +2623,10 @@
       renderQuizQuestion(0);
     }
 
-    function goToAddressPage() {
-      trackFunnel('choice_excited', { choice: 'excited' });
+    function goToAddressPage(trackFunnelEvent = true) {
+      if (trackFunnelEvent) {
+        trackFunnel('choice_excited', { choice: 'excited' });
+      }
 
       // Hide quiz and naah screens
       const quizCard = document.getElementById('quizCard');
@@ -2087,6 +2646,8 @@
         claimForm.style.display = 'flex';
         claimForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
+
+      saveCurrentState();
 
       if (window.history.pushState) {
         window.history.pushState(null, null, '#address');
@@ -2162,13 +2723,447 @@
       if (nameField) nameField.value = prefillName;
     }
 
+    // Auto-clean Indian phone numbers (handles +91, 0, spaces, dashes from autofill or paste)
+    function sanitizePhoneInput(el) {
+      if (!el) return;
+      let val = el.value;
+      if (!val) return;
+      let digits = val.replace(/\D/g, '');
+      if (digits.length >= 12 && digits.startsWith('91')) {
+        digits = digits.slice(2);
+      } else if (digits.length === 11 && digits.startsWith('0')) {
+        digits = digits.slice(1);
+      }
+      if (digits.length > 10) {
+        digits = digits.slice(-10);
+      }
+      if (val !== digits && (val.includes('+') || val.includes(' ') || val.includes('-') || val.startsWith('91') || val.startsWith('0') || digits.length === 10)) {
+        el.value = digits;
+      }
+    }
+
+    function clean10DigitPhone(val) {
+      if (!val) return '';
+      let d = String(val).replace(/\D/g, '');
+      if (d.length >= 12 && d.startsWith('91')) d = d.slice(2);
+      else if (d.length === 11 && d.startsWith('0')) d = d.slice(1);
+      if (d.length > 10) d = d.slice(-10);
+      return d;
+    }
+
     const FUNCTION_URL = 'https://us-central1-c2club-fd6722.cloudfunctions.net/submitCardClaim';
+    const CLAIM_STORAGE_KEY = 'c2_claim_vibe_state_v2';
+
+    // Canonical slug generator matching TargetTokenUtils in the Flutter app
+    function canonicalize(input) {
+      if (!input) return '';
+      return String(input)
+        .trim()
+        .toLowerCase()
+        .replace(/[\s\-]+/g, '_')
+        .replace(/[^a-z0-9_]/g, '')
+        .replace(/_+/g, '_')
+        .replace(/^_+|_+$/g, '');
+    }
+
+    // ─── 1. State Persistence & Memory Engine ────────────────────────────────
+    function getStoredState() {
+      try {
+        const raw = localStorage.getItem(CLAIM_STORAGE_KEY);
+        return raw ? JSON.parse(raw) : null;
+      } catch (_) {
+        return null;
+      }
+    }
+
+    function saveCurrentState() {
+      try {
+        const phoneEl = document.getElementById('phone');
+        const nameEl = document.getElementById('fullName');
+        const altPhoneEl = document.getElementById('altPhone');
+        const collegeIdEl = document.getElementById('collegeId');
+        const collegeNameEl = document.getElementById('collegeName');
+        const houseEl = document.getElementById('house');
+        const streetEl = document.getElementById('street');
+        const areaEl = document.getElementById('area');
+        const landmarkEl = document.getElementById('landmark');
+        const cityEl = document.getElementById('city');
+        const stateEl = document.getElementById('state');
+        const pincodeEl = document.getElementById('pincode');
+        const crowdEl = document.getElementById('collegeHeadcount');
+
+        const state = {
+          quizPassed: quizTotalScore >= 7 || Boolean(getStoredState()?.quizPassed),
+          quizScore: quizTotalScore,
+          quizAnswers: quizAnswers,
+          fullName: nameEl ? nameEl.value.trim() : '',
+          phone: phoneEl ? clean10DigitPhone(phoneEl.value) : '',
+          altPhone: altPhoneEl ? clean10DigitPhone(altPhoneEl.value) : '',
+          collegeId: collegeIdEl ? collegeIdEl.value : '',
+          collegeName: collegeNameEl ? collegeNameEl.value : '',
+          house: houseEl ? houseEl.value.trim() : '',
+          street: streetEl ? streetEl.value.trim() : '',
+          area: areaEl ? areaEl.value.trim() : '',
+          landmark: landmarkEl ? landmarkEl.value.trim() : '',
+          city: cityEl ? cityEl.value.trim() : '',
+          state: stateEl ? stateEl.value.trim() : '',
+          pincode: pincodeEl ? pincodeEl.value.trim() : '',
+          collegeHeadcount: crowdEl ? crowdEl.value : '',
+          appVerified: appVerified,
+          updatedAt: new Date().toISOString()
+        };
+
+        localStorage.setItem(CLAIM_STORAGE_KEY, JSON.stringify(state));
+      } catch (e) {
+        console.warn('Failed to save state:', e);
+      }
+    }
+
+    // ─── 2. In-App College Matching Engine ("One College, One Deck") ─────────
+    let activeColleges = [];
+    let claimedCollegesMap = {};
+    let selectedCollege = null;
+
+    async function loadCollegesData() {
+      // Step A: Load active colleges from fast static JSON (Cloudflare edge / zero latency)
+      try {
+        const res = await fetch('/colleges_active.json');
+        if (res.ok) {
+          activeColleges = await res.json();
+        }
+      } catch (err) {
+        console.warn('Local colleges JSON fetch error, falling back to function:', err);
+      }
+
+      // Step B: Fetch live claim statuses and any newly approved colleges from Cloud Function
+      try {
+        const liveRes = await fetch(`${FUNCTION_URL}?action=get_colleges`);
+        if (liveRes.ok) {
+          const data = await liveRes.json();
+          if (data.success && Array.isArray(data.colleges)) {
+            activeColleges = data.colleges;
+            claimedCollegesMap = {};
+            data.colleges.forEach(c => {
+              if (c.isClaimed) {
+                claimedCollegesMap[c.id] = true;
+              }
+            });
+            // Re-render status if a college is already selected
+            if (selectedCollege) {
+              const updated = activeColleges.find(c => c.id === selectedCollege.id);
+              if (updated) {
+                selectCollege(updated, false);
+              }
+            }
+          }
+        }
+      } catch (liveErr) {
+        console.warn('Non-fatal live colleges sync error:', liveErr);
+      }
+    }
+
+    function onCollegeFocus() {
+      const input = document.getElementById('collegeSearchInput');
+      onCollegeInput(input ? input.value : '');
+    }
+
+    function onCollegeInput(query) {
+      saveCurrentState();
+      const clearBtn = document.getElementById('collegeClearBtn');
+      const dropdown = document.getElementById('collegeDropdown');
+      if (!dropdown) return;
+
+      const q = (query || '').trim();
+      if (clearBtn) clearBtn.style.display = q ? 'flex' : 'none';
+
+      if (!q) {
+        dropdown.classList.remove('active');
+        dropdown.innerHTML = '';
+        return;
+      }
+
+      const cleanQ = canonicalize(q);
+      const lowerQ = q.toLowerCase();
+
+      // In-app matching: matches canonical token, name, aliases, searchName, or city
+      const matches = activeColleges.filter(c => {
+        const cleanName = canonicalize(c.name);
+        const lowerName = (c.name || '').toLowerCase();
+        if (cleanName.includes(cleanQ) || lowerName.includes(lowerQ)) return true;
+
+        if (c.city && c.city.toLowerCase().includes(lowerQ)) return true;
+
+        if (Array.isArray(c.aliases)) {
+          return c.aliases.some(a => {
+            const cleanAlias = canonicalize(a);
+            const lowerAlias = String(a).toLowerCase();
+            return cleanAlias.includes(cleanQ) || lowerAlias.includes(lowerQ);
+          });
+        }
+        return false;
+      });
+
+      // Top 10 matches
+      const displayMatches = matches.slice(0, 10);
+      let html = '';
+
+      displayMatches.forEach(c => {
+        const isClaimed = Boolean(c.isClaimed || claimedCollegesMap[c.id]);
+        const locParts = [c.city, c.state].filter(Boolean).join(', ');
+        const tagHtml = isClaimed
+          ? `<span class="college-item-tag claimed">Deck Claimed 🚫</span>`
+          : `<span class="college-item-tag available">1 Pack Available 🎉</span>`;
+
+        html += `
+          <div class="college-item" onclick="selectCollegeById('${c.id}')">
+            <div class="college-item-top">
+              <span class="college-item-name">${escapeHtml(c.name)}</span>
+              ${tagHtml}
+            </div>
+            ${locParts ? `<span class="college-item-sub">📍 ${escapeHtml(locParts)}</span>` : ''}
+          </div>
+        `;
+      });
+
+      // If typed query doesn't exactly match an existing college name, offer to add custom campus
+      const exactMatch = matches.some(c => canonicalize(c.name) === cleanQ || c.name.toLowerCase() === lowerQ);
+      if (!exactMatch && q.length >= 3) {
+        const customId = canonicalize(q);
+        const isClaimed = Boolean(claimedCollegesMap[customId]);
+        html += `
+          <div class="college-item add-custom" onclick="selectCustomCollege('${escapeAttr(q)}')">
+            <div class="college-item-top">
+              <span class="college-item-name">➕ Add "${escapeHtml(q)}"</span>
+              <span class="college-item-tag ${isClaimed ? 'claimed' : 'available'}">${isClaimed ? 'Deck Claimed 🚫' : 'New Campus 🎉'}</span>
+            </div>
+            <span class="college-item-sub">Connect your campus community</span>
+          </div>
+        `;
+      }
+
+      dropdown.innerHTML = html;
+      dropdown.classList.add('active');
+    }
+
+    function selectCollegeById(id) {
+      const college = activeColleges.find(c => c.id === id);
+      if (college) selectCollege(college, true);
+    }
+
+    function selectCustomCollege(rawName) {
+      const cleanId = canonicalize(rawName);
+      const isClaimed = Boolean(claimedCollegesMap[cleanId]);
+      selectCollege({
+        id: cleanId,
+        name: rawName,
+        city: '',
+        state: '',
+        aliases: [],
+        isClaimed: isClaimed
+      }, true);
+    }
+
+    function selectCollege(college, saveState = true) {
+      selectedCollege = college;
+      const idInput = document.getElementById('collegeId');
+      const nameInput = document.getElementById('collegeName');
+      const searchInput = document.getElementById('collegeSearchInput');
+      const dropdown = document.getElementById('collegeDropdown');
+      const banner = document.getElementById('collegeStatusBanner');
+      const clearBtn = document.getElementById('collegeClearBtn');
+
+      if (idInput) idInput.value = college.id;
+      if (nameInput) nameInput.value = college.name;
+      if (searchInput) searchInput.value = college.name;
+      if (clearBtn) clearBtn.style.display = 'flex';
+      if (dropdown) dropdown.classList.remove('active');
+
+      const isClaimed = Boolean(college.isClaimed || claimedCollegesMap[college.id]);
+
+      if (banner) {
+        banner.innerHTML = `
+          <div class="college-status-banner available">
+            <span class="status-banner-icon">🏛️</span>
+            <div class="status-banner-content">
+              <h4>${escapeHtml(college.name)}</h4>
+              <p>
+                College confirmed! Your 11-card EMF character pack will be delivered to your address for sharing across your college.
+              </p>
+            </div>
+          </div>
+        `;
+      }
+
+      updateSubmitButtonState();
+      if (saveState) saveCurrentState();
+    }
+
+    function clearSelectedCollege() {
+      selectedCollege = null;
+      const idInput = document.getElementById('collegeId');
+      const nameInput = document.getElementById('collegeName');
+      const searchInput = document.getElementById('collegeSearchInput');
+      const banner = document.getElementById('collegeStatusBanner');
+      const clearBtn = document.getElementById('collegeClearBtn');
+
+      if (idInput) idInput.value = '';
+      if (nameInput) nameInput.value = '';
+      if (searchInput) {
+        searchInput.value = '';
+        searchInput.focus();
+      }
+      if (clearBtn) clearBtn.style.display = 'none';
+      if (banner) banner.innerHTML = '';
+
+      updateSubmitButtonState();
+      saveCurrentState();
+    }
+
+    // Close dropdown on outside click
+    document.addEventListener('click', (e) => {
+      const container = document.querySelector('.college-search-container');
+      const dropdown = document.getElementById('collegeDropdown');
+      if (container && dropdown && !container.contains(e.target)) {
+        dropdown.classList.remove('active');
+      }
+    });
+
+    // ─── 3. App Download Verification Engine ─────────────────────────────────
+    let appVerified = false;
+    let isCheckingApp = false;
+    let lastCheckedDigits = '';
+
+    function onPhoneInput(el) {
+      sanitizePhoneInput(el);
+      saveCurrentState();
+      const digits = clean10DigitPhone(el.value);
+      if (digits.length === 10 && digits !== lastCheckedDigits) {
+        checkAppStatus(false);
+      }
+    }
+
+    async function checkAppStatus(isManual = false) {
+      const phoneInput = document.getElementById('phone');
+      const badge = document.getElementById('phoneStatusBadge');
+      const gateBox = document.getElementById('appGateBox');
+
+      const digits = clean10DigitPhone(phoneInput ? phoneInput.value : '');
+      if (digits.length < 10) {
+        if (badge) badge.innerHTML = '';
+        if (gateBox) gateBox.style.display = 'none';
+        appVerified = false;
+        updateSubmitButtonState();
+        return;
+      }
+
+      if (isCheckingApp) return;
+      isCheckingApp = true;
+      lastCheckedDigits = digits;
+
+      if (badge) {
+        badge.innerHTML = `<div class="app-status-badge checking">⏳ Verifying C2 Club app account...</div>`;
+      }
+
+      try {
+        const res = await fetch(FUNCTION_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            action: 'check_app_user',
+            phone: digits
+          })
+        });
+
+        const data = await res.json();
+        isCheckingApp = false;
+
+        if (data.registered) {
+          appVerified = true;
+          if (badge) {
+            badge.innerHTML = `<div class="app-status-badge verified">✅ Verified C2 Member (${escapeHtml(data.fullName || 'Active')})</div>`;
+          }
+          if (gateBox) gateBox.style.display = 'none';
+
+          // Auto-prefill consignee name if empty
+          const nameInput = document.getElementById('fullName');
+          if (nameInput && !nameInput.value.trim() && data.fullName) {
+            nameInput.value = data.fullName;
+          }
+
+          // If user already has a linked college in app and no college is selected yet, auto-select it!
+          if (data.collegeId && !selectedCollege) {
+            const matched = activeColleges.find(c => c.id === data.collegeId) || {
+              id: data.collegeId,
+              name: data.collegeName || data.collegeId,
+              isClaimed: Boolean(claimedCollegesMap[data.collegeId])
+            };
+            selectCollege(matched, false);
+          }
+        } else {
+          appVerified = false;
+          if (badge) {
+            badge.innerHTML = `<div class="app-status-badge unregistered">⚠️ App Account Required</div>`;
+          }
+          if (gateBox) gateBox.style.display = 'flex';
+        }
+      } catch (err) {
+        console.warn('App check error:', err);
+        isCheckingApp = false;
+        if (isManual && badge) {
+          badge.innerHTML = `<div class="app-status-badge unregistered">⚠️ Connection issue. Tap verify again.</div>`;
+        }
+      }
+
+      updateSubmitButtonState();
+      saveCurrentState();
+    }
+
+    // Auto-recheck app verification when student switches back from Google Play Store
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden && !appVerified) {
+        const phoneInput = document.getElementById('phone');
+        const digits = clean10DigitPhone(phoneInput ? phoneInput.value : '');
+        if (digits.length === 10) {
+          checkAppStatus(false);
+        }
+      }
+    });
+
+    window.addEventListener('focus', () => {
+      if (!appVerified) {
+        const phoneInput = document.getElementById('phone');
+        const digits = clean10DigitPhone(phoneInput ? phoneInput.value : '');
+        if (digits.length === 10) {
+          checkAppStatus(false);
+        }
+      }
+    });
+
+    function updateSubmitButtonState() {
+      const btn = document.getElementById('submitBtn');
+      const errBox = document.getElementById('claimFormError');
+      if (!btn) return;
+
+      btn.disabled = false;
+      btn.innerHTML = `<span>🎁 Send My Free Welcome Pack</span>`;
+      if (errBox) errBox.style.display = 'none';
+    }
+
+    function escapeHtml(str) {
+      return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function escapeAttr(str) {
+      return String(str || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+    }
 
     function trackFunnel(step, extraDetails = {}) {
       try {
         const sIdInput = document.getElementById('studentId');
         const phoneInput = document.getElementById('phone');
         const nameInput = document.getElementById('fullName');
+        const colIdInput = document.getElementById('collegeId');
+        const colNameInput = document.getElementById('collegeName');
 
         const curStudentId = (sIdInput && sIdInput.value) ? sIdInput.value : studentId;
         const curPhone = clean10DigitPhone(phoneInput && phoneInput.value ? phoneInput.value : prefillPhone);
@@ -2180,6 +3175,8 @@
           studentId: curStudentId,
           phone: curPhone,
           fullName: curName,
+          collegeId: colIdInput ? colIdInput.value : null,
+          collegeName: colNameInput ? colNameInput.value : null,
           step: step,
           answers: quizAnswers.map((optIdx, qIdx) => {
             const q = QUIZ_QUESTIONS[qIdx];
@@ -2223,20 +3220,20 @@
       }
     }
 
-    // Dynamic Viral WhatsApp Challenge link configuration
+    // Dynamic Viral WhatsApp Share link configuration
     function updateWhatsAppShareLinks() {
       const curStudentId = (document.getElementById('studentId') && document.getElementById('studentId').value) || studentId;
       const shareUrl = `https://c2club.in/claim.html?ref=${encodeURIComponent(curStudentId)}`;
       
-      // 1. Success Screen WhatsApp Challenge (Friends in other colleges + same-college highest score rule)
-      const successWaText = `Bro, take this 1-minute campus vibe check! 🃏 I just passed and requested our campus C2 11-card collector deck. (Note: Only 1 deck sent per college — person with highest score receives it to deal out the cards, or claim for a different college!). See if you can beat my score: ${shareUrl}`;
+      // 1. Success Screen WhatsApp Sharing
+      const successWaText = `Bro, I just claimed our free 11-card C2 character deck! 🃏 Handing out character cards to our gang once it arrives — scan your card to join our college clubs on C2 Club for networking, meetups & ride matching! Take the 1-min vibe check: ${shareUrl}`;
       const shareWaBtn = document.getElementById('shareWaBtn');
       if (shareWaBtn) {
         shareWaBtn.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(successWaText)}`;
       }
 
       // 2. Naah Screen WhatsApp Challenge
-      const naahWaText = `I was too lazy to claim the free C2 11-card campus deck, but let's see if someone in our campus has more energy than me 😂 (Only 1 deck per college — highest score receives it!). Take the 1-min vibe check: ${shareUrl}`;
+      const naahWaText = `Check out C2 Club! 🃏 They are delivering free 11-card character decks to students for campus networking & ride matching. Take the 1-min vibe check here: ${shareUrl}`;
       const naahShareWaBtn = document.getElementById('naahShareWaBtn');
       if (naahShareWaBtn) {
         naahShareWaBtn.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(naahWaText)}`;
@@ -2461,8 +3458,49 @@
     // Handle Form Submit
     function handleClaim(e) {
       e.preventDefault();
+      const errBox = document.getElementById('claimFormError');
+      if (errBox) errBox.style.display = 'none';
 
-      // Compulsory Campus Crowd Validation
+      // 1. App Verification Check ("whoever is requesting the deck must download the app first")
+      if (!appVerified) {
+        const phoneInput = document.getElementById('phone');
+        const digits = clean10DigitPhone(phoneInput ? phoneInput.value : '');
+        if (digits.length < 10) {
+          alert('Please enter a valid 10-digit mobile number.');
+          if (phoneInput) phoneInput.focus();
+          return;
+        }
+
+        const gateBox = document.getElementById('appGateBox');
+        if (gateBox) {
+          gateBox.style.display = 'flex';
+          gateBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        if (errBox) {
+          errBox.style.display = 'block';
+          errBox.innerHTML = '📱 <strong>C2 Club App Download Required:</strong> Please download the app and register before requesting your deck.';
+        }
+        return;
+      }
+
+      // 2. College Selection & One College One Deck Check
+      const collegeId = document.getElementById('collegeId').value;
+      const collegeName = document.getElementById('collegeName').value;
+
+      if (!collegeId || !collegeName) {
+        const searchInput = document.getElementById('collegeSearchInput');
+        if (searchInput) {
+          searchInput.focus();
+          searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        if (errBox) {
+          errBox.style.display = 'block';
+          errBox.innerHTML = '🏛️ <strong>Select College:</strong> Please choose your college campus from the search list.';
+        }
+        return;
+      }
+
+      // 3. Compulsory Campus Crowd Validation
       const headcountInput = document.getElementById('collegeHeadcount');
       const headcountVal = headcountInput ? headcountInput.value.trim() : '';
       if (!headcountVal) {
@@ -2499,6 +3537,8 @@
         fullName: document.getElementById('fullName').value.trim(),
         phone: clean10DigitPhone(document.getElementById('phone').value),
         altPhone: clean10DigitPhone(document.getElementById('altPhone') ? document.getElementById('altPhone').value : ''),
+        collegeId: collegeId,
+        collegeName: collegeName,
         house: houseVal,
         street: streetVal,
         area: areaVal,
@@ -2511,7 +3551,7 @@
         gps: document.getElementById('gpsCoordinates').value,
         gpsAccuracy: document.getElementById('gpsAccuracy').value,
         intentPlan: document.getElementById('intentPlan').value,
-        collegeHeadcount: document.getElementById('collegeHeadcount').value,
+        collegeHeadcount: headcountVal,
         campusReality: document.getElementById('campusReality').value,
         timestamp: new Date().toISOString()
       };
@@ -2520,18 +3560,11 @@
       trackFunnel('claim_submitted', {
         consignee: formData.fullName,
         phone: formData.phone,
+        collegeId: formData.collegeId,
+        collegeName: formData.collegeName,
         city: formData.city,
         pincode: formData.pincode
       });
-
-      // Store in browser storage for instant local verification
-      try {
-        const stored = JSON.parse(localStorage.getItem('card_claims') || '[]');
-        stored.push(formData);
-        localStorage.setItem('card_claims', JSON.stringify(stored));
-      } catch (err) {
-        console.error(err);
-      }
 
       function showSuccess(claimId) {
         const hero = document.getElementById('heroHeader');
@@ -2544,6 +3577,9 @@
         let phoneDisplay = '+91-' + formData.phone;
         if (formData.altPhone) phoneDisplay += ` (Alt: ${formData.altPhone})`;
         document.getElementById('confirmedPhone').innerText = phoneDisplay;
+
+        const collegeEl = document.getElementById('confirmedCollege');
+        if (collegeEl) collegeEl.innerText = formData.collegeName;
         
         let fullAddrParts = [formData.house, formData.street, formData.area].filter(Boolean);
         if (formData.landmark) fullAddrParts.push(`Landmark: ${formData.landmark}`);
@@ -2556,7 +3592,8 @@
         let courierSlipHtml = `<strong>CONSIGNEE:</strong> ${formData.fullName}<br>`;
         courierSlipHtml += `<strong>MOBILE:</strong> +91-${formData.phone}`;
         if (formData.altPhone) courierSlipHtml += ` / Alt: +91-${formData.altPhone}`;
-        courierSlipHtml += `<br><strong>HOUSE/ROOM:</strong> ${formData.house}<br>`;
+        courierSlipHtml += `<br><strong>COLLEGE / CAMPUS:</strong> ${formData.collegeName}<br>`;
+        courierSlipHtml += `<strong>HOUSE/ROOM:</strong> ${formData.house}<br>`;
         if (formData.street) courierSlipHtml += `<strong>STREET/CAMPUS:</strong> ${formData.street}<br>`;
         if (formData.area) courierSlipHtml += `<strong>AREA/LOCALITY:</strong> ${formData.area}<br>`;
         if (formData.landmark) courierSlipHtml += `<strong>LANDMARK:</strong> ${formData.landmark}<br>`;
@@ -2575,6 +3612,12 @@
         // Configure WhatsApp Viral Challenge link
         updateWhatsAppShareLinks();
 
+        // Mark college claimed locally
+        claimedCollegesMap[formData.collegeId] = true;
+        try {
+          localStorage.removeItem(CLAIM_STORAGE_KEY);
+        } catch (_) {}
+
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
 
@@ -2586,11 +3629,34 @@
       })
       .then(res => res.json())
       .then(data => {
+        if (!data || data.success === false) {
+          btn.innerText = '🎁 Send My Free Welcome Pack';
+          btn.disabled = false;
+          if (errBox) {
+            errBox.style.display = 'block';
+            errBox.innerHTML = `⚠️ <strong>Error:</strong> ${data && data.error ? escapeHtml(data.error) : 'Unable to submit claim. Please try again.'}`;
+            errBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+          if (data && data.code === 'APP_NOT_DOWNLOADED') {
+            const gateBox = document.getElementById('appGateBox');
+            if (gateBox) gateBox.style.display = 'flex';
+          }
+          if (data && data.code === 'COLLEGE_ALREADY_CLAIMED') {
+            claimedCollegesMap[formData.collegeId] = true;
+            if (selectedCollege) selectCollege(selectedCollege, false);
+          }
+          return;
+        }
         showSuccess(data && data.claimId ? data.claimId : '');
       })
       .catch(err => {
-        console.warn('Backend sync failed, relying on local backup:', err);
-        showSuccess('');
+        console.error('Backend submission error:', err);
+        btn.innerText = '🎁 Send My Free Welcome Pack';
+        btn.disabled = false;
+        if (errBox) {
+          errBox.style.display = 'block';
+          errBox.innerHTML = '⚠️ Network connection issue. Please check your internet and tap submit again.';
+        }
       });
     }
 
@@ -2599,15 +3665,98 @@
     function initClaimApp() {
       if (appInitialized) return;
       appInitialized = true;
+      loadCollegesData();
       renderQuizQuestion(0);
       updateWhatsAppShareLinks();
       initAddressTracking();
+
+      // Memory restoration
+      restoreCurrentState();
+
       trackFunnel('page_landed', {
         studentId: studentId,
         prefillPhone: prefillPhone || null,
         prefillName: prefillName || null,
         search: window.location.search
       });
+    }
+
+    function selectCrowdByValue(val) {
+      if (!val) return;
+      document.querySelectorAll('.crowd-chip').forEach(chip => {
+        if (chip.innerText.includes(val) || chip.getAttribute('onclick')?.includes(val)) {
+          selectCrowd(chip, val);
+        }
+      });
+    }
+
+    function restoreCurrentState() {
+      const state = getStoredState();
+      if (!state) return;
+
+      if (state.quizPassed) {
+        quizTotalScore = state.quizScore || 15;
+        if (Array.isArray(state.quizAnswers)) quizAnswers = state.quizAnswers;
+        goToAddressPage(false);
+      }
+
+      if (state.fullName) {
+        const nameInput = document.getElementById('fullName');
+        if (nameInput) nameInput.value = state.fullName;
+      }
+
+      if (state.phone) {
+        const phoneInput = document.getElementById('phone');
+        if (phoneInput) {
+          phoneInput.value = state.phone;
+          checkAppStatus(false);
+        }
+      }
+
+      if (state.altPhone) {
+        const altPhoneInput = document.getElementById('altPhone');
+        if (altPhoneInput) altPhoneInput.value = state.altPhone;
+      }
+
+      if (state.house) {
+        const el = document.getElementById('house');
+        if (el) el.value = state.house;
+      }
+      if (state.street) {
+        const el = document.getElementById('street');
+        if (el) el.value = state.street;
+      }
+      if (state.area) {
+        const el = document.getElementById('area');
+        if (el) el.value = state.area;
+      }
+      if (state.landmark) {
+        const el = document.getElementById('landmark');
+        if (el) el.value = state.landmark;
+      }
+      if (state.city) {
+        const el = document.getElementById('city');
+        if (el) el.value = state.city;
+      }
+      if (state.state) {
+        const el = document.getElementById('state');
+        if (el) el.value = state.state;
+      }
+      if (state.pincode) {
+        const el = document.getElementById('pincode');
+        if (el) el.value = state.pincode;
+      }
+      if (state.collegeHeadcount) {
+        selectCrowdByValue(state.collegeHeadcount);
+      }
+
+      if (state.collegeId && state.collegeName) {
+        selectCollege({
+          id: state.collegeId,
+          name: state.collegeName,
+          isClaimed: Boolean(claimedCollegesMap[state.collegeId])
+        }, false);
+      }
     }
 
     document.addEventListener('DOMContentLoaded', initClaimApp);

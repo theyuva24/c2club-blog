@@ -1,0 +1,1485 @@
+[
+  {
+    "id": "abesit",
+    "name": "ABES Institute of Technology (ABESIT)",
+    "city": "Ghaziabad",
+    "state": "Uttar Pradesh",
+    "aliases": [
+      "ABESIT",
+      "ABES IT",
+      "ABES Institute of Technology",
+      "ABESIT Ghaziabad"
+    ]
+  },
+  {
+    "id": "akk_education_societys_arts_and_commerce_college_hubli",
+    "name": "Akk Education Society's Arts and Commerce College, Hubli",
+    "city": "",
+    "state": "",
+    "aliases": [
+      "akk",
+      "education",
+      "society",
+      "s",
+      "arts",
+      "commerce",
+      "bcom",
+      "mcom",
+      "college",
+      "hubli",
+      "akk education society's arts and commerce college, hubli",
+      "akkeducationsociety'sartsandcommercecollege,hubli"
+    ]
+  },
+  {
+    "id": "alliance_university",
+    "name": "Alliance University",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "aliases": [
+      "ALLIANCE UNIVERSITY",
+      "Alliance University",
+      "Alliance",
+      "Alliance Bengaluru",
+      "Alliance University Bangalore"
+    ]
+  },
+  {
+    "id": "alvas_institute_of_engineering_and_technology_moodubidire",
+    "name": "Alva's Institute of Engineering and Technology, Moodubidire",
+    "city": "Moodubidre",
+    "state": "Karnataka",
+    "aliases": [
+      "alva'smoodubidire",
+      "alva'smoodubidireengg",
+      "alva'smoodubidiretech",
+      "alva'smoodubidireinst",
+      "aietm",
+      "alvasmoodubidireaietm",
+      "alvasmoodubidire",
+      "alvasmoodubidireengineering",
+      "alvasmoodubidireengg",
+      "alvasmoodubidiretechnology",
+      "alvasmoodubidiretech",
+      "alvasmoodubidireinstitute",
+      "alvasmoodubidireinst",
+      "alvasmoodubidiremoodubidre",
+      "aietmmoodubidre",
+      "alvasmoodubidirealvas",
+      "aietmalvas",
+      "alvasmoodubidiremoodubidire",
+      "aietmmoodubidire",
+      "alvasmoodubidiremoodbidri",
+      "aietmmoodbidri"
+    ]
+  },
+  {
+    "id": "amc_engineering",
+    "name": "AMC Engineering College",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "aliases": [
+      "AMC engineering",
+      "AMC Engineering College",
+      "AMCEC",
+      "AMC College of Engineering",
+      "AMC Bangalore"
+    ]
+  },
+  {
+    "id": "amity",
+    "name": "Amity University, Noida",
+    "city": "Noida",
+    "state": "Uttar Pradesh",
+    "aliases": [
+      "amity",
+      "Amity Noida",
+      "Amity University",
+      "Amity University Uttar Pradesh",
+      "AUUP"
+    ]
+  },
+  {
+    "id": "angadi_institute_of_technology_and_management_aitm",
+    "name": "Angadi Institute of Technology and Management (AITM)",
+    "city": "Belgavi",
+    "state": "Karnataka",
+    "aliases": []
+  },
+  {
+    "id": "animaster_design_college",
+    "name": "Animaster Design College",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "aliases": [
+      "animaster",
+      "design",
+      "college",
+      "animaster design college",
+      "animasterdesigncollege"
+    ]
+  },
+  {
+    "id": "anjuman_arts_science_commerce_college_for_women_dharwad",
+    "name": "Anjuman Arts, Science & Commerce College for Women, Dharwad",
+    "city": "",
+    "state": "",
+    "aliases": [
+      "anjuman",
+      "arts",
+      "science",
+      "sci",
+      "bsc",
+      "msc",
+      "commerce",
+      "bcom",
+      "mcom",
+      "college",
+      "women",
+      "dharwad",
+      "anjuman arts, science & commerce college for women, dharwad",
+      "anjumanarts,science&commercecollegeforwomen,dharwad"
+    ]
+  },
+  {
+    "id": "atal_bihari_vajpayee_medical_university_lucknow",
+    "name": "Atal Bihari Vajpayee Medical University Lucknow",
+    "city": "Lucknow",
+    "state": "Uttar Pradesh",
+    "aliases": [
+      "atal_bihari_vajpayee_medical_university_lucknow"
+    ]
+  },
+  {
+    "id": "atria_institute_of_technology",
+    "name": "Atria Institute of Technology",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "aliases": [
+      "Atria Institute of Technology",
+      "Atria",
+      "AIT",
+      "Atria IT",
+      "Atria Institute of Technology Bangalore"
+    ]
+  },
+  {
+    "id": "bms_college_of_engineering",
+    "name": "B.M.S. College of Engineering",
+    "city": "Banglore",
+    "state": "Karnataka",
+    "aliases": [
+      "b",
+      "m",
+      "s",
+      "college",
+      "engineering",
+      "eng",
+      "be",
+      "me",
+      "b.m.s. college of engineering",
+      "bmscollegeofengineering"
+    ]
+  },
+  {
+    "id": "bv_bhoomaraddi_college_of_engineering_technology_kle_technological_university_hubli",
+    "name": "B.v. Bhoomaraddi College of Engineering & Technology (kle Technological University), Hubli",
+    "city": "",
+    "state": "",
+    "aliases": [
+      "b",
+      "v",
+      "bhoomaraddi",
+      "college",
+      "engineering",
+      "eng",
+      "be",
+      "me",
+      "technology",
+      "tech",
+      "btech",
+      "mtech",
+      "kle",
+      "technological",
+      "university",
+      "hubli",
+      "b.v. bhoomaraddi college of engineering & technology (kle technological university), hubli",
+      "bvbhoomaraddicollegeofengineering&technology(kletechnologicaluniversity),hubli"
+    ]
+  },
+  {
+    "id": "bagalkot_university",
+    "name": "Bagalkot University",
+    "city": "Bagalkot",
+    "state": "Karnataka",
+    "aliases": [
+      "Bagalkot university",
+      "Bagalkot University",
+      "Bagalkote University",
+      "BU Bagalkot"
+    ]
+  },
+  {
+    "id": "ballari_institute_of_technology_management_bitm",
+    "name": "Ballari Institute of Technology & Management: BITM",
+    "city": "Ballari",
+    "state": "Karnataka",
+    "aliases": [
+      "ballari",
+      "institute",
+      "technology",
+      "tech",
+      "btech",
+      "mtech",
+      "management",
+      "mgmt",
+      "bba",
+      "mba",
+      "bitm",
+      "ballari institute of technology & management: bitm",
+      "ballariinstituteoftechnology&management:bitm"
+    ]
+  },
+  {
+    "id": "banglore_university",
+    "name": "Bangalore University",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "aliases": [
+      "Banglore university",
+      "Bangalore University",
+      "BU",
+      "Bangalore University Jnana Bharathi",
+      "BU Bengaluru"
+    ]
+  },
+  {
+    "id": "basaveshwar_engineering_college_bagalkote",
+    "name": "Basaveshwar Engineering College, Bagalkote",
+    "city": "Bagalkot",
+    "state": "Karnataka",
+    "aliases": []
+  },
+  {
+    "id": "bba_asp_college_vijapur_autonomous",
+    "name": "BBA asp college Vijapur autonomous",
+    "city": "",
+    "state": "",
+    "aliases": [
+      "BBA asp college Vijapur"
+    ]
+  },
+  {
+    "id": "blde_ssm_cop_pharmacy_college_vijayapura",
+    "name": "BLDE ssm cop pharmacy college vijayapura",
+    "city": "Vijaypura",
+    "state": "Karnataka",
+    "aliases": [
+      "blde",
+      "ssm",
+      "cop",
+      "pharmacy",
+      "college",
+      "vijayapura",
+      "blde ssm cop pharmacy college vijayapura",
+      "bldessmcoppharmacycollegevijayapura"
+    ]
+  },
+  {
+    "id": "blue_pearl_international_college_hubli",
+    "name": "Blue Pearl International College, Hubli",
+    "city": "",
+    "state": "",
+    "aliases": [
+      "blue",
+      "pearl",
+      "international",
+      "college",
+      "hubli",
+      "blue pearl international college, hubli",
+      "bluepearlinternationalcollege,hubli"
+    ]
+  },
+  {
+    "id": "cs_bembalagi_arts_sha_m_r_palaresha_science_and_glrathi_commerce_college_ramdurg",
+    "name": "C.S. Bembalagi Arts, Sha M. R. Palaresha Science And G.L.Rathi Commerce College, Ramdurg",
+    "city": "Ramdurg",
+    "state": "Karnataka",
+    "aliases": []
+  },
+  {
+    "id": "canara_engineering_college",
+    "name": "Canara Engineering College",
+    "city": "Mangalore",
+    "state": "Karnataka",
+    "aliases": []
+  },
+  {
+    "id": "central_university_of_karnataka_kadaganchi",
+    "name": "Central University of Karnataka, Kadaganchi",
+    "city": "Kadaganchi",
+    "state": "Karnataka",
+    "aliases": [
+      "central",
+      "university",
+      "karnataka",
+      "kadaganchi",
+      "central university of karnataka, kadaganchi",
+      "centraluniversityofkarnataka,kadaganchi"
+    ]
+  },
+  {
+    "id": "cmr_institute_of_technology_banglore",
+    "name": "CMR Institute of Technology (CMRIT)",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "aliases": [
+      "CMR institute of technology, banglore",
+      "CMRIT",
+      "CMR Institute of Technology",
+      "CMRIT Bangalore",
+      "CMRIT Bengaluru"
+    ]
+  },
+  {
+    "id": "coimbatore_institute_of_technology",
+    "name": "Coimbatore Institute of Technology",
+    "city": "Coimbatore",
+    "state": "Tamil Nadu",
+    "aliases": [
+      "coimbatore_institute_of_technology"
+    ]
+  },
+  {
+    "id": "davanagere_university",
+    "name": "Davangere University",
+    "city": "Davangere",
+    "state": "Karnataka",
+    "aliases": [
+      "Davanagere university",
+      "Davangere University",
+      "Davanagere University",
+      "DU Davangere"
+    ]
+  },
+  {
+    "id": "dayananda_sagar_academy_of_technology_and_management",
+    "name": "Dayananda Sagar Academy of Technology and Management",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "aliases": [
+      "dayananda",
+      "sagar",
+      "academy",
+      "technology",
+      "tech",
+      "btech",
+      "mtech",
+      "management",
+      "mgmt",
+      "bba",
+      "mba",
+      "dayananda sagar academy of technology and management",
+      "dayanandasagaracademyoftechnologyandmanagement",
+      "dsit"
+    ]
+  },
+  {
+    "id": "don_bosco_institute_of_technology",
+    "name": "Don Bosco institute of technology",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "aliases": [
+      "don",
+      "bosco",
+      "institute",
+      "technology",
+      "tech",
+      "btech",
+      "mtech",
+      "don bosco institute of technology",
+      "donboscoinstituteoftechnology"
+    ]
+  },
+  {
+    "id": "dr_d_veerendra_heggade_institute_of_management_studies_research_dharwad",
+    "name": "Dr. D. Veerendra Heggade Institute of Management Studies & Research, Dharwad",
+    "city": "",
+    "state": "",
+    "aliases": [
+      "dr",
+      "d",
+      "veerendra",
+      "heggade",
+      "institute",
+      "management",
+      "mgmt",
+      "bba",
+      "mba",
+      "studies",
+      "research",
+      "dharwad",
+      "dr. d. veerendra heggade institute of management studies & research, dharwad",
+      "drdveerendraheggadeinstituteofmanagementstudies&research,dharwad"
+    ]
+  },
+  {
+    "id": "dr_d_y_patil_technical_campus_dyptc_pune",
+    "name": "Dr. D. Y. Patil Technical Campus (DYPTC), Pune",
+    "city": "Talegaon",
+    "state": "Maharashtra",
+    "aliases": [
+      "DDYPTCP",
+      "DPTCP",
+      "drpatil",
+      "drpatiltechnical",
+      "drpatilcampus",
+      "drpatildyptc",
+      "drpatilpune",
+      "drtechnical",
+      "drtechnicalpatil",
+      "drtechnicalcampus",
+      "drtechnicaldyptc",
+      "drtechnicalpune",
+      "drcampus",
+      "drcampuspatil",
+      "drcampustechnical",
+      "drcampusdyptc",
+      "drcampuspune",
+      "drdyptc",
+      "drdyptcpatil",
+      "drdyptctechnical",
+      "dr_d_y_patil_technical_campus_pune"
+    ]
+  },
+  {
+    "id": "global_business_school",
+    "name": "Global Business School",
+    "city": "",
+    "state": "",
+    "aliases": [
+      "global",
+      "business",
+      "school",
+      "global business school",
+      "globalbusinessschool"
+    ]
+  },
+  {
+    "id": "global_business_school_gbs_hubli",
+    "name": "Global Business School (GBS), Hubli",
+    "city": "Hubli",
+    "state": "Karnataka",
+    "aliases": []
+  },
+  {
+    "id": "gm_university_davanagere",
+    "name": "GM University, Davanagere",
+    "city": "Davangere",
+    "state": "Karnataka",
+    "aliases": [
+      "GM university Davanagere",
+      "GM University",
+      "GMU",
+      "GMIT Davanagere",
+      "GM University Davanagere"
+    ]
+  },
+  {
+    "id": "gsss_institute_of_engineering_technology_for_women_gsssietw",
+    "name": "GSSS Institute of Engineering & Technology for Women - GSSSIETW",
+    "city": "Mysore",
+    "state": "Karnataka",
+    "aliases": [
+      "gsss",
+      "institute",
+      "engineering",
+      "eng",
+      "be",
+      "me",
+      "technology",
+      "tech",
+      "btech",
+      "mtech",
+      "women",
+      "gsssietw",
+      "gsss institute of engineering & technology for women - gsssietw",
+      "gsssinstituteofengineering&technologyforwomen-gsssietw"
+    ]
+  },
+  {
+    "id": "ibmr_degree_college",
+    "name": "IBMR Degree College, Hubballi",
+    "city": "Hubballi",
+    "state": "Karnataka",
+    "aliases": [
+      "IBMR Degree College",
+      "IBMR",
+      "IBMR Hubli",
+      "IBMR Degree College",
+      "IBMR Hubballi",
+      "Vidyabharati IBMR"
+    ]
+  },
+  {
+    "id": "iit_madras",
+    "name": "IIT Madras",
+    "city": "Chennai",
+    "state": "Tamil Nadu",
+    "aliases": [
+      "iit_madras",
+      "indian institute of technology",
+      "Indian Institute of Technology Madras",
+      "IIT Chennai",
+      "IITM"
+    ]
+  },
+  {
+    "id": "indian_institute_of_information_technology_dharwad",
+    "name": "Indian Institute of Information Technology Dharwad",
+    "city": "Dharwad",
+    "state": "Karnataka",
+    "aliases": [
+      "indian",
+      "institute",
+      "information",
+      "technology",
+      "tech",
+      "btech",
+      "mtech",
+      "dharwad",
+      "indian institute of information technology dharwad",
+      "indianinstituteofinformationtechnologydharwad"
+    ]
+  },
+  {
+    "id": "indian_institute_of_technology_dharwad_iit_dharwad_dharwad",
+    "name": "Indian Institute of Technology Dharwad (iit Dharwad), Dharwad",
+    "city": "",
+    "state": "",
+    "aliases": [
+      "indian",
+      "institute",
+      "technology",
+      "tech",
+      "btech",
+      "mtech",
+      "dharwad",
+      "iit",
+      "indian institute of technology dharwad (iit dharwad), dharwad",
+      "indianinstituteoftechnologydharwad(iitdharwad),dharwad"
+    ]
+  },
+  {
+    "id": "jagadguru_gangadhar_college_of_commerce_jgcc",
+    "name": "Jagadguru Gangadhar College of Commerce (jgcc)",
+    "city": "",
+    "state": "",
+    "aliases": [
+      "jagadguru",
+      "gangadhar",
+      "college",
+      "commerce",
+      "bcom",
+      "mcom",
+      "jgcc",
+      "jagadguru gangadhar college of commerce (jgcc)",
+      "jagadgurugangadharcollegeofcommerce(jgcc)"
+    ]
+  },
+  {
+    "id": "jain_institute_of_technology",
+    "name": "Jain Institute of Technology",
+    "city": "Davangere",
+    "state": "Karnataka",
+    "aliases": [
+      "jain",
+      "institute",
+      "technology",
+      "tech",
+      "btech",
+      "mtech",
+      "jain institute of technology",
+      "jaininstituteoftechnology"
+    ]
+  },
+  {
+    "id": "jhana_bharti_college_muddebihal",
+    "name": "Jnana Bharati Degree College, Muddebihal",
+    "city": "Vijayapura",
+    "state": "Karnataka",
+    "aliases": [
+      "JHANA BHARTI COLLEGE MUDDEBIHAL",
+      "Jnana Bharati College Muddebihal",
+      "Jhana Bharti College",
+      "JBC Muddebihal"
+    ]
+  },
+  {
+    "id": "jss_academy_of_higher_education_and_research_distance_programs",
+    "name": "JSS Academy of Higher Education and Research (distance Programs)",
+    "city": "",
+    "state": "",
+    "aliases": [
+      "jss",
+      "academy",
+      "higher",
+      "education",
+      "research",
+      "distance",
+      "programs",
+      "jss academy of higher education and research (distance programs)",
+      "jssacademyofhighereducationandresearch(distanceprograms)"
+    ]
+  },
+  {
+    "id": "jss_academy_of_technical_education_jssate_banglore",
+    "name": "JSS Academy of Technical Education (JSSATE), Banglore",
+    "city": "Bangalore",
+    "state": "Karnataka",
+    "aliases": [
+      "jss_academy_of_technical_education"
+    ]
+  },
+  {
+    "id": "jss_banashankari_arts_commerce_and_sk_gubbi_science_college",
+    "name": "JSS Banashankari Arts, Commerce and S.K. Gubbi Science College, Dharwad",
+    "city": "Dharwad",
+    "state": "Karnataka",
+    "aliases": [
+      "Jss Banashankari Arts Commerce And S.K. Gubbi Science College",
+      "JSS Degree College Dharwad",
+      "JSS Degree College",
+      "JSS Banashankari Dharwad",
+      "JSS College Dharwad",
+      "SK Gubbi Science College",
+      "JSS Vidyagiri"
+    ]
+  },
+  {
+    "id": "k_l_e_societys_p_c_jabin_science_college_autonomous_hubli",
+    "name": "K. L. E. Society’s P. C. Jabin Science College, Autonomous, Hubli",
+    "city": "Hubli",
+    "state": "Karnataka",
+    "aliases": []
+  },
+  {
+    "id": "karnatak_arts_college_dharwad",
+    "name": "Karnatak Arts College, Dharwad",
+    "city": "",
+    "state": "",
+    "aliases": [
+      "karnatak",
+      "arts",
+      "college",
+      "dharwad",
+      "karnatak arts college, dharwad",
+      "karnatakartscollege,dharwad"
+    ]
+  },
+  {
+    "id": "karnataka_science_college_dharwad",
+    "name": "Karnatak Science College, Dharwad (KCD)",
+    "city": "Dharwad",
+    "state": "Karnataka",
+    "aliases": [
+      "Karnataka science college dharwad",
+      "KCD",
+      "KCD Dharwad",
+      "Karnatak Science College",
+      "Karnataka Science College Dharwad"
+    ]
+  },
+  {
+    "id": "karnatak_university_dharwad",
+    "name": "Karnatak University, Dharwad",
+    "city": "",
+    "state": "",
+    "aliases": [
+      "karnatak",
+      "university",
+      "dharwad",
+      "karnatak university, dharwad",
+      "karnatakuniversity,dharwad",
+      "kud"
+    ]
+  },
+  {
+    "id": "karnataka_institute_of_medical_sciences_kims_mdms_programs",
+    "name": "Karnataka Institute of Medical Sciences (kims) Md/ms Programs",
+    "city": "",
+    "state": "",
+    "aliases": [
+      "karnataka",
+      "institute",
+      "medical",
+      "sciences",
+      "kims",
+      "md",
+      "ms",
+      "programs",
+      "karnataka institute of medical sciences (kims) md/ms programs",
+      "karnatakainstituteofmedicalsciences(kims)md/msprograms"
+    ]
+  },
+  {
+    "id": "karnataka_state_law_university_hubballi",
+    "name": "Karnataka State Law University, Hubballi",
+    "city": "Hubli",
+    "state": "Karnataka",
+    "aliases": [
+      "karnataka_state_law_university"
+    ]
+  },
+  {
+    "id": "karnataka_university_zoology_department",
+    "name": "Karnataka University zoology department",
+    "city": "",
+    "state": "",
+    "aliases": [
+      "karnataka",
+      "university",
+      "zoology",
+      "department",
+      "karnataka university zoology department",
+      "karnatakauniversityzoologydepartment",
+      "kud"
+    ]
+  },
+  {
+    "id": "jgmmmc",
+    "name": "KLE JGMM Medical College (JGMMMC)",
+    "city": "Hubballi",
+    "state": "Karnataka",
+    "aliases": [
+      "JGMMMC",
+      "JGMM Medical College",
+      "KLE JGMMMC Hubli",
+      "Moorusavirmath Medical College"
+    ]
+  },
+  {
+    "id": "kle_societys_college_of_commerce_bvb_campus_hubli",
+    "name": "KLE Society's College of Commerce, BVB Campus, Hubli",
+    "city": "",
+    "state": "",
+    "aliases": [
+      "kle",
+      "society",
+      "s",
+      "college",
+      "commerce",
+      "bcom",
+      "mcom",
+      "bvb",
+      "campus",
+      "hubli",
+      "kle society's college of commerce, bvb campus, hubli",
+      "klesociety'scollegeofcommerce,bvbcampus,hubli"
+    ]
+  },
+  {
+    "id": "college_of_business_administration_of_lingaraj_college",
+    "name": "KLE Society's Lingaraj College (CBALC)",
+    "city": "Belagavi",
+    "state": "Karnataka",
+    "aliases": [
+      "college of business administration of lingaraj college",
+      "CBALC",
+      "Lingaraj College",
+      "College of Business Administration Lingaraj College",
+      "CBALC Belgaum"
+    ]
+  },
+  {
+    "id": "kle_societys_gurusiddappa_kotambri_law_college",
+    "name": "KLE Societys Gurusiddappa Kotambri Law College",
+    "city": "",
+    "state": "",
+    "aliases": [
+      "kle",
+      "societys",
+      "gurusiddappa",
+      "kotambri",
+      "law",
+      "college",
+      "kle societys gurusiddappa kotambri law college",
+      "klesocietysgurusiddappakotambrilawcollege"
+    ]
+  },
+  {
+    "id": "kle_vk_institute_of_dental_sciences",
+    "name": "KLE VK Institute of Dental Sciences, Belagavi",
+    "city": "Belagavi",
+    "state": "Karnataka",
+    "aliases": [
+      "KLE VK Institute of Dental Sciences",
+      "VK Institute of Dental Sciences",
+      "KLE Dental College Belgaum",
+      "VKIDS Belgaum"
+    ]
+  },
+  {
+    "id": "kls_gogte_institute_of_technology",
+    "name": "KLS Gogte Institute of Technology",
+    "city": "Belagavi",
+    "state": "Karnataka",
+    "aliases": [
+      "kls_gogte_institute_of_technology"
+    ]
+  },
+  {
+    "id": "koppal_institute_of_medical_science",
+    "name": "Koppal Institute of Medical Sciences (KIMS), Koppal",
+    "city": "Koppal",
+    "state": "Karnataka",
+    "aliases": [
+      "KOPPAL INSTITUTE OF MEDICAL SCIENCE",
+      "KIMS Koppal",
+      "Koppal Medical College",
+      "Koppal Institute of Medical Sciences"
+    ]
+  },
+  {
+    "id": "kousali_institute_of_management_studies_karnatak_university_pg_dept_dharwad",
+    "name": "Kousali Institute of Management Studies (karnatak University Pg Dept.), Dharwad",
+    "city": "",
+    "state": "",
+    "aliases": [
+      "kousali",
+      "institute",
+      "management",
+      "mgmt",
+      "bba",
+      "mba",
+      "studies",
+      "karnatak",
+      "university",
+      "pg",
+      "dept",
+      "dharwad",
+      "kousali institute of management studies (karnatak university pg dept.), dharwad",
+      "kousaliinstituteofmanagementstudies(karnatakuniversitypgdept),dharwad"
+    ]
+  },
+  {
+    "id": "ks_institute_of_technology",
+    "name": "KS Institute of Technology",
+    "city": "Bangalore",
+    "state": "Karnataka",
+    "aliases": [
+      "ks",
+      "institute",
+      "technology",
+      "tech",
+      "btech",
+      "mtech",
+      "ks institute of technology",
+      "ksinstituteoftechnology"
+    ]
+  },
+  {
+    "id": "l_e_t_collage_gokak",
+    "name": "Laxmi Education Trust (LET) College, Gokak",
+    "city": "Gokak",
+    "state": "Karnataka",
+    "aliases": [
+      "L E T collage gokak",
+      "LET College Gokak",
+      "LET Gokak",
+      "Shri Laxmanrao Jarkiholi College Gokak"
+    ]
+  },
+  {
+    "id": "mvps_institute_of_pharmaceutical_sciences",
+    "name": "MVP Samaj's Institute of Pharmaceutical Sciences, Nashik",
+    "city": "Nashik",
+    "state": "Maharashtra",
+    "aliases": [
+      "MVPs institute of pharmaceutical sciences",
+      "MVP College of Pharmacy Nashik",
+      "MVPs Institute of Pharmaceutical Sciences",
+      "MVP Nashik Pharmacy"
+    ]
+  },
+  {
+    "id": "national_institute_of_engineering_mysore",
+    "name": "National Institute of Engineering Mysore",
+    "city": "Mysuru",
+    "state": "Karnataka",
+    "aliases": [
+      "nie",
+      "mysore"
+    ]
+  },
+  {
+    "id": "national_institute_of_technology_karnatakanitk_surathkal",
+    "name": "National Institute of Technology Karnataka(NITK), Surathkal",
+    "city": "Surathkal",
+    "state": "Karnataka",
+    "aliases": [
+      "nitk_surathkal"
+    ]
+  },
+  {
+    "id": "new_shores_international_college",
+    "name": "New shores international College",
+    "city": "Banglore",
+    "state": "Karnataka",
+    "aliases": [
+      "new",
+      "shores",
+      "international",
+      "college",
+      "new shores international college",
+      "newshoresinternationalcollege"
+    ]
+  },
+  {
+    "id": "nitte_university",
+    "name": "Nitte (Deemed to be University), Karkala",
+    "city": "Karkala",
+    "state": "Karnataka",
+    "aliases": [
+      "Nitte University",
+      "Nitte",
+      "NMAMIT Nitte",
+      "Nitte Deemed University"
+    ]
+  },
+  {
+    "id": "oriental_public_school",
+    "name": "Oriental Public School",
+    "city": "Hubballi",
+    "state": "Karnataka",
+    "aliases": [
+      "oriental",
+      "public",
+      "school",
+      "oriental public school",
+      "orientalpublicschool"
+    ]
+  },
+  {
+    "id": "pda_college_of_engineering_kalaburgi",
+    "name": "PDA College Of Engineering Kalaburgi",
+    "city": "Kalaburgi",
+    "state": "Karnataka",
+    "aliases": []
+  },
+  {
+    "id": "pes_institute_of_technology_and_management",
+    "name": "PES Institute of Technology and Management (PESITM), Shivamogga",
+    "city": "Shivamogga",
+    "state": "Karnataka",
+    "aliases": [
+      "PES Institute Of Technology And Management",
+      "PESITM",
+      "PESITM Shivamogga",
+      "PES Shimoga"
+    ]
+  },
+  {
+    "id": "pes_university",
+    "name": "PES University (PESU), Bengaluru",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "aliases": [
+      "PES university",
+      "PES University",
+      "PESU",
+      "PESIT",
+      "PES Bangalore",
+      "PES University Bengaluru"
+    ]
+  },
+  {
+    "id": "pwioi",
+    "name": "Physics Wallah Institute of Innovation (PW IOI), Bengaluru",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "aliases": [
+      "pwioi",
+      "PW IOI",
+      "PWIOI",
+      "Physics Wallah Institute of Innovation",
+      "PW Institute of Innovation Bangalore"
+    ]
+  },
+  {
+    "id": "poornaprajna_college_udupi",
+    "name": "Poornaprajna College Udupi",
+    "city": "Udupi",
+    "state": "Karnataka",
+    "aliases": [
+      "poornaprajna",
+      "college",
+      "udupi",
+      "poornaprajna college udupi",
+      "poornaprajnacollegeudupi"
+    ]
+  },
+  {
+    "id": "presidency_college_bengaluru",
+    "name": "Presidency College Bengaluru",
+    "city": "Banglore",
+    "state": "Karnataka",
+    "aliases": [
+      "presidencybengaluru"
+    ]
+  },
+  {
+    "id": "presidency_university",
+    "name": "presidency university",
+    "city": "Banglore",
+    "state": "Karnataka",
+    "aliases": []
+  },
+  {
+    "id": "prism_pu_science_college",
+    "name": "Prism PU science College",
+    "city": "Dharwad",
+    "state": "Karnataka",
+    "aliases": [
+      "prism",
+      "pu",
+      "science",
+      "sci",
+      "bsc",
+      "msc",
+      "college",
+      "prism pu science college",
+      "prismpusciencecollege"
+    ]
+  },
+  {
+    "id": "ramaiah_institute_of_technology_msrit",
+    "name": "Ramaiah Institute of Technology- MSRIT",
+    "city": "Bangalore",
+    "state": "Karnataka",
+    "aliases": [
+      "ramaiah",
+      "institute",
+      "technology",
+      "tech",
+      "btech",
+      "mtech",
+      "msrit",
+      "ramaiah institute of technology- msrit",
+      "ramaiahinstituteoftechnology-msrit"
+    ]
+  },
+  {
+    "id": "ranchi_university",
+    "name": "Ranchi University",
+    "city": "",
+    "state": "",
+    "aliases": [
+      "ranchi",
+      "university",
+      "ranchi university",
+      "ranchiuniversity"
+    ]
+  },
+  {
+    "id": "rns_institute_of_technology_rnsit",
+    "name": "RNS Institute of Technology -RNSIT",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "aliases": [
+      "rns",
+      "institute",
+      "technology",
+      "tech",
+      "btech",
+      "mtech",
+      "rnsit",
+      "rns institute of technology -rnsit",
+      "rnsinstituteoftechnology-rnsit"
+    ]
+  },
+  {
+    "id": "rv_university_bengaluru",
+    "name": "RV University, Bengaluru",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "aliases": [
+      "rvbengaluru",
+      "rvbengalurubangalore",
+      "rvbengalurublr",
+      "rvbangalore",
+      "rvbangalorebengaluru",
+      "rvbangaloreblr",
+      "rvblr",
+      "rvblrbengaluru",
+      "rvblrbangalore",
+      "bengalururv",
+      "bengalururvbangalore",
+      "bengalururvblr",
+      "bengalurubangalore",
+      "bengalurubangalorerv",
+      "bengalurubangaloreblr",
+      "bengalurublr",
+      "bengalurublrrv",
+      "bengalurublrbangalore",
+      "bangalorerv",
+      "bangalorervbengaluru",
+      "bangalorervblr",
+      "bangalorebengaluru",
+      "bangalorebengalururv",
+      "bangalorebengalurublr",
+      "bangaloreblr",
+      "bangaloreblrrv",
+      "bangaloreblrbengaluru",
+      "blrrv",
+      "blrrvbengaluru",
+      "blrrvbangalore",
+      "blrbengaluru",
+      "blrbengalururv",
+      "blrbengalurubangalore",
+      "blrbangalore",
+      "blrbangalorerv",
+      "blrbangalorebengaluru",
+      "rvu",
+      "rvubengaluru",
+      "rvubangalore",
+      "rvublr",
+      "rvuni",
+      "rvunibengaluru",
+      "rvunibangalore",
+      "rvuniblr",
+      "rvuniv",
+      "rvunivbengaluru",
+      "rvunivbangalore",
+      "rvunivblr",
+      "rvuniversity",
+      "rvuniversitybengaluru",
+      "rvuniversitybangalore",
+      "rvuniversityblr",
+      "rv_university"
+    ]
+  },
+  {
+    "id": "rvce_college_of_engineering_banglore",
+    "name": "RVCE College Of Engineering Banglore",
+    "city": "Banglore",
+    "state": "Karnataka",
+    "aliases": [
+      "rvce_college_of_engineering_banglore"
+    ]
+  },
+  {
+    "id": "sg_balekundri_institute_of_technology_belagavi",
+    "name": "S.g. Balekundri Institute of Technology, Belagavi",
+    "city": "",
+    "state": "",
+    "aliases": [
+      "s",
+      "g",
+      "balekundri",
+      "institute",
+      "technology",
+      "tech",
+      "btech",
+      "mtech",
+      "hubli",
+      "s.g. balekundri institute of technology, belagavi",
+      "sgbalekundriinstituteoftechnology,belagavi",
+      "sgbit"
+    ]
+  },
+  {
+    "id": "sdm_college_of_business_management_dharwad",
+    "name": "SDM College of Business Management, Dharwad",
+    "city": "",
+    "state": "",
+    "aliases": [
+      "sdm",
+      "college",
+      "business",
+      "management",
+      "mgmt",
+      "bba",
+      "mba",
+      "dharwad",
+      "sdm college of business management, dharwad",
+      "sdmcollegeofbusinessmanagement,dharwad"
+    ]
+  },
+  {
+    "id": "shambhunath_research_institute_of_medical_sciences_and_hospital",
+    "name": "Shambhunath Research Institute of Medical Sciences And Hospital",
+    "city": "Prayagraj",
+    "state": "Uttar Pradesh",
+    "aliases": [
+      "shambhunath_research_institute_of_medical_sciences_and_hospital"
+    ]
+  },
+  {
+    "id": "shree_jagganath_mahavidyalaya_naugaonhat",
+    "name": "Shree Jagannath Mahavidyalaya, Naugaonhat",
+    "city": "Naugaon",
+    "state": "Odisha",
+    "aliases": [
+      "shree jagganath Mahavidyalaya  Naugaonhat",
+      "Shree Jagannath Mahavidyalaya Naugaonhat",
+      "SJM Naugaonhat",
+      "Jagannath College Naugaon"
+    ]
+  },
+  {
+    "id": "shri_dharmasthala_manjunatheshwara_college_of_engineering_and_technology_sdmcet",
+    "name": "Shri Dharmasthala Manjunatheshwara College of Engineering and Technology (SDMCET)",
+    "city": "Dharwad",
+    "state": "Karnataka",
+    "aliases": [
+      "sdmcet",
+      "sdmcetcollege",
+      "sdmcetuni",
+      "sdmcetindia",
+      "sdmcetengg",
+      "sdmcetdharwad",
+      "drsdmcet",
+      "drsdmcetuni",
+      "drsdmcetindia",
+      "drsdmcetengg",
+      {
+        "id": "IYIFmHcVOlnBFoJK7qEX",
+        "name": "SDMCET",
+        "mergedAt": {
+          "_seconds": 1777561293,
+          "_nanoseconds": 184000000
+        }
+      },
+      {
+        "id": "c0qppFr8Psx3exHHpH6f",
+        "name": "SDMCET Dharwad",
+        "mergedAt": {
+          "_seconds": 1777561293,
+          "_nanoseconds": 184000000
+        }
+      },
+      {
+        "id": "6iLfo62YS2SVIrXCK3Zy",
+        "name": "Shri Dharmasthala Manjunatheshwara College of Engineering & Technology (SDMCET)",
+        "mergedAt": {
+          "_seconds": 1777561293,
+          "_nanoseconds": 184000000
+        }
+      }
+    ]
+  },
+  {
+    "id": "sjr_pu_college_noolvi",
+    "name": "Shri Jagadguru Renukacharya (SJR) Composite PU College, Noolvi",
+    "city": "Hubballi",
+    "state": "Karnataka",
+    "aliases": [
+      "SJR PU COLLEGE Noolvi",
+      "SJR PU COM COLLEGE Noolvi",
+      "SJR PU Composite College Noolvi",
+      "SJR Noolvi"
+    ]
+  },
+  {
+    "id": "shri_jagadguru_renukacharya_college_of_law",
+    "name": "Shri Jagadguru Renukacharya College of law",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "aliases": [
+      "shri",
+      "jagadguru",
+      "renukacharya",
+      "college",
+      "law",
+      "shri jagadguru renukacharya college of law",
+      "shrijagadgururenukacharyacollegeoflaw"
+    ]
+  },
+  {
+    "id": "siddaganga_institute_of_technology_sit_tumkur",
+    "name": "Siddaganga Institute of Technology (SIT), Tumkur",
+    "city": "Tumkur",
+    "state": "Karnataka",
+    "aliases": [
+      "SITT",
+      "siddagangatechnologytumkur",
+      "siddaganga technology tumkur",
+      "siddagangatechnology",
+      "siddaganga technology",
+      "technologysiddaganga",
+      "sit",
+      "siddagangasit",
+      "siddaganga sit",
+      "sitsiddaganga",
+      "technologysit",
+      "technology sit",
+      "sittechnology",
+      "tumkursit",
+      "tumkur sit",
+      "sittumkur"
+    ]
+  },
+  {
+    "id": "siddharth_university",
+    "name": "Siddharth University, Kapilvastu",
+    "city": "Kapilvastu",
+    "state": "Uttar Pradesh",
+    "aliases": [
+      "Siddharth University",
+      "Siddharth University Kapilvastu",
+      "SUKS",
+      "Kapilvastu University"
+    ]
+  },
+  {
+    "id": "sivananda_sarma_memorial_rv_college",
+    "name": "Sivananda Sarma Memorial RV College",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "aliases": [
+      "ssmrv",
+      "ssmrv college",
+      "ssmrv degree college",
+      "ssmrv pu college",
+      "sivananda sarma memorial rv college",
+      "sivananda sarma memorial r.v. college",
+      "sivananda sarma memorial rv degree college",
+      "sivananda sarma memorial rv pu college",
+      "sivananda sarma",
+      "sivananda sarma college",
+      "sarmarva",
+      "ssmrv sarmarva",
+      "sivananda sarmarva",
+      "rv college jayanagar",
+      "ssmrv jayanagar",
+      "ssmrv campus",
+      "ssmrv pu",
+      "ssmrv degree"
+    ]
+  },
+  {
+    "id": "soniya_education_trusts_college_of_pharmacysets_dharwad",
+    "name": "Soniya Education Trust's College Of Pharmacy(SETS) Dharwad",
+    "city": "Dharwad",
+    "state": "Karnataka",
+    "aliases": []
+  },
+  {
+    "id": "st_josephs_first_grade_college",
+    "name": "St. Joseph's First Grade College",
+    "city": "Mysuru",
+    "state": "Karnataka",
+    "aliases": [
+      "st",
+      "joseph",
+      "s",
+      "first",
+      "grade",
+      "college",
+      "st. joseph's first grade college",
+      "stjoseph'sfirstgradecollege"
+    ]
+  },
+  {
+    "id": "strate_school_of_design",
+    "name": "Strate School of Design, Bengaluru",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "aliases": [
+      "Strate School Of Design",
+      "Strate School of Design",
+      "Strate Bangalore",
+      "Strate Bengaluru",
+      "Strate Design"
+    ]
+  },
+  {
+    "id": "techno_main_salt_lake",
+    "name": "Techno Main Salt Lake (TMSL), Kolkata",
+    "city": "Kolkata",
+    "state": "West Bengal",
+    "aliases": [
+      "Techno Main Salt Lake",
+      "TMSL",
+      "Techno Main Salt Lake",
+      "Techno India Salt Lake",
+      "TMSL Kolkata"
+    ]
+  },
+  {
+    "id": "university_of_agricultural_sciences_dharwad",
+    "name": "University of Agricultural Sciences, Dharwad",
+    "city": "Dharwad",
+    "state": "Karnataka",
+    "aliases": []
+  },
+  {
+    "id": "university_visvesvaraya_college_of_engineering",
+    "name": "University Visvesvaraya College Of Engineering",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "aliases": [
+      "university_visvesvaraya_college_of_engineering"
+    ]
+  },
+  {
+    "id": "vdrit_vishwanathrao_deshpande_rural_institute_of_technology",
+    "name": "VDRIT - Vishwanathrao Deshpande Rural Institute of Technology",
+    "city": "Haliyal",
+    "state": "Karnataka",
+    "aliases": []
+  },
+  {
+    "id": "vellore_institute_of_technologyamaravati",
+    "name": "Vellore Institute of Technology, AP (VIT-AP), Amaravati",
+    "city": "Amaravati",
+    "state": "Andhra Pradesh",
+    "aliases": [
+      "Vellore Institute Of Technology,Amaravati",
+      "VIT-AP",
+      "VIT Amaravati",
+      "VIT AP",
+      "Vellore Institute of Technology Amaravati",
+      "VIT Andhra Pradesh"
+    ]
+  },
+  {
+    "id": "vidyavardhaka_college_of_engineering",
+    "name": "Vidyavardhaka College of Engineering",
+    "city": "Mysuru",
+    "state": "Karnataka",
+    "aliases": [
+      "vidyavardhaka",
+      "college",
+      "engineering",
+      "eng",
+      "be",
+      "me",
+      "vidyavardhaka college of engineering",
+      "vidyavardhakacollegeofengineering"
+    ]
+  },
+  {
+    "id": "visvesvaraya_technological_university",
+    "name": "Visvesvaraya Technological University",
+    "city": "Belagavi",
+    "state": "Karnataka",
+    "aliases": [
+      "vtu"
+    ]
+  },
+  {
+    "id": "yenepoya_medical_college",
+    "name": "Yenepoya Medical College",
+    "city": "Deralakatte",
+    "state": "Karnataka",
+    "aliases": [
+      "yenepoya",
+      "medical",
+      "college",
+      "yenepoya medical college",
+      "yenepoyamedicalcollege"
+    ]
+  }
+]
