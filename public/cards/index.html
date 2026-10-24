@@ -3,26 +3,33 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Is this you? | C2 Club</title>
-<meta name="description" content="Scan, match your campus personality, and meet the students who are just like you.">
+<title>Campus Personality Cards | C2 Club</title>
+<meta name="description" content="You've been handed an EMF card on campus! Tap to verify your campus identity, match your vibe, and unlock your student club.">
+<meta property="og:title" content="Campus Personality Cards | C2 Club">
+<meta property="og:description" content="Someone dropped an EMF card for you. Discover your campus superpower and claim your spot.">
+<meta property="og:type" content="website">
 <meta name="theme-color" content="#0A9F6C" id="themeColor">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Figtree:wght@500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Figtree:wght@500;700;800;900&display=swap" rel="stylesheet">
+
 <style>
   :root {
-    --bg: #0A9F6C;      /* emerald */
-    --deep: #067A53;    /* emerald, one step darker (halo + dots) */
-    --ink: #052E22;     /* forest */
-    --mint: #E2FCEF;    /* light surface */
-    --sun: #FFC83D;     /* marigold, the one warm accent for actions */
-    --card: #2F6BFF;
-    --ct: #ffffff;
+    --bg: #0A9F6C;      /* signature emerald */
+    --deep: #067A53;    /* dark emerald dots & shadow */
+    --ink: #052E22;     /* dark forest border & text */
+    --surface: #FFFFFF;
+    --mint: #E2FCEF;
+    --sun: #FFC83D;     /* action marigold */
+    --sun-hover: #FFBE1A;
+    --card-accent: #2455A9;
     --display: "Bowlby One", "Arial Black", Impact, sans-serif;
-    --body: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --body: "Figtree", system-ui, -apple-system, sans-serif;
   }
-  * { box-sizing: border-box; margin: 0; }
-  html, body { height: 100%; min-height: 100dvh; }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { min-height: 100%; min-height: 100dvh; }
   body {
     background-color: var(--bg);
     background-image: radial-gradient(var(--deep) 1.8px, transparent 2px);
@@ -34,312 +41,1222 @@
     overflow-x: hidden;
     -webkit-tap-highlight-color: transparent;
   }
+
+  /* Container */
+  .app-shell {
+    max-width: 480px;
+    margin: 0 auto;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    padding: 18px 16px 28px;
+  }
+
+  /* Screens */
   .screen {
     display: none;
-    min-height: 100dvh;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 16px 18px 24px;
     text-align: center;
+    width: 100%;
+    animation: fadeIn 0.25s ease-out both;
   }
-  .screen.on { display: flex; }
+  .screen.active { display: flex; }
 
-  h1 { font-family: var(--display); font-weight: 400; font-size: clamp(1.4rem, 6.5vw, 2.3rem); line-height: 1.1; max-width: 14em; text-wrap: balance; }
-  .sub { font-weight: 800; font-size: 1.1rem; margin-top: 10px; }
-
-  /* ---- the sticker card ---- */
-  .card {
-    --w: min(70vw, 280px);
-    width: var(--w); aspect-ratio: 60 / 91; flex: none;
-    background: var(--card); color: var(--ct);
-    border: 10px solid #fff; border-radius: 24px;
-    box-shadow: 0 10px 0 rgba(4,40,28,.28), 0 18px 30px rgba(4,40,28,.25);
-    display: flex; flex-direction: column; padding: 10px 10px 8px; text-align: left; position: relative; overflow: hidden;
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
   }
-  .card.dark { border-color: var(--glow); box-shadow: 0 0 0 3px #0a0a14, 0 0 22px var(--glow), 0 0 46px var(--glow); }
-  .card .nm { font-family: var(--display); font-size: clamp(1rem, 4.8vw, 1.35rem); line-height: 1.05; }
-  .card .art { flex: 1; margin: 6px 0; border-radius: 12px; background: rgba(255,255,255,.2); background: color-mix(in srgb, var(--ct) 14%, transparent); position: relative; display: grid; place-items: center; overflow: hidden; }
-  .card .art .em { font-size: clamp(3rem, 15vw, 4.8rem); }
-  .card .art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 32%; }
-  .card .st { font-weight: 800; font-size: .78rem; line-height: 1.25; }
-  .card .ft { margin-top: 4px; font-weight: 800; font-size: .64rem; opacity: .85; }
 
-  #revealCard { position: relative; display: grid; place-items: center; margin: 16px 0 6px; }
-  #revealCard::before { content: ""; position: absolute; width: min(88vw, 360px); aspect-ratio: 1; border-radius: 50%; background: var(--deep); box-shadow: 0 0 0 8px rgba(5,46,34,.12); }
-  #reveal .card { position: relative; z-index: 1; transform: rotate(-3deg); animation: slap .4s cubic-bezier(.2,1.4,.4,1) both; }
-  @keyframes slap { from { transform: scale(1.25) rotate(-9deg); opacity: 0; } to { transform: scale(1) rotate(-3deg); opacity: 1; } }
+  /* Badges & Headers */
+  .alert-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: #052E22;
+    color: #FFE58F;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    box-shadow: 0 3px 0 rgba(0,0,0,0.25);
+    margin-bottom: 12px;
+  }
+  .alert-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #FF4D4F;
+    box-shadow: 0 0 8px #FF4D4F;
+    animation: pulseDot 1.4s infinite;
+  }
+  @keyframes pulseDot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.75); }
+  }
 
-  /* ---- buttons ---- */
-  .row { display: flex; flex-direction: column; gap: 10px; width: min(100%, 320px); margin-top: 16px; }
+  h1.hero-title {
+    font-family: var(--display);
+    font-size: clamp(1.4rem, 6.2vw, 2.1rem);
+    line-height: 1.15;
+    color: #FFFFFF;
+    text-shadow: 0 3px 0 var(--ink), 0 5px 12px rgba(4,40,28,0.4);
+    margin-bottom: 8px;
+    max-width: 14ch;
+    text-wrap: balance;
+  }
+  .hero-highlight {
+    color: var(--sun);
+    display: inline-block;
+  }
+  .hero-sub {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--mint);
+    line-height: 1.35;
+    max-width: 32ch;
+    margin-bottom: 14px;
+  }
+
+  /* 3D COLLECTOR CARD */
+  .card-3d-stage {
+    perspective: 1200px;
+    width: min(74vw, 270px);
+    aspect-ratio: 681 / 1020;
+    margin: 6px auto 12px;
+    position: relative;
+    cursor: pointer;
+    touch-action: pan-y;
+    user-select: none;
+  }
+
+  .card-3d-flipper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border-radius: 18px;
+    box-shadow: 0 16px 36px rgba(4, 40, 28, 0.4), 0 6px 0 var(--ink);
+  }
+  .card-3d-stage:active .card-3d-flipper {
+    transform: scale(0.98);
+  }
+  .card-3d-flipper.flipped {
+    transform: rotateY(180deg);
+  }
+
+  .card-face {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 18px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    object-fit: contain;
+    border: 3.5px solid #FFFFFF;
+    background: #FFFFFF;
+  }
+  .card-face.card-back {
+    transform: rotateY(180deg);
+  }
+
+  /* Holographic Sheen */
+  .holo-glare {
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    pointer-events: none;
+    background: linear-gradient(
+      115deg,
+      transparent 20%,
+      rgba(255, 255, 255, 0.3) 38%,
+      rgba(255, 255, 255, 0.7) 48%,
+      rgba(255, 255, 255, 0.25) 55%,
+      transparent 75%
+    );
+    background-size: 260% 260%;
+    background-position: 50% 50%;
+    mix-blend-mode: overlay;
+    opacity: 0.65;
+    z-index: 3;
+    transition: background-position 0.15s ease-out;
+  }
+
+  /* Tap Prompt Badge */
+  .card-flip-prompt {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(5, 46, 34, 0.85);
+    backdrop-filter: blur(8px);
+    color: #FFFFFF;
+    font-size: 0.78rem;
+    font-weight: 800;
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    margin-bottom: 16px;
+    cursor: pointer;
+    transition: transform 0.1s, background 0.15s;
+  }
+  .card-flip-prompt:hover {
+    background: var(--ink);
+    transform: scale(1.03);
+  }
+
+  /* DOSSIER CARD */
+  .dossier-box {
+    width: 100%;
+    background: #FFFFFF;
+    border: 3px solid var(--ink);
+    border-radius: 20px;
+    padding: 16px 16px 14px;
+    box-shadow: 0 6px 0 var(--ink);
+    text-align: left;
+    margin-bottom: 16px;
+  }
+  .dossier-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px dashed rgba(5,46,34,0.18);
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+  }
+  .dossier-tag {
+    font-family: var(--display);
+    font-size: 0.82rem;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .dossier-number {
+    font-size: 0.75rem;
+    font-weight: 900;
+    color: rgba(5,46,34,0.6);
+    background: rgba(5,46,34,0.08);
+    padding: 2px 7px;
+    border-radius: 6px;
+  }
+
+  .dossier-item {
+    margin-bottom: 10px;
+  }
+  .dossier-label {
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: rgba(5,46,34,0.65);
+    margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .dossier-val {
+    font-size: 0.92rem;
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  .dossier-val.crime {
+    color: #B91C1C;
+  }
+
+  /* Live Stats Grid */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    background: rgba(5, 46, 34, 0.05);
+    border-radius: 12px;
+    padding: 8px;
+    margin-top: 10px;
+    border: 1.5px solid rgba(5, 46, 34, 0.12);
+  }
+  .stat-pill {
+    text-align: center;
+    padding: 4px 2px;
+  }
+  .stat-label {
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: rgba(5, 46, 34, 0.6);
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .stat-value {
+    font-size: 0.92rem;
+    font-weight: 900;
+    color: var(--ink);
+    margin-top: 2px;
+  }
+
+  /* VALUE PROPOSITION BLOCK */
+  .perks-box {
+    width: 100%;
+    background: var(--mint);
+    border: 3px solid var(--ink);
+    border-radius: 20px;
+    padding: 14px 14px 12px;
+    box-shadow: 0 4px 0 var(--ink);
+    text-align: left;
+    margin-bottom: 16px;
+  }
+  .perks-title {
+    font-family: var(--display);
+    font-size: 0.86rem;
+    color: var(--ink);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .perk-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .perk-row:last-child { margin-bottom: 0; }
+  .perk-icon {
+    font-size: 1.15rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .perk-desc {
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.35;
+  }
+  .perk-desc strong {
+    font-weight: 900;
+  }
+
+  /* CTA BUTTONS */
+  .cta-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
   .btn {
-    font: 800 1rem/1 var(--body); cursor: pointer; padding: 15px 18px; border-radius: 16px;
-    border: 3px solid var(--ink); background: #fff; color: var(--ink);
-    box-shadow: 0 4px 0 var(--ink); transition: transform .08s, box-shadow .08s;
+    font-family: var(--body);
+    font-size: 1.05rem;
+    font-weight: 900;
+    padding: 15px 20px;
+    border-radius: 16px;
+    border: 3px solid var(--ink);
+    cursor: pointer;
+    transition: transform 0.08s, box-shadow 0.08s, background-color 0.15s;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 5px 0 var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     touch-action: manipulation;
   }
-  .btn:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--ink); }
-  .btn.ghost { background: transparent; box-shadow: none; border-color: transparent; }
-  .btn.ghost:active { transform: none; opacity: .7; }
-  .btn.pri { background: var(--sun); color: var(--ink); }
-  :focus-visible { outline: 4px solid var(--ink); outline-offset: 3px; }
+  .btn:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px 0 var(--ink);
+  }
+  .btn-primary {
+    background: var(--sun);
+    color: var(--ink);
+  }
+  .btn-primary:hover {
+    background: var(--sun-hover);
+  }
+  .btn-secondary {
+    background: #FFFFFF;
+    color: var(--ink);
+  }
+  .btn-ghost {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    color: #FFFFFF;
+    font-size: 0.92rem;
+    padding: 10px 14px;
+  }
+  .btn-ghost:active {
+    transform: none;
+    opacity: 0.8;
+  }
 
-  /* ---- swipe screen ---- */
-  #pick { justify-content: flex-start; padding-left: 0; padding-right: 0; }
-  #pick h1 { padding: 14px 18px 0; font-size: clamp(1.4rem, 6vw, 1.95rem); }
-  .back { align-self: flex-start; margin: 8px 12px 0; padding: 10px 14px; }
-  .track {
+  .btn-whatsapp {
+    background: #25D366;
+    color: #052E22;
+    border-color: #052E22;
+  }
+  .btn-whatsapp:hover {
+    background: #20BD5A;
+  }
+
+  /* SCREEN 2: THE "NOT ME" VIBE REALIGNMENT */
+  .picker-header {
+    margin-bottom: 14px;
+  }
+  .picker-header h2 {
+    font-family: var(--display);
+    font-size: clamp(1.3rem, 5.8vw, 1.85rem);
+    color: #FFFFFF;
+    text-shadow: 0 3px 0 var(--ink);
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+  .picker-header p {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--mint);
+    line-height: 1.35;
+  }
+
+  /* Selector Pills */
+  .selector-scroll {
     display: flex;
-    gap: 18px;
+    gap: 8px;
     overflow-x: auto;
-    scroll-snap-type: x mandatory;
     width: 100%;
-    padding: 20px calc(50vw - var(--hw, 135px)) 12px;
-    -webkit-overflow-scrolling: touch;
+    padding: 4px 0 12px;
+    margin-bottom: 12px;
     scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
     touch-action: pan-x;
-    overscroll-behavior-x: contain;
   }
-  .track::-webkit-scrollbar { display: none; }
-  .slide { scroll-snap-align: center; display: flex; flex-direction: column; align-items: center; gap: 14px; flex: none; }
-  .slide .btn { width: min(70vw, 280px); }
-  .hint { font-weight: 700; font-size: .85rem; margin-top: 6px; opacity: .8; }
-
-  /* ---- join sheet ---- */
-  dialog { border: 0; padding: 0; background: transparent; max-width: none; width: 100%; margin: auto 0 0; color: var(--ink); }
-  dialog::backdrop { background: rgba(4,40,28,.55); }
-  .sheet { background: var(--mint); border-radius: 28px 28px 0 0; padding: 26px 22px calc(24px + env(safe-area-inset-bottom, 0px)); text-align: center; border-top: 4px solid var(--ink); animation: up .3s ease-out both; }
-  @keyframes up { from { transform: translateY(40px); opacity: 0; } to { transform: none; opacity: 1; } }
-  .sheet h2 { font-family: var(--display); font-weight: 400; font-size: clamp(1.4rem, 6vw, 1.9rem); line-height: 1.1; text-wrap: balance; }
-  .sheet p { margin: 10px auto 0; max-width: 24em; font-weight: 700; }
-  .sheet .row { margin: 20px auto 0; }
-  .note { font-size: .85rem; font-weight: 700; margin-top: 14px; opacity: .75; }
-
-  /* Short / Compact screens (iPhone SE, compact Androids) */
-  @media (max-height: 700px) {
-    .screen { padding: 12px 14px 16px; justify-content: space-evenly; }
-    h1 { font-size: clamp(1.2rem, 4.8vw, 1.45rem); line-height: 1.15; }
-    .sub { font-size: 0.92rem; margin: 6px 0 0; }
-    #revealCard { margin: 8px 0 4px; }
-    #revealCard::before { width: min(72vw, 290px); }
-    .card { --w: min(56vw, 190px); border-width: 8px; border-radius: 18px; }
-    .row { margin-top: 10px; gap: 8px; }
-    .btn { padding: 11px 14px; font-size: 0.92rem; }
+  .selector-scroll::-webkit-scrollbar { display: none; }
+  
+  .archetype-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(5,46,34,0.3);
+    border: 2px solid var(--ink);
+    color: #FFFFFF;
+    font-family: var(--body);
+    font-weight: 800;
+    font-size: 0.84rem;
+    white-space: nowrap;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.15s ease;
   }
-
-  /* Very narrow screens (e.g. 320px - 360px) */
-  @media (max-width: 360px) {
-    .card { --w: 220px; }
-    .row, .slide .btn { width: 220px; }
-    h1 { font-size: 1.3rem; }
+  .archetype-tab:hover {
+    background: rgba(255,255,255,0.25);
+  }
+  .archetype-tab.active {
+    background: var(--sun);
+    color: var(--ink);
+    box-shadow: 0 3px 0 var(--ink);
+    transform: translateY(-1px);
   }
 
-  @media (min-width: 700px) {
-    dialog { max-width: 460px; margin: auto; }
-    .sheet { border-radius: 28px; border: 4px solid var(--ink); }
+  .friend-callout-box {
+    background: #FFF7ED;
+    border: 2.5px solid #EA580C;
+    border-radius: 16px;
+    padding: 12px 14px;
+    text-align: left;
+    margin-bottom: 14px;
   }
+  .friend-callout-title {
+    font-size: 0.8rem;
+    font-weight: 900;
+    color: #C2410C;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 4px;
+  }
+  .friend-callout-text {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #7C2D12;
+    line-height: 1.3;
+  }
+
+  /* MODAL */
+  dialog {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    max-width: 440px;
+    width: 100%;
+    margin: auto auto 0;
+    color: var(--ink);
+  }
+  dialog::backdrop {
+    background: rgba(4, 40, 28, 0.65);
+    backdrop-filter: blur(4px);
+  }
+  .modal-sheet {
+    background: #FFFFFF;
+    border-radius: 28px 28px 0 0;
+    padding: 24px 20px calc(24px + env(safe-area-inset-bottom, 0px));
+    text-align: center;
+    border-top: 4px solid var(--ink);
+    border-left: 4px solid var(--ink);
+    border-right: 4px solid var(--ink);
+    animation: slideUp 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  @keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+  .modal-sheet h2 {
+    font-family: var(--display);
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .modal-sheet p {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: rgba(5,46,34,0.8);
+    margin-bottom: 18px;
+    line-height: 1.4;
+  }
+
+  @media (min-width: 600px) {
+    dialog {
+      margin: auto;
+    }
+    .modal-sheet {
+      border-radius: 28px;
+      border: 4px solid var(--ink);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+    }
+  }
+
+  /* Reduced Motion */
   @media (prefers-reduced-motion: reduce) {
     * { animation: none !important; transition: none !important; }
-    .track { scroll-behavior: auto; }
   }
 </style>
 </head>
 <body>
 
-<main>
-  <section class="screen on" id="reveal" aria-live="polite">
-    <h1 id="revealTitle"></h1>
-    <div id="revealCard"></div>
-    <p class="sub">Accurate or not?</p>
-    <div class="row">
-      <button class="btn pri" id="yes">Yes, that's me</button>
-      <button class="btn ghost" id="nah">Nah, show me another</button>
+<div class="app-shell">
+
+  <!-- ==================== SCREEN 1: THE REVEAL ==================== -->
+  <section class="screen active" id="screenReveal" aria-live="polite">
+    <div class="alert-pill">
+      <span class="alert-dot"></span>
+      <span>Official Campus Vibe Diagnosis</span>
+    </div>
+
+    <h1 class="hero-title">
+      Someone thinks you're the <span class="hero-highlight" id="revealName">Topper</span>
+    </h1>
+    <p class="hero-sub" id="revealSub">
+      A student on your campus handed or dropped this physical EMF card for you. Tap the card to inspect both sides.
+    </p>
+
+    <!-- 3D Collector Card Stage -->
+    <div class="card-3d-stage" id="cardStage" title="Tap to flip card">
+      <div class="card-3d-flipper" id="cardFlipper">
+        <img class="card-face card-front" id="cardImgFront" src="/cards-deck/02_Topper_Front.webp" alt="Topper" loading="eager" decoding="async" />
+        <img class="card-face card-back" id="cardImgBack" src="/cards-deck/02_Topper_Back.webp" alt="Topper Back" loading="lazy" decoding="async" />
+        <div class="holo-glare" id="cardGlare"></div>
+      </div>
+    </div>
+
+    <button class="card-flip-prompt" id="btnFlipCard">
+      <span>🔄 Tap card to flip</span>
+      <span style="opacity:0.6;">•</span>
+      <span id="flipStatus">Viewing Front</span>
+    </button>
+
+    <!-- Character Dossier -->
+    <div class="dossier-box">
+      <div class="dossier-header">
+        <span class="dossier-tag">
+          <span id="dossierEmoji">📚</span>
+          <span id="dossierTitle">TOPPER DOSSIER</span>
+        </span>
+        <span class="dossier-number" id="dossierNumber">#02 OF 11</span>
+      </div>
+
+      <div class="dossier-item">
+        <div class="dossier-label">⚡ Signature Move</div>
+        <div class="dossier-val" id="dossierMove">'Half-Mark Ge Argument' With Professor</div>
+      </div>
+
+      <div class="dossier-item">
+        <div class="dossier-label">🏆 Campus Superpower</div>
+        <div class="dossier-val" id="dossierSuperpower">Finishes revision before the teacher even finishes opening the PowerPoint.</div>
+      </div>
+
+      <div class="dossier-item">
+        <div class="dossier-label">💀 Campus Crime / Red Flag</div>
+        <div class="dossier-val crime" id="dossierCrime">Says 'Kanoonalla, I didn't study anything' before scoring 98%.</div>
+      </div>
+
+      <!-- Live 3-Stat Grid -->
+      <div class="stats-grid" id="dossierStats"></div>
+    </div>
+
+    <!-- What This Card Unlocks -->
+    <div class="perks-box">
+      <div class="perks-title">
+        <span>🎟️</span>
+        <span>WHAT THIS CARD UNLOCKS ON C2 CLUB</span>
+      </div>
+      <div class="perk-row">
+        <span class="perk-icon">👑</span>
+        <div class="perk-desc">
+          <strong>The <span class="perk-role-name">Topper</span> Club Spot:</strong> <span id="perkClubDesc">Get first pick on study groups, campus hackathons, and split carpools to early 8 AM lectures.</span>
+        </div>
+      </div>
+      <div class="perk-row">
+        <span class="perk-icon">🚗</span>
+        <div class="perk-desc">
+          <strong>Campus Ride Match:</strong> Daily carpools, bike pillion & auto splits with verified students on your route. Save ₹2,000+/month.
+        </div>
+      </div>
+      <div class="perk-row">
+        <span class="perk-icon">⚡</span>
+        <div class="perk-desc">
+          <strong>Unfiltered Peer Network:</strong> Mass bunk alerts, exam notes, hackathon teammates, and college fest access.
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="cta-group">
+      <button class="btn btn-primary" id="btnClaimPrimary">
+        <span>Claim My Spot in Topper Club 🚀</span>
+      </button>
+      <button class="btn btn-secondary" id="btnNotMe">
+        <span>Wait, that's NOT me! Who got this wrong? 😂</span>
+      </button>
     </div>
   </section>
 
-  <section class="screen" id="pick">
-    <button class="btn ghost back" id="back">Back</button>
-    <h1>No worries. Swipe till one hits.</h1>
-    <div class="track" id="track" tabindex="0" aria-label="Personality cards"></div>
-    <p class="hint">Swipe sideways for more cards</p>
-  </section>
-</main>
-
-<dialog id="join" aria-labelledby="joinTitle">
-  <div class="sheet">
-    <h2 id="joinTitle"></h2>
-    <p id="joinSub"></p>
-    <div class="row">
-      <a class="btn pri" id="joinBtn" style="text-decoration:none;display:block" rel="noopener"></a>
-      <button class="btn ghost" id="notNow">Not now</button>
+  <!-- ==================== SCREEN 2: NOT ME (VIBE REALIGNMENT) ==================== -->
+  <section class="screen" id="screenPicker" aria-live="polite">
+    <div class="picker-header">
+      <button class="btn-ghost" id="btnBackToReveal" style="align-self:flex-start;padding-left:0;">
+        ← Back to diagnosis
+      </button>
+      <h2>Wait... did your friend completely misjudge you? 💀</h2>
+      <p>
+        Keep the physical card to hand to the person in your gang who ACTUALLY fits it! But first — which character are you REALLY?
+      </p>
     </div>
-    <p class="note" id="joinNote" hidden>C2 Club is on Android for now. Open this page on your phone to join.</p>
+
+    <!-- Archetype Selector Bar -->
+    <div class="selector-scroll" id="selectorTabs" role="tablist"></div>
+
+    <!-- Live Card Preview in Screen 2 -->
+    <div class="card-3d-stage" id="pickerCardStage" title="Tap to flip card">
+      <div class="card-3d-flipper" id="pickerCardFlipper">
+        <img class="card-face card-front" id="pickerCardImgFront" src="" alt="Selected Card" loading="eager" />
+        <img class="card-face card-back" id="pickerCardImgBack" src="" alt="Selected Card Back" loading="lazy" />
+        <div class="holo-glare" id="pickerCardGlare"></div>
+      </div>
+    </div>
+
+    <button class="card-flip-prompt" id="btnPickerFlipCard">
+      <span>🔄 Tap card to flip</span>
+      <span style="opacity:0.6;">•</span>
+      <span id="pickerFlipStatus">Viewing Front</span>
+    </button>
+
+    <!-- Call Out Friend on WhatsApp -->
+    <div class="friend-callout-box">
+      <div class="friend-callout-title">
+        <span>💬</span>
+        <span>CALL OUT YOUR FRIEND</span>
+      </div>
+      <p class="friend-callout-text" id="calloutPreviewText">
+        "Bro, you handed me the Topper card, but I'm literally the Canteen Commander 🍟😂"
+      </p>
+    </div>
+
+    <!-- Dossier Preview for Selected Card -->
+    <div class="dossier-box" id="pickerDossierBox">
+      <div class="dossier-header">
+        <span class="dossier-tag">
+          <span id="pickerDossierEmoji"></span>
+          <span id="pickerDossierTitle"></span>
+        </span>
+        <span class="dossier-number" id="pickerDossierNumber"></span>
+      </div>
+
+      <div class="dossier-item">
+        <div class="dossier-label">⚡ Signature Move</div>
+        <div class="dossier-val" id="pickerDossierMove"></div>
+      </div>
+
+      <div class="dossier-item">
+        <div class="dossier-label">🏆 Campus Superpower</div>
+        <div class="dossier-val" id="pickerDossierSuperpower"></div>
+      </div>
+
+      <div class="dossier-item">
+        <div class="dossier-label">💀 Campus Crime / Red Flag</div>
+        <div class="dossier-val crime" id="pickerDossierCrime"></div>
+      </div>
+
+      <div class="stats-grid" id="pickerDossierStats"></div>
+    </div>
+
+    <!-- CTA Group on Screen 2 -->
+    <div class="cta-group">
+      <button class="btn btn-primary" id="btnClaimPicker">
+        <span>Claim My True Spot 🚀</span>
+      </button>
+      <a class="btn btn-whatsapp" id="btnShareWhatsApp" target="_blank" rel="noopener">
+        <span>Call Out Friend on WhatsApp 💬</span>
+      </a>
+      <button class="btn-ghost" id="btnPickerBackBottom">
+        ← Back to original card
+      </button>
+    </div>
+  </section>
+
+</div>
+
+<!-- Download / Join Dialog for Non-Direct Android or Desktop Viewers -->
+<dialog id="downloadDialog" aria-labelledby="dialogTitle">
+  <div class="modal-sheet">
+    <h2 id="dialogTitle">Ready to enter your campus club?</h2>
+    <p id="dialogSub">C2 Club connects students across Bengaluru for daily ride matching, character clubs, and campus intel.</p>
+    <div class="cta-group">
+      <a class="btn btn-primary" id="dialogPlayBtn" target="_blank" rel="noopener">
+        <span>Download on Google Play 📲</span>
+      </a>
+      <a class="btn btn-whatsapp" id="dialogWhatsAppBtn" target="_blank" rel="noopener">
+        <span>Send Link to My Phone (WhatsApp) 💬</span>
+      </a>
+      <button class="btn-ghost" id="dialogCloseBtn" style="color:var(--ink);">
+        Close
+      </button>
+    </div>
   </div>
 </dialog>
 
 <script>
-/* ============ CONFIG ============ */
-const APP_ID = "com.c2club.uniqueapp";
-const ART_PATH = "/card-art/";
-const COUNTS_URL = "https://firestore.googleapis.com/v1/projects/c2club-fd6722/databases/(default)/documents/public_stats/card_counts";
-let counts = {};
-const MIN_FOR_SOCIAL_PROOF = 25;
-/* ================================= */
-
-const ARCH = [
-  { slug:"social-butterfly", name:"Social Butterfly", pl:"Social Butterflies", a:"a", em:"🦋", card:"#D3C2FF", t:"#052E22", stat:"Knows everyone. Remembers nobody's exam date." },
-  { slug:"topper", name:"Topper", pl:"Toppers", a:"a", em:"📚", card:"#FFC83D", t:"#052E22", stat:"Notes: 100%. Sleep: 0%." },
-  { slug:"canteen-commander", name:"Canteen Commander", pl:"Canteen Commanders", a:"a", em:"🍟", card:"#FF8A2B", t:"#052E22", stat:"Attendance: canteen. Marks: pending." },
-  { slug:"3am-debugger", name:"3AM Debugger", pl:"3AM Debuggers", a:"a", em:"🐛", card:"#052E22", t:"#C6F432", glow:"#C6F432", dark:true, stat:"Fixed a bug at 3:07 AM. Made two more." },
-  { slug:"professors-favorite", name:"Professor's Favorite", pl:"Professor's Favorites", a:"a", em:"🍎", card:"#BFF5DC", t:"#052E22", stat:"Sir said 'good' once. Still living on it." },
-  { slug:"last-bench-strategist", name:"Last Bench Strategist", pl:"Last Bench Strategists", a:"a", em:"♟️", card:"#12A39A", t:"#052E22", stat:"Plans everything. Sits farthest from the board." },
-  { slug:"campus-politician", name:"Campus Politician", pl:"Campus Politicians", a:"a", em:"📢", card:"#C6F432", t:"#052E22", stat:"Knows a guy. The guy knows a guy." },
-  { slug:"attendance-calculator", name:"Attendance Calculator", pl:"Attendance Calculators", a:"an", em:"🧮", card:"#FFEE8C", t:"#052E22", stat:"74.9%. Praying for 75." },
-  { slug:"silent-genius", name:"Silent Genius", pl:"Silent Geniuses", a:"a", em:"🧠", card:"#06303A", t:"#5CF0E0", glow:"#5CF0E0", dark:true, stat:"Says nothing. Scores everything." },
-  { slug:"assignment-survivor", name:"Assignment Survivor", pl:"Assignment Survivors", a:"an", em:"⏰", card:"#E23D35", t:"#FFFFFF", stat:"Starts at 11 PM. Submits at 11:59." },
-  { slug:"campus-influencer", name:"Campus Influencer", pl:"Campus Influencers", a:"a", em:"📸", card:"#FF7EB6", t:"#052E22", stat:"4,000 reels in the gallery. Zero lecture notes." },
-  { slug:"all-rounder", name:"All Rounder", pl:"All Rounders", a:"an", em:"🏏", card:"#8FDBFF", t:"#052E22", stat:"Quiz, cricket, cultural fest. Sleeps on the bus." }
+/* ==================== ARCHETYPES DATA ==================== */
+const ARCHETYPES = [
+  {
+    num: 1,
+    slug: "social-butterfly",
+    name: "Social Butterfly",
+    plural: "Social Butterflies",
+    article: "a",
+    emoji: "🦋",
+    frontImg: "/cards-deck/01_Social_Butterfly_Front.webp",
+    backImg: "/cards-deck/01_Social_Butterfly_Back.webp",
+    themeColor: "#FB479D",
+    move: "Stranger → Best Friend in 2 Mins",
+    superpower: "Instant network creator. Can borrow notes from people whose names they don't even know.",
+    crime: "Remembers every piece of canteen gossip; completely forgets internal exam dates.",
+    stats: [
+      { label: "YAPPING", val: "99%" },
+      { label: "GOTTIRORU", val: "999+" },
+      { label: "PLANS / WK", val: "12+" }
+    ],
+    clubBenefit: "Connect with verified Social Butterflies across colleges to organize fests, find weekend trip squads, and coordinate daily rides."
+  },
+  {
+    num: 2,
+    slug: "topper",
+    name: "Topper",
+    plural: "Toppers",
+    article: "a",
+    emoji: "📚",
+    frontImg: "/cards-deck/02_Topper_Front.webp",
+    backImg: "/cards-deck/02_Topper_Back.webp",
+    themeColor: "#2455A9",
+    move: "'Half-Mark Ge Argument' With Professor",
+    superpower: "Finishes revision before the teacher even finishes opening the PowerPoint.",
+    crime: "Says 'Kanoonalla, I didn't study anything' before scoring 98%.",
+    stats: [
+      { label: "ATTENDANCE", val: "99.4%" },
+      { label: "REVISION SPD", val: "3X" },
+      { label: "'ODILLA' CLAIM", val: "100%" }
+    ],
+    clubBenefit: "Get first pick on study groups, campus hackathons, and split carpools to early 8 AM lectures."
+  },
+  {
+    num: 3,
+    slug: "canteen-commander",
+    name: "Canteen Commander",
+    plural: "Canteen Commanders",
+    article: "a",
+    emoji: "🍟",
+    frontImg: "/cards-deck/03_Canteen_Commander_Front.webp",
+    backImg: "/cards-deck/03_Canteen_Commander_Back.webp",
+    themeColor: "#F5B800",
+    move: "Chai Table Permanent Requisition",
+    superpower: "Has a permanent VIP reserved table at the canteen without paying a single rupee in rent.",
+    crime: "'Bro 5 min break' that magically stretches across three consecutive lecture hours.",
+    stats: [
+      { label: "CHAI / DAY", val: "8 CUPS" },
+      { label: "CANTEEN TAB", val: "₹4,500" },
+      { label: "5-MIN BREAK", val: "47 MIN" }
+    ],
+    clubBenefit: "Never eat or commute alone. Rally food runs and split daily autos & bike rides with fellow commanders."
+  },
+  {
+    num: 4,
+    slug: "professors-favorite",
+    name: "Professor's Favorite",
+    plural: "Professor's Favorites",
+    article: "a",
+    emoji: "🍎",
+    frontImg: "/cards-deck/04_Professors_Favorite_Front.webp",
+    backImg: "/cards-deck/04_Professors_Favorite_Back.webp",
+    themeColor: "#8B2337",
+    move: "'Sir, What About Yesterday's Homework?'",
+    superpower: "Internal marks automatically rounded up to 20/20 with zero questions asked.",
+    crime: "Reminds the faculty about surprise tests 30 seconds before the lunch bell.",
+    stats: [
+      { label: "CLASS HATRED", val: "100%" },
+      { label: "INTERNALS", val: "20/20" },
+      { label: "SIR/MA'AM", val: "99/DAY" }
+    ],
+    clubBenefit: "Escape classroom heat. Find genuine campus peers for relaxed carpools, project teams, and real conversations."
+  },
+  {
+    num: 5,
+    slug: "last-bench-strategist",
+    name: "Last Bench Strategist",
+    plural: "Last Bench Strategists",
+    article: "a",
+    emoji: "♟️",
+    frontImg: "/cards-deck/05_Last_Bench_Strategist_Front.webp",
+    backImg: "/cards-deck/05_Last_Bench_Strategist_Back.webp",
+    themeColor: "#646D38",
+    move: "Stealth Doorway Exit During Slide Change",
+    superpower: "100% mass bunk orchestration rate from row 8 without getting caught.",
+    crime: "Completely invisible to professors until semester hall ticket signing day.",
+    stats: [
+      { label: "MASS BUNK LEAD", val: "100%" },
+      { label: "FACULTY RADAR", val: "1%" },
+      { label: "EXAM PREP", val: "NIGHT BEFORE" }
+    ],
+    clubBenefit: "Coordinate off-campus getaways, safe mass-bunk exits, and split rides for spontaneous road trips."
+  },
+  {
+    num: 6,
+    slug: "campus-politician",
+    name: "Campus Politician",
+    plural: "Campus Politicians",
+    article: "a",
+    emoji: "📢",
+    frontImg: "/cards-deck/06_Campus_Politician_Front.webp",
+    backImg: "/cards-deck/06_Campus_Politician_Back.webp",
+    themeColor: "#9C1B2F",
+    move: "'Ella Naan Nodkotini' Assurance",
+    superpower: "Knows security guards, HODs, canteen uncle, and union leaders by first name.",
+    crime: "Promises free fest passes to everyone; delivers broken WhatsApp forward links.",
+    stats: [
+      { label: "FALSE PROMISES", val: "100%" },
+      { label: "'NODONA' COUNT", val: "47/DAY" },
+      { label: "SPONSORSHIP", val: "₹1.5 LAKH" }
+    ],
+    clubBenefit: "Build cross-campus coalitions, recruit club members, and coordinate convoy rides for college fests."
+  },
+  {
+    num: 7,
+    slug: "attendance-calculator",
+    name: "Attendance Calculator",
+    plural: "Attendance Calculators",
+    article: "an",
+    emoji: "🧮",
+    frontImg: "/cards-deck/07_Attendance_Calculator_Front.webp",
+    backImg: "/cards-deck/07_Attendance_Calculator_Back.webp",
+    themeColor: "#FF6F00",
+    move: "75.01% Attendance Lock Algorithm",
+    superpower: "Calculates maximum allowable bunks down to the exact second with 6 decimal places.",
+    crime: "Sweating bullets in dean's corridor whenever shortage lists are pasted.",
+    stats: [
+      { label: "PROXY RISK", val: "MAXIMUM" },
+      { label: "MEDICAL CERTS", val: "READY" },
+      { label: "BUNK CALC", val: "REAL-TIME" }
+    ],
+    clubBenefit: "Find emergency ride shares to beat the 8:30 AM gate closing and trade attendance-saving intel."
+  },
+  {
+    num: 8,
+    slug: "silent-genius",
+    name: "Silent Genius",
+    plural: "Silent Geniuses",
+    article: "a",
+    emoji: "🧠",
+    frontImg: "/cards-deck/08_Silent_Genius_Front.webp",
+    backImg: "/cards-deck/08_Silent_Genius_Back.webp",
+    themeColor: "#1D2145",
+    move: "Solved It While You Were Still Arguing",
+    superpower: "Speaks 12 words a day; debugs 500 lines of broken code in under 3 minutes.",
+    crime: "Leaves project group chats on 'Seen' but drops the completed zip at 2:00 AM.",
+    stats: [
+      { label: "DOUBTS ASKED", val: "0" },
+      { label: "WORDS / DAY", val: "12" },
+      { label: "GROUP CHAT", val: "SEEN ✓" }
+    ],
+    clubBenefit: "Connect with serious builders, hackathon squadmates, and find quiet, hassle-free morning commutes."
+  },
+  {
+    num: 9,
+    slug: "assignment-survivor",
+    name: "Assignment Survivor",
+    plural: "Assignment Survivors",
+    article: "an",
+    emoji: "⏰",
+    frontImg: "/cards-deck/09_Assignment_Survivor_Front.webp",
+    backImg: "/cards-deck/09_Assignment_Survivor_Back.webp",
+    themeColor: "#00B4D8",
+    move: "Submitted At 11:59:58 PM",
+    superpower: "Can write a 30-page handwritten assignment in 45 minutes on pure adrenaline.",
+    crime: "Renaming an empty corrupted file to 'final_report.docx' to buy 6 hours from professor.",
+    stats: [
+      { label: "PANIC LEVEL", val: "100%" },
+      { label: "START TIME", val: "11:17 PM" },
+      { label: "TYPING SPD", val: "120 WPM" }
+    ],
+    clubBenefit: "Emergency assignment peer rescue, shared reference materials, and late-night carpool coordination."
+  },
+  {
+    num: 10,
+    slug: "campus-influencer",
+    name: "Campus Influencer",
+    plural: "Campus Influencers",
+    article: "a",
+    emoji: "📸",
+    frontImg: "/cards-deck/10_Campus_Influencer_Front.webp",
+    backImg: "/cards-deck/10_Campus_Influencer_Back.webp",
+    themeColor: "#FF584D",
+    move: "'POV: You Came To College Just For Aesthetic'",
+    superpower: "Can turn a boring library staircase into a viral 1M-view aesthetic reel.",
+    crime: "Setting up a ring-light tripod in the middle of the narrow department staircase.",
+    stats: [
+      { label: "TRIPOD HAZARD", val: "98%" },
+      { label: "RING LIGHT", val: "100%" },
+      { label: "REELS IN DRAFT", val: "365" }
+    ],
+    clubBenefit: "Collaborate with student photographers, video creators, and share rides to festival shoots across Bengaluru."
+  },
+  {
+    num: 11,
+    slug: "all-rounder",
+    name: "All Rounder",
+    plural: "All Rounders",
+    article: "an",
+    emoji: "🏏",
+    frontImg: "/cards-deck/11_All_Rounder_Front.webp",
+    backImg: "/cards-deck/11_All_Rounder_Back.webp",
+    themeColor: "#008F7A",
+    move: "1-Man Army Fest & Club Takeover",
+    superpower: "President of 3 clubs, sports captain, still mysteriously maintaining 8.8 CGPA.",
+    crime: "Surviving on 3.5 hours of sleep, double-shot espresso, and pure delusion.",
+    stats: [
+      { label: "CLUBS JOINED", val: "7" },
+      { label: "DAILY SLEEP", val: "3.5 HRS" },
+      { label: "ADAPTABILITY", val: "0.01S" }
+    ],
+    clubBenefit: "Unite with multi-disciplinary campus leaders to execute major fests and share reliable daily commutes."
+  }
 ];
-const BY = Object.fromEntries(ARCH.map(a => [a.slug, a]));
-const $ = id => document.getElementById(id);
 
-function slugFromUrl() {
-  const q = new URLSearchParams(location.search).get("card");
-  const seg = location.pathname.split("/").filter(Boolean).pop() || "";
-  const s = (q || seg).toLowerCase().replace(/\.html$/, "");
-  return BY[s] ? s : "topper";
+const APP_ID = "com.c2club.uniqueapp";
+const BY_SLUG = Object.fromEntries(ARCHETYPES.map(a => [a.slug, a]));
+
+let currentSlug = "topper";
+let selectedPickerSlug = "topper";
+let isRevealFlipped = false;
+let isPickerFlipped = false;
+
+// Audio synthesis for haptic pops
+let audioCtx = null;
+function playChime(freq1 = 360, freq2 = 540) {
+  try {
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = "sine";
+    const now = audioCtx.currentTime;
+    osc.frequency.setValueAtTime(freq1, now);
+    osc.frequency.exponentialRampToValueAtTime(freq2, now + 0.12);
+    gain.gain.setValueAtTime(0.08, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start(now);
+    osc.stop(now + 0.13);
+  } catch (e) {}
 }
 
-function track(name, props) {
-  try { if (window.gtag) gtag("event", name, props || {}); else if (window.plausible) plausible(name, { props }); } catch (e) {}
-  if (location.hostname === "localhost") console.log("[track]", name, props || {});
+function track(event, data = {}) {
+  try {
+    if (window.gtag) gtag("event", event, data);
+    else if (window.plausible) plausible(event, { props: data });
+  } catch (e) {}
+  if (location.hostname === "localhost") console.log("[Track]", event, data);
 }
 
-function theme(a) { /* page stays emerald; only the cards change colour */ }
-
-function cardHTML(a) {
-  return `<article class="card ${a.dark ? "dark" : ""}" style="--card:${a.card};--ct:${a.t};${a.glow ? "--glow:" + a.glow : ""}">
-    <div class="nm">${a.name}</div>
-    <div class="art">
-      <span class="em" aria-hidden="true">${a.em}</span>
-      <picture>
-        <source srcset="${ART_PATH}${a.slug}.webp" type="image/webp">
-        <img src="${ART_PATH}${a.slug}.png" alt="${a.name}" loading="lazy" decoding="async" onerror="this.parentElement.remove()">
-      </picture>
-    </div>
-    <div class="st">${a.stat}</div>
-    <div class="ft">C2 Club</div>
-  </article>`;
-}
-
-function show(id) {
-  document.querySelectorAll(".screen").forEach(s => s.classList.toggle("on", s.id === id));
-  window.scrollTo(0, 0);
-}
-
-let chosen = slugFromUrl();
-
-function renderReveal() {
-  const a = BY[chosen];
-  theme(a);
-  $("revealTitle").textContent = `This card says you're ${a.a} ${a.name}.`;
-  $("revealCard").innerHTML = cardHTML(a);
-  document.title = `${a.name}? Is this you? | C2 Club`;
-}
-
-function playUrl(slug) {
+function getReferrerUrl(slug) {
   const params = new URLSearchParams(location.search);
-  const c = params.get("c");
-  const referrer = `card=${slug}&s=qr${c ? `&c=${encodeURIComponent(c)}` : ""}`;
+  const college = params.get("c") || "";
+  const referrer = `card_${slug}&s=qr${college ? `&c=${encodeURIComponent(college)}` : ""}`;
   return `https://play.google.com/store/apps/details?id=${APP_ID}&referrer=${encodeURIComponent(referrer)}`;
 }
 
-function intentUrl(slug) {
+function getMarketUri(slug) {
   const params = new URLSearchParams(location.search);
-  const c = params.get("c");
-  const fallback = encodeURIComponent(playUrl(slug));
-  const cParam = c ? `&c=${encodeURIComponent(c)}` : "";
-  return `intent://c2club.in/cards/${slug}?s=qr${cParam}#Intent;scheme=https;package=${APP_ID};S.browser_fallback_url=${fallback};end`;
+  const college = params.get("c") || "";
+  const referrer = `card_${slug}&s=qr${college ? `&c=${encodeURIComponent(college)}` : ""}`;
+  return `market://details?id=${APP_ID}&referrer=${encodeURIComponent(referrer)}`;
 }
 
-function openJoin(a) {
-  const n = Number(counts[a.slug] || 0);
-  const proof = n >= MIN_FOR_SOCIAL_PROOF;
-  $("joinTitle").textContent = proof ? `${n} ${a.pl} are already inside.` : `Be one of the first ${a.pl} in C2 Club.`;
-  $("joinSub").textContent = proof ? `They're waiting in the ${a.name} Club. Go say hi.` : `The ${a.name} Club is just starting. Walk in early and shape it.`;
-  
-  const b = $("joinBtn");
+/* ==================== 3D TILT & HOLO SHEEN ==================== */
+function setupCardTilt(stageEl, flipperEl, glareEl) {
+  if (!stageEl || !flipperEl || !glareEl) return;
+
+  function handleMove(clientX, clientY) {
+    const rect = stageEl.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const y = clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateX = ((y - centerY) / centerY) * -12;
+    const rotateY = ((x - centerX) / centerX) * 12;
+
+    const posX = ((x / rect.width) * 100);
+    const posY = ((y / rect.height) * 100);
+
+    const isFlipped = flipperEl.classList.contains("flipped");
+    const currentY = isFlipped ? 180 : 0;
+    flipperEl.style.transform = `rotateY(${currentY + rotateY}deg) rotateX(${rotateX}deg)`;
+    glareEl.style.backgroundPosition = `${posX}% ${posY}%`;
+  }
+
+  function handleReset() {
+    const isFlipped = flipperEl.classList.contains("flipped");
+    flipperEl.style.transform = isFlipped ? `rotateY(180deg)` : `rotateY(0deg)`;
+    glareEl.style.backgroundPosition = `50% 50%`;
+  }
+
+  stageEl.addEventListener("mousemove", e => handleMove(e.clientX, e.clientY));
+  stageEl.addEventListener("mouseleave", handleReset);
+
+  stageEl.addEventListener("touchmove", e => {
+    if (e.touches && e.touches[0]) {
+      handleMove(e.touches[0].clientX, e.touches[0].clientY);
+    }
+  }, { passive: true });
+  stageEl.addEventListener("touchend", handleReset);
+}
+
+/* ==================== CARD FLIP LOGIC ==================== */
+function toggleFlipReveal() {
+  isRevealFlipped = !isRevealFlipped;
+  const flipper = document.getElementById("cardFlipper");
+  flipper.classList.toggle("flipped", isRevealFlipped);
+  document.getElementById("flipStatus").textContent = isRevealFlipped ? "Viewing Back" : "Viewing Front";
+  playChime(isRevealFlipped ? 380 : 520, isRevealFlipped ? 580 : 380);
+  track("card_flip", { card: currentSlug, side: isRevealFlipped ? "back" : "front" });
+}
+
+function toggleFlipPicker() {
+  isPickerFlipped = !isPickerFlipped;
+  const flipper = document.getElementById("pickerCardFlipper");
+  flipper.classList.toggle("flipped", isPickerFlipped);
+  document.getElementById("pickerFlipStatus").textContent = isPickerFlipped ? "Viewing Back" : "Viewing Front";
+  playChime(isPickerFlipped ? 380 : 520, isPickerFlipped ? 580 : 380);
+  track("picker_card_flip", { card: selectedPickerSlug, side: isPickerFlipped ? "back" : "front" });
+}
+
+/* ==================== RENDERING ==================== */
+function renderReveal(a) {
+  document.getElementById("revealName").textContent = a.name;
+  document.getElementById("cardImgFront").src = a.frontImg;
+  document.getElementById("cardImgFront").alt = a.name;
+  document.getElementById("cardImgBack").src = a.backImg;
+  document.getElementById("cardImgBack").alt = `${a.name} Back`;
+
+  document.getElementById("dossierEmoji").textContent = a.emoji;
+  document.getElementById("dossierTitle").textContent = `${a.name.toUpperCase()} DOSSIER`;
+  document.getElementById("dossierNumber").textContent = `#${String(a.num).padStart(2, '0')} OF 11`;
+  document.getElementById("dossierMove").textContent = a.move;
+  document.getElementById("dossierSuperpower").textContent = a.superpower;
+  document.getElementById("dossierCrime").textContent = a.crime;
+
+  // Render stats
+  const statsHtml = a.stats.map(s => `
+    <div class="stat-pill">
+      <div class="stat-label">${s.label}</div>
+      <div class="stat-value">${s.val}</div>
+    </div>
+  `).join("");
+  document.getElementById("dossierStats").innerHTML = statsHtml;
+
+  // Update perks
+  document.querySelectorAll(".perk-role-name").forEach(el => el.textContent = a.name);
+  document.getElementById("perkClubDesc").textContent = a.clubBenefit;
+  document.getElementById("btnClaimPrimary").innerHTML = `<span>Claim My Spot in ${a.name} Club 🚀</span>`;
+}
+
+function renderPickerTabs() {
+  const tabsContainer = document.getElementById("selectorTabs");
+  tabsContainer.innerHTML = ARCHETYPES.map(a => `
+    <button class="archetype-tab ${a.slug === selectedPickerSlug ? 'active' : ''}" data-slug="${a.slug}">
+      <span>${a.emoji}</span>
+      <span>${a.name}</span>
+    </button>
+  `).join("");
+
+  tabsContainer.onclick = (e) => {
+    const btn = e.target.closest(".archetype-tab");
+    if (!btn) return;
+    const slug = btn.dataset.slug;
+    selectPickerArchetype(slug);
+  };
+}
+
+function selectPickerArchetype(slug) {
+  selectedPickerSlug = slug;
+  const a = BY_SLUG[slug] || ARCHETYPES[0];
+  playChime(420, 680);
+
+  // Update tabs active state
+  document.querySelectorAll(".archetype-tab").forEach(tab => {
+    const isActive = tab.dataset.slug === slug;
+    tab.classList.toggle("active", isActive);
+    if (isActive) tab.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+  });
+
+  // Update Picker Card
+  document.getElementById("pickerCardImgFront").src = a.frontImg;
+  document.getElementById("pickerCardImgFront").alt = a.name;
+  document.getElementById("pickerCardImgBack").src = a.backImg;
+  document.getElementById("pickerCardImgBack").alt = `${a.name} Back`;
+
+  // Update Callout WhatsApp text
+  const original = BY_SLUG[currentSlug] || ARCHETYPES[1];
+  const shareText = `Bro, you handed me the ${original.name} card, but I'm literally the ${a.name} ${a.emoji} Look at your radar on C2 Club: https://c2club.in/cards/${a.slug}?c=${currentSlug}`;
+  document.getElementById("calloutPreviewText").textContent = `"${shareText.slice(0, 95)}..."`;
+  document.getElementById("btnShareWhatsApp").href = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
+
+  // Update Dossier
+  document.getElementById("pickerDossierEmoji").textContent = a.emoji;
+  document.getElementById("pickerDossierTitle").textContent = `${a.name.toUpperCase()} DOSSIER`;
+  document.getElementById("pickerDossierNumber").textContent = `#${String(a.num).padStart(2, '0')} OF 11`;
+  document.getElementById("pickerDossierMove").textContent = a.move;
+  document.getElementById("pickerDossierSuperpower").textContent = a.superpower;
+  document.getElementById("pickerDossierCrime").textContent = a.crime;
+
+  document.getElementById("pickerDossierStats").innerHTML = a.stats.map(s => `
+    <div class="stat-pill">
+      <div class="stat-label">${s.label}</div>
+      <div class="stat-value">${s.val}</div>
+    </div>
+  `).join("");
+
+  document.getElementById("btnClaimPicker").innerHTML = `<span>Claim My Spot as ${a.name} 🚀</span>`;
+
+  track("vibe_realign_select", { original: currentSlug, selected: slug });
+}
+
+/* ==================== CONVERSION & APP LAUNCH ==================== */
+function handleClaim(slug) {
   const isAndroid = /android/i.test(navigator.userAgent);
+  const playUrl = getReferrerUrl(slug);
+  const marketUri = getMarketUri(slug);
+
+  track("claim_spot_click", { card: slug, isAndroid });
+  try { localStorage.setItem("c2_card_claim", slug); } catch (e) {}
 
   if (isAndroid) {
-    b.textContent = `Join the ${a.pl}`;
-    // Intent URI: Opens app directly if installed; if not installed, Play Store opens with referrer
-    b.href = intentUrl(a.slug);
-    b.onclick = () => {
-      track("join_click", { card: a.slug });
-      try { localStorage.setItem("c2_card", a.slug); } catch (e) {}
-    };
+    window.location.href = marketUri;
+    setTimeout(() => {
+      window.location.href = playUrl;
+    }, 1200);
   } else {
-    // Desktop / iOS non-Android fallback: WhatsApp share
-    b.textContent = "Send this to my phone";
-    const pageUrl = window.location.href;
-    const waText = encodeURIComponent(`Check out the ${a.name} Club on C2 Club! ${pageUrl}`);
-    b.href = `https://wa.me/?text=${waText}`;
-    b.onclick = () => {
-      track("join_click_whatsapp", { card: a.slug });
-    };
+    const a = BY_SLUG[slug] || ARCHETYPES[0];
+    document.getElementById("dialogTitle").textContent = `Enter the ${a.name} Club`;
+    document.getElementById("dialogPlayBtn").href = playUrl;
+    const waText = encodeURIComponent(`Check out the ${a.name} Card on C2 Club! Claim your campus club: https://c2club.in/cards/${slug}`);
+    document.getElementById("dialogWhatsAppBtn").href = `https://wa.me/?text=${waText}`;
+    
+    const dialog = document.getElementById("downloadDialog");
+    if (!dialog.open) dialog.showModal();
+  }
+}
+
+/* ==================== SCREEN SWITCHING ==================== */
+function showScreen(screenId) {
+  document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+  document.getElementById(screenId).classList.add("active");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+/* ==================== INITIALIZATION ==================== */
+document.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(location.search);
+  const qSlug = params.get("card");
+  if (qSlug && BY_SLUG[qSlug.toLowerCase()]) {
+    currentSlug = qSlug.toLowerCase();
   }
 
-  $("joinNote").hidden = isAndroid;
-  theme(a);
-  const d = $("join");
-  if (!d.open) d.showModal();
-  track("join_open", { card: a.slug, social_proof: proof });
-}
+  const initialArch = BY_SLUG[currentSlug] || ARCHETYPES[1];
+  renderReveal(initialArch);
 
-function renderPick() {
-  const start = ARCH.findIndex(a => a.slug === chosen);
-  const order = ARCH.slice(start + 1).concat(ARCH.slice(0, start));
-  $("track").innerHTML = order.map(a => `<div class="slide" data-slug="${a.slug}">${cardHTML(a)}<button class="btn pri" data-pick="${a.slug}">This is me</button></div>`).join("");
-  const hw = Math.min(window.innerWidth * 0.7, 280) / 2;
-  $("track").style.setProperty("--hw", hw + "px");
-  $("track").scrollLeft = 0;
-  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) theme(BY[e.target.dataset.slug]); }), { root: $("track"), threshold: 0.6 });
-  document.querySelectorAll(".slide").forEach(s => io.observe(s));
-}
+  // Setup 3D Tilts
+  setupCardTilt(document.getElementById("cardStage"), document.getElementById("cardFlipper"), document.getElementById("cardGlare"));
+  setupCardTilt(document.getElementById("pickerCardStage"), document.getElementById("pickerCardFlipper"), document.getElementById("pickerCardGlare"));
 
-$("yes").onclick = () => { track("confirm_yes", { card: chosen }); openJoin(BY[chosen]); };
-$("nah").onclick = () => { track("confirm_no", { card: chosen }); renderPick(); show("pick"); };
-$("back").onclick = () => { renderReveal(); show("reveal"); };
-$("notNow").onclick = () => $("join").close();
-$("join").addEventListener("click", e => { if (e.target === $("join")) $("join").close(); });
-$("track").addEventListener("click", e => {
-  const slug = e.target.dataset && e.target.dataset.pick;
-  if (!slug) return;
-  chosen = slug;
-  history.replaceState(null, "", "?card=" + slug);
-  track("swipe_pick", { card: slug });
-  openJoin(BY[slug]);
+  // Flip triggers
+  document.getElementById("cardStage").addEventListener("click", toggleFlipReveal);
+  document.getElementById("btnFlipCard").addEventListener("click", toggleFlipReveal);
+
+  document.getElementById("pickerCardStage").addEventListener("click", toggleFlipPicker);
+  document.getElementById("btnPickerFlipCard").addEventListener("click", toggleFlipPicker);
+
+  // Screen 1 Buttons
+  document.getElementById("btnClaimPrimary").addEventListener("click", () => handleClaim(currentSlug));
+  document.getElementById("btnNotMe").addEventListener("click", () => {
+    track("not_me_clicked", { card: currentSlug });
+    renderPickerTabs();
+    const altSlug = ARCHETYPES.find(a => a.slug !== currentSlug)?.slug || ARCHETYPES[0].slug;
+    selectPickerArchetype(altSlug);
+    showScreen("screenPicker");
+  });
+
+  // Screen 2 Buttons
+  document.getElementById("btnBackToReveal").addEventListener("click", () => showScreen("screenReveal"));
+  document.getElementById("btnPickerBackBottom").addEventListener("click", () => showScreen("screenReveal"));
+  document.getElementById("btnClaimPicker").addEventListener("click", () => handleClaim(selectedPickerSlug));
+  document.getElementById("btnShareWhatsApp").addEventListener("click", () => {
+    track("whatsapp_callout_shared", { original: currentSlug, chosen: selectedPickerSlug });
+  });
+
+  // Dialog Close
+  document.getElementById("dialogCloseBtn").addEventListener("click", () => document.getElementById("downloadDialog").close());
+  document.getElementById("downloadDialog").addEventListener("click", (e) => {
+    if (e.target === document.getElementById("downloadDialog")) document.getElementById("downloadDialog").close();
+  });
+
+  track("card_scan_page_view", { card: currentSlug });
 });
-
-(async function init() {
-  // FIX 2: Correctly parse Firestore REST API typed JSON { fields: { <slug>: { integerValue: "12" } } }
-  if (COUNTS_URL) {
-    try {
-      const res = await fetch(COUNTS_URL);
-      if (res.ok) {
-        const j = await res.json();
-        counts = Object.fromEntries(
-          Object.entries(j.fields || {}).map(([k, v]) => [k, Number(v.integerValue || 0)])
-        );
-      }
-    } catch (e) {
-      console.warn("Could not fetch counts:", e);
-    }
-  }
-  renderReveal();
-  track("scan", { card: chosen });
-})();
 </script>
 </body>
 </html>
