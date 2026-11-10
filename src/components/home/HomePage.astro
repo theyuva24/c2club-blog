@@ -1,0 +1,436 @@
+---
+/*
+  C2 Club home page. Used by / and by /download (mode="download"), so the two URLs share one design.
+  /download keeps its old job: ?ref=CODE links (handed out by the influencer page) send the visitor
+  to the Play Store with the referral attached after 1.5 s.
+  Art direction: "campus sketchbook". Cream paper, ink outlines, hard sticker shadows,
+  emerald as the anchor colour, the C2 Deck card colours as accents, the watercolour
+  mascot as the recurring character. Motion: transform and opacity only, paused off
+  screen, off under reduced motion, and a manual pause in the footer.
+*/
+import '../../styles/home.css';
+import QRCode from 'qrcode';
+import { blogPosts } from '../../data/blogPosts.js';
+
+interface Props { mode?: 'home' | 'download' }
+const { mode = 'home' } = Astro.props;
+const isDownload = mode === 'download';
+
+const PACKAGE_ID = 'com.c2club.uniqueapp';
+const PLAY = `https://play.google.com/store/apps/details?id=${PACKAGE_ID}`;
+const SITE = 'https://c2club.in';
+const canonical = `${SITE}/`;
+const pageTitle = isDownload ? 'Download C2 Club · Free on Android' : 'C2 Club · The student app for Karnataka colleges';
+const pageDesc = 'Ask seniors about professors, attendance and placements. Find notes and PYQs by course and semester. Free on Android.';
+
+const orgSchema = {
+  '@context': 'https://schema.org', '@type': 'Organization', '@id': `${SITE}/#organization`,
+  name: 'C2 Club', url: SITE, logo: `${SITE}/app-icon.png`, sameAs: [PLAY],
+  description: 'The student app for Karnataka colleges.',
+};
+const websiteSchema = {
+  '@context': 'https://schema.org', '@type': 'WebSite', name: 'C2 Club', url: SITE,
+  potentialAction: { '@type': 'SearchAction', target: { '@type': 'EntryPoint', urlTemplate: `${SITE}/search/?q={search_term_string}` }, 'query-input': 'required name=search_term_string' },
+};
+const appSchema = {
+  '@context': 'https://schema.org', '@type': 'MobileApplication', name: 'C2 Club', operatingSystem: 'Android',
+  applicationCategory: 'EducationalApplication', description: pageDesc, url: canonical, downloadUrl: PLAY,
+  image: `${SITE}/app-icon.png`, offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' },
+  publisher: { '@id': `${SITE}/#organization` },
+};
+const qrSvg = await QRCode.toString(PLAY, {
+  type: 'svg',
+  margin: 0,
+  errorCorrectionLevel: 'M',
+  color: { dark: '#14201A', light: '#0000' },
+});
+
+const guides = blogPosts
+  .filter((p) => p.published !== false && p.url.includes('what-after-pu'))
+  .slice(0, 3)
+  .map((p) => ({
+    ...p,
+    short: p.title.replace(/^What After PUC\?\s*/i, '').replace(/\s*(Guide|Pathways Guide).*$/i, ''),
+  }));
+
+const deck = [
+  { slug: 'social-butterfly', name: 'Social Butterfly', img: '01_Social_Butterfly_Front' },
+  { slug: 'topper', name: 'Topper', img: '02_Topper_Front' },
+  { slug: 'canteen-commander', name: 'Canteen Commander', img: '03_Canteen_Commander_Front' },
+  { slug: 'silent-genius', name: 'Silent Genius', img: '08_Silent_Genius_Front' },
+  { slug: 'assignment-survivor', name: 'Assignment Survivor', img: '09_Assignment_Survivor_Front' },
+  { slug: 'campus-influencer', name: 'Campus Influencer', img: '10_Campus_Influencer_Front' },
+  { slug: 'last-bench-strategist', name: 'Last Bench Strategist', img: '05_Last_Bench_Strategist_Front' },
+];
+
+const towns = ['Dharwad', 'Hubballi', 'Belagavi', 'Mysuru', 'Davangere', 'Kalaburagi', 'Shivamogga', 'Ballari', 'Vijayapura', 'Tumakuru'];
+
+const streamMsgs = [
+  'Anyone have 3rd sem DBMS notes?',
+  'Check the group',
+  'Which group?',
+  'Sent it last week, scroll up',
+  'Can’t find it 😭',
+  'Is attendance counted per subject?',
+  'Ask the seniors',
+  'Which seniors?',
+  'Anyone have the PYQ link?',
+  'That link has expired',
+];
+---
+<!doctype html>
+<html lang="en" data-motion="on" data-mode={mode}>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>{pageTitle}</title>
+  <meta name="description" content={pageDesc} />
+  <meta name="robots" content={isDownload ? 'noindex, follow' : 'index, follow'} />
+  <link rel="canonical" href={canonical} />
+  <meta name="theme-color" content="#F4F0E6" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="C2 Club" />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content="Ask seniors, find notes and PYQs, and keep every answer for the next batch. Free on Android." />
+  <meta property="og:image" content="https://c2club.in/home/og.jpg" />
+  <meta property="og:locale" content="en_IN" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(orgSchema)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(websiteSchema)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(appSchema)} />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav">
+    <div class="wrap nav__in">
+      <a class="logo" href="/" aria-label="C2 Club home">
+        <img src="/app-icon.png" width="40" height="40" alt="" />
+        <span>C2 Club</span>
+      </a>
+      <nav class="nav__links" aria-label="Main">
+        <a href="#inside">Features</a>
+        <a href="#deck">C2 Deck</a>
+        <a href="/blog/">Guides</a>
+      </nav>
+      <a class="btn btn--go btn--sm" data-play href={PLAY}>Get the app</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- 1. HERO: the stream becomes memory -->
+    <section class="hero" aria-labelledby="hero-h">
+      <div class="wrap hero__grid">
+        <div class="hero__copy">
+          <p class="sticker sticker--sun hero__kicker" data-in style="--d:0">The student app for Karnataka colleges</p>
+          <h1 id="hero-h" class="hero__h" data-in style="--d:1">
+            Your seniors already
+            <span class="scribble">know the answer.
+              <svg viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M3 15 C 60 4, 120 22, 180 10 S 270 6, 297 14" /></svg>
+            </span>
+          </h1>
+          <p class="hero__sub" data-in style="--d:2">Ask seniors, find notes and PYQs, and keep every answer for the next batch. All in one app, sorted by course and semester.</p>
+          <div class="hero__cta" data-in style="--d:3">
+            <a class="btn btn--go" data-play href={PLAY}>
+              <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3.5v17l14-8.5z" /></svg>
+              Get it on Google Play
+            </a>
+            <a class="btn btn--paper" href="#inside">See what's inside</a>
+          </div>
+          <p class="hero__fact" data-in style="--d:4"><span class="dot" aria-hidden="true"></span> Free on Android. Made in Karnataka.</p>
+        </div>
+
+        <div class="stage" aria-hidden="true">
+          <div class="stream">
+            <span class="stream__badge">214 unread</span>
+            <div class="stream__track">
+              {[...streamMsgs, ...streamMsgs].map((m, i) => <span class={`bubble ${i % 3 === 1 ? 'bubble--me' : ''}`}>{m}</span>)}
+            </div>
+          </div>
+          <span class="catch">Is attendance counted per subject?</span>
+
+          <div class="phone">
+            <div class="phone__screen">
+              <div class="app-top">
+                <span class="app-top__menu"><i></i><i></i><i></i></span>
+                <strong>Engineers Assemble 🚀</strong>
+              </div>
+              <div class="app-tabs"><span class="is-on">Pinned</span><span>New</span><span>Notes</span></div>
+              <article class="post post--pinned">
+                <span class="post__flag">📌 Pinned answer</span>
+                <p class="post__q">Is attendance counted per subject?</p>
+                <div class="post__a">
+                  <span class="avatar avatar--sun">AK</span>
+                  <p><b>Senior · 7th sem</b> Per subject. Keep every subject above the limit, not just your total.</p>
+                </div>
+                <div class="tags"><span>#Sem3</span><span>#Attendance</span></div>
+              </article>
+              <article class="post">
+                <p class="post__t">DBMS notes, units 1 to 5</p>
+                <span class="file">PDF · 3rd sem</span>
+              </article>
+              <article class="post">
+                <p class="post__t">Need a designer for a 24-hour hackathon</p>
+                <span class="team">Team 2 of 4</span>
+              </article>
+              <div class="app-bar"><span>Home</span><span class="is-on">Clubs</span><span>Profile</span></div>
+            </div>
+          </div>
+
+          <img class="hero__mascot" src="/home/mascot-upper.webp" width="520" height="1257" alt="" />
+          <span class="sticker sticker--pink hero__tag hero__tag--a">#PYQs</span>
+          <span class="sticker sticker--sky hero__tag hero__tag--b">#Sem5</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. STREAM vs MEMORY: the one idea -->
+    <section class="memory" id="memory" data-moment aria-labelledby="memory-h">
+      <div class="wrap">
+        <h2 id="memory-h" class="h2 h2--light">Group chats are a stream. <span class="hl"><span class="nowrap">C2 Club</span> is memory.</span></h2>
+        <p class="lede lede--light">In a group chat, a useful message gets buried within hours. In C2 Club it stays, sorted by course and semester, for you and the next batch.</p>
+
+        <div class="memory__grid">
+          <div class="panel panel--chat" aria-label="A busy group chat where a notes link sinks out of view">
+            <p class="panel__label">Your class group chat</p>
+            <div class="panel__window">
+              <div class="chatfall">
+                {[...streamMsgs, ...streamMsgs].map((m, i) => (
+                  <span class={`bubble ${i % 3 === 1 ? 'bubble--me' : ''} ${i === 3 ? 'bubble--gold' : ''}`}>{i === 3 ? '📎 PYQs 2023 to 2025.pdf' : m}</span>
+                ))}
+              </div>
+            </div>
+            <span class="stamp stamp--lost">Gone by tomorrow</span>
+          </div>
+
+          <div class="vs" aria-hidden="true">→</div>
+
+          <div class="panel panel--hub" aria-label="Your college on C2 Club, where answers and notes stay saved">
+            <p class="panel__label">Your college on C2 Club</p>
+            <ul class="shelf">
+              <li style="--i:0"><span class="shelf__ico">📎</span><span><b>PYQs 2023 to 2025</b><small>#VTU #Sem3 #DBMS</small></span></li>
+              <li style="--i:1"><span class="shelf__ico">💬</span><span><b>Which electives are easier to score in</b><small>Answered by 3 seniors</small></span></li>
+              <li style="--i:2"><span class="shelf__ico">🗓️</span><span><b>Internals timetable, odd sem</b><small>#Sem5 #CSE</small></span></li>
+              <li style="--i:3"><span class="shelf__ico">🏠</span><span><b>PGs near campus under ₹6,000</b><small>#Hostels #Hubballi</small></span></li>
+            </ul>
+            <span class="stamp stamp--keep">Still here next year</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. WHAT'S INSIDE -->
+    <section class="inside" id="inside" data-moment aria-labelledby="inside-h">
+      <div class="wrap">
+        <h2 id="inside-h" class="h2">What you get in C2 Club</h2>
+        <p class="lede">Three things every student looks for, in one app.</p>
+
+        <div class="cards3">
+          <article class="scard scard--mint">
+            <div class="vign vign--ask" aria-hidden="true">
+              <span class="vb vb--q">Is the DBMS lab viva tough?</span>
+              <span class="vb vb--typing"><i></i><i></i><i></i></span>
+              <span class="vb vb--a"><b>Senior · 7th sem</b> Revise the last three experiments. The examiner asks from those.</span>
+            </div>
+            <h3>Ask seniors anything</h3>
+            <p>Professors, attendance, internals or placements. Get answers from students who have been through it.</p>
+          </article>
+
+          <article class="scard scard--sun">
+            <div class="vign vign--find" aria-hidden="true">
+              <span class="search"><span class="search__txt">dbms sem 3</span><span class="caret"></span></span>
+              <span class="res" style="--i:0">📎 Unit 4 notes, handwritten</span>
+              <span class="res" style="--i:1">📄 End sem PYQ, 2024</span>
+              <span class="res" style="--i:2">💡 Units that repeat in exams</span>
+            </div>
+            <h3>Find notes and PYQs in seconds</h3>
+            <p>Everything is sorted by course and semester. Search once instead of scrolling through twenty groups.</p>
+          </article>
+
+          <article class="scard scard--pink">
+            <div class="vign vign--join" aria-hidden="true">
+              <span class="chip" style="--i:0">🏫 Your college <em>✓</em></span>
+              <span class="chip" style="--i:1">💻 BCA <em>✓</em></span>
+              <span class="chip" style="--i:2">📍 Hubballi <em>✓</em></span>
+              <span class="chip" style="--i:3">🏆 Hackathons <em>✓</em></span>
+            </div>
+            <h3>Join the right clubs on day one</h3>
+            <p>Add your college, course and town when you sign up. The app adds you to the clubs that match.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. TEAMS -->
+    <section class="teams" id="teams" data-moment aria-labelledby="teams-h">
+      <div class="wrap teams__grid">
+        <div>
+          <p class="sticker sticker--sky">Hackathons</p>
+          <h2 id="teams-h" class="h2">Find hackathon teammates across Karnataka</h2>
+          <p class="lede">Post your idea, list the roles you need, and team up with students from other colleges.</p>
+        </div>
+        <div class="board" aria-label="A hackathon team filling up: coder, designer, researcher and presenter">
+          <div class="board__head"><b>Your hackathon team</b><span class="board__count"><span class="n"><i class="n3">3</i><i class="n4">4</i></span>/4</span></div>
+          <ul class="slots">
+            <li class="slot is-filled" style="--i:0"><span class="face" style="background-image:url(/home/face-coder.webp)"></span><span><b>Coder</b><small>CSE · Dharwad</small></span></li>
+            <li class="slot is-filled" style="--i:1"><span class="face" style="background-image:url(/home/face-designer.webp)"></span><span><b>Designer</b><small>BDes · Belagavi</small></span></li>
+            <li class="slot is-filled" style="--i:2"><span class="face" style="background-image:url(/home/face-researcher.webp)"></span><span><b>Researcher</b><small>BSc · Mysuru</small></span></li>
+            <li class="slot slot--open" style="--i:3"><span class="face face--open"><span class="face__q">?</span><span class="face__img" style="background-image:url(/home/face-pitcher.webp)"></span></span><span><b>Presenter</b><small class="looking">Looking…</small><small class="found">BBA · Hubballi</small></span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. THE DECK -->
+    <section class="deck" id="deck" data-moment aria-labelledby="deck-h">
+      <div class="wrap">
+        <h2 id="deck-h" class="h2">Find your card in the C2 Deck</h2>
+        <p class="lede">Printed cards for every type of student, from Topper to Last Bench Strategist. Scan the QR code on a card to join its club, or tap one below.</p>
+        <ul class="fan">
+          {deck.map((c, i) => {
+            const off = i - (deck.length - 1) / 2;
+            const z = 10 - Math.abs(Math.round(off));
+            return (
+            <li style={`--i:${i};--x:calc(${off} * var(--spread));--r:${off * 7}deg;--y:${off * off * 9}px;--z:${z}`}>
+              <a href={`/cards/${c.slug}/`} aria-label={`${c.name} card`}>
+                <img src={`/home/deck-${c.slug}.webp`} width="440" height="688" alt={`${c.name} card from the C2 Deck`} loading="lazy" decoding="async" />
+              </a>
+            </li>
+            );
+          })}
+        </ul>
+      </div>
+    </section>
+
+    <!-- 6. TOWNS -->
+    <section class="towns" id="towns" data-moment aria-labelledby="towns-h">
+      <div class="wrap towns__head">
+        <h2 id="towns-h" class="h2">Built for colleges beyond Bengaluru</h2>
+        <p class="lede">In smaller towns, it is harder to find a senior who knows the answer. That is where C2 Club starts.</p>
+      </div>
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__row">
+          {[...towns, ...towns].map((t, i) => <span class={`pill pill--${['mint','sun','pink','sky','orange'][i % 5]}`}>{t}</span>)}
+        </div>
+        <div class="marquee__row marquee__row--rev">
+          {[...towns.slice().reverse(), ...towns.slice().reverse()].map((t, i) => <span class={`pill pill--${['sky','orange','mint','sun','pink'][i % 5]}`}>{t}</span>)}
+        </div>
+      </div>
+      <p class="sr">Towns include {towns.join(', ')}.</p>
+      <img class="towns__mascot" src="/home/mascot-full.webp" width="480" height="1130" alt="The C2 Club mascot, a cheerful student in a backwards cap" loading="lazy" />
+    </section>
+
+    <!-- 7. GUIDES -->
+    <section class="guides" id="guides" aria-labelledby="guides-h">
+      <div class="wrap">
+        <div class="guides__head">
+          <h2 id="guides-h" class="h2">Free guides for life after PUC</h2>
+          <a class="link" href="/blog/">Read all guides <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="guides__grid">
+          {guides.map((g, i) => (
+            <a class={`gcard gcard--${['mint','sun','pink'][i]}`} href={g.url}>
+              <span class="gcard__img"><img src={g.image} width="1200" height="675" alt="" loading="lazy" decoding="async" /></span>
+              <span class="gcard__body">
+                <b>{g.short}</b>
+                <small>{g.readTime}</small>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. CLOSE -->
+    <section class="close" id="get" aria-labelledby="close-h">
+      <div class="wrap close__grid">
+        <div>
+          <h2 id="close-h" class="h2 h2--big">Your seniors’ answers are one tap away</h2>
+          <p class="lede">It is free and takes a minute to sign up. Your clubs are ready as soon as you join.</p>
+          <a class="btn btn--ink" data-play href={PLAY}>
+            <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3.5v17l14-8.5z" /></svg>
+            Get it on Google Play
+          </a>
+        </div>
+        <div class="close__qr">
+          <div class="qr" set:html={qrSvg} role="img" aria-label="QR code that opens C2 Club on Google Play"></div>
+          <p>On a laptop? Scan with your phone.</p>
+        </div>
+        <img class="close__mascot" src="/home/mascot-head.webp" width="240" height="355" alt="" loading="lazy" />
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot__in">
+      <a class="logo logo--light" href="/"><img src="/app-icon.png" width="32" height="32" alt="" /><span>C2 Club</span></a>
+      <nav class="foot__links" aria-label="Footer">
+        <a href="/blog/">Guides</a>
+        <a href="/legal/privacy.html">Privacy</a>
+        <a href="/legal/terms.html">Terms</a>
+        <a href="/legal/data-deletion.html">Delete account</a>
+        <a href="mailto:hello@c2club.in">hello@c2club.in</a>
+      </nav>
+      <button class="motion-toggle" type="button" aria-pressed="false" id="motionToggle">Pause animations</button>
+    </div>
+  </footer>
+
+  <script is:inline define:vars={{ PLAY, IS_DOWNLOAD: isDownload }}>
+    (function () {
+      var root = document.documentElement;
+      // Keep any ?ref= code on every Play Store link (same format the app expects).
+      try {
+        var ref = new URLSearchParams(location.search).get('ref');
+        if (ref && ref.trim().length > 0) {
+          var playStoreUrl = PLAY + '&referrer=' + encodeURIComponent('ref=' + ref.trim().toUpperCase());
+          document.querySelectorAll('a[data-play]').forEach(function (a) { a.href = playStoreUrl; });
+          // /download?ref=CODE: same as the old download page, go to the Play Store after 1.5 s
+          // so in-app browsers capture the referral without a tap.
+          if (IS_DOWNLOAD) setTimeout(function () { window.location.href = playStoreUrl; }, 1500);
+        }
+      } catch (e) {}
+
+      // Start each section's animation when it is on screen, pause it when it leaves.
+      var moments = document.querySelectorAll('[data-moment], .hero');
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            e.target.classList.toggle('is-live', e.isIntersecting);
+            if (e.isIntersecting) e.target.classList.add('is-in');
+          });
+        }, { threshold: 0.25 });
+        moments.forEach(function (m) { io.observe(m); });
+      } else {
+        moments.forEach(function (m) { m.classList.add('is-in', 'is-live'); });
+      }
+
+      // Manual pause for everything that loops.
+      var btn = document.getElementById('motionToggle');
+      var stored = null;
+      try { stored = localStorage.getItem('c2-motion'); } catch (e) {}
+      function setMotion(on) {
+        root.setAttribute('data-motion', on ? 'on' : 'off');
+        btn.setAttribute('aria-pressed', on ? 'false' : 'true');
+        btn.textContent = on ? 'Pause animations' : 'Play animations';
+        try { localStorage.setItem('c2-motion', on ? 'on' : 'off'); } catch (e) {}
+      }
+      if (stored === 'off') setMotion(false);
+      btn.addEventListener('click', function () { setMotion(root.getAttribute('data-motion') !== 'on'); });
+
+      // Nav gets a shadow once you scroll.
+      var nav = document.querySelector('.nav');
+      var onScroll = function () { nav.classList.toggle('is-scrolled', window.scrollY > 8); };
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+  </script>
+</body>
+</html>
