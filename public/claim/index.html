@@ -1109,6 +1109,59 @@
     let currentStep = 1;
     const totalSteps = 5;
 
+    // ── Real-Time Funnel Tracking System ──
+    const FUNCTION_URL = 'https://us-central1-c2club-fd6722.cloudfunctions.net/submitCardClaim';
+
+    function getOrCreateSessionId() {
+      let sid = null;
+      try {
+        sid = sessionStorage.getItem('c2_claim_session_id');
+        if (!sid) {
+          sid = 'sess_' + Date.now() + '_' + Math.random().toString(36).substring(2, 8);
+          sessionStorage.setItem('c2_claim_session_id', sid);
+        }
+      } catch (e) {
+        sid = 'sess_' + Date.now() + '_' + Math.random().toString(36).substring(2, 8);
+      }
+      return sid;
+    }
+
+    const claimSessionId = getOrCreateSessionId();
+
+    function trackFunnel(step, extraDetails = {}) {
+      try {
+        const studentIdVal = (typeof studentId !== 'undefined') ? studentId : (new URLSearchParams(window.location.search).get('id') || new URLSearchParams(window.location.search).get('ref') || null);
+        const nameVal = document.getElementById('fullName') ? document.getElementById('fullName').value.trim() : null;
+        const phoneVal = document.getElementById('phone') ? document.getElementById('phone').value.trim() : null;
+        const collegeVal = document.getElementById('city') ? document.getElementById('city').value.trim() : null;
+
+        const payload = {
+          action: 'track_funnel',
+          sessionId: claimSessionId,
+          studentId: studentIdVal,
+          step: step,
+          fullName: nameVal || extraDetails.fullName || null,
+          phone: phoneVal || extraDetails.phone || null,
+          collegeName: collegeVal || extraDetails.collegeName || null,
+          url: window.location.href,
+          details: extraDetails
+        };
+
+        if (navigator.sendBeacon) {
+          navigator.sendBeacon(FUNCTION_URL, new Blob([JSON.stringify(payload)], { type: 'application/json' }));
+        } else {
+          fetch(FUNCTION_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+            keepalive: true
+          }).catch(e => console.warn('Non-fatal tracking error:', e));
+        }
+      } catch (err) {
+        console.warn('Track funnel error:', err);
+      }
+    }
+
     const stepTitles = [
       "Step 1 of 5 • App Check",
       "Step 2 of 5 • C2 Club Campus Need",
@@ -1143,6 +1196,12 @@
       }
 
       currentStep = stepNumber;
+
+      // Track step view in real time
+      trackFunnel('step_' + currentStep + '_viewed', {
+        stepNumber: currentStep,
+        stepTitle: stepTitles[currentStep - 1]
+      });
 
       document.querySelectorAll('.wizard-step').forEach(step => step.classList.remove('active'));
       const activeEl = document.getElementById('step' + currentStep);
@@ -2032,16 +2091,32 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
 
+      // Track final submit attempt
+      trackFunnel('claim_submitted', {
+        fullName: formData.fullName,
+        phone: formData.phone,
+        city: formData.city,
+        state: formData.state,
+        pincode: formData.pincode,
+        chosenArchetype: formData.chosenArchetype,
+        appInstalledChoice: formData.appInstalledChoice
+      });
+
       // Backend sync
-      const FUNCTION_URL = 'https://us-central1-c2club-fd6722.cloudfunctions.net/submitCardClaim';
       fetch(FUNCTION_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       })
       .then(res => res.json())
-      .then(data => showSuccess(data?.claimId || ''))
-      .catch(() => showSuccess(''));
+      .then(data => {
+        trackFunnel('claim_success', { claimId: data?.claimId || null });
+        showSuccess(data?.claimId || '');
+      })
+      .catch(() => {
+        trackFunnel('claim_success_local_fallback');
+        showSuccess('');
+      });
     }
 
     function copyCourierSlip() {
@@ -2055,6 +2130,17 @@
         }
       });
     }
+
+    // Auto-fire initial page landed event
+    window.addEventListener('DOMContentLoaded', () => {
+      trackFunnel('page_landed', {
+        studentId: studentId,
+        hasPrefillPhone: Boolean(prefillPhone),
+        hasPrefillName: Boolean(prefillName),
+        referrer: document.referrer || 'direct',
+        search: window.location.search
+      });
+    });
   </script>
   <!-- Fullscreen Card Zoom Lightbox Modal -->
   <div class="card-zoom-modal" id="cardZoomModal" onclick="closeCardZoom()">
