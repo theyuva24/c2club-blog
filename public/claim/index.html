@@ -1131,19 +1131,16 @@
     function trackFunnel(step, extraDetails = {}) {
       try {
         const studentIdVal = (typeof studentId !== 'undefined') ? studentId : (new URLSearchParams(window.location.search).get('id') || new URLSearchParams(window.location.search).get('ref') || null);
-        const nameVal = document.getElementById('fullName') ? document.getElementById('fullName').value.trim() : null;
-        const phoneVal = document.getElementById('phone') ? document.getElementById('phone').value.trim() : null;
-        const collegeVal = document.getElementById('city') ? document.getElementById('city').value.trim() : null;
+        const collegeEl = document.getElementById('collegeSearch');
+        const collegeVal = collegeEl ? collegeEl.value.trim() : null;
 
         const payload = {
           action: 'track_funnel',
           sessionId: claimSessionId,
           studentId: studentIdVal,
           step: step,
-          fullName: nameVal || extraDetails.fullName || null,
-          phone: phoneVal || extraDetails.phone || null,
-          collegeName: collegeVal || extraDetails.collegeName || null,
-          url: window.location.href,
+          collegeName: collegeVal || null,
+          url: window.location.origin + window.location.pathname,
           details: extraDetails
         };
 
@@ -1175,7 +1172,7 @@
       if (!stepEl) return;
       let errBox = stepEl.querySelector('.step-error-box');
       if (errBox) {
-        errBox.innerHTML = `⚠️ <span>${message}</span>`;
+        errBox.textContent = '⚠️ ' + message;
         errBox.classList.remove('visible');
         void errBox.offsetWidth; // Force reflow
         errBox.classList.add('visible');
@@ -1196,6 +1193,7 @@
       }
 
       currentStep = stepNumber;
+      if (currentStep === totalSteps) loadColleges();
 
       // Track step view in real time
       trackFunnel('step_' + currentStep + '_viewed', {
@@ -1544,7 +1542,7 @@
             <p style="font-size: 12.5px; color: #94a3b8; margin-top: 4px;">
               Download C2 Club to claim your campus handle. Once installed, tap continue to design & claim your pack!
             </p>
-            <a href="https://play.google.com/store/apps" target="_blank" class="store-btn">
+            <a href="https://play.google.com/store/apps/details?id=com.c2club.uniqueapp&referrer=deck_claim" target="_blank" rel="noopener noreferrer" class="store-btn">
               📲 Download C2 Club on Play Store
             </a>
           </div>
@@ -1864,7 +1862,7 @@
             <div class="gps-hero-icon">📍</div>
             <div>
               <div class="gps-hero-title">Auto-Detect Campus via GPS</div>
-              <div class="gps-hero-sub" id="gpsSubText">Click to instantly auto-fill City, State & PIN code</div>
+              <div class="gps-hero-sub" id="gpsSubText">Fills in City, State & PIN code. Your location is not saved.</div>
             </div>
           </div>
           <button type="button" class="gps-action-btn" id="gpsBtn" onclick="triggerGPSAutoFill()">
@@ -1881,6 +1879,12 @@
           <div class="input-group">
             <label for="phone">Active Mobile / WhatsApp Number <span class="req-star">*</span></label>
             <input type="tel" id="phone" name="phone" required placeholder="e.g. 9876543210" pattern="^(\+?91[\-\s]?)?[0-9\s\-]{10,14}$" inputmode="tel" maxlength="16" autocomplete="tel" oninput="sanitizePhoneInput(this)">
+          </div>
+
+          <div class="input-group col-full">
+            <label for="collegeSearch">Your College <span class="req-star">*</span></label>
+            <input type="text" id="collegeSearch" name="collegeSearch" required list="collegeList" maxlength="200" placeholder="Start typing your college name" autocomplete="off">
+            <datalist id="collegeList"></datalist>
           </div>
 
           <div class="input-group col-full">
@@ -1911,6 +1915,11 @@
 
         <input type="hidden" id="gpsCoordinates" name="gpsCoordinates" value="">
         <input type="hidden" id="gpsAccuracy" name="gpsAccuracy" value="">
+
+        <p style="font-size: 12px; color: #94a3b8; margin-top: 14px; line-height: 1.5;">
+          We use these details only to send your cards and to contact you about them.
+          <a href="/legal/privacy.html" target="_blank" rel="noopener" style="color: #cbd5e1;">Privacy policy</a>
+        </p>
 
         <div class="step-error-box" id="step5Error"></div>
 
@@ -1961,6 +1970,44 @@
 
     if (prefillPhone && document.getElementById('phone')) document.getElementById('phone').value = prefillPhone;
     if (prefillName && document.getElementById('fullName')) document.getElementById('fullName').value = prefillName;
+    if (['name', 'phone', 'mobile'].some(key => urlParams.has(key))) {
+      const kept = new URLSearchParams(window.location.search);
+      ['name', 'phone', 'mobile'].forEach(key => kept.delete(key));
+      const query = kept.toString();
+      try { history.replaceState(null, '', window.location.pathname + (query ? '?' + query : '') + window.location.hash); } catch (e) {}
+    }
+    // Older versions of this page kept every claim, address included, in the browser.
+    try { localStorage.removeItem('card_claims'); } catch (e) {}
+
+    // Campus list for the college field. A college that is not listed can still be typed.
+    let collegeOptions = [];
+    let collegesRequested = false;
+    function loadColleges() {
+      if (collegesRequested) return;
+      collegesRequested = true;
+      fetch(FUNCTION_URL + '?action=get_colleges')
+        .then(res => res.ok ? res.json() : null)
+        .then(data => {
+          if (!data || !Array.isArray(data.colleges)) return;
+          collegeOptions = data.colleges;
+          const list = document.getElementById('collegeList');
+          const frag = document.createDocumentFragment();
+          collegeOptions.forEach(c => {
+            const option = document.createElement('option');
+            option.value = c.name;
+            if (c.city) option.label = c.city;
+            frag.appendChild(option);
+          });
+          list.replaceChildren(frag);
+        })
+        .catch(() => { collegesRequested = false; });
+    }
+
+    function selectedCollege() {
+      const typed = document.getElementById('collegeSearch').value.trim();
+      const match = collegeOptions.find(c => (c.name || '').toLowerCase() === typed.toLowerCase());
+      return match ? { id: match.id, name: match.name } : { id: typed, name: typed };
+    }
 
     // Phone sanitizer
     function sanitizePhoneInput(el) {
@@ -1991,8 +2038,6 @@
           const lng = pos.coords.longitude;
           const acc = Math.round(pos.coords.accuracy || 0);
 
-          document.getElementById('gpsCoordinates').value = `${lat.toFixed(6)},${lng.toFixed(6)}`;
-          document.getElementById('gpsAccuracy').value = `${acc}m`;
 
           try {
             const res = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=en`);
@@ -2025,15 +2070,24 @@
       );
     }
 
+    const CLAIM_ERRORS = {
+      APP_NOT_DOWNLOADED: 'This number is not on C2 Club yet. Install the app, sign up with this number, then try again.',
+      PHONE_ALREADY_CLAIMED: 'A pack has already been requested with this number. We will contact you about it.',
+      COLLEGE_REQUIRED: 'Please type your college name.',
+      TOO_MANY: 'Too many attempts. Please wait a few minutes and try again.',
+    };
+
     // Final Submission Handler
     function handleFinalSubmit(e) {
       e.preventDefault();
+      clearStepError('step5');
 
       const btn = document.getElementById('submitBtn');
-      btn.innerText = '⏳ Queuing your pack...';
-      btn.disabled = true;
+      const btnText = btn.innerText;
+      const college = selectedCollege();
 
       const formData = {
+        sessionId: claimSessionId,
         studentId: studentId,
         appInstalledChoice: document.getElementById('appInstalledChoice').value,
         registeredIdentifier: document.getElementById('registeredIdentifier').value.trim(),
@@ -2047,22 +2101,28 @@
         campusLore: document.getElementById('campusLore').value.trim(),
         fullName: document.getElementById('fullName').value.trim(),
         phone: document.getElementById('phone').value.trim(),
+        collegeId: college.id,
+        collegeName: college.name,
         addressLine1: document.getElementById('addressLine1').value.trim(),
         addressLine2: document.getElementById('addressLine2').value.trim(),
         city: document.getElementById('city').value.trim(),
         state: document.getElementById('state').value.trim(),
-        pincode: document.getElementById('pincode').value.trim(),
-        gps: document.getElementById('gpsCoordinates').value,
-        gpsAccuracy: document.getElementById('gpsAccuracy').value,
-        timestamp: new Date().toISOString()
+        pincode: document.getElementById('pincode').value.trim()
       };
 
-      // Local storage backup
-      try {
-        const stored = JSON.parse(localStorage.getItem('card_claims') || '[]');
-        stored.push(formData);
-        localStorage.setItem('card_claims', JSON.stringify(stored));
-      } catch(err) {}
+      if (!formData.collegeId) {
+        showStepError('step5', CLAIM_ERRORS.COLLEGE_REQUIRED);
+        return;
+      }
+
+      btn.innerText = '⏳ Sending your claim...';
+      btn.disabled = true;
+
+      function addLine(box, label, value) {
+        const strong = document.createElement('strong');
+        strong.textContent = label + ': ';
+        box.append(strong, value, document.createElement('br'));
+      }
 
       function showSuccess(claimId) {
         document.getElementById('heroBanner').style.display = 'none';
@@ -2072,50 +2132,54 @@
 
         document.getElementById('confirmedName').innerText = formData.fullName;
 
-        let courierHtml = `<strong>CONSIGNEE:</strong> ${formData.fullName}<br>`;
-        courierHtml += `<strong>MOBILE:</strong> +91-${formData.phone}<br>`;
-        courierHtml += `<strong>ADDRESS:</strong> ${formData.addressLine1}<br>`;
-        if (formData.addressLine2) courierHtml += `<strong>LANDMARK/CAMPUS:</strong> ${formData.addressLine2}<br>`;
-        courierHtml += `<strong>CITY / STATE:</strong> ${formData.city}, ${formData.state}<br>`;
-        courierHtml += `<strong>PIN CODE:</strong> ${formData.pincode}<br>`;
-        courierHtml += `<strong>MY ARCHETYPE:</strong> ${formData.chosenArchetype}<br>`;
-        if (formData.customArchetypeName) courierHtml += `<strong>CUSTOM SQUAD CARD:</strong> ${formData.customArchetypeName} (Unlocks on 10+ Campus Members)<br>`;
-        if (formData.gps) courierHtml += `<span style="color:#00d2a0; font-size:11px;">GPS: ${formData.gps} (±${formData.gpsAccuracy || '10m'})</span><br>`;
-        if (claimId) courierHtml += `<span style="color:#ffd000; font-size:11px;">CLAIM ID: ${claimId}</span>`;
+        const slip = document.getElementById('formattedCourierSlip');
+        slip.replaceChildren();
+        addLine(slip, 'CONSIGNEE', formData.fullName);
+        addLine(slip, 'MOBILE', '+91-' + formData.phone);
+        addLine(slip, 'COLLEGE', formData.collegeName);
+        addLine(slip, 'ADDRESS', formData.addressLine1);
+        if (formData.addressLine2) addLine(slip, 'LANDMARK/CAMPUS', formData.addressLine2);
+        addLine(slip, 'CITY / STATE', formData.city + ', ' + formData.state);
+        addLine(slip, 'PIN CODE', formData.pincode);
+        addLine(slip, 'MY ARCHETYPE', formData.chosenArchetype);
+        if (formData.customArchetypeName) addLine(slip, 'CUSTOM SQUAD CARD', formData.customArchetypeName + ' (Unlocks on 10+ Campus Members)');
+        if (claimId) addLine(slip, 'CLAIM ID', claimId);
 
-        document.getElementById('formattedCourierSlip').innerHTML = courierHtml;
-
-        const shareMsg = encodeURIComponent(`Hey! I just claimed a 33-card deck for our college on C2 Club. We're tagging everyone with their archetype cards. Claim yours here: ${window.location.href}`);
+        // The plain page address, never the invite link with someone's details.
+        const shareMsg = encodeURIComponent(`Hey! I just claimed a 33-card deck for our college on C2 Club. We're tagging everyone with their archetype cards. Claim yours here: ${window.location.origin}${window.location.pathname}`);
         document.getElementById('waShareBtn').href = `https://wa.me/?text=${shareMsg}`;
 
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
 
-      // Track final submit attempt
-      trackFunnel('claim_submitted', {
-        fullName: formData.fullName,
-        phone: formData.phone,
-        city: formData.city,
-        state: formData.state,
-        pincode: formData.pincode,
-        chosenArchetype: formData.chosenArchetype,
-        appInstalledChoice: formData.appInstalledChoice
-      });
+      function showFailure(message) {
+        btn.innerText = btnText;
+        btn.disabled = false;
+        showStepError('step5', message);
+      }
 
-      // Backend sync
+      trackFunnel('claim_attempted', { appInstalledChoice: formData.appInstalledChoice });
+
       fetch(FUNCTION_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       })
-      .then(res => res.json())
-      .then(data => {
-        trackFunnel('claim_success', { claimId: data?.claimId || null });
-        showSuccess(data?.claimId || '');
+      .then(res => res.json().catch(() => ({})).then(data => ({ ok: res.ok, data })))
+      .then(({ ok, data }) => {
+        if (ok && data && data.success && data.claimId) {
+          trackFunnel('claim_success', { claimId: data.claimId });
+          showSuccess(data.claimId);
+          return;
+        }
+        const code = (data && data.code) || 'UNKNOWN';
+        trackFunnel('claim_failed', { code: code });
+        if (code === 'COLLEGE_REQUIRED') document.getElementById('collegeSearch').focus();
+        showFailure(CLAIM_ERRORS[code] || (data && data.error) || 'Something went wrong. Please try again.');
       })
       .catch(() => {
-        trackFunnel('claim_success_local_fallback');
-        showSuccess('');
+        trackFunnel('claim_failed', { code: 'NETWORK' });
+        showFailure('Could not reach C2 Club. Check your internet and try again.');
       });
     }
 
@@ -2137,8 +2201,7 @@
         studentId: studentId,
         hasPrefillPhone: Boolean(prefillPhone),
         hasPrefillName: Boolean(prefillName),
-        referrer: document.referrer || 'direct',
-        search: window.location.search
+        referrer: document.referrer || 'direct'
       });
     });
   </script>
